@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import 'react-id-swiper/lib/styles/css/swiper.css';
 import "./Header.css";
 import { connect } from "react-redux";
 import { layDanhSachPhim } from "../../redux/actions/phimActions";
