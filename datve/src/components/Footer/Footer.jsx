@@ -18,19 +18,19 @@ export default class Footer extends Component {
           <p className="textAppUnder">123Phim có hai phiên bản <a href="#">iOS</a> &amp; <a href="#">Android</a></p>
         </div>
         <div className="col-md-6 footer_dt">
-          <img className src="./f2.png" alt />
+          <img className src="./assets/images/f2.png" alt />
           <div className="footer_mobile">
             <div>
-              <img src="./img/fs1.png" alt />
+              <img src="./assets/images/fs1.png" alt />
             </div>
             <div>
-              <img src="./img/fs2.png" alt />
+              <img src="./assets/images/fs2.png" alt />
             </div>
             <div>
-              <img src="./img/fs3.png" alt />
+              <img src="./assets/images/fs3.png" alt />
             </div>
             <div>
-              <img src="./img/fs4.png" alt />
+              <img src="./assets/images/fs4.png" alt />
             </div>
           </div>
         </div>
@@ -67,38 +67,38 @@ export default class Footer extends Component {
       <div className="col-md-4">
         <div className="footer_title">ĐỐI TÁC</div>
         <div className="footer_icon">
-          <a href="#"><img src="./img/fi1.png" alt /></a> 
-          <a href="#"><img src="./img/fi1.png" alt /></a> 
-          <a href="#"><img src="./img/fi1.png" alt /></a> 
-          <a href="#"><img src="./img/fi1.png" alt /></a> 
-          <a href="#"><img src="./img/fi1.png" alt /></a> 
-          <a href="#"><img src="./img/fi1.png" alt /></a> 
-          <a href="#"><img src="./img/fi1.png" alt /></a> 
-          <a href="#"><img src="./img/fi1.png" alt /></a> 
-          <a href="#"><img src="./img/fi1.png" alt /></a> 
-          <a href="#"><img src="./img/fi1.png" alt /></a> 
-          <a href="#"><img src="./img/fi1.png" alt /></a> 
-          <a href="#"><img src="./img/fi1.png" alt /></a> 
-          <a href="#"><img src="./img/fi1.png" alt /></a> 
-          <a href="#"><img src="./img/fi1.png" alt /></a> 
-          <a href="#"><img src="./img/fi1.png" alt /></a> 
-          <a href="#"><img src="./img/fi1.png" alt /></a> 
-          <a href="#"><img src="./img/fi1.png" alt /></a> 
-          <a href="#"><img src="./img/fi1.png" alt /></a> 
-          <a href="#"><img src="./img/fi1.png" alt /></a> 
+          <a href="#"><img src="./assets/images/fi1.png" alt /></a> 
+          <a href="#"><img src="./assets/images/fi1.png" alt /></a> 
+          <a href="#"><img src="./assets/images/fi1.png" alt /></a> 
+          <a href="#"><img src="./assets/images/fi1.png" alt /></a> 
+          <a href="#"><img src="./assets/images/fi1.png" alt /></a> 
+          <a href="#"><img src="./assets/images/fi1.png" alt /></a> 
+          <a href="#"><img src="./assets/images/fi1.png" alt /></a> 
+          <a href="#"><img src="./assets/images/fi1.png" alt /></a> 
+          <a href="#"><img src="./assets/images/fi1.png" alt /></a> 
+          <a href="#"><img src="./assets/images/fi1.png" alt /></a> 
+          <a href="#"><img src="./assets/images/fi1.png" alt /></a> 
+          <a href="#"><img src="./assets/images/fi1.png" alt /></a> 
+          <a href="#"><img src="./assets/images/fi1.png" alt /></a> 
+          <a href="#"><img src="./assets/images/fi1.png" alt /></a> 
+          <a href="#"><img src="./assets/images/fi1.png" alt /></a> 
+          <a href="#"><img src="./assets/images/fi1.png" alt /></a> 
+          <a href="#"><img src="./assets/images/fi1.png" alt /></a> 
+          <a href="#"><img src="./assets/images/fi1.png" alt /></a> 
+          <a href="#"><img src="./assets/images/fi1.png" alt /></a> 
         </div>
       </div>
       <div className="col-md-4">
         <div className="row">
           <div className="col-md-6 footer_app">
             <div className="footer_title_1">MOBILE APP</div>
-            <a href="#"><img src="./img//fi2.png" alt /></a>
-            <a href="#"><img src="./img//fi2.png" alt /></a>
+            <a href="#"><img src="./assets/images//fi2.png" alt /></a>
+            <a href="#"><img src="./assets/images//fi2.png" alt /></a>
           </div>
           <div className="col-md-6 footer_social">
             <div className="footer_title_1">MOBILE APP</div>
-            <a href="#"><img src="./img//fi2.png" alt /></a>
-            <a href="#"><img src="./img//fi2.png" alt /></a>
+            <a href="#"><img src="./assets/images//fi2.png" alt /></a>
+            <a href="#"><img src="./assets/images//fi2.png" alt /></a>
           </div>
         </div>
       </div>
@@ -106,7 +106,7 @@ export default class Footer extends Component {
     <hr className="hrFooter" />
     <div className="footer_company">
       <div className="footer_content">
-        <div><img className="footer_ion" src="./img/fi3.jpg" alt /></div> 
+        <div><img className="footer_ion" src="./assets/images/fi3.jpg" alt /></div> 
         <div className="footer_content_item">
           <div className="footer_comp_title">123PHIM – SẢN PHẨM CỦA CÔNG TY CỔ PHẦN ZION</div>
           <div className="footer_add">Địa chỉ: 52 Nguyễn Ngọc Lộc, Phường 14, Quận 10, Thành phố Hồ Chí Minh</div>
@@ -114,7 +114,7 @@ export default class Footer extends Component {
         </div> 
       </div>
       <div>
-        <img className="footer_check" src="./img//fi4.png" alt />
+        <img className="footer_check" src="./assets/images//fi4.png" alt />
       </div>
     </div>
   </div>

@@ -1,6 +1,6 @@
 
 .footer .footer_img{
-    background: url(./f1.jpg);
+    background: url(/assets/images/f1.jpg);
     background-size: contain;
     width: 100%;
     padding: 120px 0 80px 0;
@@ -42,9 +42,9 @@
   }
   .footer_mobile{
     position: absolute;
-    top:11%;
-    left: 32.3%;
-    width: 192px;
+    top:10.5%;
+    left: 32.1%;
+    width: 40%;
   
   }
   .footer_mobile img{

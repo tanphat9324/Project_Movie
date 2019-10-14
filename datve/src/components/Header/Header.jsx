@@ -2,16 +2,15 @@ import React, { Component, Fragment } from "react";
 import 'react-id-swiper/lib/styles/css/swiper.css';
 import "./Header.css";
 import { connect } from "react-redux";
-import { layDanhSachPhim } from "../../redux/actions/phimActions";
+// import { layDanhSachPhim } from "../../redux/actions/QuanLyPhimAction";
 
-class Header extends Component {
-  componentDidMount() {
-    this.props.layDanhSachPhim();
-  }
+export default class Header extends Component {
+  // componentDidMount() {
+  //   this.props.layDanhSachPhim();
+  // }
   render() {
     return (
       <Fragment>
-        {/* HEADER */}
           <section className="header d-flex">
             <div className="header_brand">
               <img src="./assets/images/web-logo.png" alt />
@@ -109,15 +108,15 @@ class Header extends Component {
     );
   }
 }
-const mapStateToProps = state => ({
-  mangPhim: state.QuanLyDatVeReducer.dsPhim
-});
-const mapDispatchToProps = dispatch => ({
-  layDanhSachPhim: () => {
-    dispatch(layDanhSachPhim());
-  }
-});
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Header);
+// const mapStateToProps = state => ({
+//   mangPhim: state.QuanLyDatVeReducer.dsPhim
+// });
+// const mapDispatchToProps = dispatch => ({
+//   layDanhSachPhim: () => {
+//     dispatch(layDanhSachPhim());
+//   }
+// });
+// export default connect(
+//   mapStateToProps,
+//   mapDispatchToProps
+// )(Header);

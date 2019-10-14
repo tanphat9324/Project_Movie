@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="./assets/css/main.css">
     <link rel="stylesheet" href="./assets/css/swiper.min.css">
     <link rel="stylesheet" href="./assets/css/slick.css">
-    <link rel="stylesheet" href="./assets/css/slick-theme.css">
+    <!-- <link rel="stylesheet" href="./assets/css/slick-theme.css"> -->
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -52,48 +52,6 @@
     <script src="./assets/js/vendors.js"></script>
     <script src="./assets/js/jquery.simpler-sidebar.js"></script>
     <script src="./assets/js/main-sidebar-right.js"></script>
-    <script src="./assets/js/swiper.min.js"></script>
-    <script type="text/javascript" src="./assets/js/slick.min.js"></script>
-  
-    <!-- swiper -->
-    <script>
-      var swiper = new Swiper(".swiper-container", {
-        slidesPerView: 1,
-        loop: true,
-        speed: 1000,
-        autoplay: {
-          delay: 5500,
-          disableOnInteraction: false
-        },
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true
-        },
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev"
-        }
-      });
-    </script>
-    <script type="text/javascript">
-      $(document).ready(function () {
-        $('.footer_mobile').slick({
-          arrows:false,
-          autoplay: true,
-    });
-        $(".slider").slick({
-          autoplay: true,
-          arrows: true,
-          // centerMode:true,
-          // centerPadding:'0px',
-          slidesPerRow: 4,
-          rows: 2,
-          // outline: none,
-          prevArrow: $(".movie_prev"),
-          nextArrow: $(".movie_next")
-        });
-      });
-    </script>
   </body>
 </html>
 

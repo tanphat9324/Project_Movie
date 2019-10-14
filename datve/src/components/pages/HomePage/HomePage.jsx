@@ -1,11 +1,27 @@
-import React, { Component } from 'react'
+import React, { Component,Fragment } from 'react'
+import {connect} from 'react-redux';
+import Carousel from '../../Carousel/Carousel';
+import SelectMovie from '../../SelectMovie/SelectMovie';
+import { layDanhSachPhim } from '../../../redux/actions/QuanLyPhimAction';
 
-export default class HomePage extends Component {
+class HomePage extends Component {
+    componentDidMount(){
+        this.props.layDanhSachPhim();
+    }
     render() {
         return (
-            <div>
-                
-            </div>
+          <Fragment>
+              <Carousel/>
+              <SelectMovie dsPhim={this.props.dsPhim}/>
+          </Fragment>
         )
     }
 }
+
+const mapStateToProps= state =>({
+    dsPhim: state.QuanLyPhimReducer.dsPhim
+})
+const mapDispatchToProps= dispatch =>({
+    layDanhSachPhim: () => dispatch(layDanhSachPhim())
+})
+export default connect(mapStateToProps,mapDispatchToProps)(HomePage);
