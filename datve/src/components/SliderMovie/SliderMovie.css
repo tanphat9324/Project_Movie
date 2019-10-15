@@ -1,14 +1,8 @@
-.linkMovie{
-color:black;
+.slick-slide img {
+  width: 100%;
+  border-radius: 4px;
 }
-.movie_title{
-  color:black;
-}
-.linkMovie:hover{
-text-decoration: none!important;
-color:red;
-}
-/* .movie_item {
+ .movie_item {
   padding: 0 15px;
 }
 .movie_item_thumbNail {
@@ -66,9 +60,11 @@ color:red;
   color: #000;
   line-height: 22px;
   margin-bottom: 0;
-  overflow: hidden;
   text-overflow: ellipsis;
-  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
   font-weight: 600;
   opacity: 1;
   transition: all 0.3s;
@@ -82,9 +78,9 @@ color:red;
   opacity: 1;
   transition: all 0.3s;
 } */
-/* .slick-initialized {
+.slick-initialized {
   position: relative;
-} */
+}
 .slick-prev {
   background-image: url(/assets/images/back-session.png);
   background-repeat: no-repeat;

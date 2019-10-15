@@ -37,43 +37,27 @@ export default class CustomArrows extends Component {
     };
     return (
       <Fragment>
-         <Slider {...settings}>
+         <Slider {...settings} className="custom_slider">
                 {dsPhim.map((phim,index)=>{
                   return(
-                    <div key={index} className="movie_item">
-                    <a href="#" classname="linkMovie">
+                    <div key={index} className="col-3 movie_item">
+                    <a href="#" className="linkMovie">
                       <div className="movie_item_thumbNail">
-                        <img src={phim.hinhAnh} alt />
-                        <div className="movie_hover"></div>
+                        <img src={phim.hinhAnh} />
+                        <div className="movie_hover" />
                         <button className="btn movie_buy">MUA VÉ</button>
                       </div>
-                      <div className="movie_title">
+                      <p className="movie_title">
                         {phim.tenPhim}
-                      </div>
+                      </p>
                       <div className="movie_session">{phim.ngayKhoiChieu}</div>
                     </a>
                   </div>
+
                   )
                 })}
-              {/* <div className="movie_item">
-              <a href="#" className="linkMovie">
-                <div className="movie_item_thumbNail">
-                  <img src="./assets/images/m1.jpg" alt />
-                  <div className="movie_hover" />
-                  <button className="btn movie_buy">MUA VÉ</button>
-                </div>
-                <div className="movie_title">
-                  Nhân Duyên: Người Yêu Tiền Kiếp (C16)
-                </div>
-                <div className="movie_session">92 phút</div>
-              </a>
-            </div> */}
-
       </Slider>
-      
       </Fragment>
-
-       
     );
   }
 }

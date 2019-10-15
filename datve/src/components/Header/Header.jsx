@@ -1,19 +1,14 @@
 import React, { Component, Fragment } from "react";
 import 'react-id-swiper/lib/styles/css/swiper.css';
 import "./Header.css";
-import { connect } from "react-redux";
-// import { layDanhSachPhim } from "../../redux/actions/QuanLyPhimAction";
 
 export default class Header extends Component {
-  // componentDidMount() {
-  //   this.props.layDanhSachPhim();
-  // }
   render() {
     return (
       <Fragment>
           <section className="header d-flex">
             <div className="header_brand">
-              <img src="./assets/images/web-logo.png" alt />
+              <img src="./assets/images/web-logo.png" />
             </div>
             <div className="header_info">
               <ul className="header_title">
@@ -34,11 +29,11 @@ export default class Header extends Component {
             <div className="header_login">
               <ul className="login_info">
                 <li>
-                  <img src="./assets/images/user.png" alt />
+                  <img src="./assets/images/user.png" />
                   <a href="#">Đăng Nhập</a>
                 </li>
                 <li>
-                  <img src="./assets/images/location-header.png" alt />
+                  <img src="./assets/images/location-header.png" />
                   <a href="#">Hồ Chí Minh</a>
                 </li>
               </ul>
@@ -59,64 +54,43 @@ export default class Header extends Component {
                 <ul>
                   <li className="title">Playground</li>
                   <li>
-                    <a href="./index.html">Home</a>
+                    <a href="#">Home</a>
                   </li>
                   <li>
-                    <a href="./right.html">Right</a>
+                    <a href="#">Right</a>
                   </li>
                   <li>
-                    <a href="./right-top.html">Right Top</a>
+                    <a href="#">Right Top</a>
                   </li>
                   <li>
-                    <a href="./left.html">Left</a>
+                    <a href="#">Left</a>
                   </li>
                   <li>
-                    <a href="./left-top.html">Left Top</a>
+                    <a href="#">Left Top</a>
                   </li>
                   <li>
-                    <a href="./right-left.html">Right and Left</a>
+                    <a href="#">Right and Left</a>
                   </li>
                   <li>
-                    <a href="./init-opened.html">Init Opened</a>
+                    <a href="#">Init Opened</a>
                   </li>
                   <li>
-                    <a href="./no-mask.html">No Mask</a>
+                    <a href="#">No Mask</a>
                   </li>
                   <li>
-                    <a href="./allow-scrolling.html">Allow Scrolling</a>
+                    <a href="#">Allow Scrolling</a>
                   </li>
                   <li>
-                    <a href="./custom-functions.html">Custom Functions</a>
+                    <a href="#">Custom Functions</a>
                   </li>
                   <li>
-                    <a href="./ajax.html">Ajax</a>
+                    <a href="#">Ajax</a>
                   </li>
                 </ul>
               </nav>
             </div>
           </div>
-          
-        {/* {this.props.mangPhim.map((phim, index) => {
-                    return(
-                        <div key={index}>
-                            <div>{phim.maPhim}</div>
-                            <div>{phim.tenPhim}</div>
-                        </div>
-                    )
-                })} */}
       </Fragment>
     );
   }
 }
-// const mapStateToProps = state => ({
-//   mangPhim: state.QuanLyDatVeReducer.dsPhim
-// });
-// const mapDispatchToProps = dispatch => ({
-//   layDanhSachPhim: () => {
-//     dispatch(layDanhSachPhim());
-//   }
-// });
-// export default connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(Header);

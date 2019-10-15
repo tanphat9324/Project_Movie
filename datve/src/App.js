@@ -5,6 +5,7 @@ import './App.css';
 // import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 import { Home } from './templates/HomeTemplate.jsx/Home';
 import HomePage from './components/pages/HomePage/HomePage';
+import RegisterPage from './components/pages/RegisterPage/RegisterPage';
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <BrowserRouter>
       <Switch>
     <Home exact path='/' Component={HomePage}/>
+    <Route exact path='/register' component={RegisterPage} />
       </Switch>
       </BrowserRouter>
     </Fragment>

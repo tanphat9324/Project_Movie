@@ -19,12 +19,13 @@ const LoopModeInfinityLoop = () => {
     <div className="carousel">
 
     <Swiper {...params}>
-      <div><img src="./assets/images/caro1.jpg" alt="" />
-          <div class="backgroundLinear"></div></div>
-          <div><img src="./assets/images/caro1.jpg" alt="" />
-          <div class="backgroundLinear"></div></div>
-          <div><img src="./assets/images/caro1.jpg" alt="" />
-          <div class="backgroundLinear"></div></div>
+  <div><img src="./assets/images/caro1.jpg"  />
+    <div className="backgroundLinear" /></div>
+  <div><img src="./assets/images/caro2.png"  />
+    <div className="backgroundLinear" /></div>
+  <div><img src="./assets/images/caro3.jpg"  />
+    <div className="backgroundLinear" /></div>
+
     </Swiper>
     </div>
   )
