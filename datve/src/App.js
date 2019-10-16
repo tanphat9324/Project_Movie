@@ -6,6 +6,7 @@ import './App.css';
 import { Home } from './templates/HomeTemplate.jsx/Home';
 import HomePage from './components/pages/HomePage/HomePage';
 import RegisterPage from './components/pages/RegisterPage/RegisterPage';
+import LoginPage from './components/pages/LoginPage/LoginPage';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <Switch>
     <Home exact path='/' Component={HomePage}/>
     <Route exact path='/register' component={RegisterPage} />
+    <Route exact path='/login' component={LoginPage} />
       </Switch>
       </BrowserRouter>
     </Fragment>

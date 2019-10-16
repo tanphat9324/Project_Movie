@@ -24,8 +24,6 @@ const useStyle = makeStyles(theme => ({
       brand_movie:{
         width: '10%',
         border: '1px solid #ebebec',
-        // border-top-left-radius: '4px',
-        // border-bottom-left-radius: '4px',
         borderTopLeftRadius:'4px',
         borderBottomLeftRadius:'4px',
         // min-height: '705px',

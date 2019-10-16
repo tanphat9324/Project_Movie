@@ -6,10 +6,9 @@ export default class RegisterPage extends Component {
         return (
             <Fragment>
                     <section className="register d-flex">
-                {/* <img src="./assets/images/backapp.jpg" alt /> */}
                 <div id="login-box">
                     <div className="left">
-                    <h1>Đăng ký</h1>
+                    <h1>Đăng nhập</h1>
                     <input type="text" name="username" placeholder="Tài Khoản" />
                     <input type="password" name="password" placeholder="Password" />
                     <input type="password" name="password2" placeholder="ReType Password" />
