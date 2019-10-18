@@ -86,7 +86,9 @@
   border: 1px solid #ebebec;
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
-  min-height: 705px;
+  max-height: 705px;
+  overflow-y: scroll;
+
 }
 .listMovie li>button{
   opacity:0.5;

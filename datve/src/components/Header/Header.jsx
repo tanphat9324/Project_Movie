@@ -13,7 +13,7 @@ export default class Header extends Component {
             <div className="header_info">
               <ul className="header_title">
                 <li>
-                  <a href="#">Lịch Chiếu</a>
+                  <a href="#CUM_RAP">Lịch Chiếu</a>
                 </li>
                 <li>
                   <a href="#">Cụm rạp</a>

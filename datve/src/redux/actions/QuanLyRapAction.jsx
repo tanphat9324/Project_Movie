@@ -17,7 +17,27 @@ export const layDanhMucRap = () =>{
         }).then(res => {
             dispatch(nhanDanhMucRap(res.data));
         }).catch(err => {
-            console.log(err.response);
+            console.log(err.response.data);
+        })
+    }
+}
+
+export const nhanThongTinCumRap = cumRap => {
+    return {
+        type: actionType.NHAN_THONG_TIN_CUM_RAP,
+        cumRap
+    }
+}
+
+export const layThongTinCumRap = (maHeThongRap) => {
+    return dispatch => {
+        axios({
+            method: 'GET',
+            url: settings.domain + `/QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${maHeThongRap}`
+        }).then(res =>{
+            dispatch(nhanThongTinCumRap(res.data))
+        }).catch(err => {
+            console.log(err.response.data);
         })
     }
 }
