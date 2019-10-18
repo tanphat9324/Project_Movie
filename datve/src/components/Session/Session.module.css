@@ -1,0 +1,141 @@
+.info{
+}
+.info_header{
+    width: 50%;
+    margin:0 auto;
+    padding-top: 120px;
+    background: url(/assets/images/back-news.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+.brand_movie{
+    width: 10%;
+    border: 1px solid #ebebec;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    min-height: 705px;
+}
+.info_movie_item{
+  display: flex;
+    width: 50%;
+    margin:0 auto;
+}
+.listCinema,.listMovie{
+    list-style-type: none;
+}
+.listCinema img{
+    width: 50px;
+}
+.listCinema li{
+    padding: 20px;
+    position: relative;
+    /* width: 100%; */
+}
+.listMovie li{
+  padding:20px;
+  position: relative;
+}
+/* .listCinema button{
+    position: relative;
+    width: 100%;
+} */
+.listMovie li:after{
+  content: '';
+  position: absolute;
+  bottom: 0%;
+  left: 50%;
+  width: 90%;
+  transform: translateX(-50%);
+  border-bottom: 1px solid #fff;
+  border-color: rgba(238,238,238,.88);
+}
+.listCinema li::after{
+    content: '';
+    position: absolute;
+    bottom: 0%;
+    left: 50%;
+    width: 50px;
+    transform: translateX(-50%);
+    border-bottom: 1px solid #fff;
+    border-color: rgba(238,238,238,.88);
+} 
+.listCinema li>button{
+    opacity:0.5;
+    background-color: transparent;
+    border:none;
+    outline-color: transparent;
+}
+.listCinema li>button:hover{
+  opacity:1;
+}
+/* .listCinema li>button:active{
+  opacity:1;
+}
+.listCinema li>button:active:focus{
+  opacity:1;
+} */
+/* .listCinema li:first-child>button:active{
+  opacity: 1;
+} */
+.listCinema li>button:focus{
+  opacity:1;
+}
+
+.brand_movie_item{
+  width: 40%;
+  border: 1px solid #ebebec;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  min-height: 705px;
+}
+.listMovie li>button{
+  opacity:0.5;
+  background-color: transparent;
+  border:none;
+  outline-color: transparent;
+}
+.listMovie li>button:hover{
+opacity:1;
+}
+.listCinema li:first-child>button:focus{
+opacity: 1;
+}
+.listMovie li>button:focus{
+  opacity:1;
+}
+.listMovie button img{
+  width: 50px;
+  height: 50px;
+}
+.movie_Info{
+  padding-left: 10px;
+}
+.select_movie{
+  width: 50%;
+  border: 1px solid #ebebec;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  max-height: 705px;
+  overflow-y: scroll;
+}
+.movie_custom{
+height: 100%;
+}
+.movieInfo{
+  padding:20px;
+}
+.movieInfo button{
+width: 100%;
+  background-color: transparent;
+  border:none;
+  outline-color: transparent;
+}
+.movieInfo button img{
+  width: 50px;
+  height: 50px;
+}
+
+
+.info_footer{
+
+}

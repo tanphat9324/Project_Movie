@@ -1,91 +1,90 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
-import useStyles from './style';
-
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <Typography
-      component="div"
-      role="tabpanel"
-      hidden={value !== index}
-      id={`vertical-tabpanel-${index}`}
-      aria-labelledby={`vertical-tab-${index}`}
-      {...other}
-    >
-      <Box p={3}>{children}</Box>
-    </Typography>
-  );
-}
-
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.any.isRequired,
-  value: PropTypes.any.isRequired,
-};
-
-function a11yProps(index) {
-  return {
-    id: `vertical-tab-${index}`,
-    'aria-controls': `vertical-tabpanel-${index}`,
-  };
-}
-
-export default function VerticalTabs() {
-  const classes = useStyles();
-  const [value, setValue] = React.useState(0);
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-
-  return (
-      <div className={classes.info_movie_item}>
-    <div className={classes.root}>
-      <Tabs
-        orientation="vertical"
-        variant="scrollable"
-        value={value}
-        onChange={handleChange}
-        aria-label="Vertical tabs example"
-        className={classes.tabs}
-      >
-        <Tab label="Item One" {...a11yProps(0)} />
-        <Tab label="Item Two" {...a11yProps(1)} />
-        <Tab label="Item Three" {...a11yProps(2)} />
-        <Tab label="Item Four" {...a11yProps(3)} />
-        <Tab label="Item Five" {...a11yProps(4)} />
-        <Tab label="Item Six" {...a11yProps(5)} />
-        <Tab label="Item Seven" {...a11yProps(6)} />
-      </Tabs>
-      <TabPanel value={value} index={0}>
-        Item One
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        Item Two
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        Item Three
-      </TabPanel>
-      <TabPanel value={value} index={3}>
-        Item Four
-      </TabPanel>
-      <TabPanel value={value} index={4}>
-        Item Five
-      </TabPanel>
-      <TabPanel value={value} index={5}>
-        Item Six
-      </TabPanel>
-      <TabPanel value={value} index={6}>
-        Item Seven
-      </TabPanel>
+import React, { Component,Fragment } from 'react'
+import style from './Session.module.css';
+import {connect} from 'react-redux';
+import {layDanhMucRap} from '../../redux/actions/QuanLyRapAction';
+ class Session extends Component {
+  componentDidMount(){
+    this.props.layDanhMucRap();
+  }
+  render() {
+    console.log(this.props.danhMucRap);
+    
+    return (
+      <Fragment>
+       <section className={style.info}>
+  <div className={style.info_header} />
+  <div className={style.info_movie_item}>
+    <div className={style.brand_movie}>
+      <ul className={style.listCinema}>
+      {this.props.danhMucRap.map((dMuc,index)=>{
+        return(
+          <li key={index}>
+          <button><img src={dMuc.logo} alt /></button>
+        </li>
+        )
+      })}
+      </ul>
     </div>
+    <div className={style.brand_movie_item}>
+      <ul className={style.listMovie}>
+        <li>
+          <button>
+            <div className="d-flex">
+              <img src="./assets/images/r1.jpg" alt />
+              <div className={style.movie_Info}>
+                <div className="text-left">BHD Start -Bitexco</div>
+                <div className="text-left">L3-Bitexco Icon 68, 2 Hải Triều, Q.1</div>
+                <div className="text-left">chi tiết</div>
+              </div>
+            </div>
+          </button>
+        </li>
+      </ul>
     </div>
-  );
+    <div className={style.select_movie}>
+      <div className={style.movieInfo}>
+        <button>
+          <div className="d-flex">
+            <img src="./assets/images/r1.jpg" alt />
+            <div className={style.movie_Info}>
+              <div className="text-left">BHD Start -Bitexco</div>
+              <div className="text-left">L3-Bitexco Icon 68, 2 Hải Triều, Q.1</div>
+            </div>
+          </div>
+        </button>
+        <div />
+      </div>
+      <div className={style.movieInfo}>
+        <button>
+          <div className="d-flex">
+            <img src="./assets/images/r1.jpg" alt />
+            <div className={style.movie_Info}>
+              <div className="text-left">BHD Start -Bitexco</div>
+              <div className="text-left">L3-Bitexco Icon 68, 2 Hải Triều, Q.1</div>
+            </div>
+          </div>
+        </button>
+        <div />
+      </div>
+
+    </div>
+  </div>
+  <div className="info_header" />
+</section>
+
+      </Fragment>
+    )
+  }
 }
+
+const mapStateToProps = state => ({
+  danhMucRap: state.QuanLyRapReducer.dMucRap
+})
+
+const mapDispatchToProps = dispatch =>{
+  return{
+
+    layDanhMucRap: () => dispatch(layDanhMucRap())
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(Session);
