@@ -7,6 +7,7 @@ import { Home } from './templates/HomeTemplate.jsx/Home';
 import HomePage from './components/pages/HomePage/HomePage';
 import RegisterPage from './components/pages/RegisterPage/RegisterPage';
 import LoginPage from './components/pages/LoginPage/LoginPage';
+import { Admin } from './templates/AdminTemplate/Admin';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
     <Home exact path='/' Component={HomePage}/>
     <Route exact path='/register' component={RegisterPage} />
     <Route exact path='/login' component={LoginPage} />
+    <Admin exact path='/admin'Component={HomePage}/>
       </Switch>
       </BrowserRouter>
     </Fragment>

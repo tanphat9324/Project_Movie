@@ -32,10 +32,10 @@ export const dangKyAction = (thongTinDangKy) =>{
         url: settings.domain + `/QuanLyNguoiDung/DangKy`,
         method:'POST',
         data:{...thongTinDangKy,maNhom:settings.groupID,
-        maLoaiNguoiDung: "KhachHang"},
-        header:{
-            "Authorization": "Bearer  " + localStorage.getItem(settings.token)
-        }
+        maLoaiNguoiDung: "KhachHang"}
+        // header:{
+        //     "Authorization": "Bearer  " + localStorage.getItem(settings.token)
+        // }
        }).then(result =>{
         console.log(result.data);
         swal.fire({
