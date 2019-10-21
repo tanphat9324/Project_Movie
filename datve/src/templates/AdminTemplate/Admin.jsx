@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom';
 import DashboardAdmin from '../../components/DashboardAdmin/DashboardAdmin';
 const AdminLayout = (props) =>{
     return <Fragment>
-        <DashboardAdmin/>
+        {/* <DashboardAdmin/> */}
             {props.children}       
     </Fragment>
 }

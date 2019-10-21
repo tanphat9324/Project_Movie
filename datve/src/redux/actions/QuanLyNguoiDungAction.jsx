@@ -51,3 +51,24 @@ export const dangKyAction = (thongTinDangKy) =>{
        })
     }
 }
+
+export const nhanDanhSachNguoiDung = (danhSach) => {
+    return {
+        type:actionType.NHAN_DANH_SACH_NGUOI_DUNG,
+        danhSach
+    }
+}
+
+export const layDanhSachNguoiDungAction = () => {
+    return dispatch => {
+        axios({
+            method:'GET',
+            url:settings.domain + `/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=${settings.groupID}`
+        }).then(res => {
+            console.log(res.data);
+            dispatch(nhanDanhSachNguoiDung(res.data));
+        }).catch(err => {
+            console.log(err.response.data);
+        })
+    }
+}
