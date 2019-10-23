@@ -2,145 +2,69 @@ import React, { Component,Fragment } from 'react';
 import {connect} from 'react-redux';
 import { Table, Divider } from 'antd';
 import styles from './DashboardAdmin.module.css';
-import { layDanhSachNguoiDungAction } from '../../redux/actions/QuanLyNguoiDungAction';
-const columns =[
-  {
-    title: 'STT',
-    dataIndex: 'stt',
-    key: 'stt',
-  },
-  {
-    title: 'Tài Khoản',
-    dataIndex: 'taikhoan',
-    key: 'taikhoan',
-    render: text => <a>{text}</a>,
-  },
-  {
-    title: 'Mật Khẩu',
-    dataIndex: 'matkhau',
-    key: 'matkhau',
-  },
-  {
-    title: 'Họ Tên',
-    dataIndex: 'hoten',
-    key: 'hoten',
-  },
-  {
-    title: 'Số Điện Thoại',
-    dataIndex: 'sdt',
-    key: 'sdt',
-  },
-  {
-    title: 'Thao Tác',
-    key: 'action',
-    render: (text, record) => (
-      <span>
-        <a>Sửa {record.name}</a>
-        <Divider type="vertical" />
-        <a>Xóa</a>
-      </span>
-    ),
-  },
-];
-// const columns = [
-//   {
-//     title: 'Name',
-//     dataIndex: 'name',
-//     key: 'name',
-//     render: text => <a>{text}</a>,
-//   },
-//   {
-//     title: 'Age',
-//     dataIndex: 'age',
-//     key: 'age',
-//   },
-//   {
-//     title: 'Address',
-//     dataIndex: 'address',
-//     key: 'address',
-//   },
-//   {
-//     title: 'Tags',
-//     key: 'tags',
-//     dataIndex: 'tags',
-//     render: tags => (
-//       <span>
-//         {tags.map(tag => {
-//           let color = tag.length > 5 ? 'geekblue' : 'green';
-//           if (tag === 'loser') {
-//             color = 'volcano';
-//           }
-//           return (
-//             <Tag color={color} key={tag}>
-//               {tag.toUpperCase()}
-//             </Tag>
-//           );
-//         })}
-//       </span>
-//     ),
-//   },
-//   {
-//     title: 'Action',
-//     key: 'action',
-//     render: (text, record) => (
-//       <span>
-//         <a>Invite {record.name}</a>
-//         <Divider type="vertical" />
-//         <a>Delete</a>
-//       </span>
-//     ),
-//   },
-// ];
-// const data = [
-//   {
-//     stt: '1',
-//     taikhoan: 'John Brown',
-//     matkhau: 32,
-//     hoten:'John Brown',
-//     sdt: '123123123',
-//   },
-//   {
-//     stt: '1',
-//     taikhoan: 'John Brown',
-//     matkhau: 32,
-//     hoten:'John Brown',
-//     sdt: '123123123',
-//   },  {
-//     stt: '1',
-//     taikhoan: 'John Brown',
-//     matkhau: 32,
-//     hoten:'John Brown',
-//     sdt: '123123123',
-//   },
-//   {
-//     stt: '1',
-//     taikhoan: 'John Brown',
-//     matkhau: 32,
-//     hoten:'John Brown',
-//     sdt: '123123123',
-//   },
-//   {
-//     stt: '1',
-//     taikhoan: 'John Brown',
-//     matkhau: 32,
-//     hoten:'John Brown',
-//     sdt: '123123123',
-//   },
-//   {
-//     stt: '1',
-//     taikhoan: 'John Brown',
-//     matkhau: 32,
-//     hoten:'John Brown',
-//     sdt: '123123123',
-//   },
-// ];
-
-const data = this.props.danhSachNguoiDung;
+import { layDanhSachNguoiDungAction, chinhSuaNguoiDungAction, xoaNguoiDungAction } from '../../redux/actions/QuanLyNguoiDungAction';
+import { Modal, Button } from 'antd';
+import ModalEditUser from '../ModalEditUser/ModalEditUser';
 class DashboardAdmin extends Component {
+  state = {
+    modal2Visible: false,
+  };
+  setModal2Visible(modal2Visible) {
+    this.setState({ modal2Visible });
+  }
+
   componentDidMount(){
     this.props.layDanhSachNguoiDung();
   }
-    render() {      
+    render() {
+      const columns =[
+        {
+          title: 'STT',
+          dataIndex: 'stt',
+          key: 'stt',
+        },
+        {
+          title: 'Tài Khoản',
+          dataIndex: 'taiKhoan',
+          key: 'taikhoan',
+          render: text => <a>{text}</a>,
+        },
+        {
+          title: 'Mật Khẩu',
+          dataIndex: 'matKhau',
+          key: 'matkhau',
+        },
+        {
+          title: 'Họ Tên',
+          dataIndex: 'hoTen',
+          key: 'hoten',
+        },
+        {
+          title: 'Email',
+          dataIndex: 'email',
+          key: 'email',
+        },
+        {
+          title: 'Số Điện Thoại',
+          dataIndex: 'soDt',
+          key: 'sdt',
+        },
+        {
+          title: 'Thao Tác',
+          key: 'action',
+          render: (text, record) => (            
+            <span>
+              <a onClick={() => {this.setModal2Visible(true);this.props.chinhSuaNguoiDung(record)}}>Sửa {record.name}</a>
+              <Divider type="vertical" />
+              <a onClick={() => {this.props.xoaNguoiDung(record.taiKhoan)}}>Xóa</a>
+            </span>
+          ),
+        },
+      ]; 
+      const data = this.props.danhSachNguoiDung;
+      for(let i=0;i<data.length;i++){
+        data[i]["stt"]=i+1;
+      }
         return (
             <Fragment>
  <section className={`${styles.content} d-flex`}>
@@ -156,7 +80,7 @@ class DashboardAdmin extends Component {
       <div className={styles.media_body}>
         <h5>Tấn Phát</h5>
         <span>Admin Member</span>
-      </div>{/* media-body */}
+      </div>{/* media-body */}  
     </div>
     <hr className={`${styles.sidebar_divider} my-0`} />
     <hr className={`${styles.sidebar_divider} my-0`} />
@@ -205,7 +129,23 @@ class DashboardAdmin extends Component {
 </div>
   </div>
 </section>
-
+ {/* <Button type="primary" onClick={() => this.setModal2Visible(true)}>
+          Vertically centered modal dialog
+        </Button> */}
+        <Modal
+          title="Cap nhat thong tin nguoi dung"
+          centered
+          visible={this.state.modal2Visible}
+          // okText="Cap Nhat"
+          // onOk={() => this.setModal2Visible(false)}
+          onCancel={() => this.setModal2Visible(false)}
+          footer={null}
+        >
+          {/* <p>some contents...</p>
+          <p>some contents...</p>
+          <p>some contents...</p> */}
+          <ModalEditUser/>
+        </Modal>
             </Fragment>
         )
     }
@@ -216,7 +156,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    layDanhSachNguoiDung: () => dispatch(layDanhSachNguoiDungAction())
+    layDanhSachNguoiDung: () => dispatch(layDanhSachNguoiDungAction()),
+    chinhSuaNguoiDung: (thongTinNguoiDung) => dispatch(chinhSuaNguoiDungAction(thongTinNguoiDung)),
+    xoaNguoiDung:(taiKhoan) => dispatch(xoaNguoiDungAction(taiKhoan))
   }
 }
 export default connect (mapStateToProps,mapDispatchToProps)(DashboardAdmin);

@@ -11,7 +11,7 @@ export const dangNhapAction = (thongTinNguoiDung) =>{
             data:thongTinNguoiDung
         }).then(result =>{
             localStorage.setItem(settings.userLogin,JSON.stringify(result.data));
-            localStorage.setItem(settings.token,result.data.token)
+            localStorage.setItem(settings.token,result.data.accessToken)
             console.log(result.data);
             swal.fire({
                 position: 'top-end',
@@ -69,6 +69,74 @@ export const layDanhSachNguoiDungAction = () => {
             dispatch(nhanDanhSachNguoiDung(res.data));
         }).catch(err => {
             console.log(err.response.data);
+        })
+    }
+}
+
+export const chinhSuaNguoiDungAction = (NguoiDungSua) => {
+return {
+    type:actionType.CHINH_SUA_NGUOI_DUNG,
+    NguoiDungSua
+}    
+}
+
+export const CapNhatNguoiDungAction = (thongTinNguoiDung) => {
+    return dispatch => {
+        axios({
+            method: "PUT",
+            url:settings.domain + '/QuanLyNguoiDung/CapNhatThongTinNguoiDung',
+            data:{...thongTinNguoiDung,maNhom:settings.groupID,
+                maLoaiNguoiDung: "KhachHang"},
+            headers:{
+                "Authorization": "Bearer  " + localStorage.getItem(settings.token)
+            }
+        }).then(res => {
+            // console.log(res.data); 
+        }).catch(err => {
+            // console.log(err.response.data);
+            
+        })
+    }
+}
+export const addUserAdminAction = (thongTinDangKy) =>{
+    return dispatch => {
+       axios({
+        url: settings.domain + `/QuanLyNguoiDung/ThemNguoiDung`,
+        method:'POST',
+        data:{...thongTinDangKy,maNhom:settings.groupID},
+        headers:{
+            "Authorization": "Bearer  " + localStorage.getItem(settings.token)
+        }
+       }).then(result =>{
+        console.log(result.data);
+        swal.fire({
+            position: 'top-end',
+            type: 'success',
+            title: 'Your work has been saved',
+            showConfirmButton: false,
+            timer: 1500
+          })
+       }).catch(err => {
+        //    console.log(err.response.data);
+           swal.fire('Thông báo đăng ký', err.response.data,'error');
+       })
+    }
+}
+
+export const xoaNguoiDungAction = (taiKhoan) => {
+    return dispatch => {
+        axios({
+            method: 'DELETE',
+            url: settings.domain + `/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`,
+            data:taiKhoan,
+            headers:{
+                "Authorization": "Bearer  " + localStorage.getItem(settings.token)
+            }
+        }).then(res => {
+            console.log(res.data);
+        }).catch(err =>{
+            console.log(taiKhoan);
+            
         })
     }
 }

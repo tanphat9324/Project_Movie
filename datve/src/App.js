@@ -9,6 +9,7 @@ import RegisterPage from './components/pages/RegisterPage/RegisterPage';
 import LoginPage from './components/pages/LoginPage/LoginPage';
 import { Admin } from './templates/AdminTemplate/Admin';
 import DashboardAdmin from './components/DashboardAdmin/DashboardAdmin';
+import AddUserAdmin from './components/AddUserAdmin/AddUserAdmin';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
     <Route exact path='/register' component={RegisterPage} />
     <Route exact path='/login' component={LoginPage} />
     <Admin exact path='/admin'Component={DashboardAdmin}/>
+    <Route exact path='/admin/register' component = {AddUserAdmin}/>
       </Switch>
       </BrowserRouter>
     </Fragment>
