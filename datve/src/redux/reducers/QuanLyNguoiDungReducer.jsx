@@ -30,7 +30,7 @@ export const QuanLyNguoiDungReducer = (state = initialState, action) => {
         }
         case actionType.XOA_NGUOI_DUNG:{
             let mangNguoiDung = {...state.danhSachNguoiDung};
-            console.log(state.danhSachNguoiDung);
+            console.log("mang tren reducer XOA",state.danhSachNguoiDung);
             
             // let index = mangNguoiDung.findIndex(nguoiDung => nguoiDung.taiKhoan === action.taiKhoan);
             // if(index !== -1){

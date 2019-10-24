@@ -2,7 +2,6 @@ import {actionType} from '../constants/QuanLyNguoiDungConstant';
 import {settings} from '../../common/Config/settings';
 import axios from 'axios';
 import swal from 'sweetalert2';
-
 export const dangNhapAction = (thongTinNguoiDung) =>{
     return dispatch => {
         axios({
@@ -68,7 +67,7 @@ export const layDanhSachNguoiDungAction = () => {
             console.log(res.data);
             dispatch(nhanDanhSachNguoiDung(res.data));
         }).catch(err => {
-            console.log(err.response.data);
+            // console.log(err.response.data);
         })
     }
 }
@@ -115,7 +114,7 @@ export const addUserAdminAction = (thongTinDangKy) =>{
             title: 'Your work has been saved',
             showConfirmButton: false,
             timer: 1500
-          })
+          });
        }).catch(err => {
         //    console.log(err.response.data);
            swal.fire('Thông báo đăng ký', err.response.data,'error');
@@ -142,8 +141,9 @@ export const xoaNguoiDungAction = (taiKhoan) => {
         }).then(res => {
             console.log(res);
             // dispatch(xoaNguoiDung(taiKhoan));
+            dispatch(layDanhSachNguoiDungAction());
         }).catch(err =>{
-            console.log(taiKhoan);
+            // console.log(taiKhoan);
             
         })
     }

@@ -2,6 +2,7 @@ import React, { Component,Fragment } from 'react'
 import {connect} from 'react-redux';
 import { dangKyAction } from '../../../redux/actions/QuanLyNguoiDungAction';
 import styles from './RegisterPage.module.css';
+import {NavLink} from 'react-router-dom';
 
 class RegisterPage extends Component {
     constructor(props){
@@ -96,7 +97,7 @@ class RegisterPage extends Component {
                     {this.state.errors.email !== '' ? <div className="alert alert-danger">{this.state.errors.email}</div> : ''}
 
                     <input type="tel" className={styles.input_Tel} name="soDt" onChange={this.handleChange} onKeyUp={this.handleErrors} onBlur={this.handleErrors} placeholder="Telephone" />
-                    <button className={`${styles.register_button}  btn`} type="submit" name="signup_submit" value="Sign me up">Đăng ký</button>
+                    <NavLink to='/admin' className={`${styles.register_button}  btn`} type="submit" name="signup_submit" value="Sign me up">Đăng ký</NavLink>
                     </form>
                     <div className={styles.right}>
                     <span className={styles.loginwith}>Sign in with<br />social network</span>

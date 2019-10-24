@@ -86,7 +86,7 @@ handleChange=(e) =>{
         },
       ]; 
       const data = this.props.danhSachNguoiDung;
-      console.log('data dash',data);
+      // console.log('data dash',data);
       
       // for(let i=0;i<data.length;i++){
       //   data[i]["stt"]=i+1;
@@ -96,7 +96,7 @@ handleChange=(e) =>{
  <section className={`${styles.content} d-flex`}>
   <div className={`${styles.content_left} ${styles.bg_gradient_primary}`}>
     <div className={styles.az_sidebar_header}>
-      <a href="index.html" className={styles.az_logo}>
+      <a title="Load all" href="index.html" className={styles.az_logo}>
         <img src="../assets/images/web-logo.png" alt />
         <span>123Phim</span>
       </a>
