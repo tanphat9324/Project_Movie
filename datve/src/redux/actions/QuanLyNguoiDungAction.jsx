@@ -80,7 +80,7 @@ return {
 }    
 }
 
-export const CapNhatNguoiDungAction = (thongTinNguoiDung) => {
+export const CapNhatNguoiDungAction = (thongTinNguoiDung) => {    
     return dispatch => {
         axios({
             method: "PUT",
@@ -123,6 +123,13 @@ export const addUserAdminAction = (thongTinDangKy) =>{
     }
 }
 
+// export const xoaNguoiDung = taiKhoan => {
+//     return {
+//         type: actionType.XOA_NGUOI_DUNG,
+//         taiKhoan
+//     }
+// }
+
 export const xoaNguoiDungAction = (taiKhoan) => {
     return dispatch => {
         axios({
@@ -133,10 +140,29 @@ export const xoaNguoiDungAction = (taiKhoan) => {
                 "Authorization": "Bearer  " + localStorage.getItem(settings.token)
             }
         }).then(res => {
-            console.log(res.data);
+            console.log(res);
+            // dispatch(xoaNguoiDung(taiKhoan));
         }).catch(err =>{
             console.log(taiKhoan);
             
+        })
+    }
+}
+
+export const timKiemNguoiDungAction = (thongTinNguoiDung) => {
+    return dispatch => {
+        axios({
+            method: 'GET',
+            url: settings.domain + `/QuanLyNguoiDung/TimKiemNguoiDung?MaNhom=${settings.groupID}&tuKhoa=${thongTinNguoiDung}`,
+            data:thongTinNguoiDung,
+            headers:{
+                "Authorization": "Bearer  " + localStorage.getItem(settings.token)
+            }            
+        }).then(res => {
+            console.log(res.data);
+            dispatch(nhanDanhSachNguoiDung(res.data));
+        }).catch(err =>{
+            // console.log(thongTinNguoiDung);
         })
     }
 }

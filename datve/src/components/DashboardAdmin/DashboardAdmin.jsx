@@ -1,14 +1,23 @@
-import React, { Component,Fragment } from 'react';
+import React, { Component,Fragment, } from 'react';
+import {NavLink} from 'react-router-dom';
 import {connect} from 'react-redux';
 import { Table, Divider } from 'antd';
 import styles from './DashboardAdmin.module.css';
-import { layDanhSachNguoiDungAction, chinhSuaNguoiDungAction, xoaNguoiDungAction } from '../../redux/actions/QuanLyNguoiDungAction';
+import { layDanhSachNguoiDungAction, chinhSuaNguoiDungAction, xoaNguoiDungAction, timKiemNguoiDungAction } from '../../redux/actions/QuanLyNguoiDungAction';
 import { Modal, Button } from 'antd';
 import ModalEditUser from '../ModalEditUser/ModalEditUser';
 class DashboardAdmin extends Component {
-  state = {
-    modal2Visible: false,
-  };
+  constructor(props){
+    super(props);
+    this.state={
+      modal2Visible: false,
+    }
+  }
+
+  // state = {
+  //   modal2Visible: false,
+  //   inputSearch:''
+  // };
   setModal2Visible(modal2Visible) {
     this.setState({ modal2Visible });
   }
@@ -16,6 +25,21 @@ class DashboardAdmin extends Component {
   componentDidMount(){
     this.props.layDanhSachNguoiDung();
   }
+  handleSubmit = (e) =>{
+    e.preventDefault();
+    // console.log('handle submit DashboardAdmin',this.state.inputSearch);
+    this.props.timKiemNguoiDung(this.state.inputSearch);
+}
+handleChange=(e) =>{
+  let name = e.target.name;
+  let value = e.target.value;
+          this.setState({
+            [name]:value
+    }, () => {
+      // console.log(this.state.inputSearch);
+    })
+}
+
     render() {
       const columns =[
         {
@@ -62,21 +86,23 @@ class DashboardAdmin extends Component {
         },
       ]; 
       const data = this.props.danhSachNguoiDung;
-      for(let i=0;i<data.length;i++){
-        data[i]["stt"]=i+1;
-      }
+      console.log('data dash',data);
+      
+      // for(let i=0;i<data.length;i++){
+      //   data[i]["stt"]=i+1;
+      // }
         return (
             <Fragment>
  <section className={`${styles.content} d-flex`}>
   <div className={`${styles.content_left} ${styles.bg_gradient_primary}`}>
     <div className={styles.az_sidebar_header}>
       <a href="index.html" className={styles.az_logo}>
-        <img src="./assets/images/web-logo.png" alt />
+        <img src="../assets/images/web-logo.png" alt />
         <span>123Phim</span>
       </a>
     </div>
     <div className={styles.az_sidebar_loggedin}>
-      <div className={`${styles.az_img_user} online`}><img src="./assets/images/admin.png" alt /></div>
+      <div className={`${styles.az_img_user} online`}><img src="../assets/images/admin.png" alt /></div>
       <div className={styles.media_body}>
         <h5>Tấn Phát</h5>
         <span>Admin Member</span>
@@ -115,11 +141,12 @@ class DashboardAdmin extends Component {
 <div className={styles.quanLyPhimTable}>
  <h5 className={styles.title}>QUẢN LÝ PHIM</h5>
  <div className={styles.searchBox}>
-      <button className={`${styles.themNguoiDung} btn btn-success`}>
+      <NavLink to="/admin/register" className={`${styles.themNguoiDung} btn btn-success`}>
         + Thêm người dùng
-      </button>
-        <form className="form-inline">
-      <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+      </NavLink>
+        <form className="form-inline" onSubmit={this.handleSubmit}>
+         <a onClick={()=>this.props.layDanhSachNguoiDung()}><img style={{width:'50px'}} src="./assets/images/spinner.svg" alt=""/></a> 
+      <input className="form-control mr-sm-2 abc" onChange={this.handleChange} name="inputSearch" type="search" placeholder="Search" aria-label="Search" />
       <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
 
@@ -158,7 +185,8 @@ const mapDispatchToProps = dispatch => {
   return {
     layDanhSachNguoiDung: () => dispatch(layDanhSachNguoiDungAction()),
     chinhSuaNguoiDung: (thongTinNguoiDung) => dispatch(chinhSuaNguoiDungAction(thongTinNguoiDung)),
-    xoaNguoiDung:(taiKhoan) => dispatch(xoaNguoiDungAction(taiKhoan))
+    xoaNguoiDung:(taiKhoan) => dispatch(xoaNguoiDungAction(taiKhoan)),
+    timKiemNguoiDung:(thongTinNguoiDung) => dispatch(timKiemNguoiDungAction(thongTinNguoiDung))
   }
 }
 export default connect (mapStateToProps,mapDispatchToProps)(DashboardAdmin);

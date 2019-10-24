@@ -16,13 +16,27 @@ const initialState = {
 export const QuanLyNguoiDungReducer = (state = initialState, action) => {
     switch (action.type) {
         case actionType.NHAN_DANH_SACH_NGUOI_DUNG:{
-            state.danhSachNguoiDung = action.danhSach;
+            const data = action.danhSach;
+            for(let i=0;i<data.length;i++){
+                data[i]["stt"]=i+1;
+              }
+            state.danhSachNguoiDung = data;
             return {...state}
         }
         case actionType.CHINH_SUA_NGUOI_DUNG:{
             state.NguoiDungSua = action.NguoiDungSua;
-            console.log('Nguoi dung sua ne',state.NguoiDungSua);
+            // console.log('Nguoi dung sua ne',state.NguoiDungSua);
+            return {...state}
+        }
+        case actionType.XOA_NGUOI_DUNG:{
+            let mangNguoiDung = {...state.danhSachNguoiDung};
+            console.log(state.danhSachNguoiDung);
             
+            // let index = mangNguoiDung.findIndex(nguoiDung => nguoiDung.taiKhoan === action.taiKhoan);
+            // if(index !== -1){
+            //     mangNguoiDung.splice(index,1);
+            // }           
+            // state.danhSachNguoiDung = mangNguoiDung;
             return {...state}
         }
     default:

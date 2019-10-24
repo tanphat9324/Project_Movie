@@ -116,7 +116,7 @@ render() {
                 </div>
                 <div className={styles.or}>OR</div>
                 <div className={styles.signin_close}>
-                <a href><img src="./assets/images/error.png" alt /></a> 
+                <a href><img src="../assets/images/error.png" alt /></a> 
                 </div>
             </div>
             </section>

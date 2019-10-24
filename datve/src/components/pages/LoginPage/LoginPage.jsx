@@ -1,7 +1,7 @@
 import React, { Component,Fragment } from 'react'
 import {connect} from 'react-redux';
 import { dangNhapAction } from '../../../redux/actions/QuanLyNguoiDungAction';
-
+import './LoginPage.css'
  class LoginPage extends Component {
     constructor(props){
         super(props);
