@@ -9,7 +9,7 @@ class ModalEditUser extends Component {
         super(props);
         this.state={
             user:this.props.NguoiDungSua,
-            modal2Visible: false,
+            // modal2Visible: false,
 
         errors: {
             taiKhoan:'',
@@ -21,9 +21,9 @@ class ModalEditUser extends Component {
           valid:false
         }
     }
-    setModal2Visible(modal2Visible) {
-        this.setState({ modal2Visible });
-      }
+    // setModal2Visible(modal2Visible) {
+    //     this.setState({ modal2Visible });
+    //   }
     handleErrors = e => {
         let {name, value} = e.target;
         let loi = value === '' ? name + ' không được để trống!' :'';
@@ -114,7 +114,7 @@ class ModalEditUser extends Component {
                     {/* {this.state.errors.email !== '' ? <div className="alert alert-danger">{this.state.errors.email}</div> : ''} */}
 
                     <input type="tel" name="soDt" value={this.state.user.soDt} onChange={this.handleChange} onKeyUp={this.handleErrors} onBlur={this.handleErrors} placeholder="Telephone" />
-                    <button onCancel={() => this.setModal2Visible(false)} className="register_button btn" type="submit" name="signup_submit" value="Sign me up">Đăng ký</button>
+                    <button className="register_button btn" type="submit" name="signup_submit" value="Sign me up">Đăng ký</button>
                     </form>
             </Fragment>
         )

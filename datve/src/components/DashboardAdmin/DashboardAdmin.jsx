@@ -4,25 +4,17 @@ import {connect} from 'react-redux';
 import { Table, Divider } from 'antd';
 import styles from './DashboardAdmin.module.css';
 import { layDanhSachNguoiDungAction, chinhSuaNguoiDungAction, xoaNguoiDungAction, timKiemNguoiDungAction } from '../../redux/actions/QuanLyNguoiDungAction';
-import { Modal, Button } from 'antd';
-import { Menu, Dropdown,Icon  } from 'antd';
-
+import { Modal,Menu,Dropdown,Icon, Button } from 'antd';
 import ModalEditUser from '../ModalEditUser/ModalEditUser';
+
 class DashboardAdmin extends Component {
   constructor(props){
     super(props);
     this.state={
       modal2Visible: false,
+      nguoiDungDangNhap:this.props.nguoiDangNhap
     }
   }
-
-  // state = {
-  //   modal2Visible: false,
-  //   inputSearch:''
-  // };
-
-
-
   setModal2Visible(modal2Visible) {
     this.setState({ modal2Visible });
   }
@@ -44,8 +36,14 @@ handleChange=(e) =>{
       // console.log(this.state.inputSearch);
     })
 }
-
+componentWillReceiveProps(nextProps){  
+  this.setState({
+    nguoiDungDangNhap:nextProps.nguoiDangNhap
+  })
+}
     render() {
+      console.log("state dashboard nguoiDangNhap",this.props.nguoiDangNhap);
+      
       const menu = (
         <Menu>
           <Menu.Item>
@@ -119,10 +117,10 @@ handleChange=(e) =>{
  <section className={`${styles.content} d-flex`}>
   <div className={`${styles.content_left} ${styles.bg_gradient_primary}`}>
     <div className={styles.az_sidebar_header}>
-      <a title="Load all" href="index.html" className={styles.az_logo}>
+      <NavLink to="/" title="Load all" className={styles.az_logo}>
         <img src="../assets/images/web-logo.png" alt />
         <span>123Phim</span>
-      </a>
+      </NavLink>
     </div>
     <div className={styles.az_sidebar_loggedin}>
       <div className={`${styles.az_img_user} online`}><img src="../assets/images/admin.png" alt /></div>
@@ -138,7 +136,7 @@ handleChange=(e) =>{
       {/* <div class="sidebar-brand-icon rotate-n-15"> */}
       {/* <i class="fas fa-laugh-wink"></i> */}
       {/* </div> */}
-      <div className="sidebar-brand-text mx-3">Dashboard</div>
+      <div className={`${styles.sidebar_brand_text} mx-3`}>Dashboard</div>
     </a>
     <hr className={`${styles.sidebar_divider} my-0`} />
     <hr className={styles.sidebar_divider} />
@@ -151,7 +149,6 @@ handleChange=(e) =>{
           <i className="fas fa-fw fa-chart-area" />
           <span>Quản lý phim</span></a>
       </li>
-      {/* Nav Item - Tables */}
       <li className="nav-item active">
         <a className="nav-link" href="tables.html">
           <i className="fas fa-fw fa-table" />
@@ -165,7 +162,7 @@ handleChange=(e) =>{
 <div className="pr-3">
 <Dropdown overlay={menu} trigger={['click']}>
     <a className={`${styles.header_dropdown} ant-dropdown-link`} href="#">
-      Chào !, Tấn Phát <img className={styles.header_avatar} src="../assets/images/admin.png" alt=""/> <img className={styles.header_icon} src="../assets/images/caret-down (2).svg" alt=""/>
+      Chào !, {this.state.nguoiDungDangNhap.taiKhoan} <img className={styles.header_avatar} src="../assets/images/admin.png" alt=""/> <img className={styles.header_icon} src="../assets/images/caret-down (2).svg" alt=""/>
     </a>
   </Dropdown>
 </div>
@@ -189,9 +186,6 @@ handleChange=(e) =>{
 <div className={styles.footer}>Footer</div>
   </div>
 </section>
- {/* <Button type="primary" onClick={() => this.setModal2Visible(true)}>
-          Vertically centered modal dialog
-        </Button> */}
         <Modal
           title="Cập nhật thông tin người dùng"
           centered
@@ -199,9 +193,8 @@ handleChange=(e) =>{
           // okText="Cap Nhat"
           // onOk={() => this.setModal2Visible(false)}
           onCancel={() => this.setModal2Visible(false)}
-          // footer={null}
+          footer={null}
         >
-
           <ModalEditUser/>
         </Modal>
             </Fragment>
@@ -209,7 +202,8 @@ handleChange=(e) =>{
     }
 }
 const mapStateToProps = state => ({
-  danhSachNguoiDung : state.QuanLyNguoiDungReducer.danhSachNguoiDung
+  danhSachNguoiDung : state.QuanLyNguoiDungReducer.danhSachNguoiDung,
+  nguoiDangNhap: state.QuanLyNguoiDungReducer.nguoiDangNhap
 })
 
 const mapDispatchToProps = dispatch => {
