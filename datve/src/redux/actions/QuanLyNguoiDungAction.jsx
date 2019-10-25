@@ -53,7 +53,7 @@ export const dangKyAction = thongTinDangKy => {
         swal.fire({
           position: "top-end",
           type: "success",
-          title: "Your work has been saved",
+          title: " Đăng ký thành công",
           showConfirmButton: false,
           timer: 1500
         });
