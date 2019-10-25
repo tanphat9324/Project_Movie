@@ -5,6 +5,8 @@ import { Table, Divider } from 'antd';
 import styles from './DashboardAdmin.module.css';
 import { layDanhSachNguoiDungAction, chinhSuaNguoiDungAction, xoaNguoiDungAction, timKiemNguoiDungAction } from '../../redux/actions/QuanLyNguoiDungAction';
 import { Modal, Button } from 'antd';
+import { Menu, Dropdown,Icon  } from 'antd';
+
 import ModalEditUser from '../ModalEditUser/ModalEditUser';
 class DashboardAdmin extends Component {
   constructor(props){
@@ -18,6 +20,9 @@ class DashboardAdmin extends Component {
   //   modal2Visible: false,
   //   inputSearch:''
   // };
+
+
+
   setModal2Visible(modal2Visible) {
     this.setState({ modal2Visible });
   }
@@ -41,6 +46,20 @@ handleChange=(e) =>{
 }
 
     render() {
+      const menu = (
+        <Menu>
+          <Menu.Item>
+            <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">
+              Cập nhật thông tin
+            </a>
+          </Menu.Item>
+          <Menu.Item>
+            <a target="_blank" rel="noopener noreferrer" href="http://www.taobao.com/">
+            Đăng xuất
+            </a>
+          </Menu.Item>
+        </Menu>
+      );
       const columns =[
         {
           title: 'STT',
@@ -137,9 +156,18 @@ handleChange=(e) =>{
     </ul>
   </div>
   <div className={styles.content_right}>
-
+<div className={styles.header}>
+{/* <img src="../assets/images/envelope.svg" alt=""/> */}
+<div className="pr-3">
+<Dropdown overlay={menu} trigger={['click']}>
+    <a className={`${styles.header_dropdown} ant-dropdown-link`} href="#">
+      Chào !, Tấn Phát <img className={styles.header_avatar} src="../assets/images/admin.png" alt=""/> <img className={styles.header_icon} src="../assets/images/caret-down (2).svg" alt=""/>
+    </a>
+  </Dropdown>
+</div>
+</div>
 <div className={styles.quanLyPhimTable}>
- <h5 className={styles.title}>QUẢN LÝ PHIM</h5>
+ <h5 className={styles.title}>QUẢN LÝ NGƯỜI DÙNG</h5>
  <div className={styles.searchBox}>
       <NavLink to="/admin/register" className={`${styles.themNguoiDung} btn btn-success`}>
         + Thêm người dùng
@@ -154,13 +182,14 @@ handleChange=(e) =>{
   <Table className={styles.table} columns={columns} bordered='true'  dataSource={data} pagination={{defaultCurrent:1, pageSize: 5}} /> 
   {/* total:30 trong pagination */}
 </div>
+<div className={styles.footer}>Footer</div>
   </div>
 </section>
  {/* <Button type="primary" onClick={() => this.setModal2Visible(true)}>
           Vertically centered modal dialog
         </Button> */}
         <Modal
-          title="Cap nhat thong tin nguoi dung"
+          title="Cập nhật thông tin người dùng"
           centered
           visible={this.state.modal2Visible}
           // okText="Cap Nhat"
@@ -168,9 +197,7 @@ handleChange=(e) =>{
           onCancel={() => this.setModal2Visible(false)}
           footer={null}
         >
-          {/* <p>some contents...</p>
-          <p>some contents...</p>
-          <p>some contents...</p> */}
+
           <ModalEditUser/>
         </Modal>
             </Fragment>

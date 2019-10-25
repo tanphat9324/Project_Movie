@@ -1,8 +1,39 @@
 
+.header{
+    height: 60px;
+    box-shadow: 0 .15rem 1.75rem 0 rgba(58,59,69,.15)!important;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.footer{
+    height: 60px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ccc;
+}
+.header_dropdown{
+    color:#F14324;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.8s;
+}
+.header_dropdown:hover{
+    font-weight: 600;
+    color:rgb(255, 66, 66);
+}
 .content_left{
     width: 14%;
     background-color: red;
     height: 100vh;
+    -webkit-box-shadow: 4px 0px 6px 0px rgba(0,0,0,0.51);
+-moz-box-shadow: 4px 0px 6px 0px rgba(0,0,0,0.51);
+box-shadow: 4px 0px 6px 0px rgba(0,0,0,0.51);
+z-index: 10;
 }
 .sidebar_brand:hover{
 color:white;
@@ -40,9 +71,15 @@ text-decoration: none;
     display: flex;
     flex-shrink: 0;
 }
-.az_sidebar_loggedin .az_img_user {
+.az_sidebar_loggedin .az_img_user,.header_avatar {
     width: 36px;
     height: 36px;
+}
+.header_avatar{
+    border-radius: 100%;
+}
+.header_icon{
+    width: 15px;
 }
 .az_img_user {
     display: block;
@@ -142,14 +179,16 @@ img {
 .content_right{
     width: 86%;
     background-color: #EBEDF2;
-    height: 100vh;
-    padding-top:50px;
+    position: relative;
+    min-height: 100vh;    /* padding-top:50px; */
 }
 .quanLyPhimTable{
     background-color: white!important;
     width: 90%;
     margin:0 auto;
     border-radius: 7px;
+    margin-top:50px;
+
 }
 .table{
     background-color: white!important;
