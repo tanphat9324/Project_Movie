@@ -2,17 +2,15 @@ import React, { Component,Fragment } from 'react';
 import {connect} from 'react-redux';
 import styles from './ModalEditUser.module.css';
 import { CapNhatNguoiDungAction } from '../../redux/actions/QuanLyNguoiDungAction';
+import { Modal } from 'antd';
+
 class ModalEditUser extends Component {
     constructor(props){
         super(props);
         this.state={
-        user:{
-            taiKhoan:'',
-            matKhau:'',
-            hoTen:'',
-            email:'',
-            soDt:'',
-        },
+            user:this.props.NguoiDungSua,
+            modal2Visible: false,
+
         errors: {
             taiKhoan:'',
             matKhau:'',
@@ -23,7 +21,9 @@ class ModalEditUser extends Component {
           valid:false
         }
     }
-
+    setModal2Visible(modal2Visible) {
+        this.setState({ modal2Visible });
+      }
     handleErrors = e => {
         let {name, value} = e.target;
         let loi = value === '' ? name + ' không được để trống!' :'';
@@ -73,6 +73,8 @@ class ModalEditUser extends Component {
         this.props.capNhatNguoiDung(this.state.user);
     }
     componentWillReceiveProps(nextProps){
+        console.log('receive');
+        
         this.setState({
             user:nextProps.NguoiDungSua
         })
@@ -92,7 +94,9 @@ class ModalEditUser extends Component {
 //     }
 //     return nextStateUpdate;
 //   }
-    render() {        
+    render() {    
+        console.log("1");
+            
         return (
             <Fragment>
                  <form className={styles.left} onSubmit={this.handleSubmit}>
@@ -110,7 +114,7 @@ class ModalEditUser extends Component {
                     {/* {this.state.errors.email !== '' ? <div className="alert alert-danger">{this.state.errors.email}</div> : ''} */}
 
                     <input type="tel" name="soDt" value={this.state.user.soDt} onChange={this.handleChange} onKeyUp={this.handleErrors} onBlur={this.handleErrors} placeholder="Telephone" />
-                    <button className="register_button btn" type="submit" name="signup_submit" value="Sign me up">Đăng ký</button>
+                    <button onCancel={() => this.setModal2Visible(false)} className="register_button btn" type="submit" name="signup_submit" value="Sign me up">Đăng ký</button>
                     </form>
             </Fragment>
         )

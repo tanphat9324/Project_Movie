@@ -97,9 +97,13 @@ handleChange=(e) =>{
           key: 'action',
           render: (text, record) => (            
             <span>
-              <a onClick={() => {this.setModal2Visible(true);this.props.chinhSuaNguoiDung(record)}}>Sửa {record.name}</a>
+              <a onClick={() => {this.setModal2Visible(true);this.props.chinhSuaNguoiDung(record)}}>
+                <img style={{width:'25px'}} src="../assets/images/edit.svg" alt=""/>
+                 {record.name}</a>
               <Divider type="vertical" />
-              <a onClick={() => {this.props.xoaNguoiDung(record.taiKhoan)}}>Xóa</a>
+              <a onClick={() => {this.props.xoaNguoiDung(record.taiKhoan)}}>
+                <img style={{width:'30px'}} src="../assets/images/garbage.svg" alt=""/>
+              </a>
             </span>
           ),
         },
@@ -175,7 +179,7 @@ handleChange=(e) =>{
         <form className="form-inline" onSubmit={this.handleSubmit}>
          <a onClick={()=>this.props.layDanhSachNguoiDung()}><img style={{width:'50px'}} src="./assets/images/spinner.svg" alt=""/></a> 
       <input className="form-control mr-sm-2 abc" onChange={this.handleChange} name="inputSearch" type="search" placeholder="Search" aria-label="Search" />
-      <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <button className="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
     </form>
 
    </div>
@@ -195,7 +199,7 @@ handleChange=(e) =>{
           // okText="Cap Nhat"
           // onOk={() => this.setModal2Visible(false)}
           onCancel={() => this.setModal2Visible(false)}
-          footer={null}
+          // footer={null}
         >
 
           <ModalEditUser/>
