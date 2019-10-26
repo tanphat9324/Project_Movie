@@ -2,6 +2,9 @@ import React, { Component,Fragment } from 'react'
 import {connect} from 'react-redux';
 import { dangNhapAction } from '../../../redux/actions/QuanLyNguoiDungAction';
 import './LoginPage.css'
+
+import { useHistory } from "react-router-dom";
+
  class LoginPage extends Component {
     constructor(props){
         super(props);
@@ -17,6 +20,8 @@ import './LoginPage.css'
     handleSubmit = (e) =>{
         e.preventDefault();
         this.props.dangNhap(this.state);
+        this.props.history.push("/admin");
+
     }
 
     render() {

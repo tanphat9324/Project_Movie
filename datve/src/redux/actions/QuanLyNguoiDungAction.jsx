@@ -2,6 +2,10 @@ import { actionType } from "../constants/QuanLyNguoiDungConstant";
 import { settings } from "../../common/Config/settings";
 import axios from "axios";
 import swal from "sweetalert2";
+import { createBrowserHistory } from 'history';
+
+
+const history = createBrowserHistory();
 
 export const nguoiDangNhap = () => ({
   type: actionType.NGUOI_DANG_NHAP,
@@ -27,7 +31,7 @@ export const dangNhapAction = thongTinNguoiDung => {
           timer: 1500
         });
       })
-      .catch(err => {
+      .catch(err => {        
         swal.fire("Thông báo đăng nhập", err.response.data, "error");
       });
   };

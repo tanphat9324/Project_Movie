@@ -2,7 +2,6 @@ import React, { Component,Fragment } from 'react'
 import {connect} from 'react-redux';
 import { dangKyAction } from '../../../redux/actions/QuanLyNguoiDungAction';
 import styles from './RegisterPage.module.css';
-import {NavLink} from 'react-router-dom';
 
 class RegisterPage extends Component {
     constructor(props){
@@ -38,23 +37,26 @@ class RegisterPage extends Component {
             }
         }
         if(name === 'matKhau'){
-            let regex = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}$/;
-            if(!regex.test(value)){
-                loi = "8 kí tự, thường, hoa & kí tự đặc biệt"
-            }
+            // let regex = /(?=(.*[0-9]))(?=.*[\!@#$%^&*()\\[\]{}\-_+=~`|:;"'<>,./?])(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}/;
+            //1 lowercase letter, 1 uppercase letter, 1 number, 1 special character and be at least 8 characters long
+
+            ///(?=(.*[0-9]))((?=.*[A-Za-z0-9])(?=.*[A-Z])(?=.*[a-z]))^.{8,}$/
+            //1 lowercase letter, 1 uppercase letter, 1 number, and be at least 8 characters long
+            // if(!regex.test(value)){
+            //     loi = "8 kí tự, thường, hoa & kí tự đặc biệt"
+            // }
         }
         if(name === 'hoTen'){
-            // let regex=/^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s]$/;
-            // if(!regex.test(value)){
-            //     loi+="Sai định dạng";
-            // }
+            let regex=/^[a-zA-Z ]{3,30}$/;
+            if(!regex.test(value)){
+                loi+="Sai định dạng";
+            }
         }
         if(name === "email"){
-            // let regex = /^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@
-            // + [A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$/;
-            // if(!regex.test(value)){
-            //     loi+= "Sai định dạng email"
-            // }
+            let regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            if(!regex.test(value)){
+                loi+= "Sai định dạng email"
+            }
         }
 
         this.state.valid = loi === '' ? true : false;
@@ -97,7 +99,7 @@ class RegisterPage extends Component {
                     {this.state.errors.email !== '' ? <div className="alert alert-danger">{this.state.errors.email}</div> : ''}
 
                     <input type="tel" className={styles.input_Tel} name="soDt" onChange={this.handleChange} onKeyUp={this.handleErrors} onBlur={this.handleErrors} placeholder="Telephone" />
-                    <NavLink to='/admin' className={`${styles.register_button}  btn`} type="submit" name="signup_submit" value="Sign me up">Đăng ký</NavLink>
+                    <button className={`${styles.register_button}  btn`} type="submit" name="signup_submit" value="Sign me up">Đăng ký</button>
                     </form>
                     <div className={styles.right}>
                     <span className={styles.loginwith}>Sign in with<br />social network</span>
