@@ -3,9 +3,8 @@ import { settings } from "../../common/Config/settings";
 import axios from "axios";
 import swal from "sweetalert2";
 
-export const nguoiDangNhap = thongTinTaiKhoan => ({
+export const nguoiDangNhap = () => ({
   type: actionType.NGUOI_DANG_NHAP,
-  thongTinTaiKhoan
 });
 
 export const dangNhapAction = thongTinNguoiDung => {
@@ -19,7 +18,7 @@ export const dangNhapAction = thongTinNguoiDung => {
         localStorage.setItem(settings.userLogin, JSON.stringify(result.data));
         localStorage.setItem(settings.token, result.data.accessToken);
         console.log("dang Nhap action ", result.data);
-        dispatch(nguoiDangNhap(result.data));
+        // dispatch(nguoiDangNhap(result.data));
         swal.fire({
           position: "top-end",
           type: "success",

@@ -3,7 +3,7 @@ import {NavLink} from 'react-router-dom';
 import {connect} from 'react-redux';
 import { Table, Divider } from 'antd';
 import styles from './DashboardAdmin.module.css';
-import { layDanhSachNguoiDungAction, chinhSuaNguoiDungAction, xoaNguoiDungAction, timKiemNguoiDungAction } from '../../redux/actions/QuanLyNguoiDungAction';
+import { layDanhSachNguoiDungAction, chinhSuaNguoiDungAction, xoaNguoiDungAction, timKiemNguoiDungAction, nguoiDangNhap } from '../../redux/actions/QuanLyNguoiDungAction';
 import { Modal,Menu,Dropdown,Icon, Button } from 'antd';
 import ModalEditUser from '../ModalEditUser/ModalEditUser';
 
@@ -12,7 +12,8 @@ class DashboardAdmin extends Component {
     super(props);
     this.state={
       modal2Visible: false,
-      nguoiDungDangNhap:this.props.nguoiDangNhap
+      tenDangNhap:this.props.nguoiDangNhap
+      // nguoiDungDangNhap:this.props.nguoiDangNhap
     }
   }
   setModal2Visible(modal2Visible) {
@@ -21,6 +22,7 @@ class DashboardAdmin extends Component {
 
   componentDidMount(){
     this.props.layDanhSachNguoiDung();
+    this.props.nguoiDungDangNhap();
   }
   handleSubmit = (e) =>{
     e.preventDefault();
@@ -38,11 +40,11 @@ handleChange=(e) =>{
 }
 componentWillReceiveProps(nextProps){  
   this.setState({
-    nguoiDungDangNhap:nextProps.nguoiDangNhap
+    tenDangNhap:nextProps.nguoiDangNhap
   })
 }
     render() {
-      console.log("state dashboard nguoiDangNhap",this.props.nguoiDangNhap);
+      console.log("state dashboard nguoiDangNhap",this.state.tenDangNhap.taiKhoan);
       
       const menu = (
         <Menu>
@@ -162,7 +164,7 @@ componentWillReceiveProps(nextProps){
 <div className="pr-3">
 <Dropdown overlay={menu} trigger={['click']}>
     <a className={`${styles.header_dropdown} ant-dropdown-link`} href="#">
-      Chào !, {this.state.nguoiDungDangNhap.taiKhoan} <img className={styles.header_avatar} src="../assets/images/admin.png" alt=""/> <img className={styles.header_icon} src="../assets/images/caret-down (2).svg" alt=""/>
+      Chào !, {this.state.tenDangNhap.taiKhoan}  <img className={styles.header_avatar} src="../assets/images/admin.png" alt=""/> <img className={styles.header_icon} src="../assets/images/caret-down (2).svg" alt=""/>
     </a>
   </Dropdown>
 </div>
@@ -208,6 +210,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
+    nguoiDungDangNhap: () => dispatch(nguoiDangNhap()),
     layDanhSachNguoiDung: () => dispatch(layDanhSachNguoiDungAction()),
     chinhSuaNguoiDung: (thongTinNguoiDung) => dispatch(chinhSuaNguoiDungAction(thongTinNguoiDung)),
     xoaNguoiDung:(taiKhoan) => dispatch(xoaNguoiDungAction(taiKhoan)),

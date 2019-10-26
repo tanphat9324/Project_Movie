@@ -1,25 +1,9 @@
 import { actionType } from "../constants/QuanLyNguoiDungConstant";
-
+import {settings} from '../../common/Config/settings'
 const initialState = {
   danhSachNguoiDung: [],
-  NguoiDungSua: {
-    taiKhoan: "testReducer",
-    matKhau: "321321",
-    email: "TestReducer@gmail.com",
-    soDt: "321321231",
-    maNhom: "GP11",
-    maLoaiNguoiDung: "KhachHang",
-    hoTen: "Test Reducer"
-  },
-  nguoiDangNhap: {
-    // accessToken: "",
-    // email: "khai@gmail.com",
-    // hoTen: "Test Nguoi Dang Nhap",
-    // maLoaiNguoiDung: "QuanTri",
-    // maNhom: "GP11",
-    // soDT: "23123123",
-    // taiKhoan: "Tan Phat"
-  }
+  NguoiDungSua: {},
+  nguoiDangNhap: {}
 };
 
 export const QuanLyNguoiDungReducer = (state = initialState, action) => {
@@ -37,8 +21,11 @@ export const QuanLyNguoiDungReducer = (state = initialState, action) => {
       return { ...state };
     }
     case actionType.NGUOI_DANG_NHAP: {
-      state.nguoiDangNhap = action.thongTinTaiKhoan;
-      console.log("NguoiDangNhap Reducer", state.nguoiDangNhap);
+   const tenDangNhap = JSON.parse(localStorage.getItem(settings.userLogin))
+      state.nguoiDangNhap=tenDangNhap;
+   console.log("NguoiDangNhap Reducer",tenDangNhap);
+   console.log("NguoiDangNhap Reducer", state.nguoiDangNhap);
+
       return { ...state };
     }
     default:
