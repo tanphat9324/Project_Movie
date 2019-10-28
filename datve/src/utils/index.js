@@ -6,12 +6,15 @@ import {settings} from '../common/Config/settings';
 
 export const logout = () => {
     localStorage.removeItem(settings.token);
+    localStorage.removeItem(settings.userLogin);
     this.props.history.push('/');
 }
 
 export const isLogin = () => {
-    console.log('kiem tra dang Nhap');
-    if (localStorage.getItem(settings.token)) {
+    const maLoai=JSON.parse(localStorage.getItem(settings.userLogin)).maLoaiNguoiDung;
+    console.log(maLoai);
+    
+    if (maLoai === "QuanTri"){
         return true;
     }
     return false;

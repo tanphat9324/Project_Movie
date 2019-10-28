@@ -21,8 +21,14 @@ import './LoginPage.css'
 
     handleSubmit = (e) =>{
         e.preventDefault();
-        this.props.dangNhap(this.state);
+        this.props.dangNhap(this.state, this.callback);
     }
+
+    callback = ()=>{
+        this.props.history.push('/admin');
+    }
+    
+
 //  componentDidUpdate(){
 //     if(this.props.isLogin === "khai"){
 //     }
@@ -59,8 +65,8 @@ import './LoginPage.css'
 
 const mapDispatchToProp = dispatch =>{
     return{
-        dangNhap:(thongTinNguoiDung)=>{
-            dispatch(dangNhapAction(thongTinNguoiDung))
+        dangNhap:(thongTinNguoiDung,callback)=>{
+            dispatch(dangNhapAction(thongTinNguoiDung,callback))
         }
     }
 }

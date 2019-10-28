@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component, Fragment } from "react";
+import {NavLink} from 'react-router-dom';
 import 'react-id-swiper/lib/styles/css/swiper.css';
 import "./Header.css";
 
@@ -32,7 +33,7 @@ export default class Header extends Component {
               <ul className="login_info">
                 <li>
                   <img src="./assets/images/user.png" />
-                  <a href="#">Đăng Nhập</a>
+                  <NavLink to="/login" href="#">Đăng Nhập</NavLink>
                 </li>
                 <li>
                   <img src="./assets/images/location-header.png" />

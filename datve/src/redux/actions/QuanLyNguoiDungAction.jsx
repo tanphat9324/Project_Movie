@@ -9,7 +9,7 @@ export const nguoiDangNhap = () => ({
   type: actionType.NGUOI_DANG_NHAP,
 });
 
-export const dangNhapAction = thongTinNguoiDung => {
+export const dangNhapAction = (thongTinNguoiDung, callback) => {
   return dispatch => {
     axios({
       url: "http://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/DangNhap",
@@ -21,18 +21,20 @@ export const dangNhapAction = thongTinNguoiDung => {
         localStorage.setItem(settings.token, result.data.accessToken);
         // console.log("dang Nhap thanh cong action");      
         // console.log("dang Nhap action ", result.data);
-        this.props.history.push('/admin');
-
         swal.fire({
           position: "top-end",
           type: "success",
           title: "Đăng nhập thành công",
           showConfirmButton: false,
           timer: 1500
+        }).then(() =>  {
+          callback()
         });
 
       })
-      .catch(err => {        
+      .catch(err => {  
+        console.log(err);
+              
         swal.fire("Thông báo đăng nhập", err.response.data, "error");
         // console.log(err.response.status);
 

@@ -137,12 +137,12 @@ componentWillReceiveProps(nextProps){
     <hr className={`${styles.sidebar_divider} my-0`} />
     <hr className={`${styles.sidebar_divider} my-0`} />
     {/* <hr class="sidebar-divider"> */}
-    <a className={`${styles.sidebar_brand} d-flex align-items-center justify-content-center`} href="index.html">
+    <NavLink to='/' className={`${styles.sidebar_brand} d-flex align-items-center justify-content-center`} >
       {/* <div class="sidebar-brand-icon rotate-n-15"> */}
       {/* <i class="fas fa-laugh-wink"></i> */}
       {/* </div> */}
       <div className={`${styles.sidebar_brand_text} mx-3`}>Dashboard</div>
-    </a>
+    </NavLink>
     <hr className={`${styles.sidebar_divider} my-0`} />
     <hr className={styles.sidebar_divider} />
     <div className={styles.sidebar_heading}>
