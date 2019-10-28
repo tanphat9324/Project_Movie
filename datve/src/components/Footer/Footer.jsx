@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from 'react'
 import './Footer.css';
 export default class Footer extends Component {
@@ -15,7 +17,7 @@ export default class Footer extends Component {
             dẫn.</div>
           <br />
           <button className="footer_button">App miễn phí - Tải về ngay!</button>
-          <p className="textAppUnder">123Phim có hai phiên bản <a href="#">iOS</a> &amp; <a href="#">Android</a></p>
+          <p className="textAppUnder">123Phim có hai phiên bản <a href="#">iOS</a>  <a href = "#" >Android</a></p>
         </div>
         <div className="col-md-6 footer_dt">
           <img src="./assets/images/f2.png"  />

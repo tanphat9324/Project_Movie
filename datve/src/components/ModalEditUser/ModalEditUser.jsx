@@ -2,15 +2,13 @@ import React, { Component,Fragment } from 'react';
 import {connect} from 'react-redux';
 import styles from './ModalEditUser.module.css';
 import { CapNhatNguoiDungAction } from '../../redux/actions/QuanLyNguoiDungAction';
-import { Modal } from 'antd';
+// import { Modal } from 'antd';
 
 class ModalEditUser extends Component {
     constructor(props){
         super(props);
         this.state={
             user:this.props.NguoiDungSua,
-            // modal2Visible: false,
-
         errors: {
             taiKhoan:'',
             matKhau:'',
@@ -21,9 +19,7 @@ class ModalEditUser extends Component {
           valid:false
         }
     }
-    // setModal2Visible(modal2Visible) {
-    //     this.setState({ modal2Visible });
-    //   }
+
     handleErrors = e => {
         let {name, value} = e.target;
         let loi = value === '' ? name + ' không được để trống!' :'';
@@ -73,7 +69,7 @@ class ModalEditUser extends Component {
         this.props.capNhatNguoiDung(this.state.user);
     }
     componentWillReceiveProps(nextProps){
-        console.log('receive');
+        // console.log('receive');
         
         this.setState({
             user:nextProps.NguoiDungSua

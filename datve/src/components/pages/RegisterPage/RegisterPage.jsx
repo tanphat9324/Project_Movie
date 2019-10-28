@@ -1,3 +1,6 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable no-useless-escape */
+/* eslint-disable react/no-direct-mutation-state */
 import React, { Component,Fragment } from 'react'
 import {connect} from 'react-redux';
 import { dangKyAction } from '../../../redux/actions/QuanLyNguoiDungAction';

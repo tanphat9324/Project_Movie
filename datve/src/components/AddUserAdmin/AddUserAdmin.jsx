@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable react/no-direct-mutation-state */
 import React, { Component,Fragment } from 'react'
 import {connect} from 'react-redux';
 import styles from './AddUserAdmin.module.css';

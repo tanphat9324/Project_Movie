@@ -1,7 +1,8 @@
 import './Admin.css';
 import React, { Fragment } from 'react';
-import { Route } from 'react-router-dom';
+import { Route,Redirect } from 'react-router-dom';
 import DashboardAdmin from '../../components/DashboardAdmin/DashboardAdmin';
+// import {settings} from '../../common/Config/settings'
 const AdminLayout = (props) =>{
     return <Fragment>
         {/* <DashboardAdmin/> */}

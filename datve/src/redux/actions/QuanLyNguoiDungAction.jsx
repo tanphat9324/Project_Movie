@@ -2,10 +2,8 @@ import { actionType } from "../constants/QuanLyNguoiDungConstant";
 import { settings } from "../../common/Config/settings";
 import axios from "axios";
 import swal from "sweetalert2";
-import { createBrowserHistory } from 'history';
 
 
-const history = createBrowserHistory();
 
 export const nguoiDangNhap = () => ({
   type: actionType.NGUOI_DANG_NHAP,
@@ -21,8 +19,10 @@ export const dangNhapAction = thongTinNguoiDung => {
       .then(result => {
         localStorage.setItem(settings.userLogin, JSON.stringify(result.data));
         localStorage.setItem(settings.token, result.data.accessToken);
-        console.log("dang Nhap action ", result.data);
-        // dispatch(nguoiDangNhap(result.data));
+        // console.log("dang Nhap thanh cong action");      
+        // console.log("dang Nhap action ", result.data);
+        this.props.history.push('/admin');
+
         swal.fire({
           position: "top-end",
           type: "success",
@@ -30,9 +30,13 @@ export const dangNhapAction = thongTinNguoiDung => {
           showConfirmButton: false,
           timer: 1500
         });
+
       })
       .catch(err => {        
         swal.fire("Thông báo đăng nhập", err.response.data, "error");
+        // console.log(err.response.status);
+
+        
       });
   };
 };

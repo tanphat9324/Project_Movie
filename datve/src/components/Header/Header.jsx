@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component, Fragment } from "react";
 import 'react-id-swiper/lib/styles/css/swiper.css';
 import "./Header.css";
@@ -8,7 +10,7 @@ export default class Header extends Component {
       <Fragment>
           <section className="header d-flex">
             <div className="header_brand">
-              <img src="./assets/images/web-logo.png" />
+              <img src="./assets/images/web-logo.png" alt="logo" />
             </div>
             <div className="header_info">
               <ul className="header_title">

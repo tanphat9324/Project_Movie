@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React from 'react';
 import Swiper from 'react-id-swiper';
 import './Carousel.css';

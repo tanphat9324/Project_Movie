@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React, { Component,Fragment } from 'react'
 import style from './Session.module.css';
 import {connect} from 'react-redux';
@@ -19,7 +20,7 @@ import {layDanhMucRap, layThongTinCumRap} from '../../redux/actions/QuanLyRapAct
       {this.props.danhMucRap.map((dMuc,index)=>{
         return(
           <li key={index}>
-          <button onClick={()=>this.props.layThongTinCumRap(dMuc.maHeThongRap)}><img src={dMuc.logo} alt /></button>
+          <button onClick={()=>this.props.layThongTinCumRap(dMuc.maHeThongRap)}><img src={dMuc.logo} alt="danhMucLogo" /></button>
         </li>
         )
       })}
@@ -32,7 +33,7 @@ import {layDanhMucRap, layThongTinCumRap} from '../../redux/actions/QuanLyRapAct
           <li key={index}>
           <button>
             <div className="d-flex">
-              <img src="./assets/images/r1.jpg" alt />
+              <img src="./assets/images/r1.jpg" />
               <div className={style.movie_Info}>
                 <div className="text-left">{cumRap.tenCumRap}</div>
                 <div className="text-left">{cumRap.diaChi}</div>
@@ -52,7 +53,7 @@ import {layDanhMucRap, layThongTinCumRap} from '../../redux/actions/QuanLyRapAct
       <div className={style.movieInfo}>
         <button>
           <div className="d-flex">
-            <img src="./assets/images/r1.jpg" alt />
+            <img src="./assets/images/r1.jpg" />
             <div className={style.movie_Info}>
               <div className="text-left">BHD Start -Bitexco</div>
               <div className="text-left">L3-Bitexco Icon 68, 2 Hải Triều, Q.1</div>
@@ -64,7 +65,7 @@ import {layDanhMucRap, layThongTinCumRap} from '../../redux/actions/QuanLyRapAct
       <div className={style.movieInfo}>
         <button>
           <div className="d-flex">
-            <img src="./assets/images/r1.jpg" alt />
+            <img src="./assets/images/r1.jpg" />
             <div className={style.movie_Info}>
               <div className="text-left">BHD Start -Bitexco</div>
               <div className="text-left">L3-Bitexco Icon 68, 2 Hải Triều, Q.1</div>

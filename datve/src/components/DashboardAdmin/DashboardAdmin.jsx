@@ -1,11 +1,14 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component,Fragment, } from 'react';
 import {NavLink} from 'react-router-dom';
 import {connect} from 'react-redux';
 import { Table, Divider } from 'antd';
 import styles from './DashboardAdmin.module.css';
 import { layDanhSachNguoiDungAction, chinhSuaNguoiDungAction, xoaNguoiDungAction, timKiemNguoiDungAction, nguoiDangNhap } from '../../redux/actions/QuanLyNguoiDungAction';
-import { Modal,Menu,Dropdown,Icon, Button } from 'antd';
+import { Modal,Menu,Dropdown } from 'antd';
 import ModalEditUser from '../ModalEditUser/ModalEditUser';
+import {logout} from '../../utils/index';
 
 class DashboardAdmin extends Component {
   constructor(props){
@@ -44,17 +47,17 @@ componentWillReceiveProps(nextProps){
   })
 }
     render() {
-      console.log("state dashboard nguoiDangNhap",this.state.tenDangNhap.taiKhoan);
+      // console.log("state dashboard nguoiDangNhap",this.state.tenDangNhap.taiKhoan);
       
       const menu = (
         <Menu>
           <Menu.Item>
-            <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">
+            <a target="_blank" rel="noopener noreferrer" href="#">
               Cập nhật thông tin
             </a>
           </Menu.Item>
           <Menu.Item>
-            <a target="_blank" rel="noopener noreferrer" href="http://www.taobao.com/">
+            <a onClick={()=>logout()} target="_blank" rel="noopener noreferrer" href="#">
             Đăng xuất
             </a>
           </Menu.Item>

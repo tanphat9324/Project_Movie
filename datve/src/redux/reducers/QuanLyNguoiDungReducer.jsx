@@ -23,8 +23,8 @@ export const QuanLyNguoiDungReducer = (state = initialState, action) => {
     case actionType.NGUOI_DANG_NHAP: {
    const tenDangNhap = JSON.parse(localStorage.getItem(settings.userLogin))
       state.nguoiDangNhap=tenDangNhap;
-   console.log("NguoiDangNhap Reducer",tenDangNhap);
-   console.log("NguoiDangNhap Reducer", state.nguoiDangNhap);
+  //  console.log("NguoiDangNhap Reducer",tenDangNhap);
+  //  console.log("NguoiDangNhap Reducer", state.nguoiDangNhap);
 
       return { ...state };
     }

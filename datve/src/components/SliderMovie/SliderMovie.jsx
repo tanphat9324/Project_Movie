@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/alt-text */
 import React, { Component,Fragment } from "react";
 import Slider from "react-slick";
 import './SliderMovie.css';

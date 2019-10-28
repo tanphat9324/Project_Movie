@@ -1,30 +1,35 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component,Fragment } from 'react'
 import {connect} from 'react-redux';
 import { dangNhapAction } from '../../../redux/actions/QuanLyNguoiDungAction';
 import './LoginPage.css'
-
-import { useHistory } from "react-router-dom";
 
  class LoginPage extends Component {
     constructor(props){
         super(props);
         this.state={
             taiKhoan:'',
-            matKhau:''
+            matKhau:'',
         }
     }
+
     handleChange=(e) =>{
         let{value,name} = e.target;
         this.setState({[name]:value})
     }
+
     handleSubmit = (e) =>{
         e.preventDefault();
         this.props.dangNhap(this.state);
-        this.props.history.push("/admin");
-
     }
-
+//  componentDidUpdate(){
+//     if(this.props.isLogin === "khai"){
+//     }
+//  }
     render() {
+        // console.log('render',this.state.isLogin);
+        
         return (
             <Fragment>
                 <section className="register d-flex">
@@ -43,7 +48,7 @@ import { useHistory } from "react-router-dom";
                     </div>
                     <div className="or">OR</div>
                     <div className="signin_close">
-                    <a href><img src="./assets/images/error.png" alt /></a> 
+                    <a href="#"><img src="./assets/images/error.png" /></a> 
                     </div>
                 </div>
                 </section>
@@ -51,6 +56,7 @@ import { useHistory } from "react-router-dom";
         )
     }
 }
+
 const mapDispatchToProp = dispatch =>{
     return{
         dangNhap:(thongTinNguoiDung)=>{
