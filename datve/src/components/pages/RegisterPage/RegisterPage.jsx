@@ -52,7 +52,7 @@ class RegisterPage extends Component {
         if(name === 'hoTen'){
             let regex=/^[a-zA-Z ]{3,30}$/;
             if(!regex.test(value)){
-                loi+="Sai định dạng";
+                loi="Sai định dạng";
             }
         }
         if(name === "email"){
@@ -74,7 +74,7 @@ class RegisterPage extends Component {
                 this.setState({
             user: {...this.state.user,[name]:value}
           }, () => {
-            console.log(this.state);
+            // console.log(this.state);
           })
     }
     handleSubmit = (e) =>{

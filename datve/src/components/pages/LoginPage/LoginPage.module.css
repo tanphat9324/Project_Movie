@@ -17,7 +17,7 @@ align-items: center;
 
 }
 
-#login-box {
+.login_box {
   position: relative;
   margin: 0 auto;
   width: 600px;
@@ -44,8 +44,8 @@ h1 {
   font-size: 28px;
 }
 
-input[type="text"],input[type="tel"],input[type="email"],
-input[type="password"] {
+.input_TaiKhoan,.input_Tel,.input_email,
+.input_MatKhau {
   display: block;
   box-sizing: border-box;
   margin-bottom: 20px;
@@ -59,9 +59,9 @@ input[type="password"] {
   font-size: 15px;
   transition: 0.2s ease;
 }
-input[type="tel"]:focus,input[type="email"]:focus,
-input[type="text"]:focus,
-input[type="password"]:focus {
+.input_Tel:focus,.input_email:focus,
+.input_TaiKhoan:focus,
+.input_MatKhau:focus {
   border-bottom: 2px solid #16a085;
   color: #16a085;
   transition: 0.2s ease;
@@ -132,7 +132,7 @@ input[type="password"]:focus {
   text-align: center;
 }
 
-.right>button.social-signin {
+.right>button.social_signin {
   margin-bottom: 20px!important;
   width: 220px;
   height: 36px;
@@ -146,26 +146,26 @@ input[type="password"]:focus {
   margin:0 auto;
 }
 
-button.social-signin:hover,
-button.social-signin:focus {
+button.social_signin:hover,
+button.social_signin:focus {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   transition: 0.2s ease;
 }
 
-button.social-signin:active {
+button.social_signin:active {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
   transition: 0.2s ease;
 }
 
-button.social-signin.facebook {
+button.social_signin.facebook {
   background: #32508E;
 }
 
-button.social-signin.twitter {
+button.social_signin.twitter {
   background: #55ACEE;
 }
 
-button.social-signin.google {
+button.social_signin.google {
   background: #DD4B39;
 }
 

@@ -12,6 +12,10 @@ import DashboardAdmin from './components/DashboardAdmin/DashboardAdmin';
 import AddUserAdmin from './components/AddUserAdmin/AddUserAdmin';
 import { PrivateRoute } from './templates/PrivateRoute';
 import { PublicRoute } from './templates/PublicRoute';
+import QuanLyNguoiDungPage from './components/pages/QuanLyNguoiDungPage/QuanLyNguoiDungPage';
+import QuanLyNguoiDungAdmin from './components/QuanLyNguoiDungAdmin/QuanLyNguoiDungAdmin';
+import HeaderAdmin from './components/HeaderAdmin/HeaderAdmin';
+import QuanLyPhimAdmin from './components/QuanLyPhimAdmin/QuanLyPhimAdmin';
 
 
 function App() {
@@ -25,11 +29,16 @@ function App() {
     <Route exact path='/login' component={LoginPage} /> */}
     {/* <Admin exact path='/admin'Component={DashboardAdmin}/>
     <Route exact path='/admin/register' component = {AddUserAdmin}/> */}
+    {/* <Route exact path='/aaa' component={QuanLyNguoiDungPage}/> */}
     <PublicRoute restricted={false} component={HomePage} path="/" exact />
+    <PublicRoute restricted={false} component={RegisterPage} path="/register" exact />
     <PublicRoute restricted={false} component={AddUserAdmin} path="/admin/register" exact />
-    <PublicRoute restricted={true} component={LoginPage} path="/login" exact />
-    <PrivateRoute exact path="/admin" component={DashboardAdmin}/>
-    
+    <PublicRoute restricted={false} component={LoginPage} path="/login" exact />
+    {/* <PrivateRoute exact path="/admin" component={DashboardAdmin}/> */}
+    <PrivateRoute exact path="/admin" Component={DashboardAdmin}/>
+    <PrivateRoute exact path="/admin/quanlynguoidung" Component={QuanLyNguoiDungAdmin}/>
+    <PrivateRoute exact path="/admin/quanlyphim" Component={QuanLyPhimAdmin}/>
+
       </Switch>
       </BrowserRouter>
     </Fragment>

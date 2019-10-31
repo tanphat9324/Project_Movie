@@ -1,16 +1,15 @@
-/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { Component,Fragment, } from 'react';
+import React, { Component,Fragment } from 'react'
 import {NavLink} from 'react-router-dom';
 import {connect} from 'react-redux';
 import { Table, Divider } from 'antd';
-import styles from './DashboardAdmin.module.css';
 import { layDanhSachNguoiDungAction, chinhSuaNguoiDungAction, xoaNguoiDungAction, timKiemNguoiDungAction, nguoiDangNhap } from '../../redux/actions/QuanLyNguoiDungAction';
 import { Modal,Menu,Dropdown } from 'antd';
 import ModalEditUser from '../ModalEditUser/ModalEditUser';
+import styles from './QuanLyNguoiDungAdmin.module.css';
 import {logout} from '../../utils/index';
 
-class DashboardAdmin extends Component {
+class QuanLyNguoiDungAdmin extends Component {
   constructor(props){
     super(props);
     this.state={
@@ -47,8 +46,6 @@ componentWillReceiveProps(nextProps){
   })
 }
     render() {
-      // console.log("state dashboard nguoiDangNhap",this.state.tenDangNhap.taiKhoan);
-      
       const menu = (
         <Menu>
           <Menu.Item>
@@ -63,101 +60,57 @@ componentWillReceiveProps(nextProps){
           </Menu.Item>
         </Menu>
       );
-      const columns =[
-        {
-          title: 'STT',
-          dataIndex: 'stt',
-          key: 'stt',
-        },
-        {
-          title: 'Tài Khoản',
-          dataIndex: 'taiKhoan',
-          key: 'taikhoan',
-          render: text => <a>{text}</a>,
-        },
-        {
-          title: 'Mật Khẩu',
-          dataIndex: 'matKhau',
-          key: 'matkhau',
-        },
-        {
-          title: 'Họ Tên',
-          dataIndex: 'hoTen',
-          key: 'hoten',
-        },
-        {
-          title: 'Email',
-          dataIndex: 'email',
-          key: 'email',
-        },
-        {
-          title: 'Số Điện Thoại',
-          dataIndex: 'soDt',
-          key: 'sdt',
-        },
-        {
-          title: 'Thao Tác',
-          key: 'action',
-          render: (text, record) => (            
-            <span>
-              <a onClick={() => {this.setModal2Visible(true);this.props.chinhSuaNguoiDung(record)}}>
-                <img style={{width:'25px'}} src="../assets/images/edit.svg" alt=""/>
-                 {record.name}</a>
-              <Divider type="vertical" />
-              <a onClick={() => {this.props.xoaNguoiDung(record.taiKhoan)}}>
-                <img style={{width:'30px'}} src="../assets/images/garbage.svg" alt=""/>
-              </a>
-            </span>
-          ),
-        },
-      ]; 
-      const data = this.props.danhSachNguoiDung;
-      // console.log('data dash',data);
-      
-      // for(let i=0;i<data.length;i++){
-      //   data[i]["stt"]=i+1;
-      // }
+        const columns =[
+            {
+              title: 'STT',
+              dataIndex: 'stt',
+              key: 'stt',
+            },
+            {
+              title: 'Tài Khoản',
+              dataIndex: 'taiKhoan',
+              key: 'taikhoan',
+              render: text => <a>{text}</a>,
+            },
+            {
+              title: 'Mật Khẩu',
+              dataIndex: 'matKhau',
+              key: 'matkhau',
+            },
+            {
+              title: 'Họ Tên',
+              dataIndex: 'hoTen',
+              key: 'hoten',
+            },
+            {
+              title: 'Email',
+              dataIndex: 'email',
+              key: 'email',
+            },
+            {
+              title: 'Số Điện Thoại',
+              dataIndex: 'soDt',
+              key: 'sdt',
+            },
+            {
+              title: 'Thao Tác',
+              key: 'action',
+              render: (text, record) => (            
+                <span>
+                  <a onClick={() => {this.setModal2Visible(true);this.props.chinhSuaNguoiDung(record)}}>
+                    <img style={{width:'25px'}} src="../assets/images/edit.svg" alt=""/>
+                     {record.name}</a>
+                  <Divider type="vertical" />
+                  <a onClick={() => {this.props.xoaNguoiDung(record.taiKhoan)}}>
+                    <img style={{width:'30px'}} src="../assets/images/garbage.svg" alt=""/>
+                  </a>
+                </span>
+              ),
+            },
+          ]; 
+          const data = this.props.danhSachNguoiDung;
         return (
             <Fragment>
-              <div>Dashboard Admin</div>
- {/* <section className={`${styles.content} d-flex`}>
-  <div className={`${styles.content_left} ${styles.bg_gradient_primary}`}>
-    <div className={styles.az_sidebar_header}>
-      <NavLink to="/" title="Load all" className={styles.az_logo}>
-        <img src="../assets/images/web-logo.png" alt />
-        <span>123Phim</span>
-      </NavLink>
-    </div>
-    <div className={styles.az_sidebar_loggedin}>
-      <div className={`${styles.az_img_user} online`}><img src="../assets/images/admin.png" alt /></div>
-      <div className={styles.media_body}>
-        <h5>Tấn Phát</h5>
-        <span>Admin Member</span>
-      </div> 
-    </div>
-    <hr className={`${styles.sidebar_divider} my-0`} />
-    <hr className={`${styles.sidebar_divider} my-0`} />
-    <NavLink to='/' className={`${styles.sidebar_brand} d-flex align-items-center justify-content-center`} >
-      <div className={`${styles.sidebar_brand_text} mx-3`}>Dashboard</div>
-    </NavLink>
-    <hr className={`${styles.sidebar_divider} my-0`} />
-    <hr className={styles.sidebar_divider} />
-    <div className={styles.sidebar_heading}>
-      Quản lý
-    </div>
-    <ul className={styles.quanLy}>
-      <li className="nav-item">
-        <a className="nav-link" href="charts.html">
-          <i className="fas fa-fw fa-chart-area" />
-          <span>Quản lý phim</span></a>
-      </li>
-      <li className="nav-item active">
-        <a className="nav-link" href="tables.html">
-          <i className="fas fa-fw fa-table" />
-          <span>Quản lý người dùng</span></a>
-      </li>
-    </ul>
-  </div>
   <div className={styles.content_right}>
 <div className={styles.header}>
 <div className="pr-3">
@@ -182,19 +135,22 @@ componentWillReceiveProps(nextProps){
 
    </div>
   <Table className={styles.table} columns={columns} bordered='true'  dataSource={data} pagination={{defaultCurrent:1, pageSize: 5}} /> 
+  {/* total:30 trong pagination */}
 </div>
 <div className={styles.footer}>Footer</div>
-  </div>
-</section>
-        <Modal
+</div>
+<Modal
           title="Cập nhật thông tin người dùng"
           centered
           visible={this.state.modal2Visible}
+          // okText="Cap Nhat"
+          // onOk={() => this.setModal2Visible(false)}
           onCancel={() => this.setModal2Visible(false)}
           footer={null}
         >
           <ModalEditUser/>
-        </Modal> */}
+        </Modal>
+               
             </Fragment>
         )
     }
@@ -213,4 +169,4 @@ const mapDispatchToProps = dispatch => {
     timKiemNguoiDung:(thongTinNguoiDung) => dispatch(timKiemNguoiDungAction(thongTinNguoiDung))
   }
 }
-export default connect (mapStateToProps,mapDispatchToProps)(DashboardAdmin);
+export default connect(mapStateToProps,mapDispatchToProps)(QuanLyNguoiDungAdmin);

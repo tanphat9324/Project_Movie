@@ -1,9 +1,5 @@
 import {settings} from '../common/Config/settings';
 
-// export const login = () => {
-//     localStorage.setItem(settings.token);
-// }
-
 export const logout = () => {
     localStorage.removeItem(settings.token);
     localStorage.removeItem(settings.userLogin);
@@ -11,11 +7,11 @@ export const logout = () => {
 }
 
 export const isLogin = () => {
-    const maLoai=JSON.parse(localStorage.getItem(settings.userLogin)).maLoaiNguoiDung;
-    console.log(maLoai);
-    
-    if (maLoai === "QuanTri"){
-        return true;
+    const userLogin=JSON.parse(localStorage.getItem(settings.userLogin));
+    if(userLogin === null){
+        return false;
+    }else if(userLogin.maLoaiNguoiDung === "QuanTri"){
+        return true
     }
     return false;
 }

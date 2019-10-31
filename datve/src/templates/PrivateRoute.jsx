@@ -1,13 +1,23 @@
-import React from 'react';
+import React,{ Fragment } from 'react';
+import HeaderAdmin from '../components/HeaderAdmin/HeaderAdmin';
 import {Redirect, Route} from 'react-router-dom';
 import { isLogin } from '../utils/index';
 
-export const PrivateRoute = ({component: Component, ...rest}) => {
-    return (
-        <Route {...rest} render={props => (
-            isLogin() ?
-                <Component {...props} />
-            : <Redirect to="/" />
-        )} />
-    );
-};
+const AdminLayOut = (props) =>{
+    return <Fragment>
+        <div className="d-flex">
+        <HeaderAdmin/>
+            {props.children}  
+        </div>
+    </Fragment>
+}
+
+export const PrivateRoute = ({ Component, ...props}) =>(
+    <Route {...props} render = {(propComponent)=>(
+        isLogin() ?
+        <AdminLayOut>
+            <Component {...propComponent} />
+        </AdminLayOut>
+        : <Redirect to="/" />
+    )}/>
+)
