@@ -9,7 +9,7 @@ import ModalEditUser from '../ModalEditUser/ModalEditUser';
 import {logout} from '../../utils/index';
 import styles from './QuanLyPhimAdmin.module.css';
 import ThemPhimAdmin from './ThemPhimAdmin/ThemPhimAdmin';
-import { layDanhSachPhim } from '../../redux/actions/QuanLyPhimAction';
+import { layDanhSachPhim, xoaPhimAction } from '../../redux/actions/QuanLyPhimAction';
 
 class QuanLyPhimAdmin extends Component {
     constructor(props){
@@ -106,7 +106,7 @@ class QuanLyPhimAdmin extends Component {
                   key: 'action',
                   render: (text, record) => (            
                     <span>
-                      <a style={{width:'30px',padding:'10px',backgroundColor:"green"}} onClick={() => {this.props.xoaNguoiDung(record.taiKhoan)}}>
+                      <a style={{width:'30px',padding:'10px',backgroundColor:"green"}} onClick={() => {this.props.xoaPhim(record.maPhim)}}>
                         <img style={{width:'30px'}} src="../assets/images/garbage.svg" alt=""/>
                         tao lich chieu
 
@@ -116,7 +116,7 @@ class QuanLyPhimAdmin extends Component {
                         <img style={{width:'25px'}} src="../assets/images/edit.svg" alt=""/>
                          {record.name}</a>
                       <Divider type="vertical" />
-                      <a onClick={() => {this.props.xoaNguoiDung(record.taiKhoan)}}>
+                      <a onClick={() => {this.props.xoaPhim(record.maPhim)}}>
                         <img style={{width:'30px'}} src="../assets/images/garbage.svg" alt=""/>
                       </a>
                     </span>
@@ -194,7 +194,8 @@ class QuanLyPhimAdmin extends Component {
         layDanhSachNguoiDung: () => dispatch(layDanhSachNguoiDungAction()),
         layDanhSachPhim: () => dispatch(layDanhSachPhim()),
         chinhSuaNguoiDung: (thongTinNguoiDung) => dispatch(chinhSuaNguoiDungAction(thongTinNguoiDung)),
-        xoaNguoiDung:(taiKhoan) => dispatch(xoaNguoiDungAction(taiKhoan)),
+        // xoaNguoiDung:(taiKhoan) => dispatch(xoaNguoiDungAction(taiKhoan)),
+        xoaPhim: (maPhim) => dispatch(xoaPhimAction(maPhim)),
         timKiemNguoiDung:(thongTinNguoiDung) => dispatch(timKiemNguoiDungAction(thongTinNguoiDung))
       }
     }

@@ -2,9 +2,15 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component,Fragment } from 'react'
 import {NavLink} from 'react-router-dom';
+import {connect} from 'react-redux';
 import styles from './HeaderAdmin.module.css';
+import { nguoiDangNhap } from '../../redux/actions/QuanLyNguoiDungAction';
 
-export default class HeaderAdmin extends Component {
+ class HeaderAdmin extends Component {
+  componentDidMount(){
+    this.props.hoTenAdmin()
+  }
+
     render() {
         return (
             <Fragment>
@@ -18,7 +24,7 @@ export default class HeaderAdmin extends Component {
     <div className={styles.az_sidebar_loggedin}>
       <div className={`${styles.az_img_user} online`}><img src="../assets/images/admin.png" alt /></div>
       <div className={styles.media_body}>
-        <h5>Tấn Phát</h5>
+        <h5>{this.props.userLogin.hoTen}</h5>
         <span>Admin Member</span>
       </div>{/* media-body */}  
     </div>
@@ -53,4 +59,15 @@ export default class HeaderAdmin extends Component {
         )
     }
 }
+const mapStateToProps = state => ({
+  userLogin:state.QuanLyNguoiDungReducer.nguoiDangNhap
+})
+const mapDispatchToProps = dispatch => {
+  return {
+    hoTenAdmin:() => {
+      dispatch(nguoiDangNhap())
+    }
+  }
+}
 
+export default connect(mapStateToProps,mapDispatchToProps)(HeaderAdmin);

@@ -56,14 +56,32 @@ handleChangeRate = danhGia => {
   this.setState({ phim:{...this.state.phim,danhGia:danhGia} });
 };
 handleChange=(e) =>{
-  let name = e.target.name;
-  let value = e.target.value;
-          this.setState({
-            phim: {...this.state.phim,[name]:value}
-    }, () => {
-      // console.log(this.state);
-    })
+  // let name = e.target.name;
+  // let value = e.target.value;
+  //         this.setState({
+  //           phim: {...this.state.phim,[name]:value}
+  //   }, () => {
+  //     // console.log(this.state);
+  //   })
 
+    let { value, name, type } = e.target;
+    if (type !== 'file') {
+        this.setState({
+          phim: {...this.state.phim,[name]:value}
+        }, () => {
+            // console.log(this.state.phim)
+        })
+    }else {
+        //Xử lý khi post file
+        console.log(e.target.files);
+        this.setState({
+          phim: { ...this.state.phim, [name]: e.target.files[0] }
+        }, () => {
+            // console.log(this.state.phim)
+        })
+
+
+    }
 }
 handleChangeAvatar = info => {
   if (info.file.status === "uploading") {
@@ -102,9 +120,9 @@ handleChangeAvatar = info => {
       // console.log('Received values of form: ', values);
       this.state.phim.ngayKhoiChieu=values.date_picker;
     }).then(()=>{
-      console.log(this.state.phim);
-
+      
       this.props.themPhim(this.state.phim);
+      console.log("state phim submit",this.state.phim);
     }
       
     )
@@ -195,6 +213,7 @@ if(name === 'trailer'){
     const { TextArea } = Input;
     const desc = ['Quá tệ', 'Tệ', 'Bình thường', 'Hay', 'Tuyệt vời'];
     const { danhGia } = this.state.phim;
+
     const uploadButton = (
       <div>
         <Icon type={this.state.loading ? "loading" : "plus"} />
@@ -223,7 +242,7 @@ if(name === 'trailer'){
           {/* <Form.Item help={this.state.errors.hinhAnh1} label="Hình ảnh:" hasFeedback validateStatus={this.state.errors.hinhAnh}>
             <Input type="text" name="hinhAnh" placeholder="Nhập url hinh anh" onChange={this.handleChange} onKeyUp={this.handleErrors} onBlur={this.handleErrors} id="success" />
           </Form.Item> */}
-
+{/* 
           <Upload
         name="avatar"
         listType="picture-card"
@@ -238,18 +257,17 @@ if(name === 'trailer'){
         ) : (
           uploadButton
         )}
-      </Upload>
-      <div>{this.state.phim.hinhAnh}</div>
+      </Upload> */}
+      {/* <div>{this.state.phim.hinhAnh}</div> */}
+
+            <Form.Item>
+            <input type="file" name="hinhAnh" onChange={this.handleChange} />
+            </Form.Item>
+
 
             <Form.Item help={this.state.errors.trailer1} label="Trailer:" hasFeedback validateStatus={this.state.errors.trailer}>
             <Input type="text" name="trailer" placeholder="Nhập url trailer" onChange={this.handleChange} onKeyUp={this.handleErrors} onBlur={this.handleErrors} id="success" />
           </Form.Item>
-
-          {/* <Form.Item label="Ngày khởi chiếu:" hasFeedback>
-          {getFieldDecorator('date-time-picker', config)(
-            <DatePicker name="ngayKhoiChieu" placeholder="Chọn ngày" showTime format="YYYY-MM-DD HH:mm:ss" />,
-          )}
-        </Form.Item>    */}
 
         <Form.Item label="Ngày khởi chiếu:">
           {getFieldDecorator('date-picker', config)(
