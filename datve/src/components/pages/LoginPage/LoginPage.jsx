@@ -57,7 +57,7 @@ import styles from './LoginPage.module.css';
 
     handleSubmit = (e) =>{
         e.preventDefault();
-        this.props.dangNhap(this.state, this.callback);
+        this.props.dangNhap(this.state.user, this.callback);
     }
 
     callback = ()=>{

@@ -22,3 +22,20 @@ export const layDanhSachPhim = () => {
         })
     }
 }
+
+export const themPhimAction = (thongTinPhim) => {
+    return dispatch => {
+        axios({
+            method:'POST',
+            url:settings.domain + `/QuanLyPhim/ThemPhim`,
+            data:{...thongTinPhim,maNhom:settings.groupID},
+            headers: {
+                "Authorization": "Bearer  " + localStorage.getItem(settings.token)
+              }
+        }).then(res => {
+            console.log("Thêm phim thành công",res.data);
+        }).catch(err => {
+            console.log("Thêm phim lỗi"); 
+        })
+    }
+}
