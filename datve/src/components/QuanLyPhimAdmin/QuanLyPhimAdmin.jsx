@@ -9,7 +9,7 @@ import ModalEditUser from '../ModalEditUser/ModalEditUser';
 import {logout} from '../../utils/index';
 import styles from './QuanLyPhimAdmin.module.css';
 import ThemPhimAdmin from './ThemPhimAdmin/ThemPhimAdmin';
-import { layDanhSachPhim, xoaPhimAction } from '../../redux/actions/QuanLyPhimAction';
+import { layDanhSachPhim, xoaPhimAction, capNhatPhimAction } from '../../redux/actions/QuanLyPhimAction';
 
 class QuanLyPhimAdmin extends Component {
     constructor(props){
@@ -193,7 +193,8 @@ class QuanLyPhimAdmin extends Component {
         nguoiDungDangNhap: () => dispatch(nguoiDangNhap()),
         layDanhSachNguoiDung: () => dispatch(layDanhSachNguoiDungAction()),
         layDanhSachPhim: () => dispatch(layDanhSachPhim()),
-        chinhSuaNguoiDung: (thongTinNguoiDung) => dispatch(chinhSuaNguoiDungAction(thongTinNguoiDung)),
+        // chinhSuaNguoiDung: (thongTinNguoiDung) => dispatch(chinhSuaNguoiDungAction(thongTinNguoiDung)),
+        capNhatPhim:(thongTinPhim) => dispatch(capNhatPhimAction(thongTinPhim)),
         // xoaNguoiDung:(taiKhoan) => dispatch(xoaNguoiDungAction(taiKhoan)),
         xoaPhim: (maPhim) => dispatch(xoaPhimAction(maPhim)),
         timKiemNguoiDung:(thongTinNguoiDung) => dispatch(timKiemNguoiDungAction(thongTinNguoiDung))

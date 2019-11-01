@@ -76,3 +76,20 @@ export const xoaPhimAction = (maPhim) => {
         })
     }
 }
+
+export const capNhatPhimAction = (thongTinPhim) => {
+  return dispatch => {
+      axios({
+        method:"POST",
+        url:settings.domain + `/QuanLyPhim/CapNhatPhim`,
+        data:thongTinPhim,
+        headers: {
+            "Authorization": "Bearer  " + localStorage.getItem(settings.token)
+          }
+      }).then(res => {
+          console.log(res.data);
+      }).catch(err => {
+          console.log(err);
+      })
+  }
+}
