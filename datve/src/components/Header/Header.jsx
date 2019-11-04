@@ -51,7 +51,7 @@ export default class Header extends Component {
               </div>
             </div>
           </section>
-          <div className="sidebar main right" id="sidebar-main">
+          {/* <div className="sidebar main right" id="sidebar-main">
             <div className="wrapper">
               <nav>
                 <ul>
@@ -92,7 +92,7 @@ export default class Header extends Component {
                 </ul>
               </nav>
             </div>
-          </div>
+          </div> */}
       </Fragment>
     );
   }

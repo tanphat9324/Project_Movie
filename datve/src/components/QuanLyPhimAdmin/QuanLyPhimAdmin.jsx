@@ -9,7 +9,7 @@ import ModalEditUser from '../ModalEditUser/ModalEditUser';
 import {logout} from '../../utils/index';
 import styles from './QuanLyPhimAdmin.module.css';
 import ThemPhimAdmin from './ThemPhimAdmin/ThemPhimAdmin';
-import { layDanhSachPhim, xoaPhimAction, capNhatPhimAction } from '../../redux/actions/QuanLyPhimAction';
+import { layDanhSachPhim, xoaPhimAction, capNhatPhimAction, layThongTinPhimAction } from '../../redux/actions/QuanLyPhimAction';
 
 class QuanLyPhimAdmin extends Component {
     constructor(props){
@@ -112,7 +112,7 @@ class QuanLyPhimAdmin extends Component {
 
                       </a>
                       <Divider type="vertical" />
-                      <a onClick={() => {this.setModal2Visible(true);this.props.chinhSuaNguoiDung(record)}}>
+                      <a onClick={() => {this.setModal2Visible(true);this.props.layThongTinPhim(record.maPhim)}}>
                         <img style={{width:'25px'}} src="../assets/images/edit.svg" alt=""/>
                          {record.name}</a>
                       <Divider type="vertical" />
@@ -155,7 +155,7 @@ class QuanLyPhimAdmin extends Component {
     <div className={styles.footer}>Footer</div>
     </div>
     <Modal
-              title="Cập nhật thông tin người dùng"
+              title="Cập nhật Phim"
               centered
               visible={this.state.modal2Visible}
               // okText="Cap Nhat"
@@ -163,7 +163,7 @@ class QuanLyPhimAdmin extends Component {
               onCancel={() => this.setModal2Visible(false)}
               footer={null}
             >
-              <ModalEditUser/>
+              <ThemPhimAdmin/>
             </Modal>
 
             <Modal
@@ -194,7 +194,7 @@ class QuanLyPhimAdmin extends Component {
         layDanhSachNguoiDung: () => dispatch(layDanhSachNguoiDungAction()),
         layDanhSachPhim: () => dispatch(layDanhSachPhim()),
         // chinhSuaNguoiDung: (thongTinNguoiDung) => dispatch(chinhSuaNguoiDungAction(thongTinNguoiDung)),
-        capNhatPhim:(thongTinPhim) => dispatch(capNhatPhimAction(thongTinPhim)),
+        layThongTinPhim:(maPhim) => dispatch(layThongTinPhimAction(maPhim)),
         // xoaNguoiDung:(taiKhoan) => dispatch(xoaNguoiDungAction(taiKhoan)),
         xoaPhim: (maPhim) => dispatch(xoaPhimAction(maPhim)),
         timKiemNguoiDung:(thongTinNguoiDung) => dispatch(timKiemNguoiDungAction(thongTinNguoiDung))

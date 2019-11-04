@@ -77,19 +77,39 @@ export const xoaPhimAction = (maPhim) => {
     }
 }
 
-export const capNhatPhimAction = (thongTinPhim) => {
-  return dispatch => {
-      axios({
-        method:"POST",
-        url:settings.domain + `/QuanLyPhim/CapNhatPhim`,
-        data:thongTinPhim,
-        headers: {
-            "Authorization": "Bearer  " + localStorage.getItem(settings.token)
-          }
-      }).then(res => {
-          console.log(res.data);
-      }).catch(err => {
-          console.log(err);
-      })
-  }
+// export const capNhatPhimAction = (thongTinPhim) => {
+//   return dispatch => {
+//       axios({
+//         method:"POST",
+//         url:settings.domain + `/QuanLyPhim/CapNhatPhim`,
+//         data:thongTinPhim,
+//         headers: {
+//             "Authorization": "Bearer  " + localStorage.getItem(settings.token)
+//           }
+//       }).then(res => {
+//           console.log(res.data);
+//       }).catch(err => {
+//           console.log(err);
+//       })
+//   }
+// }
+export const nhanThongTinPhimAction = (thongTinPhim) => {
+    return {
+        type:actionType.NHAN_THONG_TIN_PHIM,
+        thongTinPhim
+    }
+}
+
+export const layThongTinPhimAction = (maPhim) => {
+    return dispatch => {
+        axios({
+            method: "GET",
+            url:settings.domain +`/QuanLyPhim/LayThongTinPhim?MaPhim=${maPhim}`
+        }).then(res => {
+            dispatch(nhanThongTinPhimAction(res.data));
+        }).catch(err => {
+            console.log('khong lay dc thong tin phim');
+  
+        })
+    }
 }
