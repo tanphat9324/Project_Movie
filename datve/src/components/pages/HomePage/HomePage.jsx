@@ -5,8 +5,6 @@ import SelectMovie from '../../SelectMovie/SelectMovie';
 import { layDanhSachPhim } from '../../../redux/actions/QuanLyPhimAction';
 import Session from '../../Session/Session';
 import Header from '../../Header/Header';
-import Footer from '../../Footer/Footer';
-
 class HomePage extends Component {
     componentDidMount(){
         this.props.layDanhSachPhim();
@@ -18,7 +16,6 @@ class HomePage extends Component {
               <Carousel/>
               <SelectMovie dsPhim={this.props.dsPhim}/>
             <Session/>
-            <Footer/>
           </Fragment>
         )
     }

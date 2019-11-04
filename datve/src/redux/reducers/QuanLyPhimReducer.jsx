@@ -2,16 +2,7 @@ import {actionType} from '../constants/QuanLyPhimConstant';
 
 const initialState = {
 dsPhim:[],
-PhimSua:{
-    maPhim:'',
-    tenPhim:'',
-    biDanh:'',
-    trailer:'',
-    hinhAnh:'',
-    moTa:'',
-    ngayKhoiChieu:'',
-    danhGia:'3'
-}
+phimSua:{}
 }
 
 export const QuanLyPhimReducer = (state = initialState, action) => {
@@ -20,8 +11,8 @@ export const QuanLyPhimReducer = (state = initialState, action) => {
             state.dsPhim = action.dsPhim;
             return {...state}
         }
-        case actionType.NHAN_THONG_TIN_PHIM:{
-            state.PhimSua = action.thongTinPhim;
+        case actionType.CHINH_SUA_PHIM: {
+            state.phimSua = action.phimSua;
             return {...state}
         }
         default: return state;

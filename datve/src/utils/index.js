@@ -3,7 +3,7 @@ import {settings} from '../common/Config/settings';
 export const logout = () => {
     localStorage.removeItem(settings.token);
     localStorage.removeItem(settings.userLogin);
-    this.props.history('/');
+    this.props.history.push('/');
 }
 
 export const isLogin = () => {

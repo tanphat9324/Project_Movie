@@ -26,7 +26,16 @@ function beforeUpload(file) {
   constructor(props){
     super(props);
     this.state={
-    phim:this.props.PhimSua,
+    phim:{
+        maPhim:'',
+        tenPhim:'',
+        biDanh:'',
+        trailer:'',
+        hinhAnh:'',
+        moTa:'',
+        ngayKhoiChieu:'',
+        danhGia:'3'
+    },
     errors: {
         maPhim:'',
         maPhim1:'',
@@ -43,11 +52,6 @@ function beforeUpload(file) {
       loading: false,
     }
 } 
-componentWillReceiveProps(nextProps){
-  this.setState({
-      phim:nextProps.PhimSua
-  })
-}
 handleChangeRate = danhGia => {
   this.setState({ phim:{...this.state.phim,danhGia:danhGia} });
 };
@@ -192,8 +196,6 @@ if(name === 'trailer'){
     })
 }
   render() {
-    console.log('mapStateToProp',this.props.PhimSua);
-    
     const { getFieldDecorator } = this.props.form;
     const config = {
       rules: [{ type: 'object', required: true, message: 'Please select time!' }],
@@ -226,15 +228,15 @@ if(name === 'trailer'){
         <Form {...formItemLayout} onSubmit={this.handleSubmit}>
     
             <Form.Item help={this.state.errors.maPhim1} label="Mã phim:" hasFeedback validateStatus={this.state.errors.maPhim}>
-            <Input  type="tel" value={this.state.phim.maPhim} name="maPhim" placeholder="Nhập mã phim" onChange={this.handleChange} onKeyUp={this.handleErrors} onBlur={this.handleErrors} id="success" />
+            <Input  type="tel" name="maPhim" placeholder="Nhập mã phim" onChange={this.handleChange} onKeyUp={this.handleErrors} onBlur={this.handleErrors} id="success" />
           </Form.Item>
 
           <Form.Item help={this.state.errors.tenPhim1} label="Tên phim:" hasFeedback validateStatus={this.state.errors.tenPhim}>
-            <Input type="text" name="tenPhim" value={this.state.phim.tenPhim} placeholder="Nhập tên phim" onChange={this.handleChange} onKeyUp={this.handleErrors} onBlur={this.handleErrors} id="success" />
+            <Input type="text" name="tenPhim" placeholder="Nhập tên phim" onChange={this.handleChange} onKeyUp={this.handleErrors} onBlur={this.handleErrors} id="success" />
           </Form.Item>
 
           <Form.Item help={this.state.errors.biDanh1} label="Bí danh:" hasFeedback validateStatus={this.state.errors.biDanh}>
-            <Input type="text" name="biDanh" value={this.state.phim.biDanh} placeholder="Nhập bí danh" onChange={this.handleChange} onKeyUp={this.handleErrors} onBlur={this.handleErrors} id="success" />
+            <Input type="text" name="biDanh" placeholder="Nhập bí danh" onChange={this.handleChange} onKeyUp={this.handleErrors} onBlur={this.handleErrors} id="success" />
           </Form.Item>
 
           {/* <Form.Item help={this.state.errors.hinhAnh1} label="Hình ảnh:" hasFeedback validateStatus={this.state.errors.hinhAnh}>
@@ -264,17 +266,17 @@ if(name === 'trailer'){
 
 
             <Form.Item help={this.state.errors.trailer1} label="Trailer:" hasFeedback validateStatus={this.state.errors.trailer}>
-            <Input type="text" value={this.state.phim.trailer} name="trailer" placeholder="Nhập url trailer" onChange={this.handleChange} onKeyUp={this.handleErrors} onBlur={this.handleErrors} id="success" />
+            <Input type="text" name="trailer" placeholder="Nhập url trailer" onChange={this.handleChange} onKeyUp={this.handleErrors} onBlur={this.handleErrors} id="success" />
           </Form.Item>
 
         <Form.Item label="Ngày khởi chiếu:">
           {getFieldDecorator('date-picker', config)(
-          <DatePicker defaultPickerValue={this.state.phim.ngayKhoiChieu} name="ngayKhoiChieu" format="DD-MM-YYYY" />)}
+          <DatePicker name="ngayKhoiChieu" format="DD-MM-YYYY" />)}
         </Form.Item>
 
           <Form.Item label="Đánh giá:">
           <span>
-        <Rate tooltips={desc} onChange={this.handleChangeRate} value={this.state.phim.danhGia} />
+        <Rate tooltips={desc} onChange={this.handleChangeRate} value={danhGia} />
         {danhGia ? <span className="ant-rate-text">{desc[danhGia - 1]}</span> : ''}
       </span>
         </Form.Item>
@@ -284,7 +286,6 @@ if(name === 'trailer'){
           name="moTa"
           onChange={this.handleChange}
           placeholder="Mô tả phim..."
-          value={this.state.phim.moTa}
           autoSize={{ minRows: 3, maxRows: 5 }}
         />
           </Form.Item>
@@ -323,9 +324,7 @@ if(name === 'trailer'){
     );
   }
 }
-const mapStateToProp = state => ({
-  PhimSua: state.QuanLyPhimReducer.PhimSua
-})
+
 const mapDispatchToProp = dispatch =>{
   return{
       themPhim:(thongTinPhim)=>{
@@ -334,5 +333,5 @@ const mapDispatchToProp = dispatch =>{
   }
 }
 ThemPhimAdmin = Form.create()(ThemPhimAdmin);
-export default connect(mapStateToProp,mapDispatchToProp)(ThemPhimAdmin);
+export default connect(null,mapDispatchToProp)(ThemPhimAdmin);
 

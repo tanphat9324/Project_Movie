@@ -77,39 +77,52 @@ export const xoaPhimAction = (maPhim) => {
     }
 }
 
-// export const capNhatPhimAction = (thongTinPhim) => {
-//   return dispatch => {
-//       axios({
-//         method:"POST",
-//         url:settings.domain + `/QuanLyPhim/CapNhatPhim`,
-//         data:thongTinPhim,
-//         headers: {
-//             "Authorization": "Bearer  " + localStorage.getItem(settings.token)
-//           }
-//       }).then(res => {
-//           console.log(res.data);
-//       }).catch(err => {
-//           console.log(err);
-//       })
-//   }
-// }
-export const nhanThongTinPhimAction = (thongTinPhim) => {
-    return {
-        type:actionType.NHAN_THONG_TIN_PHIM,
-        thongTinPhim
-    }
+export const capNhatPhimAction = (thongTinPhim) => {
+    let file = thongTinPhim.hinhAnh;
+    thongTinPhim.hinhAnh = file.name;
+  return dispatch => {
+      axios({
+        method:"POST",
+        url:settings.domain + `/QuanLyPhim/CapNhatPhim`,
+        data:thongTinPhim,
+        headers: {
+            "Authorization": "Bearer  " + localStorage.getItem(settings.token)
+          }
+      }).then(res => {
+          console.log('Cap Nhat phim thanh cong');
+          let frm = new FormData();
+          frm.append('file',file,thongTinPhim.hinhAnh);
+          frm.append('maNhom',settings.groupID)
+          frm.append('tenPhim',thongTinPhim.tenPhim);
+          axios({
+              method:"POST",
+              url:settings.domain + `/QuanLyPhim/UploadHinhAnhPhim`,
+              data:frm
+          }).then(res => {
+              console.log("upload thanh cong");
+          }).catch(err =>{
+              console.log("upload loi");
+          })
+      }).catch(err => {
+          console.log(err);
+      })
+  }
 }
+
+export const chinhSuaPhimAction = phimSua => ({
+    type:actionType.CHINH_SUA_PHIM,
+    phimSua
+})
 
 export const layThongTinPhimAction = (maPhim) => {
     return dispatch => {
         axios({
-            method: "GET",
-            url:settings.domain +`/QuanLyPhim/LayThongTinPhim?MaPhim=${maPhim}`
+            method:'GET',
+            url: settings.domain + `QuanLyPhim/LayThongTinPhim?MaPhim=${maPhim}`,
         }).then(res => {
-            dispatch(nhanThongTinPhimAction(res.data));
+            console.log('lay thong tin phim thanh cong');
         }).catch(err => {
-            console.log('khong lay dc thong tin phim');
-  
+            console.log('lay thong tin phim loi');
         })
     }
 }
