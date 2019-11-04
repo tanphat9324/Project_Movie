@@ -11,6 +11,8 @@ import styles from './QuanLyPhimAdmin.module.css';
 import ThemPhimAdmin from './ThemPhimAdmin/ThemPhimAdmin';
 import { layDanhSachPhim, xoaPhimAction, capNhatPhimAction, layThongTinPhimAction, chinhSuaPhimAction } from '../../redux/actions/QuanLyPhimAction';
 import CapNhatPhimAdmin from './CapNhatPhimAdmin/CapNhatPhimAdmin';
+import 'dayjs/locale/es';
+import dayjs from 'dayjs';
 
 class QuanLyPhimAdmin extends Component {
     constructor(props){
@@ -101,6 +103,9 @@ class QuanLyPhimAdmin extends Component {
                   title: 'Ngày khởi chiếu',
                   dataIndex: 'ngayKhoiChieu',
                   key: 'ngaykhoichieu',
+                  render:(text, record) => (
+                    <div>{dayjs(record.ngayKhoiChieu).format('DD/MM/YYYY')}</div>
+                  )
                 },
                 {
                   title: 'Thao Tác',
