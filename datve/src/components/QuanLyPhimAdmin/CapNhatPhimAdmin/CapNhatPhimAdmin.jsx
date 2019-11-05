@@ -89,7 +89,7 @@ class CapNhatPhimAdmin extends Component {
       
       componentWillReceiveProps(nextProps){
           this.setState({
-              phimSua:nextProps.phimSua
+              phim:nextProps.phimSua
           })
       }
 
@@ -228,7 +228,7 @@ class CapNhatPhimAdmin extends Component {
     }
     
 const mapStateToProps = state => ({
-    phimSua: state.QuanLyPhimReducer.phimSua
+    phimSua: state.QuanLyPhimReducer.phimSua    
 })
 
 const mapDispatchToProps = dispatch => {

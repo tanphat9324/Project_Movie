@@ -12,7 +12,9 @@ export const QuanLyPhimReducer = (state = initialState, action) => {
             return {...state}
         }
         case actionType.CHINH_SUA_PHIM: {
+            console.log('store',action.phimSua);
             state.phimSua = action.phimSua;
+            console.log('luu store',state.phimSua);
             return {...state}
         }
         default: return state;
