@@ -69,8 +69,6 @@ class ModalEditUser extends Component {
         this.props.capNhatNguoiDung(this.state.user);
     }
     componentWillReceiveProps(nextProps){
-        // console.log('receive');
-        
         this.setState({
             user:nextProps.NguoiDungSua
         })

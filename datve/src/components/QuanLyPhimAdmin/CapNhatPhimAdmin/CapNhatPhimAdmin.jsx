@@ -2,22 +2,24 @@ import React, { Component,Fragment } from 'react'
 import {Form,Button,Input,DatePicker,Rate,Upload,Icon,message } from "antd";
 import {connect} from 'react-redux';
 import { capNhatPhimAction } from '../../../redux/actions/QuanLyPhimAction';
+import moment from 'moment';
+import 'dayjs/locale/es' // load on demand
 
 class CapNhatPhimAdmin extends Component {
     constructor(props){
         super(props);
         this.state={
-        phim:this.props.phimSua,
-        // phim:{
-        //     maPhim:'',
-        //     tenPhim:'',
-        //     biDanh:'',
-        //     trailer:'',
-        //     hinhAnh:'',
-        //     moTa:'',
-        //     ngayKhoiChieu:'',
-        //     danhGia:'3'
-        // },
+        // phim:this.props.phimSua,
+        phim:{
+            maPhim:'',
+            tenPhim:'',
+            biDanh:'',
+            trailer:'',
+            hinhAnh:'',
+            moTa:'',
+            ngayKhoiChieu:'',
+            danhGia:'3'
+        },
         errors: {
             maPhim:'',
             maPhim1:'',
@@ -40,11 +42,12 @@ class CapNhatPhimAdmin extends Component {
     handleChange=(e) =>{
     
         let { value, name, type } = e.target;
+        
         if (type !== 'file') {
             this.setState({
               phim: {...this.state.phim,[name]:value}
             }, () => {
-                // console.log(this.state.phim)
+                console.log('handleChange',this.state.phim)
             })
         }else {
             //Xử lý khi post file
@@ -56,7 +59,12 @@ class CapNhatPhimAdmin extends Component {
             })
         }
     }
-
+     onChange = (date, dateString) => {
+      console.log('date', dateString);
+      this.setState({
+        phim: {...this.state.phim,ngayKhoiChieu:dateString}
+      })
+    }
       handleSubmit = (e) => {
         e.preventDefault();
     
@@ -65,33 +73,16 @@ class CapNhatPhimAdmin extends Component {
             console.log("Received values of form: ", values);
           }
         });
-    
-        this.props.form.validateFields((err, fieldsValue) => {
-          if (err) {
-            return;
-          }
-          const values = {
-            ...fieldsValue,
-            'date_picker': fieldsValue['date-picker'].format('DD/MM/YYYY'),
-            // 'date_time_picker': fieldsValue['date-time-picker'].format('YYYY-MM-DD HH:mm:ss'),
-          };
-          // console.log('Received values of form: ', values);
-          this.state.phim.ngayKhoiChieu=values.date_picker;
-        }).then(()=>{
-          this.props.capNhatPhim(this.state.phim)
-          console.log("state phim submit",this.state.phim);
-        }
-          
-        )
-        // console.log(this.state.phim);
-    
+        // console.log("state phim submit",this.state.phim);
+        
+        this.props.capNhatPhim(this.state.phim);
       };
       
-      componentWillReceiveProps(nextProps){
-          this.setState({
-              phim:nextProps.phimSua
-          })
-      }
+        componentWillReceiveProps(nextProps){
+            this.setState({
+                phim:nextProps.phimSua
+            })
+        }
 
       handleErrors = e => {
         let {name, value} = e.target;
@@ -163,7 +154,7 @@ class CapNhatPhimAdmin extends Component {
         const { TextArea } = Input;
         const desc = ['Quá tệ', 'Tệ', 'Bình thường', 'Hay', 'Tuyệt vời'];
         const { danhGia } = this.state.phim;
-    
+        const dateFormat = 'DD/MM/YYYY';
         return (
           <Fragment>
             <Form {...formItemLayout} onSubmit={this.handleSubmit}>
@@ -189,8 +180,7 @@ class CapNhatPhimAdmin extends Component {
               </Form.Item>
     
             <Form.Item label="Ngày khởi chiếu:">
-              {getFieldDecorator('date-picker', config)(
-              <DatePicker name="ngayKhoiChieu" format="DD-MM-YYYY" />)}
+            <DatePicker onChange={this.onChange} defaultValue={moment(this.state.ngayKhoiChieu, dateFormat)} format={dateFormat} />
             </Form.Item>
     
               <Form.Item label="Đánh giá:">

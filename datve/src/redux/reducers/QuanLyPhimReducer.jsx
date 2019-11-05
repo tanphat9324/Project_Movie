@@ -1,4 +1,5 @@
 import {actionType} from '../constants/QuanLyPhimConstant';
+import dayjs from 'dayjs';
 
 const initialState = {
 dsPhim:[],
@@ -11,10 +12,14 @@ export const QuanLyPhimReducer = (state = initialState, action) => {
             state.dsPhim = action.dsPhim;
             return {...state}
         }
-        case actionType.CHINH_SUA_PHIM: {
-            console.log('store',action.phimSua);
+        case actionType.CHINH_SUA_PHIM: {            
             state.phimSua = action.phimSua;
-            console.log('luu store',state.phimSua);
+            let formatDay = {...state.phimSua};
+            let suaDinhDangNgayChieu = dayjs(formatDay.ngayKhoiChieu).format('DD/MM/YYYY');
+            formatDay.ngayKhoiChieu = suaDinhDangNgayChieu;
+            state.phimSua = formatDay;
+            console.log('state phimSua',state.phimSua);
+            
             return {...state}
         }
         default: return state;

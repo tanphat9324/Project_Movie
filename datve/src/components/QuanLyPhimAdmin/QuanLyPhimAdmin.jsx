@@ -118,7 +118,7 @@ class QuanLyPhimAdmin extends Component {
 
                       </a>
                       <Divider type="vertical" />
-                      <a onClick={() => {this.setModal2Visible(true);this.props.chinhSuaPhim(record)}}>
+                      <a onClick={() => {this.setModal2Visible(true);this.props.layThongTinPhim(record.maPhim)}}>
                         <img style={{width:'25px'}} src="../assets/images/edit.svg" alt=""/>
                          {record.name}</a>
                       <Divider type="vertical" />
@@ -200,7 +200,7 @@ class QuanLyPhimAdmin extends Component {
         layDanhSachNguoiDung: () => dispatch(layDanhSachNguoiDungAction()),
         layDanhSachPhim: () => dispatch(layDanhSachPhim()),
         // chinhSuaNguoiDung: (thongTinNguoiDung) => dispatch(chinhSuaNguoiDungAction(thongTinNguoiDung)),
-        chinhSuaPhim:(phimSua) => dispatch(chinhSuaPhimAction(phimSua)),
+        layThongTinPhim:(maPhim) => dispatch(layThongTinPhimAction(maPhim)),
         // xoaNguoiDung:(taiKhoan) => dispatch(xoaNguoiDungAction(taiKhoan)),
         xoaPhim: (maPhim) => dispatch(xoaPhimAction(maPhim)),
         timKiemNguoiDung:(thongTinNguoiDung) => dispatch(timKiemNguoiDungAction(thongTinNguoiDung))

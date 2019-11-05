@@ -15,7 +15,7 @@ export const layDanhSachPhim = () => {
             method: 'GET',
             url: settings.domain + `/QuanLyPhim/LayDanhSachPhim?maNhom=${settings.groupID}`
         }).then(res => {
-            console.log(res.data);
+            // console.log(res.data);
             dispatch(nhanDanhSachPhim(res.data));
         }).catch(err => {
             console.log(err.response);
@@ -80,6 +80,8 @@ export const xoaPhimAction = (maPhim) => {
 export const capNhatPhimAction = (thongTinPhim) => {
     let file = thongTinPhim.hinhAnh;
     thongTinPhim.hinhAnh = file.name;
+    console.log('thong tin film action',thongTinPhim);
+    
   return dispatch => {
       axios({
         method:"POST",
@@ -118,9 +120,10 @@ export const layThongTinPhimAction = (maPhim) => {
     return dispatch => {
         axios({
             method:'GET',
-            url: settings.domain + `QuanLyPhim/LayThongTinPhim?MaPhim=${maPhim}`,
+            url: settings.domain + `/QuanLyPhim/LayThongTinPhim?MaPhim=${maPhim}`,
         }).then(res => {
-            console.log('lay thong tin phim thanh cong');
+            console.log('lay thong tin phim thanh cong',res.data);
+            dispatch(chinhSuaPhimAction(res.data));
         }).catch(err => {
             console.log('lay thong tin phim loi');
         })

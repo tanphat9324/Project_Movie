@@ -3,6 +3,7 @@ import React, { Component, Fragment } from "react";
 import {Form,Button,Input,DatePicker,Rate,Upload,Icon,message } from "antd";
 import {connect} from 'react-redux';
 import { themPhimAction } from "../../../redux/actions/QuanLyPhimAction";
+import moment from 'moment';
 
 function getBase64(img, callback) {
   const reader = new FileReader();
@@ -83,6 +84,14 @@ handleChange=(e) =>{
 
     }
 }
+
+onChange = (date, dateString) => {
+  console.log('date', dateString);
+  this.setState({
+    phim: {...this.state.phim,ngayKhoiChieu:dateString}
+  })
+}
+
 handleChangeAvatar = info => {
   if (info.file.status === "uploading") {
     this.setState({ loading: true });
@@ -107,27 +116,9 @@ handleChangeAvatar = info => {
         console.log("Received values of form: ", values);
       }
     });
-
-    this.props.form.validateFields((err, fieldsValue) => {
-      if (err) {
-        return;
-      }
-      const values = {
-        ...fieldsValue,
-        'date_picker': fieldsValue['date-picker'].format('DD/MM/YYYY'),
-        // 'date_time_picker': fieldsValue['date-time-picker'].format('YYYY-MM-DD HH:mm:ss'),
-      };
-      // console.log('Received values of form: ', values);
-      this.state.phim.ngayKhoiChieu=values.date_picker;
-    }).then(()=>{
-      
-      this.props.themPhim(this.state.phim);
-      console.log("state phim submit",this.state.phim);
-    }
-      
-    )
     // console.log(this.state.phim);
-
+    this.props.themPhim(this.state.phim);
+    console.log("state phim submit",this.state.phim);
   };
 
   // validateField=(name,field,regex,value,help)=>{
@@ -213,6 +204,7 @@ if(name === 'trailer'){
     const { TextArea } = Input;
     const desc = ['Quá tệ', 'Tệ', 'Bình thường', 'Hay', 'Tuyệt vời'];
     const { danhGia } = this.state.phim;
+    const dateFormat = 'DD/MM/YYYY';
 
     const uploadButton = (
       <div>
@@ -269,10 +261,9 @@ if(name === 'trailer'){
             <Input type="text" name="trailer" placeholder="Nhập url trailer" onChange={this.handleChange} onKeyUp={this.handleErrors} onBlur={this.handleErrors} id="success" />
           </Form.Item>
 
-        <Form.Item label="Ngày khởi chiếu:">
-          {getFieldDecorator('date-picker', config)(
-          <DatePicker name="ngayKhoiChieu" format="DD-MM-YYYY" />)}
-        </Form.Item>
+          <Form.Item label="Ngày khởi chiếu:">
+            <DatePicker onChange={this.onChange} defaultValue={moment('today', dateFormat)} format={dateFormat} />
+            </Form.Item>
 
           <Form.Item label="Đánh giá:">
           <span>
