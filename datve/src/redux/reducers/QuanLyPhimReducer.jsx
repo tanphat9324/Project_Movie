@@ -15,7 +15,7 @@ export const QuanLyPhimReducer = (state = initialState, action) => {
         case actionType.CHINH_SUA_PHIM: {            
             state.phimSua = action.phimSua;
             let formatDay = {...state.phimSua};
-            let suaDinhDangNgayChieu = dayjs(formatDay.ngayKhoiChieu).format('DD/MM/YYYY');
+            let suaDinhDangNgayChieu = dayjs(formatDay.ngayKhoiChieu).format("DD/MM/YYYY");
             formatDay.ngayKhoiChieu = suaDinhDangNgayChieu;
             state.phimSua = formatDay;
             console.log('state phimSua',state.phimSua);

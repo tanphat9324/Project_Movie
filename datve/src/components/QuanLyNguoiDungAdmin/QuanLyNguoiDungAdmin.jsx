@@ -38,6 +38,12 @@ handleChange=(e) =>{
             [name]:value
     }, () => {
       // console.log(this.state.inputSearch);
+      if(this.state.inputSearch !== ''){
+        this.props.timKiemNguoiDung(this.state.inputSearch);
+      }else {
+        this.props.layDanhSachNguoiDung();
+      }
+
     })
 }
 componentWillReceiveProps(nextProps){  

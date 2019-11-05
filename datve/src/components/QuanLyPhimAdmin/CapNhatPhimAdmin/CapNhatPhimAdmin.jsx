@@ -155,6 +155,10 @@ class CapNhatPhimAdmin extends Component {
         const desc = ['Quá tệ', 'Tệ', 'Bình thường', 'Hay', 'Tuyệt vời'];
         const { danhGia } = this.state.phim;
         const dateFormat = 'DD/MM/YYYY';
+        const day = this.state.phim.ngayKhoiChieu;
+        const a = '06/11/2019';
+        console.log('a',a,'day:',day);
+        
         return (
           <Fragment>
             <Form {...formItemLayout} onSubmit={this.handleSubmit}>
@@ -180,7 +184,7 @@ class CapNhatPhimAdmin extends Component {
               </Form.Item>
     
             <Form.Item label="Ngày khởi chiếu:">
-            <DatePicker onChange={this.onChange} defaultValue={moment(this.state.ngayKhoiChieu, dateFormat)} format={dateFormat} />
+            <DatePicker onChange={this.onChange} defaultValue={moment(a.toString(), dateFormat)} format={dateFormat} />
             </Form.Item>
     
               <Form.Item label="Đánh giá:">
@@ -210,7 +214,6 @@ class CapNhatPhimAdmin extends Component {
                 Thêm
               </Button>
             </Form.Item>
-
             </Form>
           </Fragment>
         );

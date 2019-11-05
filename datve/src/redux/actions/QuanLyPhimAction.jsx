@@ -129,3 +129,17 @@ export const layThongTinPhimAction = (maPhim) => {
         })
     }
 }
+
+export const timKiemPhimAction = (tenPhim) => {
+    return dispatch => {
+        axios({
+            method:'GET',
+            url: settings.domain + `/QuanLyPhim/LayDanhSachPhim?maNhom=${settings.groupID}&tenPhim=${tenPhim}`,
+        }).then(res => {
+            dispatch(nhanDanhSachPhim(res.data))
+        }).catch(err => {
+            console.log(err);
+            
+        })
+    }
+}

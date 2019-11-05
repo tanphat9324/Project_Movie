@@ -9,7 +9,7 @@ import ModalEditUser from '../ModalEditUser/ModalEditUser';
 import {logout} from '../../utils/index';
 import styles from './QuanLyPhimAdmin.module.css';
 import ThemPhimAdmin from './ThemPhimAdmin/ThemPhimAdmin';
-import { layDanhSachPhim, xoaPhimAction, capNhatPhimAction, layThongTinPhimAction, chinhSuaPhimAction } from '../../redux/actions/QuanLyPhimAction';
+import { layDanhSachPhim, xoaPhimAction, capNhatPhimAction, layThongTinPhimAction, chinhSuaPhimAction, timKiemPhimAction } from '../../redux/actions/QuanLyPhimAction';
 import CapNhatPhimAdmin from './CapNhatPhimAdmin/CapNhatPhimAdmin';
 import 'dayjs/locale/es';
 import dayjs from 'dayjs';
@@ -18,6 +18,7 @@ class QuanLyPhimAdmin extends Component {
     constructor(props){
         super(props);
         this.state={
+            inputSearch:'',
             modal1Visible: false,
             modal2Visible: false,
             tenDangNhap:this.props.nguoiDangNhap
@@ -36,14 +37,19 @@ class QuanLyPhimAdmin extends Component {
       }
       handleSubmit = (e) =>{
         e.preventDefault();
-        this.props.timKiemNguoiDung(this.state.inputSearch);
-    }
+        this.props.layThongTinPhim(this.state.inputSearch);
+      }
     handleChange=(e) =>{
       let name = e.target.name;
       let value = e.target.value;
               this.setState({
                 [name]:value
         }, () => {
+          if(this.state.inputSearch !== ''){
+            this.props.timKiemPhim(this.state.inputSearch);
+          }else {
+            this.props.layDanhSachPhim();
+          }
         })
     }
     componentWillReceiveProps(nextProps){  
@@ -150,7 +156,7 @@ class QuanLyPhimAdmin extends Component {
           </button>
             <form className="form-inline" onSubmit={this.handleSubmit}>
              <a onClick={()=>this.props.layDanhSachNguoiDung()}><img style={{width:'50px'}} src="./assets/images/spinner.svg" alt=""/></a> 
-          <input className="form-control mr-sm-2 abc" onChange={this.handleChange} name="inputSearch" type="search" placeholder="Search" aria-label="Search" />
+          <input className="form-control mr-sm-2 abc" onChange={this.handleChange} name="inputSearch" type="search" placeholder="Nhập tên phim cần tìm" aria-label="Search" />
           <button className="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
         </form>
     
@@ -189,7 +195,7 @@ class QuanLyPhimAdmin extends Component {
         }
     }
     const mapStateToProps = state => ({
-      danhSachNguoiDung : state.QuanLyNguoiDungReducer.danhSachNguoiDung,
+      // danhSachNguoiDung : state.QuanLyNguoiDungReducer.danhSachNguoiDung,
       danhSachPhim: state.QuanLyPhimReducer.dsPhim,
       nguoiDangNhap: state.QuanLyNguoiDungReducer.nguoiDangNhap
     })
@@ -197,13 +203,14 @@ class QuanLyPhimAdmin extends Component {
     const mapDispatchToProps = dispatch => {
       return {
         nguoiDungDangNhap: () => dispatch(nguoiDangNhap()),
-        layDanhSachNguoiDung: () => dispatch(layDanhSachNguoiDungAction()),
+        // layDanhSachNguoiDung: () => dispatch(layDanhSachNguoiDungAction()),
         layDanhSachPhim: () => dispatch(layDanhSachPhim()),
         // chinhSuaNguoiDung: (thongTinNguoiDung) => dispatch(chinhSuaNguoiDungAction(thongTinNguoiDung)),
         layThongTinPhim:(maPhim) => dispatch(layThongTinPhimAction(maPhim)),
         // xoaNguoiDung:(taiKhoan) => dispatch(xoaNguoiDungAction(taiKhoan)),
         xoaPhim: (maPhim) => dispatch(xoaPhimAction(maPhim)),
-        timKiemNguoiDung:(thongTinNguoiDung) => dispatch(timKiemNguoiDungAction(thongTinNguoiDung))
+        // timKiemNguoiDung:(thongTinNguoiDung) => dispatch(timKiemNguoiDungAction(thongTinNguoiDung))
+        timKiemPhim:(thongTinPhim) => dispatch(timKiemPhimAction(thongTinPhim))
       }
     }
     export default connect(mapStateToProps,mapDispatchToProps)(QuanLyPhimAdmin);
