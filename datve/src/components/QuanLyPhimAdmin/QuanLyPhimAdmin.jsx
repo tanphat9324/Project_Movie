@@ -14,6 +14,7 @@ import CapNhatPhimAdmin from './CapNhatPhimAdmin/CapNhatPhimAdmin';
 import 'dayjs/locale/es';
 import dayjs from 'dayjs';
 import ThongTinLichChieuAdmin from './ThongTinLichChieuAdmin/ThongTinLichChieuAdmin';
+import {Redirect} from 'react-router-dom';
 
 class QuanLyPhimAdmin extends Component {
     constructor(props){
@@ -63,6 +64,13 @@ class QuanLyPhimAdmin extends Component {
         tenDangNhap:nextProps.nguoiDangNhap
       })
     }
+    logOut=()=>{
+      logout();
+    //  this.props.history.push('/login') 
+    //   logout().then(()=>{
+    //     return  <Redirect to='/login'/>
+    // })
+    }
         render() {
           const menu = (
             <Menu>
@@ -72,9 +80,9 @@ class QuanLyPhimAdmin extends Component {
                 </a>
               </Menu.Item>
               <Menu.Item>
-                <a onClick={()=>logout()} target="_blank" rel="noopener noreferrer" href="#">
+                <NavLink to='/login' onClick={()=>this.logOut()} target="_blank" rel="noopener noreferrer">
                 Đăng xuất
-                </a>
+                </NavLink>
               </Menu.Item>
             </Menu>
           );

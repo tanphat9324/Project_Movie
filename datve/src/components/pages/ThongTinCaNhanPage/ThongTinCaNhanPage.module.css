@@ -3,7 +3,13 @@
     margin:0 auto;
     /* padding-top: 60px; */
     background: url(/assets/images/bg5.jpg);
-    background-size: cover;
+    background-size: center;
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    /* Preserve aspet ratio */
+    min-width: 100%;
+    min-height: 100%;
     /* background-color: rgb(255, 75, 75); */
 }
 .backGround_Cover{
@@ -17,22 +23,27 @@ background-size: cover; */
 -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
 box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
 position: relative;
+border-radius: 15px;
+
 }
 
 .backGround_Cover>img{
 width: 100%;
 height: 34vh;
+border-radius: 15px;
+
 }
 .avatar{
     position: absolute;
     top: 71%;
     left: 6%;
+    z-index: 2;
 }
 .avatar>img{
     border-radius: 50%;
     width: 160px;
     height: 160px;
-    border:3px solid black;
+    border:3px solid white;
 }
 
 .backgroundLinear {
@@ -41,16 +52,25 @@ height: 34vh;
     height: 100%;
     top: 0;
     background: linear-gradient(to top, #000, transparent 20%);
+    border-radius: 15px;
   }
 .name{
     position: absolute;
     bottom: 3%;
     left: 20%;
-    font-size: 22px;
+    font-size: 25px;
     color: white;
 }
+.typeUser{
+    font-size: 15px;
+}
 .background_Info{
-    padding:8% 0;
+    padding-top: 5%;
+    padding-bottom: 4.5%;
+
+    margin:15px 0;
+    border-radius: 15px;
+    /* padding:8% 0; */
     /* background-color: red; */
     background: url('/assets/images/bg3.jpg');
     background-color: rgb(32, 32, 32);
@@ -60,8 +80,72 @@ height: 34vh;
     -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
 -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
 box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+position: relative;
 }
+.level{
+    position: absolute;
+    bottom: 5%;
+    right: 41%;
+    font-size: 20px;
+    z-index: 10;
+    color:white;
+}
+.levelUp{
+    position: absolute;
+    bottom: 16%;
+    right: 3%;
+    display: flex;
+    align-items: flex-end;
+}
+.levelUp>span{
+    color:white;
+    padding-left: 5px;
+    font-size: 20px;
+}
+.levelUp>img{
+    width: 35px;
+    height: 35px;
+}
+.progressBar {
+    position: absolute;
+    bottom: 5%;
+    right: 2%;
+    width: 500px;
+    text-align: center;
+  }
+  
+  .progress {
+    padding: 6px;
+    background: rgba(131, 131, 131, 0.603);
+    border-radius: 30px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
+  }
+  
+  .progress_bar {
+    height: 18px;
+    background-color: #ee303c;
+    border-radius: 30px;
+    transition: 0.4s linear;
+    transition-property: width, background-color;
+  }
+  
+  .progress_striped .progress_bar {
+    background-color: #FF4A5C;
+    width: 90%;
+    background-image: linear-gradient(45deg, #F72A40 25%, transparent 25%, transparent 50%, #F72A40 50%, #F72A40 75%, transparent 75%, transparent);
+    animation: progressAnimationStrike 6s;
+  }
+  
+  @keyframes progressAnimationStrike {
+    from {
+      width: 0;
+    }
+    to {
+      width: 90%;
+    }
+  }
 .user_profile{
+    /* padding-top: 40px; */
     color:black;
     width: 90%;
     margin:0 auto;
@@ -75,10 +159,15 @@ border-radius: 30px;
 padding:2%;
 
 }
+.bgAround{
+    padding:2%;
+    background-color: rgba(255, 255, 255, 0.534);
+    border-radius: 10px;
+}
 .profile{
     /* border:2px solid black; */
-    padding:20px;
-    border-radius: 5%;
+    /* padding:20px; */
+    border-radius: 10px;
     background: #FCFCFC;
     /* background: rgba(255, 255, 255, 0.301); */
 
@@ -87,33 +176,42 @@ padding:2%;
     box-shadow: 0px 0px 29px -10px rgba(105,105,105,1);
     /* margin-right: 30px; */
 }
-.location,.taiKhoan,.email,.matKhau,.capDo,.sdt{
+
+.capNhat{
+    width: 100%;
+    text-align: center;
     padding-bottom: 15px;
 }
-.location>img{
+.profile_name{
+    width: 100%;
+    padding:15px;
+    background-color: rgb(255, 46, 46);
+    color:white;
+    font-weight: 500;
+    text-align: center;
+    font-size: 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin-bottom: 15px;
+}
+.profile_item{
+    padding:0 12px 12px 30px;
+    text-align: left;
+    /* padding-bottom: 15px; */
+}
+.profile_item>img{
     width: 30px;
     height: 30px;
 }
-.taiKhoan>img{
-    width: 30px;
-    height: 30px;
+.tableAnt{
+    height: 382px;
 }
-.email>img{
-    width: 30px;
-    height: 30px;
+.tableAnt .ant-tabs-nav .ant-tabs-tab-active{
+    color:red!important;
 }
-.matKhau>img{
-    width: 30px;
-    height: 30px;
-}
-.capDo>img{
-    width: 30px;
-    height: 30px;
-}
-.sdt>img{
-    width: 30px;
-    height: 30px;
-}
+/* .tableAnt>.ant-tabs-tab-active{
+    color:red;
+} */
 .table{
     border-radius: 20px;
     background: #FCFCFC;
@@ -121,8 +219,11 @@ padding:2%;
     -moz-box-shadow: 0px 0px 29px -10px rgba(105,105,105,1);
     box-shadow: 0px 0px 29px -10px rgba(105,105,105,1);
     
-    background: rgba(255, 255, 255, 0.301);
+    /* background: rgba(255, 255, 255, 0.301); */
 
+}
+.table .ant-tabs{
+    height: 382px!important;
 }
 .huyHieu{
     padding-top: 20px;

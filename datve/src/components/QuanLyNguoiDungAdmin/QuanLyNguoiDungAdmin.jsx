@@ -52,6 +52,8 @@ componentWillReceiveProps(nextProps){
   })
 }
     render() {
+      console.log('nguoi dang nhap',this.props.nguoiDangNhap);
+      
       const menu = (
         <Menu>
           <Menu.Item>

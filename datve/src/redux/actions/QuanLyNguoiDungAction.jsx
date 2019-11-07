@@ -114,14 +114,14 @@ export const CapNhatNguoiDungAction = thongTinNguoiDung => {
       data: {
         ...thongTinNguoiDung,
         maNhom: settings.groupID,
-        maLoaiNguoiDung: "KhachHang"
+        // maLoaiNguoiDung: "KhachHang"
       },
       headers: {
         Authorization: "Bearer  " + localStorage.getItem(settings.token)
       }
     })
       .then(res => {
-        // console.log(res.data);
+        console.log('thanh cong cap nhat');
       })
       .catch(err => {
         // console.log(err.response.data);
