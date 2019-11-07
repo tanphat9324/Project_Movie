@@ -16,6 +16,7 @@ import QuanLyNguoiDungPage from './components/pages/QuanLyNguoiDungPage/QuanLyNg
 import QuanLyNguoiDungAdmin from './components/QuanLyNguoiDungAdmin/QuanLyNguoiDungAdmin';
 import HeaderAdmin from './components/HeaderAdmin/HeaderAdmin';
 import QuanLyPhimAdmin from './components/QuanLyPhimAdmin/QuanLyPhimAdmin';
+import ThongTinCaNhanPage from './components/pages/ThongTinCaNhanPage/ThongTinCaNhanPage';
 
 
 function App() {
@@ -29,7 +30,7 @@ function App() {
     <Route exact path='/login' component={LoginPage} /> */}
     {/* <Admin exact path='/admin'Component={DashboardAdmin}/>
     <Route exact path='/admin/register' component = {AddUserAdmin}/> */}
-    {/* <Route exact path='/aaa' component={QuanLyNguoiDungPage}/> */}
+    <Route exact path='/aaa' component={ThongTinCaNhanPage}/>
     <PublicRoute restricted={false} component={HomePage} path="/" exact />
     <PublicRoute restricted={false} component={RegisterPage} path="/register" exact />
     <PublicRoute restricted={false} component={AddUserAdmin} path="/admin/register" exact />

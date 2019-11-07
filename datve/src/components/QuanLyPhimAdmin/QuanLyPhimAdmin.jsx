@@ -13,6 +13,7 @@ import { layDanhSachPhim, xoaPhimAction, capNhatPhimAction, layThongTinPhimActio
 import CapNhatPhimAdmin from './CapNhatPhimAdmin/CapNhatPhimAdmin';
 import 'dayjs/locale/es';
 import dayjs from 'dayjs';
+import ThongTinLichChieuAdmin from './ThongTinLichChieuAdmin/ThongTinLichChieuAdmin';
 
 class QuanLyPhimAdmin extends Component {
     constructor(props){
@@ -21,6 +22,7 @@ class QuanLyPhimAdmin extends Component {
             inputSearch:'',
             modal1Visible: false,
             modal2Visible: false,
+            modal3Visible: false,
             tenDangNhap:this.props.nguoiDangNhap
         }
       }
@@ -30,11 +32,15 @@ class QuanLyPhimAdmin extends Component {
       setModal2Visible(modal2Visible) {
         this.setState({ modal2Visible });
       }
-    
+      setModal3Visible(modal3Visible) {
+        this.setState({ modal3Visible });
+      }
+
       componentDidMount(){
         this.props.layDanhSachPhim();
         this.props.nguoiDungDangNhap();
       }
+
       handleSubmit = (e) =>{
         e.preventDefault();
         this.props.layThongTinPhim(this.state.inputSearch);
@@ -118,18 +124,16 @@ class QuanLyPhimAdmin extends Component {
                   key: 'action',
                   render: (text, record) => (            
                     <span>
-                      <a style={{width:'30px',padding:'10px',backgroundColor:"green"}} onClick={() => {this.props.xoaPhim(record.maPhim)}}>
-                        <img style={{width:'30px'}} src="../assets/images/garbage.svg" alt=""/>
-                        tao lich chieu
-
+                      <a  style={{}} onClick={() => {this.setModal3Visible(true);}}>
+                        <img title="Tạo lịch chiếu" style={{width:'30px'}} src="../assets/images/taoLichChieu.svg" alt=""/>
                       </a>
                       <Divider type="vertical" />
                       <a onClick={() => {this.setModal2Visible(true);this.props.layThongTinPhim(record.maPhim)}}>
-                        <img style={{width:'25px'}} src="../assets/images/edit.svg" alt=""/>
+                        <img title="Sửa phim" style={{width:'25px'}} src="../assets/images/edit.svg" alt=""/>
                          {record.name}</a>
                       <Divider type="vertical" />
                       <a onClick={() => {this.props.xoaPhim(record.maPhim)}}>
-                        <img style={{width:'30px'}} src="../assets/images/garbage.svg" alt=""/>
+                        <img title="Xóa phim" style={{width:'30px'}} src="../assets/images/garbage.svg" alt=""/>
                       </a>
                     </span>
                   ),
@@ -167,7 +171,18 @@ class QuanLyPhimAdmin extends Component {
     <div className={styles.footer}>Footer</div>
     </div>
     <Modal
-              title="Cập nhật thông tin người dùng"
+              title="Thông tin lịch chiếu"
+              centered
+              visible={this.state.modal3Visible}
+              // okText="Cap Nhat"
+              // onOk={() => this.setModal2Visible(false)}
+              onCancel={() => this.setModal3Visible(false)}
+              footer={null}
+            >
+              <ThongTinLichChieuAdmin/>
+            </Modal>
+    <Modal
+              title="Cập nhật phim"
               centered
               visible={this.state.modal2Visible}
               // okText="Cap Nhat"
