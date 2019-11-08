@@ -8,7 +8,9 @@ import {connect} from 'react-redux';
 import { Modal, Button } from 'antd';
 import ModalTTCaNhan from './ModalTTCaNhan/ModalTTCaNhan';
 import { nguoiDangNhap } from '../../../redux/actions/QuanLyNguoiDungAction';
-
+import HeaderAdmin from '../../HeaderAdmin/HeaderAdmin';
+import NotiAdmin from '../../NotiAdmin/NotiAdmin';
+import './sb-admin-2.min.css'
  class ThongTinCaNhanPage extends Component {
      callback=(key)=> {
         console.log(key);
@@ -31,7 +33,12 @@ import { nguoiDangNhap } from '../../../redux/actions/QuanLyNguoiDungAction';
 
         return (
             <Fragment>
-                <Header/>
+                <HeaderAdmin/>
+
+                <div style={{width:'86%',margin:'auto 0 auto auto'}}>
+                <NotiAdmin/>
+                </div>
+                
                 <div className={styles.content}>
 
                 <div className={styles.backGround_Cover}>

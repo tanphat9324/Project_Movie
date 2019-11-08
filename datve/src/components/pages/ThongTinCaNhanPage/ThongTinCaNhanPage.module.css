@@ -1,9 +1,11 @@
 .content{
     padding:0 15%;
     margin:0 auto;
-    /* padding-top: 60px; */
+    margin-top: 70px;
     background: url(/assets/images/bg5.jpg);
-    background-size: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
     position: fixed; 
     top: 0; 
     left: 0; 

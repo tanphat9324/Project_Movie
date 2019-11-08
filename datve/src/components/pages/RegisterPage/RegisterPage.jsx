@@ -102,7 +102,7 @@ class RegisterPage extends Component {
                     {this.state.errors.email !== '' ? <div className="alert alert-danger">{this.state.errors.email}</div> : ''}
 
                     <input type="tel" className={styles.input_Tel} name="soDt" onChange={this.handleChange} onKeyUp={this.handleErrors} onBlur={this.handleErrors} placeholder="Telephone" />
-                    <button className={`${styles.register_button}  btn`} type="submit" name="signup_submit" value="Sign me up">Đăng ký</button>
+                    <button className={`${styles.register_button}  btn-danger`} type="submit" name="signup_submit" value="Sign me up">Đăng ký</button>
                     </form>
                     <div className={styles.right}>
                     <span className={styles.loginwith}>Sign in with<br />social network</span>

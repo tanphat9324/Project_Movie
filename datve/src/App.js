@@ -30,11 +30,12 @@ function App() {
     <Route exact path='/login' component={LoginPage} /> */}
     {/* <Admin exact path='/admin'Component={DashboardAdmin}/>
     <Route exact path='/admin/register' component = {AddUserAdmin}/> */}
-    <Route exact path='/aaa' component={ThongTinCaNhanPage}/>
-    <PublicRoute restricted={false} component={HomePage} path="/" exact />
-    <PublicRoute restricted={false} component={RegisterPage} path="/register" exact />
-    <PublicRoute restricted={false} component={AddUserAdmin} path="/admin/register" exact />
-    <PublicRoute restricted={false} component={LoginPage} path="/login" exact />
+    {/* <Route exact path='/aaa' component={ThongTinCaNhanPage}/> */}
+    <Route component={HomePage} path="/" exact />
+    <PublicRoute restricted={true} component={ThongTinCaNhanPage} path="/thongtinnguoidung" exact />
+    <Route component={RegisterPage} path="/register" exact />
+    <PrivateRoute exact component={AddUserAdmin} path="/admin/register"  />
+    <Route component={LoginPage} path="/login" exact />
     {/* <PrivateRoute exact path="/admin" component={DashboardAdmin}/> */}
     <PrivateRoute exact path="/admin" Component={DashboardAdmin}/>
     <PrivateRoute exact path="/admin/quanlynguoidung" Component={QuanLyNguoiDungAdmin}/>

@@ -1,18 +1,30 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { Component,Fragment } from 'react'
-import {connect} from 'react-redux';
+import React, { Component, Fragment } from 'react'
+import { connect } from 'react-redux';
 import styles from './NotiAdmin.module.css';
+import { logout } from '../../utils/index';
+import { NavLink, withRouter } from 'react-router-dom';
+import { nguoiDangNhap } from '../../redux/actions/QuanLyNguoiDungAction';
 
-export default class NotiAdmin extends Component {
-    render() {
-        return (
-            <Fragment>
-                  <nav className={`${styles.bgNav} navbar navbar-expand navbar-light bg-warning topbar mb-4 static-top shadow`}>
+class NotiAdmin extends Component {
+
+  componentDidMount() {
+    this.props.hoTenAdmin()
+  }
+
+
+
+  render() {
+    console.log(this.props);
+    
+    return (
+      <Fragment>
+        <nav className={`${styles.bgNav} navbar navbar-expand navbar-light bg-warning topbar mb-4 static-top shadow`}>
           <button id="sidebarToggleTop" className="btn btn-link d-md-none rounded-circle mr-3">
             <i className="fa fa-bars" />
           </button>
-          <form className="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+          {/* <form className="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div className="input-group">
               <input type="text" className="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
               <div className="input-group-append">
@@ -21,7 +33,7 @@ export default class NotiAdmin extends Component {
                 </button>
               </div>
             </div>
-          </form>
+          </form> */}
           <ul className="navbar-nav ml-auto">
             <li className="nav-item dropdown no-arrow d-sm-none">
               <a className="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -42,8 +54,8 @@ export default class NotiAdmin extends Component {
             </li>
             <li className="nav-item dropdown no-arrow mx-1">
               <a className="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <img src="../assets/images/bell2.svg" style={{width:'20px', height:'20px'}} alt />
-                <span style={{padding:'4px 4px',fontSize:'14px'}} className="badge badge-danger badge-counter">3+</span>
+                <img src="../assets/images/bell2.svg" style={{ width: '20px', height: '20px' }} alt />
+                <span style={{ padding: '4px 4px', fontSize: '14px' }} className="badge badge-danger badge-counter">3+</span>
               </a>
               <div className="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                 <h6 className="dropdown-header">
@@ -87,8 +99,8 @@ export default class NotiAdmin extends Component {
             </li>
             <li className="nav-item dropdown no-arrow mx-1">
               <a className="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <img src="../assets/images/email2.svg" style={{width:'20px', height:'20px'}} alt />
-                <span style={{padding:'4px 4px',fontSize:'14px'}} className="badge badge-danger badge-counter">7</span>
+                <img src="../assets/images/email2.svg" style={{ width: '20px', height: '20px' }} alt />
+                <span style={{ padding: '4px 4px', fontSize: '14px' }} className="badge badge-danger badge-counter">7</span>
               </a>
               <div className="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
                 <h6 className="dropdown-header">
@@ -97,7 +109,7 @@ export default class NotiAdmin extends Component {
                 <a className="dropdown-item d-flex align-items-center" href="#">
                   <div className="dropdown-list-image mr-3">
                     <img className="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt />
-                    
+
                     <div className="status-indicator bg-success" />
                   </div>
                   <div className="font-weight-bold">
@@ -141,7 +153,7 @@ export default class NotiAdmin extends Component {
             <div className="topbar-divider d-none d-sm-block" />
             <li className="nav-item dropdown no-arrow">
               <a className="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span style={{color:'black'}} className="mr-2 d-none d-lg-inline small">Valerie Luna</span>
+                <span style={{ color: 'black' }} className="mr-2 d-none d-lg-inline small">{this.props.userLogin.taiKhoan}</span>
                 <div className={`${styles.az_img_user} online`}><img src="../assets/images/admin.png" alt /></div>
               </a>
               <div className="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -158,7 +170,39 @@ export default class NotiAdmin extends Component {
             </li>
           </ul>
         </nav>
-            </Fragment>
-        )
-    }
+
+        <div className="modal fade" id="logoutModal" tabIndex={-1} role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                <button className="close" type="button" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div className="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+              <div className="modal-footer">
+                <button className="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <NavLink to='/' onClick={() => logout()} className="btn btn-primary">Logout</NavLink>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Fragment>
+    )
+  }
 }
+
+const mapStateToProps = state => ({
+  userLogin: state.QuanLyNguoiDungReducer.nguoiDangNhap
+})
+
+const mapDispatchToProps = dispatch => {
+  return {
+    hoTenAdmin: () => {
+      dispatch(nguoiDangNhap())
+    }
+  }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NotiAdmin));

@@ -6,10 +6,9 @@ export const PublicRoute = ({component: Component, restricted, ...rest}) => {
     return (
         <Route {...rest} render={props => (
             // isLogin() ?
-            // isLogin() && restricted ?
+            isLogin() && restricted ?
             <Component {...props} />
-            
-            //: <Redirect to="/admin" />
+            : <Redirect to="/" />
         )} />
     );
 };

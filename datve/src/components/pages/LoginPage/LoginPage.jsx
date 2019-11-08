@@ -76,7 +76,7 @@ import styles from './LoginPage.module.css';
 
                     <input className={styles.input_MatKhau} type="password" name="matKhau" onChange={this.handleChange} onKeyUp={this.handleErrors} onBlur={this.handleErrors} placeholder="Password" />
                     {this.state.errors.matKhau !== '' ? <div className="alert alert-danger">{this.state.errors.matKhau}</div> : ''}
-                    <button className={`${styles.register_button}  btn`} type="submit" name="signup_submit" value="Sign me up">Đăng nhập</button>                    </form>
+                    <button className={`${styles.register_button}  btn-danger`} type="submit" name="signup_submit" value="Sign me up">Đăng nhập</button>                    </form>
                     <div className={styles.right}>
                     <span className={styles.loginwith}>Sign in with<br />social network</span>
                     <button className={`${styles.social_signin} ${styles.facebook}`}>Log in with facebook</button>
