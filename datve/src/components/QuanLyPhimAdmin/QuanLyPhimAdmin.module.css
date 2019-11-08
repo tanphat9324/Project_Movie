@@ -1,4 +1,6 @@
-
+.bgNav{
+    background-color: #fbae1c!important;
+}
 .header{
     height: 60px;
     box-shadow: 0 .15rem 1.75rem 0 rgba(58,59,69,.15)!important;
@@ -187,6 +189,7 @@ img {
     color:white!important;
 }
 .content_right{
+    margin:auto 0 auto auto;
     width: 86%;
     background-color: #EBEDF2;
     position: relative;

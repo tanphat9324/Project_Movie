@@ -5,10 +5,10 @@ import { isLogin } from '../utils/index';
 
 const AdminLayOut = (props) =>{
     return <Fragment>
-        <div className="d-flex">
+        {/* <div className="d-flex"> */}
         <HeaderAdmin/>
             {props.children}  
-        </div>
+        {/* </div> */}
     </Fragment>
 }
 

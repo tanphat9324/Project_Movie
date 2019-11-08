@@ -8,6 +8,7 @@ import { Modal,Menu,Dropdown } from 'antd';
 import ModalEditUser from '../ModalEditUser/ModalEditUser';
 import styles from './QuanLyNguoiDungAdmin.module.css';
 import {logout} from '../../utils/index';
+import NotiAdmin from '../NotiAdmin/NotiAdmin';
 
 class QuanLyNguoiDungAdmin extends Component {
   constructor(props){
@@ -119,17 +120,13 @@ componentWillReceiveProps(nextProps){
           const data = this.props.danhSachNguoiDung;
         return (
             <Fragment>
-  <div className={styles.content_right}>
-<div className={styles.header}>
-<div className="pr-3">
-<Dropdown overlay={menu} trigger={['click']}>
-    <a className={`${styles.header_dropdown} ant-dropdown-link`} href="#">
-      Chào !, {this.state.tenDangNhap.taiKhoan}  <img className={styles.header_avatar} src="../assets/images/admin.png" alt=""/> <img className={styles.header_icon} src="../assets/images/caret-down (2).svg" alt=""/>
-    </a>
-  </Dropdown>
-</div>
-</div>
-<div className={styles.quanLyPhimTable}>
+        <div id="page-top">
+  <div id="wrapper">
+    <div style={{width:'86%',margin:'auto 0 auto auto'}} id="content-wrapper" className="d-flex flex-column">
+      <div id="content">
+          <NotiAdmin/>
+        <div className="container-fluid">
+        <div className={styles.quanLyPhimTable}>
  <h5 className={styles.title}>QUẢN LÝ NGƯỜI DÙNG</h5>
  <div className={styles.searchBox}>
       <NavLink to="/admin/register" className={`${styles.themNguoiDung} btn btn-success`}>
@@ -145,7 +142,37 @@ componentWillReceiveProps(nextProps){
   <Table className={styles.table} columns={columns} bordered='true'  dataSource={data} pagination={{defaultCurrent:1, pageSize: 5}} /> 
   {/* total:30 trong pagination */}
 </div>
-<div className={styles.footer}>Footer</div>
+        </div>
+      </div>
+      <footer className="sticky-footer bg-white">
+        <div className="container my-auto">
+          <div className="copyright text-center my-auto">
+            <span>Copyright © Your Website 2019</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <a className="scroll-to-top rounded" href="#page-top">
+    <i className="fas fa-angle-up" />
+  </a>
+  <div className="modal fade" id="logoutModal" tabIndex={-1} role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div className="modal-dialog" role="document">
+      <div className="modal-content">
+        <div className="modal-header">
+          <h5 className="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button className="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div className="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div className="modal-footer">
+          <button className="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a className="btn btn-primary" href="login.html">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <Modal
           title="Cập nhật thông tin người dùng"

@@ -187,6 +187,7 @@ img {
     color:white!important;
 }
 .content_right{
+    margin:auto 0 auto auto;
     width: 86%;
     background-color: #EBEDF2;
     position: relative;

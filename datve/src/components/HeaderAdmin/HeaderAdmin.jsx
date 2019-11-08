@@ -10,11 +10,10 @@ import { nguoiDangNhap } from '../../redux/actions/QuanLyNguoiDungAction';
   componentDidMount(){
     this.props.hoTenAdmin()
   }
-
     render() {
         return (
             <Fragment>
-  <div className={`${styles.content_left} ${styles.bg_gradient_primary}`}>
+   <div className={`${styles.content_left} ${styles.bg_gradient_primary}`}>
     <div className={styles.az_sidebar_header}>
       <NavLink to="/" title="Load all" className={styles.az_logo}>
         <img src="../assets/images/web-logo.png" alt />
@@ -26,15 +25,11 @@ import { nguoiDangNhap } from '../../redux/actions/QuanLyNguoiDungAction';
       <div className={styles.media_body}>
         <h5>{this.props.userLogin.hoTen}</h5>
         <span>Admin Member</span>
-      </div>{/* media-body */}  
+      </div>
     </div>
     <hr className={`${styles.sidebar_divider} my-0`} />
     <hr className={`${styles.sidebar_divider} my-0`} />
-    {/* <hr class="sidebar-divider"> */}
-    <NavLink to='/' className={`${styles.sidebar_brand} d-flex align-items-center justify-content-center`} >
-      {/* <div class="sidebar-brand-icon rotate-n-15"> */}
-      {/* <i class="fas fa-laugh-wink"></i> */}
-      {/* </div> */}
+    <NavLink to='/admin' className={`${styles.sidebar_brand} d-flex align-items-center justify-content-center`} >
       <div className={`${styles.sidebar_brand_text} mx-3`}>Dashboard</div>
     </NavLink>
     <hr className={`${styles.sidebar_divider} my-0`} />
