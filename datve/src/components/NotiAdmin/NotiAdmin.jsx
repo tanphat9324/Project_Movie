@@ -6,6 +6,8 @@ import styles from './NotiAdmin.module.css';
 import { logout } from '../../utils/index';
 import { NavLink, withRouter } from 'react-router-dom';
 import { nguoiDangNhap } from '../../redux/actions/QuanLyNguoiDungAction';
+import { Button } from 'react-bootstrap';
+import ModalLogout from './ModalLogout/ModalLogout';
 
 class NotiAdmin extends Component {
 
@@ -17,7 +19,7 @@ class NotiAdmin extends Component {
 
   render() {
     console.log(this.props);
-    
+
     return (
       <Fragment>
         <nav className={`${styles.bgNav} navbar navbar-expand navbar-light bg-warning topbar mb-4 static-top shadow`}>
@@ -157,15 +159,18 @@ class NotiAdmin extends Component {
                 <div className={`${styles.az_img_user} online`}><img src="../assets/images/admin.png" alt /></div>
               </a>
               <div className="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a className="dropdown-item" href="#">
+                <NavLink to='/thongtinnguoidung' className="dropdown-item" href="#">
                   <i className="fas fa-user fa-sm fa-fw mr-2 text-gray-400" />
                   Profile
-                </a>
+                </NavLink>
                 <div className="dropdown-divider" />
-                <a className="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                  <i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400" />
-                  Logout
-                </a>
+                {/* <a className="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal"> */}
+                <ModalLogout/>
+                                  {/* Logout
+                </a> */}
+
+                
+         
               </div>
             </li>
           </ul>

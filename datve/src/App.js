@@ -17,6 +17,7 @@ import QuanLyNguoiDungAdmin from './components/QuanLyNguoiDungAdmin/QuanLyNguoiD
 import HeaderAdmin from './components/HeaderAdmin/HeaderAdmin';
 import QuanLyPhimAdmin from './components/QuanLyPhimAdmin/QuanLyPhimAdmin';
 import ThongTinCaNhanPage from './components/pages/ThongTinCaNhanPage/ThongTinCaNhanPage';
+import ModalLogout from './components/NotiAdmin/ModalLogout/ModalLogout';
 
 
 function App() {
@@ -32,6 +33,8 @@ function App() {
     <Route exact path='/admin/register' component = {AddUserAdmin}/> */}
     {/* <Route exact path='/aaa' component={ThongTinCaNhanPage}/> */}
     <Route component={HomePage} path="/" exact />
+    <Route component={ModalLogout} path="/log" exact />
+
     <PublicRoute restricted={true} component={ThongTinCaNhanPage} path="/thongtinnguoidung" exact />
     <Route component={RegisterPage} path="/register" exact />
     <PrivateRoute exact component={AddUserAdmin} path="/admin/register"  />
