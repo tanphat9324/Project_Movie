@@ -4,6 +4,8 @@ import React, { Component,Fragment, } from 'react';
 import {connect} from 'react-redux';
 import CanvasJSReact from './canvasjs.react';
 import NotiAdmin from '../NotiAdmin/NotiAdmin';
+import styles from './DashboardAdmin.module.css'
+import FooterAdmin from '../FooterAdmin/FooterAdmin';
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 class DashboardAdmin extends Component {
   constructor() {
@@ -75,11 +77,11 @@ class DashboardAdmin extends Component {
           </div>
           <div className="row">
             <div className="col-xl-3 col-md-6 mb-4">
-              <div className="card border-left-primary shadow h-100 py-2">
+              <div className="card border-left-danger shadow h-100 py-2">
                 <div className="card-body">
                   <div className="row no-gutters align-items-center">
                     <div className="col mr-2">
-                      <div className="text-xs font-weight-bold text-primary text-uppercase mb-1">Earnings (Monthly)</div>
+                      <div className="text-xs font-weight-bold text-danger text-uppercase mb-1">Earnings (Monthly)</div>
                       <div className="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
                     </div>
                     <div className="col-auto">
@@ -148,7 +150,7 @@ class DashboardAdmin extends Component {
             <div className="col-xl-8 col-lg-7">
               <div className="card shadow mb-4">
                 <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 className="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+                  <h6 className="m-0 font-weight-bold text-danger">Earnings Overview</h6>
                   <div className="dropdown no-arrow">
                     <a className="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i className="fas fa-ellipsis-v fa-sm fa-fw text-gray-400" />
@@ -170,7 +172,7 @@ class DashboardAdmin extends Component {
             <div className="col-xl-4 col-lg-5">
               <div className="card shadow mb-4">
                 <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 className="m-0 font-weight-bold text-primary">Revenue Sources</h6>
+                  <h6 className="m-0 font-weight-bold text-danger">Revenue Sources</h6>
                 </div>
                 <div className="card-body">
                   <CanvasJSChart options = {options1} />     
@@ -182,7 +184,7 @@ class DashboardAdmin extends Component {
             <div className="col-lg-6 mb-4">
               <div className="card shadow mb-4">
                 <div className="card-header py-3">
-                  <h6 className="m-0 font-weight-bold text-primary">Projects</h6>
+                  <h6 className="m-0 font-weight-bold text-danger">Projects</h6>
                 </div>
                 <div className="card-body">
                   <h4 className="small font-weight-bold">Server Migration <span className="float-right">20%</span></h4>
@@ -261,7 +263,7 @@ class DashboardAdmin extends Component {
             <div className="col-lg-6 mb-4">
               <div className="card shadow mb-4">
                 <div className="card-header py-3">
-                  <h6 className="m-0 font-weight-bold text-primary">Illustrations</h6>
+                  <h6 className="m-0 font-weight-bold text-danger">Illustrations</h6>
                 </div>
                 <div className="card-body">
                   <div className="text-center">
@@ -273,7 +275,7 @@ class DashboardAdmin extends Component {
               </div>
               <div className="card shadow mb-4">
                 <div className="card-header py-3">
-                  <h6 className="m-0 font-weight-bold text-primary">Development Approach</h6>
+                  <h6 className="m-0 font-weight-bold text-danger">Development Approach</h6>
                 </div>
                 <div className="card-body">
                   <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce CSS bloat and poor page performance. Custom CSS classes are used to create custom components and custom utility classes.</p>
@@ -284,13 +286,7 @@ class DashboardAdmin extends Component {
           </div>
         </div>
       </div>
-      <footer className="sticky-footer bg-white">
-        <div className="container my-auto">
-          <div className="copyright text-center my-auto">
-            <span>Copyright © Your Website 2019</span>
-          </div>
-        </div>
-      </footer>
+          <FooterAdmin/>
     </div>
   </div>
   <a className="scroll-to-top rounded" href="#page-top">

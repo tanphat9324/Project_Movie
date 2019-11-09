@@ -15,6 +15,7 @@ import ThongTinLichChieuAdmin from './ThongTinLichChieuAdmin/ThongTinLichChieuAd
 import NotiAdmin from '../NotiAdmin/NotiAdmin';
 import './sb-admin-2.min.css'
 import styles from './QuanLyPhimAdmin.module.css';
+import FooterAdmin from '../FooterAdmin/FooterAdmin';
 
 class QuanLyPhimAdmin extends Component {
     constructor(props){
@@ -72,20 +73,6 @@ class QuanLyPhimAdmin extends Component {
     // })
     }
         render() {
-          const menu = (
-            <Menu>
-              <Menu.Item>
-                <a target="_blank" rel="noopener noreferrer" href="#">
-                  Cập nhật thông tin
-                </a>
-              </Menu.Item>
-              <Menu.Item>
-                <NavLink to='/login' onClick={()=>this.logOut()} target="_blank" rel="noopener noreferrer">
-                Đăng xuất
-                </NavLink>
-              </Menu.Item>
-            </Menu>
-          );
             const columns =[
                 {
                   title: 'Mã phim',
@@ -152,8 +139,8 @@ class QuanLyPhimAdmin extends Component {
                 <Fragment>
         <div id="page-top">
   <div id="wrapper">
-    <div style={{width:'86%',margin:'auto 0 auto auto'}} id="content-wrapper" className="d-flex flex-column">
-      <div id="content">
+    <div style={{width:'86%',margin:'auto 0 0 auto'}} id="content-wrapper" className="d-flex flex-column">
+      <div style={{height:'100vh'}} id="content">
           <NotiAdmin/>
         <div className="container-fluid">
         <div className={styles.quanLyPhimTable}>
@@ -174,40 +161,17 @@ class QuanLyPhimAdmin extends Component {
 
         </div>
       </div>
-      <footer className="sticky-footer bg-white">
-        <div className="container my-auto">
-          <div className="copyright text-center my-auto">
-            <span>Copyright © Your Website 2019</span>
-          </div>
-        </div>
-      </footer>
+      <div style={{position:'absolute',bottom:'0',width:'86%'}}>
+              <FooterAdmin/>
+      </div> 
     </div>
   </div>
-  {/* <a className="scroll-to-top rounded" href="#page-top">
-    <i className="fas fa-angle-up" />
-  </a>
-  <div className="modal fade" id="logoutModal" tabIndex={-1} role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div className="modal-dialog" role="document">
-      <div className="modal-content">
-        <div className="modal-header">
-          <h5 className="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-          <button className="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div className="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-        <div className="modal-footer">
-          <button className="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a className="btn btn-primary" href="login.html">Logout</a>
-        </div>
-      </div>
-    </div>
-  </div> */}
 </div>
 
     <Modal
               title="Thông tin lịch chiếu"
               centered
+              width='1050px'
               visible={this.state.modal3Visible}
               // okText="Cap Nhat"
               // onOk={() => this.setModal2Visible(false)}
@@ -219,20 +183,26 @@ class QuanLyPhimAdmin extends Component {
     <Modal
               title="Cập nhật phim"
               centered
+              width='550px'
+              className={styles.modalCapNhat}	              
               visible={this.state.modal2Visible}
               // okText="Cap Nhat"
               // onOk={() => this.setModal2Visible(false)}
               onCancel={() => this.setModal2Visible(false)}
               footer={null}
             >
-              <CapNhatPhimAdmin/>
+                <div style={{paddingLeft:'20px'}}>
+                <CapNhatPhimAdmin/>
+
+                </div>
+
             </Modal>
 
             <Modal
               title="Thêm phim"
               centered
               visible={this.state.modal1Visible}
-              // okText="Cap Nhat"
+style={{color:'red'}}              // okText="Cap Nhat"
               // onOk={() => this.setModal2Visible(false)}
               onCancel={() => this.setModal1Visible(false)}
               footer={null}

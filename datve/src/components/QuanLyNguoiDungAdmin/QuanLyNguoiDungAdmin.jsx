@@ -2,22 +2,28 @@
 import React, { Component,Fragment } from 'react'
 import {NavLink} from 'react-router-dom';
 import {connect} from 'react-redux';
-import { Table, Divider } from 'antd';
+import { Table, Divider,Tag  } from 'antd';
 import { layDanhSachNguoiDungAction, chinhSuaNguoiDungAction, xoaNguoiDungAction, timKiemNguoiDungAction, nguoiDangNhap } from '../../redux/actions/QuanLyNguoiDungAction';
 import { Modal,Menu,Dropdown } from 'antd';
 import ModalEditUser from '../ModalEditUser/ModalEditUser';
 import styles from './QuanLyNguoiDungAdmin.module.css';
 import {logout} from '../../utils/index';
 import NotiAdmin from '../NotiAdmin/NotiAdmin';
+import FooterAdmin from '../FooterAdmin/FooterAdmin';
+import AddUserAdmin from '../AddUserAdmin/AddUserAdmin';
 
 class QuanLyNguoiDungAdmin extends Component {
   constructor(props){
     super(props);
     this.state={
+      modal1Visible: false,
       modal2Visible: false,
       tenDangNhap:this.props.nguoiDangNhap
       // nguoiDungDangNhap:this.props.nguoiDangNhap
     }
+  }
+  setModal1Visible(modal1Visible) {
+    this.setState({ modal1Visible });
   }
   setModal2Visible(modal2Visible) {
     this.setState({ modal2Visible });
@@ -55,20 +61,20 @@ componentWillReceiveProps(nextProps){
     render() {
       console.log('nguoi dang nhap',this.props.nguoiDangNhap);
       
-      const menu = (
-        <Menu>
-          <Menu.Item>
-            <a target="_blank" rel="noopener noreferrer" href="#">
-              Cập nhật thông tin
-            </a>
-          </Menu.Item>
-          <Menu.Item>
-            <a onClick={()=>logout()} target="_blank" rel="noopener noreferrer" href="#">
-            Đăng xuất
-            </a>
-          </Menu.Item>
-        </Menu>
-      );
+      // const menu = (
+      //   <Menu>
+      //     <Menu.Item>
+      //       <a target="_blank" rel="noopener noreferrer" href="#">
+      //         Cập nhật thông tin
+      //       </a>
+      //     </Menu.Item>
+      //     <Menu.Item>
+      //       <a onClick={()=>logout()} target="_blank" rel="noopener noreferrer" href="#">
+      //       Đăng xuất
+      //       </a>
+      //     </Menu.Item>
+      //   </Menu>
+      // );
         const columns =[
             {
               title: 'STT',
@@ -79,7 +85,18 @@ componentWillReceiveProps(nextProps){
               title: 'Tài Khoản',
               dataIndex: 'taiKhoan',
               key: 'taikhoan',
-              render: text => <a>{text}</a>,
+              render: (text,record) =>{
+                let loai = record.maLoaiNguoiDung === 'QuanTri' ? 'Admin' : 'User';
+                let color = loai === 'Admin'? '#f50':'#2db7f5';
+                return (
+                  <span>
+                <Tag color={color} key={loai}>
+              {loai.toUpperCase()}
+            </Tag>
+            {text}
+                </span>
+                )
+              }                        
             },
             {
               title: 'Mật Khẩu',
@@ -118,20 +135,22 @@ componentWillReceiveProps(nextProps){
             },
           ]; 
           const data = this.props.danhSachNguoiDung;
+          console.log(data);
+          
         return (
             <Fragment>
         <div id="page-top">
   <div id="wrapper">
     <div style={{width:'86%',margin:'auto 0 auto auto'}} id="content-wrapper" className="d-flex flex-column">
-      <div id="content">
+      <div style={{height:'100vh'}} id="content">
           <NotiAdmin/>
         <div className="container-fluid">
         <div className={styles.quanLyPhimTable}>
  <h5 className={styles.title}>QUẢN LÝ NGƯỜI DÙNG</h5>
  <div className={styles.searchBox}>
-      <NavLink to="/admin/register" className={`${styles.themNguoiDung} btn btn-success`}>
+      <button onClick={() => {this.setModal1Visible(true)}} className={`${styles.themNguoiDung} btn btn-success`}>
         + Thêm người dùng
-      </NavLink>
+      </button>
         <form className="form-inline" onSubmit={this.handleSubmit}>
          <a onClick={()=>this.props.layDanhSachNguoiDung()}><img style={{width:'50px'}} src="./assets/images/spinner.svg" alt=""/></a> 
       <input className="form-control mr-sm-2 abc" onChange={this.handleChange} name="inputSearch" type="search" placeholder="Search" aria-label="Search" />
@@ -144,13 +163,9 @@ componentWillReceiveProps(nextProps){
 </div>
         </div>
       </div>
-      <footer className="sticky-footer bg-white">
-        <div className="container my-auto">
-          <div className="copyright text-center my-auto">
-            <span>Copyright © Your Website 2019</span>
-          </div>
-        </div>
-      </footer>
+      <div style={{marginTop:'30px',position:'absolute',bottom:'0',width:'86%'}}>
+              <FooterAdmin/>
+      </div> 
     </div>
   </div>
   <a className="scroll-to-top rounded" href="#page-top">
@@ -175,7 +190,20 @@ componentWillReceiveProps(nextProps){
   </div>
 </div>
 <Modal
+          title="Thêm người dùng"
+          width='350px'
+          centered
+          visible={this.state.modal1Visible}
+          // okText="Cap Nhat"
+          // onOk={() => this.setModal2Visible(false)}
+          onCancel={() => this.setModal1Visible(false)}
+          footer={null}
+        >
+         <AddUserAdmin/>
+        </Modal>
+<Modal
           title="Cập nhật thông tin người dùng"
+          width='350px'
           centered
           visible={this.state.modal2Visible}
           // okText="Cap Nhat"

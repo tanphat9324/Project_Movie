@@ -2,10 +2,20 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component, Fragment } from "react";
 import {NavLink} from 'react-router-dom';
-import 'react-id-swiper/lib/styles/css/swiper.css';
 import "./Header.css";
+import {isLogin} from '../../utils/index';
+
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import DropDownLogin from "./DropDownLogin/DropDownLogin";
 
 export default class Header extends Component {
+// kiemTraDangNhap=() => {
+//   if(isLogin){
+//     return(
+    
+//     )
+//   }
+// }
   render() {
     return (
       <Fragment>
@@ -31,16 +41,17 @@ export default class Header extends Component {
             </div>
             <div className="header_login">
               <ul className="login_info">
-                <li>
-                  <img src="./assets/images/user.png" />
-                  <NavLink to="/login" href="#">Đăng Nhập</NavLink>
-                </li>
-                <li>
+              <DropDownLogin/>
+
+                {/* <li style={{padding:'20px'}}>
+                  <DropDownLogin/>
+                </li> */}
+                {/* <li>
                   <img src="./assets/images/location-header.png" />
                   <a href="#">Hồ Chí Minh</a>
-                </li>
+                </li> */}
               </ul>
-              <div id="navbar-main">
+              {/* <div id="navbar-main">
                 <div id="sidebar-main-trigger" className="icon float-right">
                   <img
                     src="./assets/images/icon-menu-24px-x2.png"
@@ -48,51 +59,10 @@ export default class Header extends Component {
                     alt="Menu Icon"
                   />
                 </div>
-              </div>
+              </div> */}
             </div>
           </section>
-          {/* <div className="sidebar main right" id="sidebar-main">
-            <div className="wrapper">
-              <nav>
-                <ul>
-                  <li className="title">Playground</li>
-                  <li>
-                    <a href="#">Home</a>
-                  </li>
-                  <li>
-                    <a href="#">Right</a>
-                  </li>
-                  <li>
-                    <a href="#">Right Top</a>
-                  </li>
-                  <li>
-                    <a href="#">Left</a>
-                  </li>
-                  <li>
-                    <a href="#">Left Top</a>
-                  </li>
-                  <li>
-                    <a href="#">Right and Left</a>
-                  </li>
-                  <li>
-                    <a href="#">Init Opened</a>
-                  </li>
-                  <li>
-                    <a href="#">No Mask</a>
-                  </li>
-                  <li>
-                    <a href="#">Allow Scrolling</a>
-                  </li>
-                  <li>
-                    <a href="#">Custom Functions</a>
-                  </li>
-                  <li>
-                    <a href="#">Ajax</a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          </div> */}
+         
       </Fragment>
     );
   }

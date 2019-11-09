@@ -1,7 +1,4 @@
-/* .left{
-    width: 50%;
-    margin:0 auto;
+.button{
+    display: flex;
+    justify-content: center;
 }
-input{
-    width: 100%;
-} */

@@ -5,14 +5,16 @@
     background: url(/assets/images/bg5.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-
-    position: fixed; 
+    width: 100%;
+    margin:auto 0 auto auto;
+    /* position: fixed; 
     top: 0; 
-    left: 0; 
+    left: 0;  */
     /* Preserve aspet ratio */
-    min-width: 100%;
+    /* min-width: 100%; */
     min-height: 100%;
     /* background-color: rgb(255, 75, 75); */
+    height: 100vh;
 }
 .backGround_Cover{
 /* background-image: url('/assets/images/TTCaNhan.jpg');
@@ -61,16 +63,19 @@ border-radius: 15px;
     bottom: 3%;
     left: 20%;
     font-size: 25px;
-    color: white;
+    color: rgb(123, 255, 0);
+    font-weight: 500;
 }
 .typeUser{
     font-size: 15px;
+    color:white;
+    font-style: italic;
 }
 .background_Info{
     padding-top: 5%;
     padding-bottom: 4.5%;
 
-    margin:15px 0;
+    margin-top:15px;
     border-radius: 15px;
     /* padding:8% 0; */
     /* background-color: red; */
@@ -88,7 +93,7 @@ position: relative;
     position: absolute;
     bottom: 5%;
     right: 41%;
-    font-size: 20px;
+    font-size: 18px;
     z-index: 10;
     color:white;
 }
@@ -149,7 +154,7 @@ position: relative;
 .user_profile{
     /* padding-top: 40px; */
     color:black;
-    width: 90%;
+    width: 100%;
     margin:0 auto;
     margin-left: unset;
     margin-right: unset;

@@ -121,7 +121,7 @@ export default class ThongTinLichChieuAdmin extends Component {
               </Form.Item>
 
                 <div>
-                <Table style={{width: 1000}} columns={columns} bordered='true'  dataSource={data} pagination={{defaultCurrent:1, pageSize: 5}} /> 
+                <Table style={{width: '1000px'}} columns={columns} bordered='true'  dataSource={data} pagination={{defaultCurrent:1, pageSize: 5}} /> 
                 </div>
 
                 <Form.Item

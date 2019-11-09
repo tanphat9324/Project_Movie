@@ -33,8 +33,8 @@ background-color:#303030 ;
 
 }
 .az_logo{
-    text-decoration: none;
-    color:#fbae1c;
+    text-decoration: none!important;
+    color:white;
 }
 .az_logo>span{
     padding-left: 10px;
@@ -80,7 +80,7 @@ background-color:#303030 ;
 .az_sidebar_loggedin .media_body h5 {
     font-weight: 700;
     /* font-size: 14px; */
-    color: #fbae1c;
+    color: #FD3550;
     margin-bottom: 2px;
 }
 .az-sidebar-indigo-dark .az_sidebar_loggedin .media_body span {
@@ -145,6 +145,10 @@ background-color:#303030 ;
     padding:10px 0 10px 0;
     transition: all 0.3s;
 }
+/* .quanLy li.active{
+    color:red;
+    background-color:red ;
+} */
 .quanLy li:hover{
     color:rgb(0, 0, 0);
     background-color:#303030 ;

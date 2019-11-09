@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import { capNhatPhimAction } from '../../../redux/actions/QuanLyPhimAction';
 import moment from 'moment';
 import 'dayjs/locale/es' // load on demand
-
+import styles from './CapNhatPhimAdmin.module.css'
 class CapNhatPhimAdmin extends Component {
     constructor(props){
         super(props);
@@ -163,38 +163,40 @@ class CapNhatPhimAdmin extends Component {
           <Fragment>
             <Form {...formItemLayout} onSubmit={this.handleSubmit}>
         
-                <Form.Item help={this.state.errors.maPhim1} label="Mã phim:" hasFeedback validateStatus={this.state.errors.maPhim}>
+                <Form.Item style={{width:'115%'}} help={this.state.errors.maPhim1} label="Mã phim:" hasFeedback validateStatus={this.state.errors.maPhim}>
                 <Input  type="tel" value={this.state.phim.maPhim} name="maPhim" placeholder="Nhập mã phim" onChange={this.handleChange} onKeyUp={this.handleErrors} onBlur={this.handleErrors} id="success" />
               </Form.Item>
     
-              <Form.Item help={this.state.errors.tenPhim1} label="Tên phim:" hasFeedback validateStatus={this.state.errors.tenPhim}>
+              <Form.Item style={{width:'115%'}} help={this.state.errors.tenPhim1} label="Tên phim:" hasFeedback validateStatus={this.state.errors.tenPhim}>
                 <Input type="text" value={this.state.phim.tenPhim} name="tenPhim" placeholder="Nhập tên phim" onChange={this.handleChange} onKeyUp={this.handleErrors} onBlur={this.handleErrors} id="success" />
               </Form.Item>
     
-              <Form.Item help={this.state.errors.biDanh1} label="Bí danh:" hasFeedback validateStatus={this.state.errors.biDanh}>
+              <Form.Item style={{width:'115%'}} help={this.state.errors.biDanh1} label="Bí danh:" hasFeedback validateStatus={this.state.errors.biDanh}>
                 <Input type="text" value={this.state.phim.biDanh} name="biDanh" placeholder="Nhập bí danh" onChange={this.handleChange} onKeyUp={this.handleErrors} onBlur={this.handleErrors} id="success" />
               </Form.Item>
     
-                <Form.Item>
-                <input type="file" name="hinhAnh" onChange={this.handleChange} />
+                <Form.Item style={{width:'115%'}}>
+                <input id="upload" style={{width:'80%',margin:'0 auto'}} type="file" name="hinhAnh" onChange={this.handleChange} />
+                {/* <label htmlFor="upload" className={styles.upLoad}>upload file</label> */}
                 </Form.Item>
-    
-                <Form.Item help={this.state.errors.trailer1} label="Trailer:" hasFeedback validateStatus={this.state.errors.trailer}>
+                
+                <Form.Item style={{width:'115%'}} help={this.state.errors.trailer1} label="Trailer:" hasFeedback validateStatus={this.state.errors.trailer}>
                 <Input type="text" value={this.state.phim.trailer} name="trailer" placeholder="Nhập url trailer" onChange={this.handleChange} onKeyUp={this.handleErrors} onBlur={this.handleErrors} id="success" />
               </Form.Item>
     
-            <Form.Item label="Ngày khởi chiếu:">
-            <DatePicker onChange={this.onChange} defaultValue={moment(a.toString(), dateFormat)} format={dateFormat} />
+            <Form.Item style={{width:'115%'}} label="Ngày khởi chiếu:">
+            <DatePicker style={{width:'100%'}} onChange={this.onChange} defaultValue={moment(a.toString(), dateFormat)} format={dateFormat} />
             </Form.Item>
     
-              <Form.Item label="Đánh giá:">
+              <Form.Item style={{width:'115%'}} label="Đánh giá:">
               <span>
             <Rate tooltips={desc} onChange={this.handleChangeRate} value={danhGia} />
             {danhGia ? <span className="ant-rate-text">{desc[danhGia - 1]}</span> : ''}
           </span>
             </Form.Item>
               
-                <Form.Item help={this.state.errors.help} label="Mô tả:" hasFeedback>
+                <Form.Item               style={{width:'120%'}}
+ help={this.state.errors.help} label="Mô tả:" hasFeedback>
               <TextArea
               name="moTa"
               onChange={this.handleChange}
@@ -210,7 +212,7 @@ class CapNhatPhimAdmin extends Component {
                 sm: { span: 16, offset: 8 },
               }}
             >
-              <Button type="primary" htmlType="submit">
+              <Button className="btn-success" style={{fontSize:'18px'}} type="primary" htmlType="submit">
                 Thêm
               </Button>
             </Form.Item>

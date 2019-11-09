@@ -5,8 +5,37 @@ import {NavLink} from 'react-router-dom';
 import {connect} from 'react-redux';
 import styles from './HeaderAdmin.module.css';
 import { nguoiDangNhap } from '../../redux/actions/QuanLyNguoiDungAction';
+import {isLoginUser} from '../../utils/index';
 
  class HeaderAdmin extends Component {
+
+kiemTraDangNhap=()=>{  
+ if(!isLoginUser){
+  return(
+    <Fragment>
+<div className={styles.sidebar_heading}>
+    Quản lý
+  </div>
+  <ul className={styles.quanLy}>
+    <li className="nav-item">
+      <NavLink to="/admin/quanlyphim" className="nav-link">
+        <i className="fas fa-fw fa-chart-area" />
+        <span>Quản lý phim</span></NavLink>
+    </li>
+    <li className="nav-item active">
+      <NavLink to="/admin/quanlynguoidung" className="nav-link">
+        <i className="fas fa-fw fa-table" />
+        <span>Quản lý người dùng</span></NavLink>
+    </li>
+  </ul>
+    </Fragment>
+  )
+ }else{
+   return(
+     <Fragment></Fragment>
+   )
+ }
+}  
   componentDidMount(){
     this.props.hoTenAdmin()
   }
@@ -24,7 +53,7 @@ import { nguoiDangNhap } from '../../redux/actions/QuanLyNguoiDungAction';
       <div className={`${styles.az_img_user} online`}><img src="../assets/images/admin.png" alt /></div>
       <div className={styles.media_body}>
         <h5>{this.props.userLogin.hoTen}</h5>
-        <span>Admin Member</span>
+        <span style={{fontStyle:'italic'}}>Admin Member</span>
       </div>
     </div>
     <hr className={`${styles.sidebar_divider} my-0`} />
@@ -34,7 +63,10 @@ import { nguoiDangNhap } from '../../redux/actions/QuanLyNguoiDungAction';
     </NavLink>
     <hr className={`${styles.sidebar_divider} my-0`} />
     <hr className={styles.sidebar_divider} />
-    <div className={styles.sidebar_heading}>
+   
+    {this.kiemTraDangNhap()}
+
+    {/* <div className={styles.sidebar_heading}>
       Quản lý
     </div>
     <ul className={styles.quanLy}>
@@ -48,7 +80,8 @@ import { nguoiDangNhap } from '../../redux/actions/QuanLyNguoiDungAction';
           <i className="fas fa-fw fa-table" />
           <span>Quản lý người dùng</span></NavLink>
       </li>
-    </ul>
+    </ul> */}
+
   </div>
             </Fragment>
         )

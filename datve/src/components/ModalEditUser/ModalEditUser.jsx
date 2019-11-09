@@ -2,6 +2,8 @@ import React, { Component,Fragment } from 'react';
 import {connect} from 'react-redux';
 import styles from './ModalEditUser.module.css';
 import { CapNhatNguoiDungAction } from '../../redux/actions/QuanLyNguoiDungAction';
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+
 // import { Modal } from 'antd';
 
 class ModalEditUser extends Component {
@@ -30,16 +32,16 @@ class ModalEditUser extends Component {
             }
         }
         if(name === 'matKhau'){
-            let regex = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}$/;
+            let regex = /^[a-z0-9_-]{3,16}$/;
             if(!regex.test(value)){
-                loi = "8 kí tự, thường, hoa & kí tự đặc biệt"
+                loi = "3-6 kí tự"
             }
         }
         if(name === 'hoTen'){
-            // let regex=/^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s]$/;
-            // if(!regex.test(value)){
-            //     loi+="Sai định dạng";
-            // }
+            let regex = /^[a-z_-]{3,16}$/;
+            if(!regex.test(value)){
+                loi = "3 kí tự trở lên";
+            }
         }
         if(name === "email"){
             // let regex = /^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@
@@ -74,42 +76,52 @@ class ModalEditUser extends Component {
         })
       }
 
-//         static getDerivedStateFromProps(nextProps, nextState) {
-//     // Hàm này không sử dụng được con trỏ this vì nó không thuộc đối tượng component này (Khái niệm static method)
-//     let nextStateUpdate = {
-//       user:{...nextProps.NguoiDungSua},
-//       errors:{
-//         taiKhoan:'',
-//         matKhau:'',
-//         hoTen:'',
-//         email:'',
-//         soDt:''
-//       }
-//     }
-//     return nextStateUpdate;
-//   }
-    render() {    
-        console.log("1");
-            
+    render() {                
         return (
             <Fragment>
-                 <form className={styles.left} onSubmit={this.handleSubmit}>
-                    <input type="text" disabled name="taiKhoan" value={this.state.user.taiKhoan} onChange={this.handleChange} onKeyUp={this.handleErrors} onBlur={this.handleErrors} placeholder="Tài Khoản" />
-                    {/* {this.state.errors.taiKhoan !== '' ? <div className="alert alert-danger">{this.state.errors.taiKhoan}</div> : ''} */}
+                 <Form className={styles.left} onSubmit={this.handleSubmit}>
 
-                    <input type="password" name="matKhau" value={this.state.user.matKhau} onChange={this.handleChange} onKeyUp={this.handleErrors} onBlur={this.handleErrors} placeholder="Password" />
-                    {/* {this.state.errors.matKhau !== '' ? <div className="alert alert-danger">{this.state.errors.matKhau}</div> : ''} */}
+                 <FormGroup>
+                    <Label for="exampleEmail">Tài khoản:</Label>
+                    <Input disabled name="taiKhoan" value={this.state.user.taiKhoan} onChange={this.handleChange} onKeyUp={this.handleErrors} onBlur={this.handleErrors} placeholder="Tài Khoản" />
+                    {this.state.errors.taiKhoan !== '' ? <div className="alert alert-danger">{this.state.errors.taiKhoan}</div> : ''}
+                </FormGroup>
 
-                    {/* <input type="password" name="matKhau2" onChange={this.handleChange} placeholder="ReType Password" /> */}
-                    <input type="text" name="hoTen" value={this.state.user.hoTen} onChange={this.handleChange} onKeyUp={this.handleErrors} onBlur={this.handleErrors} placeholder="Họ Tên" />
-                    {/* {this.state.errors.hoTen !== '' ? <div className="alert alert-danger">{this.state.errors.hoTen}</div> : ''} */}
+                <FormGroup>
+                    <Label for="exampleEmail">Mật khẩu:</Label>
+                    <Input type="password" name="matKhau" value={this.state.user.matKhau} onChange={this.handleChange} onKeyUp={this.handleErrors} onBlur={this.handleErrors} placeholder="Password" />
+                    {this.state.errors.matKhau !== '' ? <div className="alert alert-danger">{this.state.errors.matKhau}</div> : ''}
+                </FormGroup>
 
-                    <input type="email" name="email" value={this.state.user.email} onChange={this.handleChange} onKeyUp={this.handleErrors} onBlur={this.handleErrors} placeholder="E-mail" />
-                    {/* {this.state.errors.email !== '' ? <div className="alert alert-danger">{this.state.errors.email}</div> : ''} */}
+                <FormGroup>
+                    <Label for="exampleEmail">Họ tên:</Label>
+                    <Input type="text" name="hoTen" value={this.state.user.hoTen} onChange={this.handleChange} onKeyUp={this.handleErrors} onBlur={this.handleErrors} placeholder="Họ Tên" />
+                    {this.state.errors.hoTen !== '' ? <div className="alert alert-danger">{this.state.errors.hoTen}</div> : ''}
+                </FormGroup>
 
-                    <input type="tel" name="soDt" value={this.state.user.soDt} onChange={this.handleChange} onKeyUp={this.handleErrors} onBlur={this.handleErrors} placeholder="Telephone" />
-                    <button className="register_button btn" type="submit" name="signup_submit" value="Sign me up">Đăng ký</button>
-                    </form>
+                <FormGroup>
+                    <Label for="exampleSelect">Mã loại người dùng:</Label>
+                    <Input type="select" value={this.state.user.maLoaiNguoiDung} onChange={this.handleChange} name="maLoaiNguoiDung" id="exampleSelect">
+                    <option value="QuanTri">Quản trị</option>
+                    <option value="KhachHang">Khách hàng</option>
+                    </Input>
+                </FormGroup>
+
+                <FormGroup>
+                    <Label for="exampleEmail">Email:</Label>
+                    <Input type="email" name="email" value={this.state.user.email} onChange={this.handleChange} onKeyUp={this.handleErrors} onBlur={this.handleErrors} placeholder="E-mail" />
+                    {this.state.errors.email !== '' ? <div className="alert alert-danger">{this.state.errors.email}</div> : ''}
+                </FormGroup>
+                
+                <FormGroup>
+                    <Label for="exampleEmail">Số điện thoại:</Label>
+                    <Input type="tel" name="soDt" value={this.state.user.soDt} onChange={this.handleChange} onKeyUp={this.handleErrors} onBlur={this.handleErrors} placeholder="Telephone" />
+                    {this.state.errors.email !== '' ? <div className="alert alert-danger">{this.state.errors.email}</div> : ''}
+                </FormGroup>
+                   <div className={styles.button}>
+                   <Button className="btn btn-success" type="submit">Cập nhật</Button>
+                   </div>
+                    </Form>
             </Fragment>
         )
     }

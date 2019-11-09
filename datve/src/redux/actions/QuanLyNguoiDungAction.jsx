@@ -122,6 +122,7 @@ export const CapNhatNguoiDungAction = thongTinNguoiDung => {
     })
       .then(res => {
         console.log('thanh cong cap nhat');
+        dispatch(layDanhSachNguoiDungAction())
       })
       .catch(err => {
         // console.log(err.response.data);
@@ -141,12 +142,14 @@ export const addUserAdminAction = thongTinDangKy => {
       .then(result => {
         console.log(result.data);
         swal.fire({
-          position: "top-end",
+          position: "center",
           type: "success",
           title: "Your work has been saved",
           showConfirmButton: false,
           timer: 1500
-        });
+        }).then(
+          dispatch(layDanhSachNguoiDungAction())
+        );
       })
       .catch(err => {
         //    console.log(err.response.data);

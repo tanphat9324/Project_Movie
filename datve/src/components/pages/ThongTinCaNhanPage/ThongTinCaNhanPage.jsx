@@ -3,14 +3,13 @@ import { Tabs } from 'antd';
 import 'hover.css';
 import Header from '../../Header/Header';
 import styles from './ThongTinCaNhanPage.module.css';
-import './antd.css';
 import {connect} from 'react-redux';
 import { Modal, Button } from 'antd';
 import ModalTTCaNhan from './ModalTTCaNhan/ModalTTCaNhan';
 import { nguoiDangNhap } from '../../../redux/actions/QuanLyNguoiDungAction';
 import HeaderAdmin from '../../HeaderAdmin/HeaderAdmin';
 import NotiAdmin from '../../NotiAdmin/NotiAdmin';
-import './sb-admin-2.min.css'
+// import './sb-admin-2.min.css'
  class ThongTinCaNhanPage extends Component {
      callback=(key)=> {
         console.log(key);
@@ -33,9 +32,11 @@ import './sb-admin-2.min.css'
 
         return (
             <Fragment>
+                <div style={{zIndex:'11',position:'fixed'}}>
                 <HeaderAdmin/>
+                </div>
 
-                <div style={{width:'86%',margin:'auto 0 auto auto'}}>
+                <div style={{zIndex:'10',width:'100%',margin:'auto 0 auto auto',position:'fixed'}}>
                 <NotiAdmin/>
                 </div>
                 
@@ -45,8 +46,8 @@ import './sb-admin-2.min.css'
                     <img src="./assets/images/coverf.jpg" alt=""/>
                     <div className={styles.backgroundLinear}/>
                     <div className={styles.name}>
-                    Lee Sang Hyeok
-                    <div className={styles.typeUser}>Admin</div>
+                    {this.props.TTNguoiDung.hoTen}
+                    <div className={styles.typeUser}>{this.props.TTNguoiDung.maLoaiNguoiDung}</div>
                     </div>
                     <div className={styles.avatar}>
                         <img src="./assets/images/zed.jpg" alt=""/>
@@ -63,10 +64,8 @@ import './sb-admin-2.min.css'
                 </div> 
                 </div>
                 </div>
+                
                 <div className={styles.background_Info}>
-                {/* <span>Level:</span>    */}
-
-
                 <div className={`${styles.user_profile} row`}>
                     <div className={`${styles.bgAround} col-md-3`}>
                     <div className={`${styles.profile}`}>
@@ -103,6 +102,7 @@ import './sb-admin-2.min.css'
                 </div>
                     </div>
                     <Modal
+                    // width='500px'
           title="Cập nhật thông tin cá nhân"
           centered
           visible={this.state.modal1Visible}

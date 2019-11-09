@@ -22,20 +22,10 @@ class NotiAdmin extends Component {
 
     return (
       <Fragment>
-        <nav className={`${styles.bgNav} navbar navbar-expand navbar-light bg-warning topbar mb-4 static-top shadow`}>
+        <nav className={`${styles.bgNav} navbar navbar-expand navbar-light topbar mb-4 static-top shadow`}>
           <button id="sidebarToggleTop" className="btn btn-link d-md-none rounded-circle mr-3">
             <i className="fa fa-bars" />
           </button>
-          {/* <form className="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-            <div className="input-group">
-              <input type="text" className="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
-              <div className="input-group-append">
-                <button className="btn btn-primary" type="button">
-                <img src="../assets/images/search.svg" style={{width:'15px',height:'15px'}} alt />
-                </button>
-              </div>
-            </div>
-          </form> */}
           <ul className="navbar-nav ml-auto">
             <li className="nav-item dropdown no-arrow d-sm-none">
               <a className="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -56,8 +46,8 @@ class NotiAdmin extends Component {
             </li>
             <li className="nav-item dropdown no-arrow mx-1">
               <a className="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img src="../assets/images/bell2.svg" style={{ width: '20px', height: '20px' }} alt />
-                <span style={{ padding: '4px 4px', fontSize: '14px' }} className="badge badge-danger badge-counter">3+</span>
+                <img src="../assets/images/bell2.svg" style={{ width: '22px', height: '25px' }} alt />
+                <span style={{ padding: '6px 8px', fontSize: '17px',borderRadius:'50%' }} className="badge badge-primary badge-counter">3</span>
               </a>
               <div className="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                 <h6 className="dropdown-header">
@@ -101,8 +91,8 @@ class NotiAdmin extends Component {
             </li>
             <li className="nav-item dropdown no-arrow mx-1">
               <a className="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img src="../assets/images/email2.svg" style={{ width: '20px', height: '20px' }} alt />
-                <span style={{ padding: '4px 4px', fontSize: '14px' }} className="badge badge-danger badge-counter">7</span>
+                <img src="../assets/images/email2.svg" style={{ width: '22px', height: '25px' }} alt />
+                <span style={{ padding: '6px 8px', fontSize: '17px',borderRadius:'50%' }} className="badge badge-primary badge-counter">7</span>
               </a>
               <div className="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
                 <h6 className="dropdown-header">
@@ -155,7 +145,7 @@ class NotiAdmin extends Component {
             <div className="topbar-divider d-none d-sm-block" />
             <li className="nav-item dropdown no-arrow">
               <a className="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span style={{ color: 'black' }} className="mr-2 d-none d-lg-inline small">{this.props.userLogin.taiKhoan}</span>
+                <span style={{ color: 'white',fontWeight:'500',fontSize:'16px' }} className="mr-2 d-none d-lg-inline small">Chào!, {this.props.userLogin.taiKhoan}</span>
                 <div className={`${styles.az_img_user} online`}><img src="../assets/images/admin.png" alt /></div>
               </a>
               <div className="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
