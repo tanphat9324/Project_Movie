@@ -5,12 +5,14 @@ import {NavLink} from 'react-router-dom';
 import {connect} from 'react-redux';
 import styles from './HeaderAdmin.module.css';
 import { nguoiDangNhap } from '../../redux/actions/QuanLyNguoiDungAction';
-import {isLoginUser} from '../../utils/index';
+import {isLoginAdmin} from '../../utils/index';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
  class HeaderAdmin extends Component {
 
 kiemTraDangNhap=()=>{  
- if(!isLoginUser){
+ if(isLoginAdmin){
   return(
     <Fragment>
 <div className={styles.sidebar_heading}>
@@ -38,11 +40,14 @@ kiemTraDangNhap=()=>{
 }  
   componentDidMount(){
     this.props.hoTenAdmin()
+    AOS.init({
+      duration : 2000
+    })
   }
     render() {
         return (
             <Fragment>
-   <div className={`${styles.content_left} ${styles.bg_gradient_primary}`}>
+   <div data-aos="fade-right" className={`${styles.content_left} ${styles.bg_gradient_primary}`}>
     <div className={styles.az_sidebar_header}>
       <NavLink to="/" title="Load all" className={styles.az_logo}>
         <img src="../assets/images/web-logo.png" alt />

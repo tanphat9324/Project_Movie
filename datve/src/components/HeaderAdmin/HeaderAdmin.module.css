@@ -1,14 +1,12 @@
 
 .content_left{
     position: fixed;
-    /* width: 100%; */
     width: 14%;
     height: 100vh;
     background-color: red;
-    /* height: 100vh; */
-    -webkit-box-shadow: 4px 0px 6px 0px rgba(0,0,0,0.51);
--moz-box-shadow: 4px 0px 6px 0px rgba(0,0,0,0.51);
-box-shadow: 4px 0px 6px 0px rgba(0,0,0,0.51);
+    -webkit-box-shadow: 0.25rem 0px 0.375rem 0px rgba(0,0,0,0.51);
+-moz-box-shadow: 0.25rem 0px 0.375rem 0px rgba(0,0,0,0.51);
+box-shadow: 0.25rem 0px 0.375rem 0px rgba(0,0,0,0.51);
 z-index: 10;
 }
 .sidebar_brand:hover{
@@ -18,15 +16,15 @@ background-color:#303030 ;
 }
 .az_sidebar_header {
     flex-shrink: 0;
-    height: 64px;
+    height: 4rem;
     display: flex;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 1.25rem;
 }
 .az_sidebar_header>a{
     text-decoration: none;
     font-weight: 700;
-    font-size: 22px;
+    font-size: 1.375rem;
 }
 .az_sidebar_header>a:hover{
     color:white;
@@ -37,26 +35,26 @@ background-color:#303030 ;
     color:white;
 }
 .az_logo>span{
-    padding-left: 10px;
+    padding-left: 0.625rem;
 }
 .az_logo>img{
-    width: 50px;
+    width: 3.125rem;
 
 }
 .az_sidebar_loggedin {
-    padding: 20px 20px;
+    padding: 1.25rem 1.25rem;
     display: flex;
     flex-shrink: 0;
 }
 .az_sidebar_loggedin .az_img_user,.header_avatar {
-    width: 36px;
-    height: 36px;
+    width: 2.25rem;
+    height: 2.25rem;
 }
 .az_img_user {
     display: block;
     position: relative;
-    width: 36px;
-    height: 36px;
+    width: 2.25rem;
+    height: 2.25rem;
     border-radius: 100%;
 }
 .az_img_user img {
@@ -71,7 +69,7 @@ background-color:#303030 ;
     border-style: none;
 } */
 .az_sidebar_loggedin .media_body {
-    margin-left: 12px;
+    margin-left: 0.75rem;
 }
 .az-sidebar-indigo-dark .az_sidebar_loggedin .media_body h5 {
     color: #fbae1c;
@@ -79,9 +77,9 @@ background-color:#303030 ;
 }
 .az_sidebar_loggedin .media_body h5 {
     font-weight: 700;
-    /* font-size: 14px; */
+    /* font-size: 10.25rem; */
     color: #FD3550;
-    margin-bottom: 2px;
+    margin-bottom: 0.125rem;
 }
 .az-sidebar-indigo-dark .az_sidebar_loggedin .media_body span {
     color: rgba(255, 255, 255, 0.5);
@@ -89,7 +87,7 @@ background-color:#303030 ;
 .az_sidebar_loggedin .media_body span {
     display: block;
     color: rgba(230, 228, 228, 0.924);
-    font-size: 14px;
+    font-size: 0.875rem;
 }
 .az_img_user.online::after {
     background-color: #3bb001;
@@ -99,8 +97,8 @@ background-color:#303030 ;
     position: absolute;
     bottom: 0;
     right: 3px;
-    width: 6px;
-    height: 6px;
+    width: 0.375rem;
+    height: 0.375rem;
     background-color: #3bb001;
     box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.95);
     border-radius: 100%;
@@ -109,7 +107,7 @@ background-color:#303030 ;
     flex: 1}
 .sidebar_brand{
     text-decoration: none;
-    padding:15px 16px;
+    padding:0.9375rem 1rem;
     text-transform: uppercase;
     letter-spacing: .05rem;
     font-size: 1rem;
@@ -134,7 +132,7 @@ background-color:#303030 ;
     color: rgba(255,255,255,.4);
     padding: 0 1rem;
     font-weight: 600;
-    font-size: 11px;
+    font-size: 0.6875rem;
     text-transform: uppercase;
 
 }
@@ -142,7 +140,7 @@ background-color:#303030 ;
     list-style-type: none;
 }
 .quanLy li{
-    padding:10px 0 10px 0;
+    padding:0.625rem 0 0.625rem 0;
     transition: all 0.3s;
 }
 /* .quanLy li.active{
@@ -155,7 +153,7 @@ background-color:#303030 ;
 }
 .quanLy li>a{
     color:#a1a1a1!important;
-    font-size: 16px;
+    font-size: 1rem;
     /* padding:0; */
 }
 .quanLy li>a:hover{
@@ -165,20 +163,20 @@ background-color:#303030 ;
     width: 86%;
     background-color: #EBEDF2;
     position: relative;
-    min-height: 100vh;    /* padding-top:50px; */
+    min-height: 100vh;    /* padding-top:3.125rem; */
 }
 .quanLyPhimTable{
     background-color: white!important;
     width: 90%;
     margin:0 auto;
     border-radius: 7px;
-    margin-top:50px;
+    margin-top:3.125rem;
 
 }
 .table{
     background-color: white!important;
-    padding:0 20px;
-    padding-top: 20px;
+    padding:0 1.25rem;
+    padding-top: 1.25rem;
     border-bottom-right-radius: 7px;
     border-bottom-left-radius: 7px;
 }
@@ -193,10 +191,9 @@ background-color:#303030 ;
     border-top-right-radius: 7px;
 }
 .searchBox{
-    padding:20px 20px 0 20px;
+    padding:1.25rem 1.25rem 0 1.25rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.themNguoiDung{
-}
+

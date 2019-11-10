@@ -16,6 +16,8 @@ import NotiAdmin from '../NotiAdmin/NotiAdmin';
 import './sb-admin-2.min.css'
 import styles from './QuanLyPhimAdmin.module.css';
 import FooterAdmin from '../FooterAdmin/FooterAdmin';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 class QuanLyPhimAdmin extends Component {
     constructor(props){
@@ -41,6 +43,9 @@ class QuanLyPhimAdmin extends Component {
       componentDidMount(){
         this.props.layDanhSachPhim();
         this.props.nguoiDungDangNhap();
+        AOS.init({
+          duration : 2000
+        })
       }
 
       handleSubmit = (e) =>{
@@ -67,10 +72,6 @@ class QuanLyPhimAdmin extends Component {
     }
     logOut=()=>{
       logout();
-    //  this.props.history.push('/login') 
-    //   logout().then(()=>{
-    //     return  <Redirect to='/login'/>
-    // })
     }
         render() {
             const columns =[
@@ -139,11 +140,11 @@ class QuanLyPhimAdmin extends Component {
                 <Fragment>
         <div id="page-top">
   <div id="wrapper">
-    <div style={{width:'86%',margin:'auto 0 0 auto'}} id="content-wrapper" className="d-flex flex-column">
-      <div style={{height:'100vh'}} id="content">
-          <NotiAdmin/>
+    <div  id="content-wrapper" className="d-flex flex-column">
+        <NotiAdmin/> 
+      <div style={{width:'86%',margin:'auto 0 0 auto',height:'90vh'}} id="content">
         <div className="container-fluid">
-        <div className={styles.quanLyPhimTable}>
+        <div className={styles.quanLyPhimTable} data-aos='fade-up'>
      <h5 className={styles.title}>QUẢN LÝ PHIM</h5>
      <div className={styles.searchBox}>
           <button onClick={() => {this.setModal1Visible(true)}} className={`${styles.themNguoiDung} btn btn-success`}>
@@ -151,7 +152,7 @@ class QuanLyPhimAdmin extends Component {
           </button>
             <form className="form-inline" onSubmit={this.handleSubmit}>
              <a onClick={()=>this.props.layDanhSachNguoiDung()}><img style={{width:'50px'}} src="./assets/images/spinner.svg" alt=""/></a> 
-          <input className="form-control mr-sm-2 abc" onChange={this.handleChange} name="inputSearch" type="search" placeholder="Nhập tên phim cần tìm" aria-label="Search" />
+          <input className="form-control mr-sm-2 abc font-italic" onChange={this.handleChange} name="inputSearch" type="search" placeholder="Nhập tên phim cần tìm" aria-label="Search" />
           <button className="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
         </form>
     
@@ -161,7 +162,7 @@ class QuanLyPhimAdmin extends Component {
 
         </div>
       </div>
-      <div style={{position:'absolute',bottom:'0',width:'86%'}}>
+      <div style={{position:'absolute',bottom:'0',width:'100%'}}>
               <FooterAdmin/>
       </div> 
     </div>

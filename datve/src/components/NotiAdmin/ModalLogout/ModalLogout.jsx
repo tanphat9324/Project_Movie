@@ -27,8 +27,8 @@ const ModalLogout = (props) => {
         Select "Logout" below if you are ready to end your current session.
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={toggle}>Cancel</Button>{' '}
-          <Button color="secondary" onClick={() => logOut()}>Logout</Button>
+          <Button color="success" onClick={toggle}>Cancel</Button>{' '}
+          <Button color="danger" onClick={() => logOut()}>Logout</Button>
         </ModalFooter>
       </Modal>
     </div>

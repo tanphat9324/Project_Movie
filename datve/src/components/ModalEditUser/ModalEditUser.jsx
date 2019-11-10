@@ -95,8 +95,8 @@ class ModalEditUser extends Component {
 
                 <FormGroup>
                     <Label for="exampleEmail">Họ tên:</Label>
-                    <Input type="text" name="hoTen" value={this.state.user.hoTen} onChange={this.handleChange} onKeyUp={this.handleErrors} onBlur={this.handleErrors} placeholder="Họ Tên" />
-                    {this.state.errors.hoTen !== '' ? <div className="alert alert-danger">{this.state.errors.hoTen}</div> : ''}
+                    <Input required pattern="[A-Za-z]{3}" title="Three letter country code" type="text" name="hoTen" value={this.state.user.hoTen} onChange={this.handleChange} onKeyUp={this.handleErrors} onBlur={this.handleErrors} placeholder="Họ Tên" />
+                    {/* {this.state.errors.hoTen !== '' ? <div className="alert alert-danger">{this.state.errors.hoTen}</div> : ''} */}
                 </FormGroup>
 
                 <FormGroup>

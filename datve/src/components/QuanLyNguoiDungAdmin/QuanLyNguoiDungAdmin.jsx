@@ -11,6 +11,8 @@ import {logout} from '../../utils/index';
 import NotiAdmin from '../NotiAdmin/NotiAdmin';
 import FooterAdmin from '../FooterAdmin/FooterAdmin';
 import AddUserAdmin from '../AddUserAdmin/AddUserAdmin';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 class QuanLyNguoiDungAdmin extends Component {
   constructor(props){
@@ -32,6 +34,9 @@ class QuanLyNguoiDungAdmin extends Component {
   componentDidMount(){
     this.props.layDanhSachNguoiDung();
     this.props.nguoiDungDangNhap();
+    AOS.init({
+      duration : 2000
+    })
   }
   handleSubmit = (e) =>{
     e.preventDefault();
@@ -141,11 +146,11 @@ componentWillReceiveProps(nextProps){
             <Fragment>
         <div id="page-top">
   <div id="wrapper">
-    <div style={{width:'86%',margin:'auto 0 auto auto'}} id="content-wrapper" className="d-flex flex-column">
-      <div style={{height:'100vh'}} id="content">
+    <div id="content-wrapper" className="d-flex flex-column">
           <NotiAdmin/>
+      <div style={{width:'86%',margin:'auto 0 0 auto',height:'90vh'}} id="content">
         <div className="container-fluid">
-        <div className={styles.quanLyPhimTable}>
+        <div className={styles.quanLyPhimTable} data-aos='fade-up'>
  <h5 className={styles.title}>QUẢN LÝ NGƯỜI DÙNG</h5>
  <div className={styles.searchBox}>
       <button onClick={() => {this.setModal1Visible(true)}} className={`${styles.themNguoiDung} btn btn-success`}>
@@ -153,7 +158,7 @@ componentWillReceiveProps(nextProps){
       </button>
         <form className="form-inline" onSubmit={this.handleSubmit}>
          <a onClick={()=>this.props.layDanhSachNguoiDung()}><img style={{width:'50px'}} src="./assets/images/spinner.svg" alt=""/></a> 
-      <input className="form-control mr-sm-2 abc" onChange={this.handleChange} name="inputSearch" type="search" placeholder="Search" aria-label="Search" />
+      <input className="form-control mr-sm-2 abc font-italic" onChange={this.handleChange} name="inputSearch" type="search" placeholder="Search" aria-label="Search" />
       <button className="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
     </form>
 
@@ -163,7 +168,7 @@ componentWillReceiveProps(nextProps){
 </div>
         </div>
       </div>
-      <div style={{marginTop:'30px',position:'absolute',bottom:'0',width:'86%'}}>
+      <div style={{marginTop:'30px',position:'absolute',bottom:'0',width:'100%'}}>
               <FooterAdmin/>
       </div> 
     </div>

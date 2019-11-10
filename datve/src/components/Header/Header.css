@@ -1,10 +1,10 @@
-* {
+/* * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     --swiper-theme-color: #a6a3a7;
     --swiper-navigation-size: 46px;
-  }
+  } */
   .header {
     position: fixed;
     top: 0;
