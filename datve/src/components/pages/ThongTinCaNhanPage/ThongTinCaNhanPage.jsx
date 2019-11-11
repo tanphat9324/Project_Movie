@@ -32,10 +32,10 @@ import NotiAdmin from '../../NotiAdmin/NotiAdmin';
 
         return (
             <Fragment>
-                <div style={{zIndex:'11',position:'fixed'}}>
+                {/* <div style={{zIndex:'11',position:'fixed'}}>
                 <HeaderAdmin/>
-                </div>
-
+                </div> */}
+                <HeaderAdmin/>
                 <div style={{zIndex:'10',width:'100%',margin:'auto 0 auto auto',position:'fixed'}}>
                 <NotiAdmin/>
                 </div>

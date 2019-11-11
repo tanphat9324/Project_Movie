@@ -158,7 +158,7 @@ componentWillReceiveProps(nextProps){
       </button>
         <form className="form-inline" onSubmit={this.handleSubmit}>
          <a onClick={()=>this.props.layDanhSachNguoiDung()}><img style={{width:'50px'}} src="./assets/images/spinner.svg" alt=""/></a> 
-      <input className="form-control mr-sm-2 abc font-italic" onChange={this.handleChange} name="inputSearch" type="search" placeholder="Search" aria-label="Search" />
+      <input style={{width:'250px'}} className="form-control mr-sm-2 abc font-italic" onChange={this.handleChange} name="inputSearch" type="search" placeholder="Nhập tài khoản hoặc họ tên" aria-label="Search" />
       <button className="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
     </form>
 

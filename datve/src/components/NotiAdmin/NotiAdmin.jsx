@@ -3,6 +3,7 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux';
 import styles from './NotiAdmin.module.css';
+import './sb-admin-2.min.css';
 import { logout } from '../../utils/index';
 import { NavLink, withRouter } from 'react-router-dom';
 import { nguoiDangNhap } from '../../redux/actions/QuanLyNguoiDungAction';
@@ -15,41 +16,24 @@ class NotiAdmin extends Component {
     this.props.hoTenAdmin()
   }
 
-
-
   render() {
     console.log(this.props);
 
     return (
       <Fragment>
-        <nav className={`${styles.bgNav} navbar navbar-expand navbar-light topbar mb-4 static-top shadow`}>
+        <nav className={`${styles.bgNav} navbar navbar-expand navbar-light topbar static-top shadow`}>
           <button id="sidebarToggleTop" className="btn btn-link d-md-none rounded-circle mr-3">
             <i className="fa fa-bars" />
           </button>
+            <img style={{cursor:'pointer'}} onClick={()=>this.props.history.push('/')} src="../assets/images/web-logo.png" width='50px' height='50px' alt=""/>
           <ul className="navbar-nav ml-auto">
-            <li className="nav-item dropdown no-arrow d-sm-none">
-              <a className="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i className="fas fa-search fa-fw" />
-              </a>
-              <div className="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-                <form className="form-inline mr-auto w-100 navbar-search">
-                  <div className="input-group">
-                    <input type="text" className="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
-                    <div className="input-group-append">
-                      <button className="btn btn-primary" type="button">
-                        <i className="fas fa-search fa-sm" />
-                      </button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </li>
+           
             <li className="nav-item dropdown no-arrow mx-1">
               <a className="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <img src="../assets/images/bell2.svg" style={{ width: '22px', height: '25px' }} alt />
                 <span style={{ padding: '6px 8px', fontSize: '17px',borderRadius:'50%' }} className="badge badge-primary badge-counter">3</span>
               </a>
-              <div className="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+              <div style={{left:'auto'}} className="dropdown-list dropdown-menu dropdown-menu-left shadow animated--grow-in" aria-labelledby="alertsDropdown">
                 <h6 className="dropdown-header">
                   Alerts Center
                 </h6>
@@ -94,7 +78,7 @@ class NotiAdmin extends Component {
                 <img src="../assets/images/email2.svg" style={{ width: '22px', height: '25px' }} alt />
                 <span style={{ padding: '6px 8px', fontSize: '17px',borderRadius:'50%' }} className="badge badge-primary badge-counter">7</span>
               </a>
-              <div className="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
+              <div style={{left:'auto'}} className="dropdown-list dropdown-menu dropdown-menu-left shadow animated--grow-in" aria-labelledby="messagesDropdown">
                 <h6 className="dropdown-header">
                   Message Center
                 </h6>
@@ -144,45 +128,21 @@ class NotiAdmin extends Component {
             </li>
             <div className="topbar-divider d-none d-sm-block" />
             <li className="nav-item dropdown no-arrow">
-              <a className="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a  className="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span style={{ color: 'white',fontWeight:'500',fontSize:'16px' }} className="mr-2 d-none d-lg-inline small">Chào!, {this.props.userLogin.taiKhoan}</span>
                 <div className={`${styles.az_img_user} online`}><img src="../assets/images/admin.png" alt /></div>
               </a>
               <div className="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <NavLink to='/thongtinnguoidung' className="dropdown-item" href="#">
-                  <i className="fas fa-user fa-sm fa-fw mr-2 text-gray-400" />
+                <NavLink to='/thongtinnguoidung' className="dropdown-item">
+                  {/* <i className="fas fa-user fa-sm fa-fw mr-2 text-gray-400" /> */}
                   Profile
                 </NavLink>
                 <div className="dropdown-divider" />
-                {/* <a className="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal"> */}
                 <ModalLogout/>
-                                  {/* Logout
-                </a> */}
-
-                
-         
               </div>
             </li>
           </ul>
         </nav>
-
-        <div className="modal fade" id="logoutModal" tabIndex={-1} role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div className="modal-dialog" role="document">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                <button className="close" type="button" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">×</span>
-                </button>
-              </div>
-              <div className="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-              <div className="modal-footer">
-                <button className="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <NavLink to='/' onClick={() => logout()} className="btn btn-primary">Logout</NavLink>
-              </div>
-            </div>
-          </div>
-        </div>
       </Fragment>
     )
   }

@@ -57,13 +57,6 @@ handleChangeRate = danhGia => {
   this.setState({ phim:{...this.state.phim,danhGia:danhGia} });
 };
 handleChange=(e) =>{
-  // let name = e.target.name;
-  // let value = e.target.value;
-  //         this.setState({
-  //           phim: {...this.state.phim,[name]:value}
-  //   }, () => {
-  //     // console.log(this.state);
-  //   })
 
     let { value, name, type } = e.target;
     if (type !== 'file') {
@@ -219,60 +212,38 @@ if(name === 'trailer'){
       <Fragment>
         <Form {...formItemLayout} onSubmit={this.handleSubmit}>
     
-            <Form.Item help={this.state.errors.maPhim1} label="Mã phim:" hasFeedback validateStatus={this.state.errors.maPhim}>
+            <Form.Item style={{width:'115%'}} help={this.state.errors.maPhim1} label="Mã phim:" hasFeedback validateStatus={this.state.errors.maPhim}>
             <Input  type="tel" name="maPhim" placeholder="Nhập mã phim" onChange={this.handleChange} onKeyUp={this.handleErrors} onBlur={this.handleErrors} id="success" />
           </Form.Item>
 
-          <Form.Item help={this.state.errors.tenPhim1} label="Tên phim:" hasFeedback validateStatus={this.state.errors.tenPhim}>
+          <Form.Item style={{width:'115%'}} help={this.state.errors.tenPhim1} label="Tên phim:" hasFeedback validateStatus={this.state.errors.tenPhim}>
             <Input type="text" name="tenPhim" placeholder="Nhập tên phim" onChange={this.handleChange} onKeyUp={this.handleErrors} onBlur={this.handleErrors} id="success" />
           </Form.Item>
 
-          <Form.Item help={this.state.errors.biDanh1} label="Bí danh:" hasFeedback validateStatus={this.state.errors.biDanh}>
+          <Form.Item style={{width:'115%'}} help={this.state.errors.biDanh1} label="Bí danh:" hasFeedback validateStatus={this.state.errors.biDanh}>
             <Input type="text" name="biDanh" placeholder="Nhập bí danh" onChange={this.handleChange} onKeyUp={this.handleErrors} onBlur={this.handleErrors} id="success" />
           </Form.Item>
 
-          {/* <Form.Item help={this.state.errors.hinhAnh1} label="Hình ảnh:" hasFeedback validateStatus={this.state.errors.hinhAnh}>
-            <Input type="text" name="hinhAnh" placeholder="Nhập url hinh anh" onChange={this.handleChange} onKeyUp={this.handleErrors} onBlur={this.handleErrors} id="success" />
-          </Form.Item> */}
-{/* 
-          <Upload
-        name="avatar"
-        listType="picture-card"
-        className="avatar-uploader"
-        showUploadList={false}
-        action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-        beforeUpload={beforeUpload}
-        onChange={this.handleChangeAvatar}
-      >
-        {imageUrl ? (
-          <img src={imageUrl} alt="avatar" style={{ width: "100%" }} />
-        ) : (
-          uploadButton
-        )}
-      </Upload> */}
-      {/* <div>{this.state.phim.hinhAnh}</div> */}
-
-            <Form.Item>
+            <Form.Item style={{width:'120%'}}>
             <input type="file" name="hinhAnh" onChange={this.handleChange} />
             </Form.Item>
 
-
-            <Form.Item help={this.state.errors.trailer1} label="Trailer:" hasFeedback validateStatus={this.state.errors.trailer}>
+            <Form.Item style={{width:'115%'}} help={this.state.errors.trailer1} label="Trailer:" hasFeedback validateStatus={this.state.errors.trailer}>
             <Input type="text" name="trailer" placeholder="Nhập url trailer" onChange={this.handleChange} onKeyUp={this.handleErrors} onBlur={this.handleErrors} id="success" />
           </Form.Item>
 
-          <Form.Item label="Ngày khởi chiếu:">
-            <DatePicker onChange={this.onChange} defaultValue={moment('today', dateFormat)} format={dateFormat} />
+          <Form.Item style={{width:'115%'}} label="Ngày khởi chiếu:">
+            <DatePicker style={{width:'100%'}} onChange={this.onChange} defaultValue={moment('today', dateFormat)} format={dateFormat} />
             </Form.Item>
 
-          <Form.Item label="Đánh giá:">
+          <Form.Item style={{width:'115%'}} label="Đánh giá:">
           <span>
         <Rate tooltips={desc} onChange={this.handleChangeRate} value={danhGia} />
         {danhGia ? <span className="ant-rate-text">{desc[danhGia - 1]}</span> : ''}
       </span>
         </Form.Item>
           
-            <Form.Item help={this.state.errors.help} label="Mô tả:" hasFeedback>
+            <Form.Item  style={{width:'120%'}} help={this.state.errors.help} label="Mô tả:" hasFeedback>
           <TextArea
           name="moTa"
           onChange={this.handleChange}
@@ -280,19 +251,6 @@ if(name === 'trailer'){
           autoSize={{ minRows: 3, maxRows: 5 }}
         />
           </Form.Item>
-
-        {/* <Form.Item label="Hình ảnh" extra="">
-          {getFieldDecorator('upload', {
-            valuePropName: 'fileList',
-            getValueFromEvent: this.normFile,
-          })(
-            <Upload name="hinhAnh" action="/upload.do" listType="picture">
-              <Button>
-                <Icon type="upload" /> Click to upload
-              </Button>
-            </Upload>,
-          )}
-        </Form.Item> */}
   
           <Form.Item
           wrapperCol={{
@@ -300,16 +258,10 @@ if(name === 'trailer'){
             sm: { span: 16, offset: 8 },
           }}
         >
-          <Button type="primary" htmlType="submit">
+          <Button style={{width:'30%',fontSize:'18px'}} type="primary" htmlType="submit">
             Thêm
           </Button>
         </Form.Item>
-
-        {/* <Form.Item {...formItemLayout}>
-            <Button type="primary" htmlType="submit">
-              Register
-            </Button>
-          </Form.Item> */}
         </Form>
       </Fragment>
     );

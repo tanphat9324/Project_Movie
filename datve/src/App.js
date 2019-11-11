@@ -14,7 +14,7 @@ import { PrivateRoute } from './templates/PrivateRoute';
 import { PublicRoute } from './templates/PublicRoute';
 import QuanLyNguoiDungPage from './components/pages/QuanLyNguoiDungPage/QuanLyNguoiDungPage';
 import QuanLyNguoiDungAdmin from './components/QuanLyNguoiDungAdmin/QuanLyNguoiDungAdmin';
-import HeaderAdmin from './components/HeaderAdmin/HeaderAdmin';
+// import HeaderAdmin from './components/HeaderAdmin/HeaderAdmin';
 import QuanLyPhimAdmin from './components/QuanLyPhimAdmin/QuanLyPhimAdmin';
 import ThongTinCaNhanPage from './components/pages/ThongTinCaNhanPage/ThongTinCaNhanPage';
 import ModalLogout from './components/NotiAdmin/ModalLogout/ModalLogout';

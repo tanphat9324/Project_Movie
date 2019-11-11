@@ -65,11 +65,14 @@ class DashboardAdmin extends Component {
       }
         return (
             <Fragment>
+              <div className={styles.notification}>
+
+          <NotiAdmin/>
+              </div>
         <div id="page-top">
   <div id="wrapper">
-    <div style={{width:'86%',margin:'auto 0 auto auto'}} id="content-wrapper" className="d-flex flex-column">
+    <div style={{width:'86%',margin:'auto 0 auto auto',paddingTop:'90px'}} id="content-wrapper" className="d-flex flex-column">
       <div id="content">
-          <NotiAdmin/>
         <div className="container-fluid">
           <div className="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 className="h3 mb-0 text-gray-800">Dashboard</h1>

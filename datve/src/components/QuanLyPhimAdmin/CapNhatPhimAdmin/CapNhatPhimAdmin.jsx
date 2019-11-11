@@ -212,7 +212,7 @@ class CapNhatPhimAdmin extends Component {
                 sm: { span: 16, offset: 8 },
               }}
             >
-              <Button className="btn-success" style={{fontSize:'18px'}} type="primary" htmlType="submit">
+              <Button style={{width:'30%',fontSize:'18px'}} className="btn-success" type="primary" htmlType="submit">
                 Thêm
               </Button>
             </Form.Item>

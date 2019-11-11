@@ -152,12 +152,12 @@ class QuanLyPhimAdmin extends Component {
           </button>
             <form className="form-inline" onSubmit={this.handleSubmit}>
              <a onClick={()=>this.props.layDanhSachNguoiDung()}><img style={{width:'50px'}} src="./assets/images/spinner.svg" alt=""/></a> 
-          <input className="form-control mr-sm-2 abc font-italic" onChange={this.handleChange} name="inputSearch" type="search" placeholder="Nhập tên phim cần tìm" aria-label="Search" />
+          <input style={{width:'250px'}} className="form-control mr-sm-2 abc font-italic" onChange={this.handleChange} name="inputSearch" type="search" placeholder="Nhập tên phim" aria-label="Search" />
           <button className="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
         </form>
     
        </div>
-      <Table className={styles.table} columns={columns} bordered='true'  dataSource={data} pagination={{defaultCurrent:1, pageSize: 5}} /> 
+      <Table	 className={styles.table} columns={columns} bordered='true'  dataSource={data} pagination={{defaultCurrent:1, pageSize: 4}} /> 
     </div>
 
         </div>
@@ -202,14 +202,16 @@ class QuanLyPhimAdmin extends Component {
             <Modal
               title="Thêm phim"
               centered
+              width='550px'
               visible={this.state.modal1Visible}
-style={{color:'red'}}              // okText="Cap Nhat"
               // onOk={() => this.setModal2Visible(false)}
               onCancel={() => this.setModal1Visible(false)}
               footer={null}
             >
+               <div style={{paddingLeft:'20px'}}>
                 <ThemPhimAdmin/>
-              {/* <ModalEditUser/> */}
+                </div>
+
             </Modal>               
                 </Fragment>
             )

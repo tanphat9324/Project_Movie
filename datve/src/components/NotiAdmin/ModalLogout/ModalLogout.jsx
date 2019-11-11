@@ -16,7 +16,7 @@ const ModalLogout = (props) => {
 
   const logOut=()=>{
     logout();
-    props.history.push('/');
+    props.history.push('/login');
 }
   return (
     <div>

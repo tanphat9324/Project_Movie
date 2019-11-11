@@ -7,7 +7,7 @@ export default class QuanLyNguoiDungPage extends Component {
     render() {
         return (
             <Fragment>
-                <HeaderAdmin/>
+                {/* <HeaderAdmin/> */}
             </Fragment>
         )
     }
