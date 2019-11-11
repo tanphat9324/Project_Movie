@@ -1,0 +1,10 @@
+.branchMovie{
+    display: flex;
+    align-items: center;
+}
+.content{
+    border-top:1px solid #ebebec;
+    border-right:1px solid #ebebec;
+    border-bottom:1px solid #ebebec;
+
+}

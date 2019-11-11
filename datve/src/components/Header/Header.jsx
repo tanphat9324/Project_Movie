@@ -39,7 +39,7 @@
 
 //             </div>
 //           </section>
-         
+
 //       </Fragment>
 //     );
 //   }
@@ -50,8 +50,8 @@ import { connect } from 'react-redux';
 import { MDBContainer, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavbarToggler, MDBCollapse, MDBNavItem, MDBNavLink, MDBIcon } from 'mdbreact';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem } from "mdbreact";
-import { NavLink,withRouter } from "react-router-dom";
-import {isLogin} from '../../utils/index';
+import { NavLink, withRouter } from "react-router-dom";
+import { isLogin } from '../../utils/index';
 import { nguoiDangNhap } from '../../redux/actions/QuanLyNguoiDungAction';
 import { Button } from 'reactstrap';
 import styles from './Header.module.css';
@@ -59,39 +59,39 @@ import ModalLogout from '../NotiAdmin/ModalLogout/ModalLogout';
 
 class Header extends React.Component {
   constructor(props) {
-      super(props);
-      this.state = {
-          collapse: false,
-      };
-      this.onClick = this.onClick.bind(this);
+    super(props);
+    this.state = {
+      collapse: false,
+    };
+    this.onClick = this.onClick.bind(this);
   }
   componentDidMount() {
     this.props.hoTenAdmin()
   }
-  kiemTraDangNhap=()=>{
-    if(isLogin()){      
-      return(
+  kiemTraDangNhap = () => {
+    if (isLogin()) {
+      return (
         <MDBNavbarNav>
-        <MDBDropdown>
-<MDBDropdownToggle className={styles.buttonlogIn}>
-<img src="./assets/images/avatar1.png" alt=""/>
-  <span>      Chào!, {this.props.userLogin.taiKhoan}</span>
-</MDBDropdownToggle>
-<MDBDropdownMenu right  basic>
-<MDBDropdownItem  onClick={()=>this.props.history.push('/thongtinnguoidung')}>Profile</MDBDropdownItem>
-<MDBDropdownItem divider />
-<ModalLogout/>
-</MDBDropdownMenu>
-</MDBDropdown>
+          <MDBDropdown>
+            <MDBDropdownToggle className={styles.buttonlogIn}>
+              <img src="./assets/images/avatar1.png" alt="" />
+              <span>      Chào!, {this.props.userLogin.taiKhoan}</span>
+            </MDBDropdownToggle>
+            <MDBDropdownMenu right basic>
+              <MDBDropdownItem onClick={() => this.props.history.push('/thongtinnguoidung')}>Profile</MDBDropdownItem>
+              <MDBDropdownItem divider />
+              <ModalLogout />
+            </MDBDropdownMenu>
+          </MDBDropdown>
         </MDBNavbarNav>
       )
-    }else {
-      return(
+    } else {
+      return (
         <MDBNavbarNav>
-        <div>
-        <Button onClick={()=>this.props.history.push('/login')}  className={styles.login}>Đăng nhập</Button>
-        <Button onClick={()=>this.props.history.push('/register')} className={styles.register}>Đăng ký</Button>
-        </div>
+          <div>
+            <Button onClick={() => this.props.history.push('/login')} className={styles.login}>Đăng nhập</Button>
+            <Button onClick={() => this.props.history.push('/register')} className={styles.register}>Đăng ký</Button>
+          </div>
         </MDBNavbarNav>
       )
     }
@@ -99,33 +99,33 @@ class Header extends React.Component {
 
   onClick() {
     this.setState({
-        collapse: !this.state.collapse,
-      });
+      collapse: !this.state.collapse,
+    });
   }
 
   render() {
-    const bgPink = {backgroundColor: '#e91e63'}
-    return(
+    const bgPink = { backgroundColor: '#e91e63' }
+    return (
       <div>
-        <Router>
+     
           <header>
             <MDBNavbar className={styles.header} style={bgPink} dark expand="md" scrolling fixed="top">
               <MDBNavbarBrand href="/">
-              <img className={styles.brand} src="./assets/images/web-logo.png" alt="logo" />
+                <img className={styles.brand} src="./assets/images/web-logo.png" alt="logo" />
               </MDBNavbarBrand>
-              <MDBNavbarToggler onClick={ this.onClick } />
-              <MDBCollapse isOpen = { this.state.collapse } navbar>
-              <MDBNavbarNav center></MDBNavbarNav>
-              <MDBNavbarNav center></MDBNavbarNav>
+              <MDBNavbarToggler onClick={this.onClick} />
+              <MDBCollapse isOpen={this.state.collapse} navbar>
+                <MDBNavbarNav center></MDBNavbarNav>
+                <MDBNavbarNav center></MDBNavbarNav>
                 <MDBNavbarNav center>
                   <MDBNavItem active>
-                      <MDBNavLink to="#">Lịch Chiếu</MDBNavLink>
+                    <MDBNavLink to="#">Lịch Chiếu</MDBNavLink>
                   </MDBNavItem>
                   <MDBNavItem>
-                      <MDBNavLink to="#">Cụm rạp</MDBNavLink>
+                    <MDBNavLink to="#">Cụm rạp</MDBNavLink>
                   </MDBNavItem>
                   <MDBNavItem>
-                      <MDBNavLink to="#">Tin Tức</MDBNavLink>
+                    <MDBNavLink to="#">Tin Tức</MDBNavLink>
                   </MDBNavItem>
                   <MDBNavItem>
                     <MDBNavLink to="#">Ứng dụng</MDBNavLink>
@@ -137,7 +137,7 @@ class Header extends React.Component {
               </MDBCollapse>
             </MDBNavbar>
           </header>
-        </Router>
+
       </div>
     );
   }

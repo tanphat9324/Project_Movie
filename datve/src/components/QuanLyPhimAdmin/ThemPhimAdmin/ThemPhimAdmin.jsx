@@ -205,10 +205,8 @@ if(name === 'trailer'){
         <div className="ant-upload-text">Upload</div>
       </div>
     );
-    const { imageUrl } = this.state;
-    console.log("image ủl", this.state.avatar);
-
     return (
+      
       <Fragment>
         <Form {...formItemLayout} onSubmit={this.handleSubmit}>
     
@@ -233,7 +231,7 @@ if(name === 'trailer'){
           </Form.Item>
 
           <Form.Item style={{width:'115%'}} label="Ngày khởi chiếu:">
-            <DatePicker style={{width:'100%'}} onChange={this.onChange} defaultValue={moment('today', dateFormat)} format={dateFormat} />
+            <DatePicker style={{width:'100%'}} onChange={this.onChange} defaultValue={moment(new Date(), dateFormat)} format={dateFormat} />
             </Form.Item>
 
           <Form.Item style={{width:'115%'}} label="Đánh giá:">

@@ -9,7 +9,6 @@ class CapNhatPhimAdmin extends Component {
     constructor(props){
         super(props);
         this.state={
-        // phim:this.props.phimSua,
         phim:{
             maPhim:'',
             tenPhim:'',
@@ -72,9 +71,7 @@ class CapNhatPhimAdmin extends Component {
           if (!err) {
             console.log("Received values of form: ", values);
           }
-        });
-        // console.log("state phim submit",this.state.phim);
-        
+        });        
         this.props.capNhatPhim(this.state.phim);
       };
       
@@ -156,9 +153,8 @@ class CapNhatPhimAdmin extends Component {
         const { danhGia } = this.state.phim;
         const dateFormat = 'DD/MM/YYYY';
         const day = this.state.phim.ngayKhoiChieu;
-        const a = '06/11/2019';
-        console.log('a',a,'day:',day);
-        
+        const a = '20/11/2019';
+        console.log('a',a,'day:',this.state.phim.ngayKhoiChieu);
         return (
           <Fragment>
             <Form {...formItemLayout} onSubmit={this.handleSubmit}>
@@ -177,7 +173,6 @@ class CapNhatPhimAdmin extends Component {
     
                 <Form.Item style={{width:'115%'}}>
                 <input id="upload" style={{width:'80%',margin:'0 auto'}} type="file" name="hinhAnh" onChange={this.handleChange} />
-                {/* <label htmlFor="upload" className={styles.upLoad}>upload file</label> */}
                 </Form.Item>
                 
                 <Form.Item style={{width:'115%'}} help={this.state.errors.trailer1} label="Trailer:" hasFeedback validateStatus={this.state.errors.trailer}>
@@ -185,7 +180,7 @@ class CapNhatPhimAdmin extends Component {
               </Form.Item>
     
             <Form.Item style={{width:'115%'}} label="Ngày khởi chiếu:">
-            <DatePicker style={{width:'100%'}} onChange={this.onChange} defaultValue={moment(a.toString(), dateFormat)} format={dateFormat} />
+            <DatePicker style={{width:'100%'}} onChange={this.onChange} defaultValue={moment(this.state.phim.ngayKhoiChieu, dateFormat)} format={dateFormat} />
             </Form.Item>
     
               <Form.Item style={{width:'115%'}} label="Đánh giá:">

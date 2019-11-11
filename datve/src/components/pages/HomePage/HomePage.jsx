@@ -12,6 +12,8 @@ class HomePage extends Component {
         this.props.layDanhSachPhim();
     }
     render() {
+    
+        
         return (
           <Fragment>
               <Header/>

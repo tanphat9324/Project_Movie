@@ -1,0 +1,54 @@
+.detailFilm{
+    padding-top: 60px;
+}
+.styleBlur>img{
+    filter: blur(15px);
+    margin: -11px 0 -5px -10px;
+    /* width: 100%; */
+    width: calc(100% + 5px);
+    border:0;
+}
+.dark{
+    background-color: rgb(10, 32, 41);
+    height: 100vh;
+}
+.overlay{
+    box-sizing: border-box;
+    background: rgba(0,0,0,.6);
+    /* display: none; */
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+}
+.bgMain{
+    position: relative;
+}
+.styleGradient{
+    position: absolute;
+    top: 0;
+     left: 0;
+ height: 100%;
+        width: 100%;
+}
+.styleBlur{
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+}
+.contentMain{
+    position: absolute;
+    left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+    z-index: 3;
+    width: 870px;
+    align-items: center;
+}
+.contentMain>img{
+    border-radius: 4px;
+}

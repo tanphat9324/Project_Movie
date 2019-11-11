@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import {logout} from '../../../utils/index';
@@ -16,7 +17,8 @@ const ModalLogout = (props) => {
 
   const logOut=()=>{
     logout();
-    props.history.push('/login');
+    props.history.push('/');
+    setModal(false)
 }
   return (
     <div>
@@ -27,7 +29,7 @@ const ModalLogout = (props) => {
         Select "Logout" below if you are ready to end your current session.
         </ModalBody>
         <ModalFooter>
-          <Button color="success" onClick={toggle}>Cancel</Button>{' '}
+          <Button color="success" onClick={toggle}>Cancel</Button>
           <Button color="danger" onClick={() => logOut()}>Logout</Button>
         </ModalFooter>
       </Modal>
