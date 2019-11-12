@@ -34,7 +34,7 @@ function App() {
           {/* <Admin exact path='/admin'Component={DashboardAdmin}/>
     <Route exact path='/admin/register' component = {AddUserAdmin}/> */}
           {/* <Route exact path='/aaa' component={ThongTinCaNhanPage}/> */}
-          <Route component={DetailMovie} path="/de" exact />
+          <Route component={DetailMovie} path="/de:id" />
           <Route component={LichChieuChiTiet} path="/lc" exact />
 
           <Route component={LoginPage} path="/login" exact />

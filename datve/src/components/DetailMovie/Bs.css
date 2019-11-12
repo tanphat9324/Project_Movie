@@ -1,0 +1,78 @@
+.branchItem{
+    border:1px solid #ebebec;
+    border-radius: unset!important;
+    background-color: white;
+    opacity: 0.5;
+    transition: all 0.5s;
+    padding:20px;
+    min-width: 240px;
+
+}
+.branchItem>img{
+    opacity: 0.5;
+    transition: all 0.5s;
+}
+.branchItem>img:hover{
+    opacity: 1;
+}
+.branchItem.active img{
+    opacity: 1;
+}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    background-color: white!important;
+    opacity: 1;
+}
+.lichChieuItem> .nav-link{
+    line-height: 24px;
+    height: 24px;
+    transition: all .2s;
+    font-weight: 500;
+    font-size: 20px;
+    color:white!important;
+
+}
+.lichChieuItem> .nav-link.active{
+    color:#fb4226!important;
+    font-size: 20px;
+    background-color: transparent!important;
+
+
+}
+.lichChieuItem> .nav-link:hover{
+    background-color: transparent!important;
+}
+.tab-pane{
+    background-color: white;
+}
+.tab-content{
+    padding-bottom: unset!important;
+}
+
+/* thong tin Phim */
+.detailMainStyle{
+    background-color: #0A2029;
+    padding:0 10px;
+}
+.contentTitle {
+    width: 35%;
+    float: left;
+    font-size: 15px;
+    color: #fff;
+    font-weight: 500;
+}
+.contentInfo {
+    width: 40%;
+    float: left;
+    font-size: 14px;
+    color: #e9e9e9;}
+.rowLeftInfo {
+    margin-bottom: 10px;
+}
+.contentInfoFull {
+    text-align: justify;
+    white-space: pre-wrap;
+    width: 100%;
+    float: left;
+    font-size: 14px;
+    color: #e9e9e9;
+}

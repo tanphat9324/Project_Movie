@@ -1,9 +1,19 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from 'react'
+import Slider from "react-slick";
 import './Footer.css';
 export default class Footer extends Component {
+  
     render() {
+      const settings = {
+        autoplay: true,
+        arrows: false,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1
+      };
         return (
          <section className="footer">
   <div className="footer_img">
@@ -22,45 +32,52 @@ export default class Footer extends Component {
         <div className="col-md-6 footer_dt">
           <img src="./assets/images/f2.png"  />
           <div className="footer_mobile">
-            <div>
-              <img src="./assets/images/fs1.png"  />
+          <Slider {...settings}>
+          <div>
+              <img width='100%' src="./assets/images/fs1.png"  />
             </div>
             <div>
-              <img src="./assets/images/fs2.png"  />
+              <img width='100%' src="./assets/images/fs2.png"  />
             </div>
             <div>
-              <img src="./assets/images/fs3.png"  />
+              <img width='100%' src="./assets/images/fs3.png"  />
             </div>
             <div>
-              <img src="./assets/images/fs4.png"  />
+              <img width='100%' src="./assets/images/fs4.png"  />
             </div>
+      </Slider>
+
+          
           </div>
         </div>
       </div>
     </div>
   </div>
   <div className="footer_end">
-    <div className="row custom_footer">
+    <div className='custom_footer'>
+
+  
+    <div className="row ">
       <div className="col-md-4">
         <div className="footer_title">123PHIM</div>
         <div className="row">
           <div className="col-6">
-            <ul>
-              <li> <a href="#">FAQ</a>
+            <ul style={{paddingInlineStart:'unset'}}>
+              <li className='footer_li'> <a className="footerItem_phim" href="#">FAQ</a>
               </li>
-              <li> <a href="#">Brand Guidelines</a>
+              <li className='footer_li'> <a className="footerItem_phim" href="#">Brand Guidelines</a>
               </li>
             </ul>
           </div>
           <div className="col-6">
-            <ul>
-              <li> <a href="#">Thoả thuận sử dụng</a>
+            <ul style={{paddingInlineStart:'unset'}}>
+              <li className='footer_li'> <a className="footerItem_phim" href="#">Thoả thuận sử dụng</a>
               </li>
-              <li> <a href="#">Quy chế hoạt động</a>
+              <li className='footer_li'> <a className="footerItem_phim" href="#">Quy chế hoạt động</a>
               </li>
-              <li> <a href="#">Chính sách bảo mật</a>
+              <li className='footer_li'> <a className="footerItem_phim" href="#">Chính sách bảo mật</a>
               </li>
-              <li> <a href="#">Quyền lợi thành viên</a>
+              <li className='footer_li'> <a className="footerItem_phim" href="#">Quyền lợi thành viên</a>
               </li>
             </ul>
           </div>
@@ -93,17 +110,18 @@ export default class Footer extends Component {
       <div className="col-md-4">
         <div className="row">
           <div className="col-md-6 footer_app">
-            <div className="footer_title_1">MOBILE APP</div>
+            <div className="footer_title">MOBILE APP</div>
             <a href="#"><img src="./assets/images//fi2.png"  /></a>
-            <a href="#"><img src="./assets/images//fi2.png"  /></a>
+            <a href="#"><img src="./assets/images/android-logo.png"  /></a>
           </div>
           <div className="col-md-6 footer_social">
-            <div className="footer_title_1">MOBILE APP</div>
-            <a href="#"><img src="./assets/images//fi2.png"  /></a>
-            <a href="#"><img src="./assets/images//fi2.png"  /></a>
+            <div className="footer_title">SOCIAL</div>
+            <a href="#"><img src="./assets/images/facebook-logo.png"  /></a>
+            <a href="#"><img src="./assets/images/zalo-logo.png"  /></a>
           </div>
         </div>
       </div>
+    </div>
     </div>
     <hr className="hrFooter" />
     <div className="footer_company">

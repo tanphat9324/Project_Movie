@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { Component,Fragment } from 'react'
-import style from './Session.module.css';
 import {connect} from 'react-redux';
 import {layDanhMucRap, layThongTinCumRap} from '../../redux/actions/QuanLyRapAction';
+import './Session.css';
  class Session extends Component {
   componentDidMount(){
     this.props.layDanhMucRap();// div1
@@ -12,73 +12,30 @@ import {layDanhMucRap, layThongTinCumRap} from '../../redux/actions/QuanLyRapAct
     
     return (
       <Fragment>
-       <section className={style.info}>
-  <div className={style.info_header} />
-  <div className={style.info_movie_item}>
-    <div className={style.brand_movie}>
-      <ul className={style.listCinema}>
-      {this.props.danhMucRap.map((dMuc,index)=>{
-        return(
-          <li key={index}>
-          <button onClick={()=>this.props.layThongTinCumRap(dMuc.maHeThongRap)}><img src={dMuc.logo} alt="danhMucLogo" /></button>
-        </li>
-        )
-      })}
-      </ul>
-    </div>
-    <div className={style.brand_movie_item}>
-      <ul className={style.listMovie}>
-      {this.props.thongTinCumRap.map((cumRap,index) => {
-        return(
-          <li key={index}>
-          <button>
-            <div className="d-flex">
-              <img src="./assets/images/r1.jpg" />
-              <div className={style.movie_Info}>
-                <div className="text-left">{cumRap.tenCumRap}</div>
-                <div className="text-left">{cumRap.diaChi}</div>
-                <div className="text-left">chi tiết</div>
-              </div>
-            </div>
-          </button>
-        </li>
-        )
-      })}
+        <div style={{display:'flex',width:'50%',margin:'0 auto'}}>
+  <div className="nav flex-column nav-pills customHomePage" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+    <a className="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">
+    <img src="./assets/images/i1.png" width='50px' height='50px' alt=""/>
+    </a>
+    <a className="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">
+    <img  src="./assets/images/i1.png" width='50px' height='50px' alt=""/>
+    </a>
+    <a className="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">
+    <img  src="./assets/images/i1.png" width='50px' height='50px' alt=""/>
 
-      
-      </ul>
-    </div>
+    </a>
+    <a className="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">
+    <img src="./assets/images/i1.png" width='50px' height='50px' alt=""/>
 
-    <div className={style.select_movie}>
-      <div className={style.movieInfo}>
-        <button>
-          <div className="d-flex">
-            <img src="./assets/images/r1.jpg" />
-            <div className={style.movie_Info}>
-              <div className="text-left">BHD Start -Bitexco</div>
-              <div className="text-left">L3-Bitexco Icon 68, 2 Hải Triều, Q.1</div>
-            </div>
-          </div>
-        </button>
-        <div />
-      </div>
-      <div className={style.movieInfo}>
-        <button>
-          <div className="d-flex">
-            <img src="./assets/images/r1.jpg" />
-            <div className={style.movie_Info}>
-              <div className="text-left">BHD Start -Bitexco</div>
-              <div className="text-left">L3-Bitexco Icon 68, 2 Hải Triều, Q.1</div>
-            </div>
-          </div>
-        </button>
-        <div />
-      </div>
-
-    </div>
+    </a>
   </div>
-  <div className="info_header" />
-</section>
+  <div style={{width:'90%'}} className="tab-content" id="v-pills-tabContent">
+    <div className="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">...</div>
+    <div className="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">...</div>
+    <div className="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
+    <div className="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
+  </div>
+</div>
 
       </Fragment>
     )

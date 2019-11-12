@@ -39,7 +39,7 @@ export default class CustomArrows extends Component {
     };
     return (
       <Fragment>
-         <Slider {...settings} className="custom_slider">
+         <Slider {...settings}>
                 {dsPhim.map((phim,index)=>{
                   return(
                     <div key={index} className="col-3 movie_item">
