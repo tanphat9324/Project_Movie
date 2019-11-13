@@ -100,3 +100,71 @@ z-index: 3;
     min-height: 100%!important;
     /* margin-bottom: 50px!important; */
 }
+
+.danhGiaPhim>img{
+    border-radius: 50%;
+}
+.MyReview{
+    display: flex;
+    /* align-items: center; */
+    justify-content: space-between;
+   width: 70%;
+   margin:0 auto;
+    background-color: white;
+    padding:10px;
+    border-radius: 4px;
+
+}
+.danhGiaPhim_text{
+    color: #9b9b9b;
+    font-size: 14px;
+}
+.Comment{
+    width: 70%;
+    margin:0 auto;
+     background-color: white;
+     border-radius: 4px;
+
+}
+.avatar{
+    display: flex;
+    align-items: center;
+}
+.avatar>img{
+    border-radius: 50%;
+}
+.nameComment{
+    color:black;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.42857143;
+}
+.timeComment{
+    font-size: 10px;
+    color: #9b9b9b;
+    line-height: 1;
+}
+.point{
+    /* display: flex; */
+}
+.CommentItem{
+    display: flex;
+    justify-content: space-between;
+    padding:20px;
+}
+.reViewItem{
+    border-bottom: 1px solid #e5eef3;
+    width: 93%;
+    margin:0 auto;
+    padding-bottom: 20px;
+    font-size: 14px;
+    color:black;
+}
+.likeIcon{
+    padding: 10px 20px 20px 20px;
+}
+.Icon{
+    font-size: 14px;
+    padding-left: 10px;
+    color:#737576!important;
+}

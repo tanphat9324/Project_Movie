@@ -20,6 +20,7 @@ import ThongTinCaNhanPage from './components/pages/ThongTinCaNhanPage/ThongTinCa
 import ModalLogout from './components/NotiAdmin/ModalLogout/ModalLogout';
 import DetailMovie from './components/DetailMovie/DetailMovie';
 import LichChieuChiTiet from './components/LichChieuChiTiet/LichChieuChiTiet';
+import ChiTietPhongVePage from './components/pages/ChiTietPhongVePage/ChiTietPhongVePage';
 
 
 function App() {
@@ -36,6 +37,8 @@ function App() {
           {/* <Route exact path='/aaa' component={ThongTinCaNhanPage}/> */}
           <Route component={DetailMovie} path="/de:id" />
           <Route component={LichChieuChiTiet} path="/lc" exact />
+          <Route component={ChiTietPhongVePage} path="/ct" exact />
+
 
           <Route component={LoginPage} path="/login" exact />
           <Route component={RegisterPage} path="/register" exact />

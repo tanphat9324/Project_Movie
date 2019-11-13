@@ -42,3 +42,22 @@
       margin-top: unset;
       margin-bottom: unset;
   }
+  .bookingTicket{
+    display: flex;
+  }
+  .timeBooking{
+    display: flex;
+    max-width: 700px;
+    flex-wrap: wrap;
+  }
+  .timeItem{
+    font-weight: 500!important;
+    color: #417500!important;
+    margin: 0 15px 15px 0;
+    transition: all .2s;
+    font-size: 24px;
+    text-decoration: none;
+  }
+  .timeBooking>.timeItem:hover{
+    color:red!important;
+  }

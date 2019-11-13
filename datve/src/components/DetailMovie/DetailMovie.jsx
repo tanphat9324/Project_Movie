@@ -7,7 +7,7 @@ import './Bs.css'
 import LichChieuChiTiet from '../LichChieuChiTiet/LichChieuChiTiet';
 import Footer from '../Footer/Footer';
 import { layThongTinLichChieuPhimAction } from '../../redux/actions/QuanLyRapAction';
-import {withRouter} from 'react-router-dom'
+
 class DetailMovie extends Component {
   componentDidMount(){
     this.props.layTTLichChieuPhim(this.props.match.params.id);
@@ -34,6 +34,7 @@ class DetailMovie extends Component {
     }
     return items;
   }
+
     render() {
       console.log(this.props.match.params.id);
       console.log(this.props.LichChieuPhim);
@@ -162,12 +163,107 @@ class DetailMovie extends Component {
               </div>
             </div>  
     </div>
-    <div className="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+    <div className="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+      <div  className='detailMainStyle'>
+        <div className='pt-3'>
+        <div className={styles.MyReview}>
+        <div className={styles.danhGiaPhim}>
+          <img src="./assets/images/avatar.png" width='36px' height='36px' alt=""/>
+          <span className={styles.danhGiaPhim_text} style={{paddingLeft:'10px'}}>Bạn nghĩ gì về phim này?</span>
+        </div>
+        <div className={styles.reviewPhim}>
+        <img src="./assets/images/star.svg" width='20px' height='20px' alt=""/>
+        <img src="./assets/images/star.svg" width='20px' height='20px' alt=""/>
+        <img src="./assets/images/star.svg" width='20px' height='20px' alt=""/>
+        <img src="./assets/images/star.svg" width='20px' height='20px' alt=""/>
+        <img src="./assets/images/star.svg" width='20px' height='20px' alt=""/>
+        </div>
+        </div>
+        </div>
+       
+<div className='pt-3'>
+<div className={styles.Comment}>
+  <div className={styles.CommentItem}>
+  <div className={styles.avatar}>
+          <img src="./assets/images/avatar.png" width='32px' height='32px' alt=""/>
+          <div style={{paddingLeft:'10px'}}>
+            <div className={styles.nameComment}>Messi</div>
+            <div className={styles.timeComment}>9h trước</div>
+          </div>
+     </div>
+     <div className={styles.point}>
+       <div style={{textAlign:'center',fontSize:'16px',color:'green'}}>10</div>
+          <div>
+          <img src="./assets/images/star.svg" width='10px' height='10px' alt=""/>
+          <img src="./assets/images/star.svg" width='10px' height='10px' alt=""/>
+          <img src="./assets/images/star.svg" width='10px' height='10px' alt=""/>
+          <img src="./assets/images/star.svg" width='10px' height='10px' alt=""/>
+          <img src="./assets/images/star.svg" width='10px' height='10px' alt=""/>
+        </div>
+          </div>
+  </div>
+ <div className={styles.reViewItem}>Phim hay. Quả không hổ danh là một trong những phim bom tấn của đợt này. Dàn diễn viên thần thái, diễn xuất đỉnh cùng với các pha hành động, kỹ xảo cực kỳ mãn nhãn. Thật đáng đồng tiền bát gạo mà. 🤩🤩🤩</div>
+
+    <div className={styles.likeIcon}>
+     <span><img src="./assets/images/like.svg" width="16px" height='16px' alt=""/></span> 
+    <span style={{fontWeight:'500'}} className={styles.Icon}>1.365</span>
+     <span className={styles.Icon}>Thích</span>
+    </div>
+     </div>
+        </div>
+
+        <div className='pt-3'>
+<div className={styles.Comment}>
+  <div className={styles.CommentItem}>
+  <div className={styles.avatar}>
+          <img src="./assets/images/avatar.png" width='32px' height='32px' alt=""/>
+          <div style={{paddingLeft:'10px'}}>
+            <div className={styles.nameComment}>Messi</div>
+            <div className={styles.timeComment}>9h trước</div>
+          </div>
+     </div>
+     <div className={styles.point}>
+       <div style={{textAlign:'center',fontSize:'16px',color:'green'}}>10</div>
+          <div>
+          <img src="./assets/images/star.svg" width='10px' height='10px' alt=""/>
+          <img src="./assets/images/star.svg" width='10px' height='10px' alt=""/>
+          <img src="./assets/images/star.svg" width='10px' height='10px' alt=""/>
+          <img src="./assets/images/star.svg" width='10px' height='10px' alt=""/>
+          <img src="./assets/images/star.svg" width='10px' height='10px' alt=""/>
+        </div>
+          </div>
+  </div>
+ <div className={styles.reViewItem}>Phim hay. Quả không hổ danh là một trong những phim bom tấn của đợt này. Dàn diễn viên thần thái, diễn xuất đỉnh cùng với các pha hành động, kỹ xảo cực kỳ mãn nhãn. Thật đáng đồng tiền bát gạo mà. 🤩🤩🤩</div>
+
+    <div className={styles.likeIcon}>
+     <span><img src="./assets/images/like.svg" width="16px" height='16px' alt=""/></span> 
+    <span style={{fontWeight:'500'}} className={styles.Icon}>1.365</span>
+     <span className={styles.Icon}>Thích</span>
+    </div>
+     </div>
+        </div>
+
+{/* <div>
+  <button className="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Button with data-target
+  </button>
+
+  <div className="collapsing" id="collapseExample">
+    <div className="card card-body">
+      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+    </div>
+  </div>
+</div> */}
+
+</div>
+     
+      </div>
+    </div>
   </div>
                         </div>
                     </div>
                     
-                </div>
+            
           <Footer/>
             </Fragment>
         )

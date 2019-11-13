@@ -54,6 +54,8 @@ export const layTTLichChieuHTRapAction = (maHeThongRap) => {
             url: settings.domain + `/QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap=${maHeThongRap}&maNhom=${settings.groupID}`
         }).then(res =>{
             dispatch(nhanTTLichChieuHTRap(res.data))
+            console.log('lich chieu chi tiet',res.data);
+            
         }).catch(err => {
             console.log(err.response.data);
         })

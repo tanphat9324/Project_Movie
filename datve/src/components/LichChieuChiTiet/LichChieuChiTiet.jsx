@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import styles from './LichChieuChiTiet.module.css';
 import './customMDB.css';
 import { layDanhMucRap, layTTLichChieuHTRapAction } from '../../redux/actions/QuanLyRapAction';
-
+import dayjs from 'dayjs'
 // import 'bootstrap/dist/css/bootstrap.css';
 class LichChieuChiTiet extends Component {
   componentDidMount(){
@@ -19,7 +19,9 @@ class LichChieuChiTiet extends Component {
     }
   }
     render() {
-      console.log(this.props.listCumRap);
+      // let danhSachPhim =this.props.listCumRap.danhSachPhim.lstLichChieuTheoPhim;
+      let a = this.props.listCumRap;
+      console.log(a);
       
         return (
             <Fragment>
@@ -40,6 +42,10 @@ class LichChieuChiTiet extends Component {
   {this.checkListIsEmpty() ? <div className="tab-pane fade show active" id={this.props.listCumRap.maHeThongRap} role="tabpanel" aria-labelledby="v-pills-home-tab">
         <div className={styles.select_movie}>
     {this.props.listCumRap.map((ttRap,index) => {
+      let danhSachPhim=ttRap.danhSachPhim[0];
+      let list = danhSachPhim.lstLichChieuTheoPhim;
+      console.log('danhSachPhim',list.slice(0,16));
+      
         return(
           <div>
             <div key={index} className={styles.movieInfo}>
@@ -47,14 +53,31 @@ class LichChieuChiTiet extends Component {
                 <div className="d-flex">
                   <img src="./assets/images/r1.jpg" />
                   <div className={styles.movie_Info}>
-                    <div className="text-left">{ttRap.tenCumRap}</div>
-                    <div className="text-left">{ttRap.diaChi}</div>
+                    <div style={{fontWeight:'500'}} className="text-left">{ttRap.tenCumRap}</div>
+                    <div style={{fontSize:'14px',color:'#9b9b9b'}} className="text-left">{ttRap.diaChi} <a style={{color:'red',textDecoration:'none',fontSize:'14px'}} href="#">[Bản đồ]</a> </div>
                   </div>
                 </div>
               </button>
               <div />
             </div>
-      
+            <div style={{padding:'0 20px 20px 35px'}} className={styles.bookingTicket} >
+              <div style={{paddingTop:'8px',paddingRight:'15px'}}>
+
+              <img  src="./assets/images/2_0.png" width='30px' height='30px' alt=""/>
+              </div>
+
+              <div className={styles.timeBooking}>
+                {list.slice(0,16).map((tt,index) => {
+                  return(
+                  <a key={index} className={styles.timeItem} >{dayjs(tt.ngayKhoiChieu).format('HH:mm')}</a>
+                  )
+                })}
+              
+             
+
+
+              </div>
+            </div>
             <hr className={styles.hr}/>
             </div>  
         )
