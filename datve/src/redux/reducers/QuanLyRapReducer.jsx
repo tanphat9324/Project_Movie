@@ -26,7 +26,7 @@ export const QuanLyRapReducer = (state = initialState, action) => {
     }
     case actionType.NHAN_THONG_TIN_LICH_CHIEU_PHIM:{
         state.LichChieuPhim = action.thongTinPhim;
-        console.log(state.LichChieuPhim);
+        // console.log(state.LichChieuPhim);
         
         return {...state}
     }

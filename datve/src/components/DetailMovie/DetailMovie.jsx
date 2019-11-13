@@ -14,7 +14,7 @@ class DetailMovie extends Component {
   }
   rating(diem){
     let rate = (Number(diem)*100)/5;
-    console.log(rate);
+    // console.log(rate);
     
     return(
       `${rate},100`
@@ -23,21 +23,21 @@ class DetailMovie extends Component {
   countStar(array){
     const items = [];
     for (let index = 0; index < array; index++) {
-      items.push(<img src="./assets/images/star.svg" width='20px' height='20px' alt=""/>)
+      items.push(<img src="../assets/images/star.svg" width='20px' height='20px' alt=""/>)
     }
     return items;
   }
   countStar1(array){
     const items = [];
     for (let index = 0; index < 5-array; index++) {
-      items.push(<img src="./assets/images/star1.svg" width='20px' height='20px' alt=""/>)
+      items.push(<img src="../assets/images/star1.svg" width='20px' height='20px' alt=""/>)
     }
     return items;
   }
 
     render() {
-      console.log(this.props.match.params.id);
-      console.log(this.props.LichChieuPhim);
+      // console.log(this.props.match.params.id);
+      // console.log(this.props.LichChieuPhim);
       
         return (
             <Fragment>
@@ -48,7 +48,7 @@ class DetailMovie extends Component {
                         <div className={styles.bgMain}>
 
                             <div className={styles.styleBlur}>
-                                <img src={"./assets/images/bg_terminator.jpg"} width='100%' height="100%" alt="" />
+                                <img src={"../assets/images/bg_terminator.jpg"} width='100%' height="100%" alt="" />
                             </div>
                          
                             <div className={styles.styleGradient} style={{ background: 'linear-gradient(to top, rgb(10, 32, 41), transparent 100%)' }} />
@@ -168,15 +168,15 @@ class DetailMovie extends Component {
         <div className='pt-3'>
         <div className={styles.MyReview}>
         <div className={styles.danhGiaPhim}>
-          <img src="./assets/images/avatar.png" width='36px' height='36px' alt=""/>
+          <img src="../assets/images/avatar.png" width='36px' height='36px' alt=""/>
           <span className={styles.danhGiaPhim_text} style={{paddingLeft:'10px'}}>Bạn nghĩ gì về phim này?</span>
         </div>
         <div className={styles.reviewPhim}>
-        <img src="./assets/images/star.svg" width='20px' height='20px' alt=""/>
-        <img src="./assets/images/star.svg" width='20px' height='20px' alt=""/>
-        <img src="./assets/images/star.svg" width='20px' height='20px' alt=""/>
-        <img src="./assets/images/star.svg" width='20px' height='20px' alt=""/>
-        <img src="./assets/images/star.svg" width='20px' height='20px' alt=""/>
+        <img src="../assets/images/star.svg" width='20px' height='20px' alt=""/>
+        <img src="../assets/images/star.svg" width='20px' height='20px' alt=""/>
+        <img src="../assets/images/star.svg" width='20px' height='20px' alt=""/>
+        <img src="../assets/images/star.svg" width='20px' height='20px' alt=""/>
+        <img src="../assets/images/star.svg" width='20px' height='20px' alt=""/>
         </div>
         </div>
         </div>
@@ -185,7 +185,7 @@ class DetailMovie extends Component {
 <div className={styles.Comment}>
   <div className={styles.CommentItem}>
   <div className={styles.avatar}>
-          <img src="./assets/images/avatar.png" width='32px' height='32px' alt=""/>
+          <img src="../assets/images/avatar.png" width='32px' height='32px' alt=""/>
           <div style={{paddingLeft:'10px'}}>
             <div className={styles.nameComment}>Messi</div>
             <div className={styles.timeComment}>9h trước</div>
@@ -194,18 +194,18 @@ class DetailMovie extends Component {
      <div className={styles.point}>
        <div style={{textAlign:'center',fontSize:'16px',color:'green'}}>10</div>
           <div>
-          <img src="./assets/images/star.svg" width='10px' height='10px' alt=""/>
-          <img src="./assets/images/star.svg" width='10px' height='10px' alt=""/>
-          <img src="./assets/images/star.svg" width='10px' height='10px' alt=""/>
-          <img src="./assets/images/star.svg" width='10px' height='10px' alt=""/>
-          <img src="./assets/images/star.svg" width='10px' height='10px' alt=""/>
+          <img src="../assets/images/star.svg" width='10px' height='10px' alt=""/>
+          <img src="../assets/images/star.svg" width='10px' height='10px' alt=""/>
+          <img src="../assets/images/star.svg" width='10px' height='10px' alt=""/>
+          <img src="../assets/images/star.svg" width='10px' height='10px' alt=""/>
+          <img src="../assets/images/star.svg" width='10px' height='10px' alt=""/>
         </div>
           </div>
   </div>
  <div className={styles.reViewItem}>Phim hay. Quả không hổ danh là một trong những phim bom tấn của đợt này. Dàn diễn viên thần thái, diễn xuất đỉnh cùng với các pha hành động, kỹ xảo cực kỳ mãn nhãn. Thật đáng đồng tiền bát gạo mà. 🤩🤩🤩</div>
 
     <div className={styles.likeIcon}>
-     <span><img src="./assets/images/like.svg" width="16px" height='16px' alt=""/></span> 
+     <span><img src="../assets/images/like.svg" width="16px" height='16px' alt=""/></span> 
     <span style={{fontWeight:'500'}} className={styles.Icon}>1.365</span>
      <span className={styles.Icon}>Thích</span>
     </div>
@@ -216,7 +216,7 @@ class DetailMovie extends Component {
 <div className={styles.Comment}>
   <div className={styles.CommentItem}>
   <div className={styles.avatar}>
-          <img src="./assets/images/avatar.png" width='32px' height='32px' alt=""/>
+          <img src="../assets/images/avatar.png" width='32px' height='32px' alt=""/>
           <div style={{paddingLeft:'10px'}}>
             <div className={styles.nameComment}>Messi</div>
             <div className={styles.timeComment}>9h trước</div>
@@ -225,18 +225,18 @@ class DetailMovie extends Component {
      <div className={styles.point}>
        <div style={{textAlign:'center',fontSize:'16px',color:'green'}}>10</div>
           <div>
-          <img src="./assets/images/star.svg" width='10px' height='10px' alt=""/>
-          <img src="./assets/images/star.svg" width='10px' height='10px' alt=""/>
-          <img src="./assets/images/star.svg" width='10px' height='10px' alt=""/>
-          <img src="./assets/images/star.svg" width='10px' height='10px' alt=""/>
-          <img src="./assets/images/star.svg" width='10px' height='10px' alt=""/>
+          <img src="../assets/images/star.svg" width='10px' height='10px' alt=""/>
+          <img src="../assets/images/star.svg" width='10px' height='10px' alt=""/>
+          <img src="../assets/images/star.svg" width='10px' height='10px' alt=""/>
+          <img src="../assets/images/star.svg" width='10px' height='10px' alt=""/>
+          <img src="../assets/images/star.svg" width='10px' height='10px' alt=""/>
         </div>
           </div>
   </div>
  <div className={styles.reViewItem}>Phim hay. Quả không hổ danh là một trong những phim bom tấn của đợt này. Dàn diễn viên thần thái, diễn xuất đỉnh cùng với các pha hành động, kỹ xảo cực kỳ mãn nhãn. Thật đáng đồng tiền bát gạo mà. 🤩🤩🤩</div>
 
     <div className={styles.likeIcon}>
-     <span><img src="./assets/images/like.svg" width="16px" height='16px' alt=""/></span> 
+     <span><img src=".../assets/images/like.svg" width="16px" height='16px' alt=""/></span> 
     <span style={{fontWeight:'500'}} className={styles.Icon}>1.365</span>
      <span className={styles.Icon}>Thích</span>
     </div>

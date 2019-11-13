@@ -54,7 +54,7 @@ export const layTTLichChieuHTRapAction = (maHeThongRap) => {
             url: settings.domain + `/QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap=${maHeThongRap}&maNhom=${settings.groupID}`
         }).then(res =>{
             dispatch(nhanTTLichChieuHTRap(res.data))
-            console.log('lich chieu chi tiet',res.data);
+            // console.log('lich chieu chi tiet',res.data);
             
         }).catch(err => {
             console.log(err.response.data);
@@ -73,7 +73,7 @@ export const layThongTinLichChieuPhimAction = (maPhim) => {
             method: 'GET',
             url: settings.domain + `/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${maPhim}`
         }).then(res =>{
-            console.log('phmi acton',res.data);
+            // console.log('phmi acton',res.data);
             
             dispatch(nhanTTLichChieuPhim(res.data))
         }).catch(err => {
