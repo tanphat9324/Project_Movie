@@ -74,7 +74,7 @@ class Header extends React.Component {
         <MDBNavbarNav>
           <MDBDropdown>
             <MDBDropdownToggle className={styles.buttonlogIn}>
-              <img src="./assets/images/avatar1.png" alt="" />
+              <img src="../assets/images/avatar1.png" alt="" />
               <span>      Chào!, {this.props.userLogin.taiKhoan}</span>
             </MDBDropdownToggle>
             <MDBDropdownMenu right basic>
@@ -111,7 +111,7 @@ class Header extends React.Component {
           <header>
             <MDBNavbar className={styles.header} style={bgPink} dark expand="md" scrolling fixed="top">
               <MDBNavbarBrand href="/">
-                <img className={styles.brand} src="./assets/images/web-logo.png" alt="logo" />
+                <img className={styles.brand} src="../assets/images/web-logo.png" alt="logo" />
               </MDBNavbarBrand>
               <MDBNavbarToggler onClick={this.onClick} />
               <MDBCollapse isOpen={this.state.collapse} navbar>
