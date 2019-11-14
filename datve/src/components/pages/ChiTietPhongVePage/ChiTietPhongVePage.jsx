@@ -2,7 +2,8 @@ import React, { Component,Fragment } from 'react'
 import {connect} from 'react-redux';
 import styles from './ChiTietPhongVePage.module.css'
 import Header from '../../Header/Header';
-import { layDanhSachPhongVeAction } from '../../../redux/actions/QuanLyDatVeAction';
+import { layDanhSachPhongVeAction, datVeAction } from '../../../redux/actions/QuanLyDatVeAction';
+import {settings} from '../../../common/Config/settings'
 
  class ChiTietPhongVePage extends Component {
      constructor(props){
@@ -10,13 +11,8 @@ import { layDanhSachPhongVeAction } from '../../../redux/actions/QuanLyDatVeActi
          this.state={
              datVe:{
                 maLichChieu: this.props.match.params.id,
-                danhSachVe: [
-                  {
-                    maGhe: 0,
-                    giaVe: 0
-                  }
-                ],
-                taiKhoanNguoiDung: ''
+                danhSachVe: [],
+                taiKhoanNguoiDung: localStorage.getItem(settings.taiKhoan)
              },
              mangGheDaChon:[]
          }
@@ -37,20 +33,32 @@ import { layDanhSachPhongVeAction } from '../../../redux/actions/QuanLyDatVeActi
     //   })
         
     //  }
-     datGhe = (maGhe) =>{         
-        let indexGhe = this.state.mangGheDaChon.findIndex(x => {return x === maGhe});
-
-        if(indexGhe === -1){
-            this.mangGheChon.push(maGhe);
-            this.setState({
-                mangGheDaChon: this.mangGheChon
+     datGhe = (ghe) =>{         
+        let indexGhe = this.state.datVe.danhSachVe.findIndex(x => {return x === ghe});
+        console.log('indexGhe',indexGhe);
+        console.log('mangGheDaChon',this.mangGheChon);
+        if(indexGhe !== -1){
+            this.mangGheChon.splice(indexGhe,1);
+         return   this.setState({
+                datVe: {...this.state.datVe,danhSachVe:this.mangGheChon}
             })
         }
-        console.log('mangGheDaChon',this.state.mangGheDaChon);
+        if(indexGhe === -1){
+            this.mangGheChon.push(ghe);
+         return   this.setState({
+            datVe: {...this.state.datVe,danhSachVe:this.mangGheChon}
+            })
+        }
+        // console.log('danh Sach Ve',this.state.datVe);
         
      }
-     trangThaiGhe = (maGhe,ghe)=>{
-        let gheIndex = this.state.mangGheDaChon.findIndex(x => {return x === maGhe})
+    
+     thanhToanVe = () =>{
+        this.props.datVe(this.state.datVe)
+    }
+
+     trangThaiGhe = (ghe)=>{
+        let gheIndex = this.state.datVe.danhSachVe.findIndex(x => {return x === ghe})
         // console.log(gheIndex);
        
         if(ghe.daDat){
@@ -90,7 +98,7 @@ import { layDanhSachPhongVeAction } from '../../../redux/actions/QuanLyDatVeActi
                             <div className="col-md-2 text-center">
                                 {this.props.dsGhe.slice(0,16).map((ghe,index)=>{
                                     return(
-                                        <button onClick={()=>this.datGhe(ghe.maGhe)} style={{marginRight:'5px', marginBottom:'5px',minWidth:'52px'}} className={this.trangThaiGhe(ghe.maGhe,ghe)}>{ghe.stt}</button>
+                                        <button disabled={ghe.daDat ?'disabled': ''} onClick={()=>this.datGhe(ghe)} style={{marginRight:'5px', marginBottom:'5px',minWidth:'52px'}} className={this.trangThaiGhe(ghe)}>{ghe.stt}</button>
                                     )
                                 })}
                             </div>
@@ -98,7 +106,7 @@ import { layDanhSachPhongVeAction } from '../../../redux/actions/QuanLyDatVeActi
                             <div className="col-md-6 text-center">
                             {this.props.dsGhe.slice(17,84).map((ghe,index)=>{
                                     return(
-                                        <button onClick={()=>this.datGhe(ghe.maGhe)} style={{marginRight:'5px', marginBottom:'5px',minWidth:'52px'}} className={this.trangThaiGhe(ghe.maGhe,ghe)}>{ghe.stt}</button>
+                                        <button disabled={ghe.daDat ?'disabled': ''} onClick={()=>this.datGhe(ghe)} style={{marginRight:'5px', marginBottom:'5px',minWidth:'52px'}} className={this.trangThaiGhe(ghe)}>{ghe.stt}</button>
                                     )
                                 })}
                             {/* <button style={{marginRight:'5px', marginBottom:'5px'}} className='btn btn-success'>12</button> 
@@ -108,7 +116,7 @@ import { layDanhSachPhongVeAction } from '../../../redux/actions/QuanLyDatVeActi
                             <div className="col-md-2 text-center">
                             {this.props.dsGhe.slice(84,100).map((ghe,index)=>{
                                     return(
-                                        <button onClick={()=>this.datGhe(ghe.maGhe)} style={{marginRight:'5px', marginBottom:'5px',minWidth:'52px'}} className={this.trangThaiGhe(ghe.maGhe,ghe)}>{ghe.stt}</button>
+                                        <button disabled={ghe.daDat ?'disabled': ''} onClick={()=>this.datGhe(ghe)} style={{marginRight:'5px', marginBottom:'5px',minWidth:'52px'}} className={this.trangThaiGhe(ghe)}>{ghe.stt}</button>
                                     )
                                 })}
                             {/* <button style={{marginRight:'5px', marginBottom:'5px'}} className='btn btn-success'>12</button>
@@ -147,8 +155,10 @@ const mapStateToProps = state => ({
   
   const mapDispatchToProps = dispatch =>{
     return{
-      layDSPhongVe: (maLichChieu) => dispatch(layDanhSachPhongVeAction(maLichChieu))
+      layDSPhongVe: (maLichChieu) => dispatch(layDanhSachPhongVeAction(maLichChieu)),
+      datVe: (thongTinDatVe) => dispatch(datVeAction(thongTinDatVe))
     }
   }
 
+  
 export default connect(mapStateToProps,mapDispatchToProps)(ChiTietPhongVePage);

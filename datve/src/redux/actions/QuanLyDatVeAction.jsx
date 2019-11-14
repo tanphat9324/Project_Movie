@@ -24,3 +24,19 @@ export const layDanhSachPhongVeAction = (maLichChieu) => {
         })
     }
 }
+
+export const datVeAction = (thongTinDatVe) => {
+    return dispatch => {
+        axios({
+            method: 'POST',
+            url: settings.domain + `/QuanLyDatVe/DatVe`,
+            data: thongTinDatVe
+        }).then(res => {
+            console.log('dat ve thanh cong');
+            
+        }).catch(err => {
+            console.log('dat ve loi');
+            
+        })
+    }
+}

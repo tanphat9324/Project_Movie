@@ -19,6 +19,8 @@ export const dangNhapAction = (thongTinNguoiDung, callback) => {
       .then(result => {
         localStorage.setItem(settings.userLogin, JSON.stringify(result.data));
         localStorage.setItem(settings.token, result.data.accessToken);
+        localStorage.setItem(settings.taiKhoan, result.data.taiKhoan);
+
         // console.log("dang Nhap thanh cong action");      
         // console.log("dang Nhap action ", result.data);
         swal.fire({
