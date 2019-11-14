@@ -8,7 +8,16 @@ import { layDanhSachPhongVeAction } from '../../../redux/actions/QuanLyDatVeActi
      constructor(props){
          super(props);
          this.state={
-             datVe:false,
+             datVe:{
+                maLichChieu: this.props.match.params.id,
+                danhSachVe: [
+                  {
+                    maGhe: 0,
+                    giaVe: 0
+                  }
+                ],
+                taiKhoanNguoiDung: ''
+             },
              mangGheDaChon:[]
          }
      }
@@ -17,52 +26,32 @@ import { layDanhSachPhongVeAction } from '../../../redux/actions/QuanLyDatVeActi
      }
      mangGheChon = [];
 
-     mangGheDaChon =() =>{
-      return this.props.dsGhe.map((ghe,index)=>{
-          if(ghe.daDat){
-              this.mangGheChon.push(ghe.stt);
-            this.setState({
-                mangGheDaChon: this.mangGheChon
-            })
-          }
-      })
+    //  mangGheDaChon =() =>{
+    //   return this.props.dsGhe.map((ghe,index)=>{
+    //       if(ghe.daDat){
+    //           this.mangGheChon.push(ghe.stt);
+    //         this.setState({
+    //             mangGheDaChon: this.mangGheChon
+    //         })
+    //       }
+    //   })
         
-     }
-     datGhe = (gheStt) =>{         
-        this.mangGheDaChon();
-        let indexGhe = this.state.mangGheDaChon.findIndex(x => {return x === gheStt});
-        console.log('datGhe',indexGhe);
-        
+    //  }
+     datGhe = (maGhe) =>{         
+        let indexGhe = this.state.mangGheDaChon.findIndex(x => {return x === maGhe});
+
         if(indexGhe === -1){
-            this.mangGheChon.push(gheStt);
+            this.mangGheChon.push(maGhe);
             this.setState({
                 mangGheDaChon: this.mangGheChon
             })
         }
+        console.log('mangGheDaChon',this.state.mangGheDaChon);
+        
      }
-     trangThaiGhe = (gheStt,ghe)=>{
-        // this.mangGheDaChon();
-        let gheIndex = this.state.mangGheDaChon.findIndex(x => {return x === gheStt})
-        console.log(gheIndex);
-    
-        // if(gheIndex === -1){
-        //     if(ghe.loaiGhe === 'Thuong'){
-        //         return 'btn btn-secondary'
-        //     }else if(ghe.loaiGhe === 'Vip'){
-        //         return 'btn btn-warning'
-        //     }
-        // }else return 'btn btn-success'
-      
-        // if(gheIndex !== -1){
-        //     return 'btn btn-success'
-        // }
-        // if(gheIndex === -1){
-        //     if(ghe.loaiGhe === 'Thuong'){
-        //         return 'btn btn-secondary'
-        //     }else if(ghe.loaiGhe === 'Vip'){
-        //         return 'btn btn-warning'
-        //     }
-        // }
+     trangThaiGhe = (maGhe,ghe)=>{
+        let gheIndex = this.state.mangGheDaChon.findIndex(x => {return x === maGhe})
+        // console.log(gheIndex);
        
         if(ghe.daDat){
             return 'btn btn-danger'
@@ -73,12 +62,10 @@ import { layDanhSachPhongVeAction } from '../../../redux/actions/QuanLyDatVeActi
         }else if(ghe.loaiGhe === 'Vip'){
             return 'btn btn-warning'
         }
-
-
      }
 
     render() {        
-        console.log('dat Ghe',this.state.mangGheDaChon);
+        // console.log('dat Ghe',this.state.mangGheDaChon);
         
         return (
             <Fragment>
@@ -103,7 +90,7 @@ import { layDanhSachPhongVeAction } from '../../../redux/actions/QuanLyDatVeActi
                             <div className="col-md-2 text-center">
                                 {this.props.dsGhe.slice(0,16).map((ghe,index)=>{
                                     return(
-                                        <button onClick={()=>this.datGhe(ghe.stt)} style={{marginRight:'5px', marginBottom:'5px',minWidth:'52px'}} className={this.trangThaiGhe(ghe.stt,ghe)}>{ghe.stt}</button>
+                                        <button onClick={()=>this.datGhe(ghe.maGhe)} style={{marginRight:'5px', marginBottom:'5px',minWidth:'52px'}} className={this.trangThaiGhe(ghe.maGhe,ghe)}>{ghe.stt}</button>
                                     )
                                 })}
                             </div>
@@ -111,7 +98,7 @@ import { layDanhSachPhongVeAction } from '../../../redux/actions/QuanLyDatVeActi
                             <div className="col-md-6 text-center">
                             {this.props.dsGhe.slice(17,84).map((ghe,index)=>{
                                     return(
-                                        <button onClick={()=>this.datGhe(ghe.stt)} style={{marginRight:'5px', marginBottom:'5px',minWidth:'52px'}} className={this.trangThaiGhe(ghe.stt,ghe)}>{ghe.stt}</button>
+                                        <button onClick={()=>this.datGhe(ghe.maGhe)} style={{marginRight:'5px', marginBottom:'5px',minWidth:'52px'}} className={this.trangThaiGhe(ghe.maGhe,ghe)}>{ghe.stt}</button>
                                     )
                                 })}
                             {/* <button style={{marginRight:'5px', marginBottom:'5px'}} className='btn btn-success'>12</button> 
@@ -121,7 +108,7 @@ import { layDanhSachPhongVeAction } from '../../../redux/actions/QuanLyDatVeActi
                             <div className="col-md-2 text-center">
                             {this.props.dsGhe.slice(84,100).map((ghe,index)=>{
                                     return(
-                                        <button onClick={()=>this.datGhe(ghe.stt)} style={{marginRight:'5px', marginBottom:'5px',minWidth:'52px'}} className={this.trangThaiGhe(ghe.stt,ghe)}>{ghe.stt}</button>
+                                        <button onClick={()=>this.datGhe(ghe.maGhe)} style={{marginRight:'5px', marginBottom:'5px',minWidth:'52px'}} className={this.trangThaiGhe(ghe.maGhe,ghe)}>{ghe.stt}</button>
                                     )
                                 })}
                             {/* <button style={{marginRight:'5px', marginBottom:'5px'}} className='btn btn-success'>12</button>
