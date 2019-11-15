@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, useLocation } from 'react-router-dom';
 // import logo from './logo.svg';
 import './App.css';
 import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
@@ -23,13 +23,28 @@ import LichChieuChiTiet from './components/LichChieuChiTiet/LichChieuChiTiet';
 import ChiTietPhongVePage from './components/pages/ChiTietPhongVePage/ChiTietPhongVePage';
 import ThanhToanComponent from './components/pages/ChiTietPhongVePage/ThanhToanComponent/ThanhToanComponent';
 import NotFound404Page from './components/pages/NotFound404Page/NotFound404Page';
+import createHistory from 'history/createBrowserHistory'
+
+const history = createHistory()
+
+const ScrollTop = () => {
+  const {pathname} = useLocation()
+
+  React.useEffect(() => {
+    window.scrollTo(0,0);
+  }, [pathname])
+
+  return null
+}
 
 
 function App() {
 
+
   return (
     <Fragment>
-      <BrowserRouter>
+      <BrowserRouter history={history}>
+        <ScrollTop></ScrollTop>
         <Switch>
           <Route exact component={DetailMovie} path="/chitietphim/:id"  />
           <Route component={ChiTietPhongVePage} path="/chitietdatve/:id" exact />

@@ -5,11 +5,6 @@ import {connect} from 'react-redux';
 import { datVeAction } from '../../../../redux/actions/QuanLyDatVeAction';
 
 class ThanhToanComponent extends Component {
-    // datVe:{
-    //     maLichChieu: this.props.match.params.id,
-    //     danhSachVe: [],
-    //     taiKhoanNguoiDung: localStorage.getItem(settings.taiKhoan)
-    //  },
      formatNumber=(num)=> {
         return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
       }
@@ -54,7 +49,10 @@ let tongTien = danhSachVe.reduce((tt,ghe,index) =>{
                     <span className={styles.email}>taiKhoan: </span>
                     <span className={styles.email_item}>{localStorage.getItem(settings.taiKhoan)}</span>
                 </div>
-                
+                <div className={styles.lienLac}>
+                    <span className={styles.email}>Email: </span>
+                    <span className={styles.email_item}>{localStorage.getItem(settings.userLogin)}</span>
+                </div>
                 <div className={styles.hinhThuc}>
                     <div style={{}} className={styles.hinhThuc_item}>Hình thức thanh toán</div>
              
