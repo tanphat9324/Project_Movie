@@ -7,7 +7,7 @@
 }
 .movie_item_thumbNail {
   position: relative;
-  height: 329.48px;
+  height: 339px;
 }
 .movie_item img {
   width: 100%;
@@ -15,7 +15,7 @@
 }
 .movie_hover {
   opacity: 0;
-  transition: all 0.3s;
+  transition: all 0.2s;
 }
 .linkMovie {
   position: relative;
@@ -48,6 +48,8 @@
   background-color: #fb4226;
   font-size: 20px;
   color: white;
+  border-radius: 5px;
+  border:none;
 }
 .movie_item .linkMovie:hover .movie_title {
   opacity: 0;
@@ -109,4 +111,7 @@
   transform: translateY(-50%);
   z-index: 100;
   cursor: pointer;
+}
+.movie_item_thumbNail .slider_image{
+  min-height: 339px;
 }

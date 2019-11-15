@@ -1,9 +1,10 @@
 .content{
-    margin-top: 85px;
+    padding-top: 85px;
+    /* width: 80%; */
 }
 .Rap{
     width: 50%;
-    margin:0 auto;
+    margin:0 auto auto 12%;
     display: flex;
     justify-content: space-between;
 }
@@ -17,12 +18,14 @@
 }
 .content_DatVe{
     width: 50%;
-    margin:0 auto;
+    margin:0 auto auto 12%;
     padding-top: 20px;
 }
 .content_DatVe>img{
     width: 100%;
 }
-.content_ghe{
-    
+.ghiChu{
+    width: 40%;
+    margin:0 auto auto 15%;
+    padding-top: 45px;
 }

@@ -108,7 +108,7 @@ opacity: 1;
   width: 50px;
   height: 50px;
 }
-.movie_Info{
+.movie_Info,.movie_Info2{
   padding-left: 10px;
 }
 .select_movie{
@@ -122,26 +122,32 @@ opacity: 1;
 .movie_custom{
 height: 100%;
 }
-.movieInfo{
+.movieInfo,.movieInfo2{
   padding:20px;
 }
-.movieInfo button{
+/* .movieInfo2{
+  width: 100%;
+} */
+.movieInfo button,.movieInfo2 button{
 width: 100%;
   background-color: transparent;
   border:none;
   outline-color: transparent;
 }
-.movieInfo button img{
+.movieInfo button img,.movieInfo2 button img{
   width: 50px;
   height: 50px;
 }
 
 .customHomePage{
-  border:1px solid red;
-
+  border: 1px solid #ebebec;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  min-height: 705px;
+  justify-content: unset!important;
 }
 .customHomePage>.nav-link{
-  border-bottom:1px solid red;
+  /* border-bottom:1px solid red; */
   padding:20px!important;
   width: 90px;
   border-radius: 0!important;
@@ -156,4 +162,85 @@ width: 100%;
 }
 .customHomePage>.nav-link.active>img{
   opacity: 1;
+}
+
+.session_content{
+border-top:1px solid #ebebec;
+border-right:1px solid #ebebec;
+border-bottom:1px solid #ebebec;
+
+}
+.hr{
+  width: 60%;
+  margin:0 auto;
+  border-bottom:1px solid #ebebec;
+}
+.hr1{
+  width: 90%;
+  margin:0 auto;
+  border-bottom:1px solid #ebebec;
+}
+.branchItemSession>img{
+  transition: all 0.5s;
+}
+
+/* tabcontent */
+.sessionSelect_movie{
+  width: 35%;
+  float: left;
+  overflow-y: scroll;
+  height: 705px!important;
+}
+.sessionSelect_movie:focus,.session_de:focus{
+  outline: none!important;
+}
+.movieInfo1{
+  padding:20px;
+  /* min-width: 711px; */
+
+}
+.movieInfo1 button{
+width: 100%;
+  background-color: transparent;
+  border:none;
+  outline-color: transparent;
+}
+.movieInfo1 button img{
+  width: 50px;
+  height: 50px;
+}
+.movie_Info1{
+  padding-left: 10px;
+  color:black;
+}
+.session_Phim{
+  float: left;
+  width: 65%;
+  overflow-y: scroll;
+  max-height: 705px!important;
+}
+.sessionDiaChi{
+  overflow: hidden!important;
+  display: -webkit-box;
+    -webkit-line-clamp: 1!important;
+    -webkit-box-orient: vertical!important;
+}
+.bookingTicket1{
+  display: flex;
+}
+.timeBooking1{
+  display: flex;
+  max-width: 700px;
+  flex-wrap: wrap;
+}
+.timeBooking1>.timeItem1:hover{
+  color:red!important;
+}
+.timeItem1{
+  font-weight: 500!important;
+  color: #417500!important;
+  margin: 0 15px 15px 0;
+  transition: all .2s;
+  font-size: 24px;
+  text-decoration: none!important;
 }

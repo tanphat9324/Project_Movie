@@ -1,50 +1,3 @@
-/* eslint-disable jsx-a11y/alt-text */
-// /* eslint-disable jsx-a11y/anchor-is-valid */
-// import React, { Component, Fragment } from "react";
-// import {NavLink} from 'react-router-dom';
-// import "./Header.css";
-// import {isLogin} from '../../utils/index';
-
-// import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-// import DropDownLogin from "./DropDownLogin/DropDownLogin";
-
-// export default class Header extends Component {
-//   render() {
-//     return (
-//       <Fragment>
-//           <section className="header d-flex">
-//             <div className="header_brand">
-//               <img src="./assets/images/web-logo.png" alt="logo" />
-//             </div>
-//             <div className="header_info">
-//               <ul className="header_title">
-//                 <li>
-//                   <a href="#CUM_RAP">Lịch Chiếu</a>
-//                 </li>
-//                 <li>
-//                   <a href="#">Cụm rạp</a>
-//                 </li>
-//                 <li>
-//                   <a href="#">Tin Tức</a>
-//                 </li>
-//                 <li>
-//                   <a href="#">Ứng dụng</a>
-//                 </li>
-//               </ul>
-//             </div>
-//             <div className="header_login">
-//               <ul className="login_info">
-//               <DropDownLogin/>
-//               </ul>
-
-//             </div>
-//           </section>
-
-//       </Fragment>
-//     );
-//   }
-// }
-
 import React, { Component, Fragment } from "react";
 import { connect } from 'react-redux';
 import { MDBContainer, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavbarToggler, MDBCollapse, MDBNavItem, MDBNavLink, MDBIcon } from 'mdbreact';
@@ -103,33 +56,47 @@ class Header extends React.Component {
     });
   }
 
+  renderNav = ()=>{
+    if(this.props.location.pathname !== '/'){
+      return(
+        <Fragment></Fragment>
+      )
+    }else return(
+      <Fragment>
+  <MDBNavItem active>
+      <a className={styles.title} href="#lichChieu">Lịch chiếu</a>
+    </MDBNavItem>
+    <MDBNavItem>
+    <a className={styles.title} href="#cumRap">Cụm Rạp</a>
+    </MDBNavItem>
+    <MDBNavItem>
+    <a className={styles.title} href="#lichChieu">Tin tức</a>
+    </MDBNavItem>
+    <MDBNavItem>
+    <a className={styles.title} href="#footer">Ứng dụng</a>
+    </MDBNavItem>
+      </Fragment>
+    
+    )
+  }
   render() {
     const bgPink = { backgroundColor: '#e91e63' }
+    // console.log(this.props.location);
+    
     return (
       <div>
      
           <header>
             <MDBNavbar className={styles.header} style={bgPink} dark expand="md" scrolling fixed="top">
-              <MDBNavbarBrand href="/">
+              <NavLink to='/'>
                 <img className={styles.brand} src="../assets/images/web-logo.png" alt="logo" />
-              </MDBNavbarBrand>
+              </NavLink>
               <MDBNavbarToggler onClick={this.onClick} />
               <MDBCollapse isOpen={this.state.collapse} navbar>
                 <MDBNavbarNav center></MDBNavbarNav>
                 <MDBNavbarNav center></MDBNavbarNav>
                 <MDBNavbarNav center>
-                  <MDBNavItem active>
-                    <MDBNavLink to="#">Lịch Chiếu</MDBNavLink>
-                  </MDBNavItem>
-                  <MDBNavItem>
-                    <MDBNavLink to="#">Cụm rạp</MDBNavLink>
-                  </MDBNavItem>
-                  <MDBNavItem>
-                    <MDBNavLink to="#">Tin Tức</MDBNavLink>
-                  </MDBNavItem>
-                  <MDBNavItem>
-                    <MDBNavLink to="#">Ứng dụng</MDBNavLink>
-                  </MDBNavItem>
+                 {this.renderNav()}
                 </MDBNavbarNav>
 
                 <MDBNavbarNav center></MDBNavbarNav>

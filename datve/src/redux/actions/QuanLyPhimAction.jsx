@@ -1,6 +1,7 @@
 import { actionType } from '../constants/QuanLyPhimConstant';
 import axios from 'axios';
 import {settings} from '../../common/Config/settings';
+import swal from "sweetalert2";
 
 export const nhanDanhSachPhim = dsPhim => {
     return {
@@ -51,6 +52,13 @@ export const themPhimAction = (thongTinPhim) => {
                 data:frm
             }).then(res => {
                 console.log("upload thanh cong");
+                swal.fire({
+                    position: "center",
+                    type: "success",
+                    title: "Đăng nhập thành công",
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
             }).catch(err =>{
                 console.log("upload loi");
             })
@@ -102,6 +110,13 @@ export const capNhatPhimAction = (thongTinPhim) => {
               data:frm
           }).then(res => {
               console.log("upload thanh cong");
+              swal.fire({
+                position: "center",
+                type: "success",
+                title: "Đăng nhập thành công",
+                showConfirmButton: false,
+                timer: 1500
+              })
           }).catch(err =>{
               console.log("upload loi");
           })

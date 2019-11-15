@@ -20,13 +20,9 @@ class LichChieuChiTiet extends Component {
     }
   }
     render() {
-      // let danhSachPhim =this.props.listCumRap.danhSachPhim.lstLichChieuTheoPhim;
-      // let a = this.props.listCumRap;
-      // console.log(a);
-      
         return (
             <Fragment>
-<div style={{display:'flex',borderRadius:'10px',Height:'713px'}}>
+<div id='lichChieuChiTiet' style={{display:'flex',borderRadius:'10px',Height:'713px'}}>
   <div className={`${styles.branchMovie} nav flex-column nav-pills`} id="v-pills-tab" role="tablist" aria-orientation="vertical">
     {this.props.danhMucRap.map((dMuc,index)=>{
       return(
@@ -38,16 +34,14 @@ class LichChieuChiTiet extends Component {
     })}
   </div>
 
-  {/* <div className='tabPanel'> */}
   <div className={`${styles.content} tab-content`} id="v-pills-tabContent">
   {this.checkListIsEmpty() ? <div className="tab-pane fade show active" id={this.props.listCumRap.maHeThongRap} role="tabpanel" aria-labelledby="v-pills-home-tab">
         <div className={styles.select_movie}>
     {this.props.listCumRap.map((ttRap,index) => {
-      console.log('ttRap',ttRap.danhSachPhim);
+      console.log('ttRap',ttRap);
       
       let danhSachPhim=ttRap.danhSachPhim[0];
       let list = danhSachPhim.lstLichChieuTheoPhim;
-      // console.log('danhSachPhim',list.slice(0,16));
       
         return(
           <div>
@@ -63,7 +57,10 @@ class LichChieuChiTiet extends Component {
               </button>
               <div />
             </div>
-        <div style={{padding:'0 0 0 20px',color:'black'}}>tên Phim: {danhSachPhim.tenPhim}</div>
+        
+        
+
+        <div className={styles.tenPhim}>Phim: {danhSachPhim.tenPhim}</div>
             <div style={{padding:'0 20px 20px 35px'}} className={styles.bookingTicket} >
               <div style={{paddingTop:'8px',paddingRight:'15px'}}>
 
@@ -76,10 +73,6 @@ class LichChieuChiTiet extends Component {
                   <NavLink to={`/chitietdatve/${tt.maLichChieu}`} key={index} className={styles.timeItem} >{dayjs(tt.ngayKhoiChieu).format('HH:mm')}</NavLink>
                   )
                 })}
-              
-             
-
-
               </div>
             </div>
             <hr className={styles.hr}/>
@@ -88,16 +81,8 @@ class LichChieuChiTiet extends Component {
       })}
  </div>
         </div> : <div></div> }
-    {/* <div className="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-   
-    </div>
-    <div className="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
-    <div className="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div> */}
   </div>
   </div>
-{/* </div> */}
-
-
             </Fragment>
         )
     }

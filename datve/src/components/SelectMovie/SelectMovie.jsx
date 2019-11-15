@@ -6,7 +6,7 @@ export default class SelectMovie extends Component {
     let {dsPhim}=this.props;
     return (
       <Fragment>
-      <div className="list_movie">
+      <div id='lichChieu' className="list_movie">
         <ul className="nav nav-pills mb-3 custom_session" id="pills-tab" role="tablist">
           <li className="nav-item">
             <a className="nav-link session_nav active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab">Đang Chiếu</a>

@@ -7,6 +7,7 @@ import './Bs.css'
 import LichChieuChiTiet from '../LichChieuChiTiet/LichChieuChiTiet';
 import Footer from '../Footer/Footer';
 import { layThongTinLichChieuPhimAction } from '../../redux/actions/QuanLyRapAction';
+import FooterChiTiet from './FooterChiTiet';
 
 class DetailMovie extends Component {
   componentDidMount(){
@@ -36,9 +37,6 @@ class DetailMovie extends Component {
   }
 
     render() {
-      // console.log(this.props.match.params.id);
-      // console.log(this.props.LichChieuPhim);
-      
         return (
             <Fragment>
                 <Header />
@@ -63,10 +61,10 @@ class DetailMovie extends Component {
 
                                     <div className={styles.info}>01.11.2019</div>
                                     <div style={{minWidth:'545px',minHeight:'78px'}} className={styles.title}>{this.props.LichChieuPhim.tenPhim}</div>
-                                    <div style={{paddingBottom:'25px'}} className={styles.info}>128 phút - 6.6 IMDb - 2D/Digital</div>
-                                    <button style={{padding:'7px 25px'}} className='btn btn-danger'>
+                                    <div style={{paddingBottom:'25px'}} className={styles.info}>128 phút - 6.6 IMDb - 2D/Digital/3D/IMAX/4DX</div>
+                                    <a href='#lichChieuChiTiet' style={{padding:'7px 25px'}} className='btn btn-danger'>
                                         Mua vé
-                                    </button>
+                                    </a>
                                         </div>
                                     </div>
                                     <div className={`${styles.danhGia} col-md-2`}>
@@ -243,18 +241,6 @@ class DetailMovie extends Component {
      </div>
         </div>
 
-{/* <div>
-  <button className="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    Button with data-target
-  </button>
-
-  <div className="collapsing" id="collapseExample">
-    <div className="card card-body">
-      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-    </div>
-  </div>
-</div> */}
-
 </div>
      
       </div>
@@ -264,7 +250,7 @@ class DetailMovie extends Component {
                     </div>
                     
             
-          <Footer/>
+          <FooterChiTiet/>
             </Fragment>
         )
     }

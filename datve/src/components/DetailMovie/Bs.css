@@ -2,7 +2,7 @@
     border:1px solid #ebebec;
     border-radius: unset!important;
     background-color: white;
-    opacity: 0.5;
+    opacity: 1;
     transition: all 0.5s;
     padding:20px;
     min-width: 240px;
@@ -13,7 +13,7 @@
     transition: all 0.5s;
 }
 .branchItem>img:hover{
-    opacity: 1;
+    opacity: 1!important;
 }
 .branchItem.active img{
     opacity: 1;
@@ -25,7 +25,7 @@
 .lichChieuItem> .nav-link{
     line-height: 24px;
     height: 24px;
-    transition: all .2s;
+    transition: all .5s;
     font-weight: 500;
     font-size: 20px;
     color:white!important;

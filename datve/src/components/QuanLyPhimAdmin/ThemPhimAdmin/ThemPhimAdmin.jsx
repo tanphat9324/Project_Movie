@@ -114,19 +114,6 @@ handleChangeAvatar = info => {
     console.log("state phim submit",this.state.phim);
   };
 
-  // validateField=(name,field,regex,value,help)=>{
-  //   let status='';
-  //   let infoError='';
-  //   if(name === field){
-  //     if(!regex.test(value)){
-  //       infoError = help;
-  //        status="error";
-  //     }else{
-  //       status="success";
-  //     }
-  // }
-  // }
-
   handleErrors = e => {
     let {name, value} = e.target;
     let status = '';

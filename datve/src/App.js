@@ -39,7 +39,7 @@ function App() {
           <Route component={DetailMovie} path="/chitietphim/:id" exact />
           {/* <Route component={LichChieuChiTiet} path="/lc" exact /> */}
           <Route component={ChiTietPhongVePage} path="/chitietdatve/:id" exact />
-          <Route component={ThanhToanComponent} path="/tt" exact />
+          {/* <Route component={ThanhToanComponent} path="/tt" exact /> */}
 
 
           <Route component={LoginPage} path="/login" exact />

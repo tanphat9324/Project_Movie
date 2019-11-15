@@ -3,19 +3,58 @@ import { Select } from 'antd';
 import { Table, Divider } from 'antd';
 import { Form,Input,InputNumber,Button   } from 'antd';
 import { DatePicker } from "antd";
+import {connect} from 'react-redux';
+import { taoLichChieuAction } from '../../../redux/actions/QuanLyDatVeAction';
+import { layDanhMucRap, layThongTinCumRap } from '../../../redux/actions/QuanLyRapAction';
+import styles from './ThongTinLichChieuAdmin.module.css'
 
-export default class ThongTinLichChieuAdmin extends Component {
-
- handleChange=(value)=> {
-  console.log(`selected ${value}`);
+class ThongTinLichChieuAdmin extends Component {
+  constructor(props){
+    super(props);
+    this.state={
+       dsRap:[],
+       lichChieu:{
+        maPhim:this.props.maPhim,
+        ngayChieuGioChieu: "",
+        maRap: 0,
+        giaVe: 0
+      }
+    }
+  }
+componentDidMount(){
+  this.props.layDanhMucRap();
 }
+handleChangemaRap=(e) =>{
+      this.setState({
+        lichChieu: {...this.state.lichChieu,maRap:e}
+      })
+}
+handleChangeGiaVe=(e) =>{
+      this.setState({
+        lichChieu: {...this.state.lichChieu,giaVe:e}
+      })
+}
+
+handleSubmit = e => {
+  e.preventDefault();
+  this.props.taoLichChieu(this.state.lichChieu);  
+  console.log('lich chieu',this.state.lichChieu);
+  
+};
  onChange=(value, dateString) => {
-  console.log("Selected Time: ", value);
-  console.log("Formatted Selected Time: ", dateString);
+  this.setState({
+    lichChieu:{...this.state.lichChieu,ngayChieuGioChieu:dateString}
+  })
 }
 
  onOk=(value)=> {
-  console.log("onOk: ", value);
+  // console.log("onOk: ", value);
+}
+
+renderRap= (dsRap) => {
+  this.setState({
+    dsRap
+  }) 
 }
     render() {
         const { Option } = Select;
@@ -71,47 +110,59 @@ export default class ThongTinLichChieuAdmin extends Component {
           ]; 
           const data = this.props.danhSachPhim;
           const { RangePicker } = DatePicker;
-
+          
         return (
             <Fragment>
-                <h3 className="text-center">Phim: The Flash</h3>
+                <h3 className="text-center">Phim: {this.props.tenPhim}</h3>
                 <hr/>
+                <Form onSubmit={this.handleSubmit}>
+                    <div className={styles.lichChieuAdmin}>
+                  <div className='row'>
+                    <div className="col-md-6">
+                    <Form.Item>
+                <Select name='danhMuc' placeholder="Chọn hệ thống rạp" style={{ width: 200 }}>
+                  {this.props.dMucRap.map((dMuc,index) =>{
+                    return(
+                      <Option onClick={()=>this.props.layThongTinCumRap(dMuc.maHeThongRap)} key={index} value={dMuc.maHeThongRap}>{dMuc.maHeThongRap}</Option>
+                    )
+                  })}
+                </Select>
+                </Form.Item>
 
-                <Form.Item>
-                <Select placeholder="Chọn hệ thống rạp" style={{ width: 150 }} onChange={this.handleChange}>
-                <Option value="jack">Jack</Option>
-                <Option value="lucy">Lucy</Option>
+                <Form.Item style={{width:'300px'}}>
+                <Select name='cumRap' placeholder="Chọn cụm rạp" style={{ width: 320 }} onChange={this.handleChange}>
+                {this.props.cumRap.map((cumRap,index) =>{
+                    return(
+                      <Option onClick={()=>this.renderRap(cumRap.danhSachRap)} key={index} value={cumRap.tenCumRap}>{cumRap.tenCumRap}</Option>
+                    )
+                  })}
                 </Select>
                 </Form.Item>
 
                 <Form.Item>
-                <Select placeholder="Chọn cụm rạp" style={{ width: 150 }} onChange={this.handleChange}>
-                <Option value="jack">Jack</Option>
-                <Option value="lucy">Lucy</Option>
+                <Select name='maRap' placeholder="Chọn rạp" style={{ width: 150 }} onChange={this.handleChangemaRap}>
+                {this.state.dsRap.map((rap,index) =>{
+                    return(
+                      <Option key={index} value={rap.maRap}>{rap.maRap}</Option>
+                    )
+                  })}
                 </Select>
                 </Form.Item>
-
-                <Form.Item>
-                <Select placeholder="Chọn rạp" style={{ width: 150 }} onChange={this.handleChange}>
-                <Option value="jack">Jack</Option>
-                <Option value="lucy">Lucy</Option>
-                </Select>
-                </Form.Item>
-
-                <Form.Item>
-                <span>Nhập giá vé: </span>            
-                <InputNumber min={50000} step={5000}	max={300000} defaultValue={70000} onChange={this.handleChange} />
+                    </div>
+                    <div className="col-md-6 text-right">
+                    <Form.Item>
+                <span style={{paddingRight:'70px'}}>Nhập giá vé: </span>            
+                <InputNumber name='giaVe' min={50000} step={5000}	max={300000} defaultValue={70000} onChange={this.handleChangeGiaVe} />
                 </Form.Item>
 
                 <Form.Item>
                 <span>Nhập thời lượng phim: </span>            
-                <InputNumber min={30} step={10}	max={200} defaultValue={90} onChange={this.handleChange} />
+                <InputNumber min={30} step={10}	max={200} defaultValue={90}  />
                 </Form.Item>
 
-                
-               
               <Form.Item>
               <DatePicker
+              style={{ width: 259 }}
                 format="DD/MM/YYYY hh:mm:ss"
                 showTime
                 placeholder="Nhập ngày giờ chiếu"
@@ -119,6 +170,11 @@ export default class ThongTinLichChieuAdmin extends Component {
                 onOk={this.onOk}
               />
               </Form.Item>
+                    </div>
+                  </div>
+                  </div>
+
+            
 
                 <div>
                 <Table style={{width: '1000px'}} columns={columns} bordered='true'  dataSource={data} pagination={{defaultCurrent:1, pageSize: 5}} /> 
@@ -130,12 +186,26 @@ export default class ThongTinLichChieuAdmin extends Component {
             sm: { span: 16, offset: 8 },
           }}
         >
-          <Button type="primary" htmlType="submit">
+          <Button className={styles.submit} type="primary" htmlType="submit">
             Submit
           </Button>
         </Form.Item>
-
+        </Form>
             </Fragment>
         )
     }
 }
+const mapStateToProps = state => ({
+  dMucRap: state.QuanLyRapReducer.dMucRap,
+  cumRap: state.QuanLyRapReducer.cumRap
+})
+
+const mapDispatchToProps = dispatch =>{
+  return {
+    taoLichChieu:(lichChieu) => dispatch(taoLichChieuAction(lichChieu)),
+    layDanhMucRap:() => dispatch(layDanhMucRap()),
+    layThongTinCumRap:(maHeThongRap) => dispatch(layThongTinCumRap(maHeThongRap))
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(ThongTinLichChieuAdmin);

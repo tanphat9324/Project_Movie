@@ -1,59 +1,10 @@
-/* eslint-disable jsx-a11y/alt-text */
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { Component } from 'react'
-import Slider from "react-slick";
-import './Footer.css';
-export default class Footer extends Component {
-  
+import React, { Component,Fragment } from 'react'
+import './FooterChiTiet.css';
+export default class FooterChiTiet extends Component {
     render() {
-      const settings = {
-        autoplay: true,
-        arrows: false,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1
-      };
         return (
-         <section id='footer' className="footer">
-  <div className="footer_img">
-    <div className="footer_info">
-      <div className="row">
-        <div className="col-md-6 footer_dt_info">
-          <div className="textLeft footer_title">Ứng dụng tiện lợi dành cho</div>
-          <div className="textLeft footer_title">người yêu điện ảnh</div>
-          <br />
-          <div className="textSmallLeft">Không chỉ đặt vé, bạn còn có thể bình luận phim, chấm điểm rạp và đổi quà hấp
-            dẫn.</div>
-          <br />
-          <button className="footer_button">App miễn phí - Tải về ngay!</button>
-          <p className="textAppUnder">123Phim có hai phiên bản <a href="#">iOS</a>  <a href = "#" >Android</a></p>
-        </div>
-        <div className="col-md-6 footer_dt">
-          <img src="./assets/images/f2.png"  />
-          <div className="footer_mobile">
-          <Slider {...settings}>
-          <div>
-              <img width='100%' src="./assets/images/fs1.png"  />
-            </div>
-            <div>
-              <img width='100%' src="./assets/images/fs2.png"  />
-            </div>
-            <div>
-              <img width='100%' src="./assets/images/fs3.png"  />
-            </div>
-            <div>
-              <img width='100%' src="./assets/images/fs4.png"  />
-            </div>
-      </Slider>
-
-          
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div className="footer_end">
+            <Fragment>
+                 <div className="footer_end">
     <div className='custom_footer'>
 
   
@@ -138,8 +89,7 @@ export default class Footer extends Component {
       </div>
     </div>
   </div>
-</section>
-
+            </Fragment>
         )
     }
 }

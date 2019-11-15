@@ -27,6 +27,8 @@ class QuanLyPhimAdmin extends Component {
             modal1Visible: false,
             modal2Visible: false,
             modal3Visible: false,
+            tenPhim:'',
+            maPhim:'',
             tenDangNhap:this.props.nguoiDangNhap
         }
       }
@@ -36,8 +38,12 @@ class QuanLyPhimAdmin extends Component {
       setModal2Visible(modal2Visible) {
         this.setState({ modal2Visible });
       }
-      setModal3Visible(modal3Visible) {
-        this.setState({ modal3Visible });
+      setModal3Visible(modal3Visible,tenPhim,maPhim) {
+        this.setState({ 
+          modal3Visible, 
+          tenPhim,
+          maPhim
+        });
       }
 
       componentDidMount(){
@@ -120,7 +126,7 @@ class QuanLyPhimAdmin extends Component {
                   key: 'action',
                   render: (text, record) => (            
                     <span>
-                      <a  style={{}} onClick={() => {this.setModal3Visible(true);}}>
+                      <a  style={{}} onClick={() => {this.setModal3Visible(true,record.tenPhim,record.maPhim);}}>
                         <img title="Tạo lịch chiếu" style={{width:'30px'}} src="../assets/images/taoLichChieu.svg" alt=""/>
                       </a>
                       <Divider type="vertical" />
@@ -179,7 +185,7 @@ class QuanLyPhimAdmin extends Component {
               onCancel={() => this.setModal3Visible(false)}
               footer={null}
             >
-              <ThongTinLichChieuAdmin/>
+              <ThongTinLichChieuAdmin tenPhim={this.state.tenPhim} maPhim={this.state.maPhim}/>
             </Modal>
     <Modal
               title="Cập nhật phim"
