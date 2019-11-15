@@ -22,6 +22,7 @@ import DetailMovie from './components/DetailMovie/DetailMovie';
 import LichChieuChiTiet from './components/LichChieuChiTiet/LichChieuChiTiet';
 import ChiTietPhongVePage from './components/pages/ChiTietPhongVePage/ChiTietPhongVePage';
 import ThanhToanComponent from './components/pages/ChiTietPhongVePage/ThanhToanComponent/ThanhToanComponent';
+import NotFound404Page from './components/pages/NotFound404Page/NotFound404Page';
 
 
 function App() {
@@ -30,28 +31,17 @@ function App() {
     <Fragment>
       <BrowserRouter>
         <Switch>
-          {/* <Home exact path='/' Component={HomePage}/>
-    <Route exact path='/register' component={RegisterPage} />
-    <Route exact path='/login' component={LoginPage} /> */}
-          {/* <Admin exact path='/admin'Component={DashboardAdmin}/>
-    <Route exact path='/admin/register' component = {AddUserAdmin}/> */}
-          {/* <Route exact path='/aaa' component={ThongTinCaNhanPage}/> */}
-          <Route component={DetailMovie} path="/chitietphim/:id" exact />
-          {/* <Route component={LichChieuChiTiet} path="/lc" exact /> */}
+          <Route exact component={DetailMovie} path="/chitietphim/:id"  />
           <Route component={ChiTietPhongVePage} path="/chitietdatve/:id" exact />
-          {/* <Route component={ThanhToanComponent} path="/tt" exact /> */}
-
-
           <Route component={LoginPage} path="/login" exact />
           <Route component={RegisterPage} path="/register" exact />
           <Route component={HomePage} path="/" exact />
-
           <PublicRoute restricted={true} component={ThongTinCaNhanPage} path="/thongtinnguoidung" exact />
           <PrivateRoute exact component={AddUserAdmin} path="/admin/register" />
-          {/* <PrivateRoute exact path="/admin" component={DashboardAdmin}/> */}
           <PrivateRoute exact path="/admin" Component={DashboardAdmin} />
           <PrivateRoute exact path="/admin/quanlynguoidung" Component={QuanLyNguoiDungAdmin} />
           <PrivateRoute exact path="/admin/quanlyphim" Component={QuanLyPhimAdmin} />
+          <Route path="*" component={NotFound404Page} />
 
         </Switch>
       </BrowserRouter>

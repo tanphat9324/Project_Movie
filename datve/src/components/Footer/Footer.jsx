@@ -87,24 +87,24 @@ export default class Footer extends Component {
         <div className="footer_title">ĐỐI TÁC</div>
         <div className="footer_icon">
           <a href="#"><img src="../assets/images/fi1.png"  /></a> 
+          <a href="#"><img src="../assets/images/i2.png"  /></a> 
+          <a href="#"><img src="../assets/images/i3.png"  /></a> 
+          <a href="#"><img src="../assets/images/i4.png"  /></a> 
+          <a href="#"><img src="../assets/images/i5.png"  /></a> 
+          <a href="#"><img src="../assets/images/i6.png"  /></a> 
+          <a href="#"><img src="../assets/images/zalopay.png"  /></a> 
           <a href="#"><img src="../assets/images/fi1.png"  /></a> 
+          <a href="#"><img src="../assets/images/i2.png"  /></a> 
+          <a href="#"><img src="../assets/images/i3.png"  /></a> 
+          <a href="#"><img src="../assets/images/i4.png"  /></a> 
+          <a href="#"><img src="../assets/images/i5.png"  /></a> 
+          <a href="#"><img src="../assets/images/i6.png"  /></a> 
+          <a href="#"><img src="../assets/images/zalopay.png"  /></a> 
           <a href="#"><img src="../assets/images/fi1.png"  /></a> 
-          <a href="#"><img src="../assets/images/fi1.png"  /></a> 
-          <a href="#"><img src="../assets/images/fi1.png"  /></a> 
-          <a href="#"><img src="../assets/images/fi1.png"  /></a> 
-          <a href="#"><img src="../assets/images/fi1.png"  /></a> 
-          <a href="#"><img src="../assets/images/fi1.png"  /></a> 
-          <a href="#"><img src="../assets/images/fi1.png"  /></a> 
-          <a href="#"><img src="../assets/images/fi1.png"  /></a> 
-          <a href="#"><img src="../assets/images/fi1.png"  /></a> 
-          <a href="#"><img src="../assets/images/fi1.png"  /></a> 
-          <a href="#"><img src="../assets/images/fi1.png"  /></a> 
-          <a href="#"><img src="../assets/images/fi1.png"  /></a> 
-          <a href="#"><img src="../assets/images/fi1.png"  /></a> 
-          <a href="#"><img src="../assets/images/fi1.png"  /></a> 
-          <a href="#"><img src="../assets/images/fi1.png"  /></a> 
-          <a href="#"><img src="../assets/images/fi1.png"  /></a> 
-          <a href="#"><img src="../assets/images/fi1.png"  /></a> 
+          <a href="#"><img src="../assets/images/i2.png"  /></a> 
+          <a href="#"><img src="../assets/images/i3.png"  /></a> 
+          <a href="#"><img src="../assets/images/i4.png"  /></a> 
+          <a href="#"><img src="../assets/images/i5.png"  /></a> 
         </div>
       </div>
       <div className="col-md-4">

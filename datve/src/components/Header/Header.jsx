@@ -4,7 +4,7 @@ import { MDBContainer, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavbarToggler
 import { BrowserRouter as Router } from 'react-router-dom';
 import { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem } from "mdbreact";
 import { NavLink, withRouter } from "react-router-dom";
-import { isLogin } from '../../utils/index';
+import { isLogin,isLoginAdmin } from '../../utils/index';
 import { nguoiDangNhap } from '../../redux/actions/QuanLyNguoiDungAction';
 import { Button } from 'reactstrap';
 import styles from './Header.module.css';
@@ -21,6 +21,7 @@ class Header extends React.Component {
   componentDidMount() {
     this.props.hoTenAdmin()
   }
+
   kiemTraDangNhap = () => {
     if (isLogin()) {
       return (
@@ -32,6 +33,7 @@ class Header extends React.Component {
             </MDBDropdownToggle>
             <MDBDropdownMenu right basic>
               <MDBDropdownItem onClick={() => this.props.history.push('/thongtinnguoidung')}>Profile</MDBDropdownItem>
+              { isLoginAdmin() ? <MDBDropdownItem onClick={() => this.props.history.push('/admin')}>Admin</MDBDropdownItem> :<Fragment></Fragment> }
               <MDBDropdownItem divider />
               <ModalLogout />
             </MDBDropdownMenu>

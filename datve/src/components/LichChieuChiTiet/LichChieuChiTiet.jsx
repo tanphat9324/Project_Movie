@@ -40,7 +40,7 @@ class LichChieuChiTiet extends Component {
     {this.props.listCumRap.map((ttRap,index) => {
       console.log('ttRap',ttRap);
       
-      let danhSachPhim=ttRap.danhSachPhim[0];
+      let danhSachPhim=ttRap.danhSachPhim;
       let list = danhSachPhim.lstLichChieuTheoPhim;
       
         return(
@@ -58,9 +58,28 @@ class LichChieuChiTiet extends Component {
               <div />
             </div>
         
-        
+        {danhSachPhim.map((phim,index) => {
+        return  <Fragment>
+            <div className={styles.tenPhim}>Phim: {phim.tenPhim}</div>
+            <div style={{padding:'0 20px 20px 35px'}} className={styles.bookingTicket} >
+              <div style={{paddingTop:'8px',paddingRight:'15px'}}>
 
-        <div className={styles.tenPhim}>Phim: {danhSachPhim.tenPhim}</div>
+              <img  src="../assets/images/2_0.png" width='30px' height='30px' alt=""/>
+              </div>
+
+              <div className={styles.timeBooking}>
+                {phim.lstLichChieuTheoPhim.slice(0,16).map((tt,index) => {
+                  return(
+                  <NavLink to={`/chitietdatve/${tt.maLichChieu}`} key={index} className={styles.timeItem} >{dayjs(tt.ngayKhoiChieu).format('HH:mm')}</NavLink>
+                  )
+                })}
+              </div>
+            </div>
+            <hr className={styles.hr}/>
+          </Fragment>
+        })}
+
+        {/* <div className={styles.tenPhim}>Phim: {danhSachPhim.tenPhim}</div>
             <div style={{padding:'0 20px 20px 35px'}} className={styles.bookingTicket} >
               <div style={{paddingTop:'8px',paddingRight:'15px'}}>
 
@@ -75,7 +94,7 @@ class LichChieuChiTiet extends Component {
                 })}
               </div>
             </div>
-            <hr className={styles.hr}/>
+            <hr className={styles.hr}/> */}
             </div>  
         )
       })}
