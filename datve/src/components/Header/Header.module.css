@@ -1,0 +1,43 @@
+  .brand {
+    width: 50px;
+    height: 50px;
+  }
+  .header{
+    height: 60px;
+  }
+  .login{
+    background: #00c851!important;
+    border-radius: 10em!important;
+    border:none!important;
+    margin-right: 5px;
+    min-width: 120px!important;
+    color:white!important;
+  }
+  .register{
+    background: #33b5e5!important;
+    border-radius: 10em!important;
+    border:none!important;
+    margin-right: 5px;
+    min-width: 120px!important;
+  }
+
+  .buttonlogIn{
+    background-color: #ffb6d49a!important;
+    color:white!important;
+    font-weight: 500!important;
+    border-radius: 10em!important;
+    border:none!important;
+
+  }
+  .buttonlogIn>img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }
+  .title{
+    color:white;
+  }
+  .title:hover{
+    text-decoration: none;
+    color:#fffd6d;
+  }
