@@ -15,18 +15,13 @@ export const layDanhSachPhongVeAction = (maLichChieu) => {
             method: 'GET',
             url: settings.domain + `/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${maLichChieu}`
         }).then(res =>{
-            dispatch(nhanDanhSachPhongVe(res.data))
-            // console.log('nhanDanhSachPhongVe',res.data);
-            
+            dispatch(nhanDanhSachPhongVe(res.data))            
         }).catch(err => {
-            // console.log(err.response.data);
         })
     }
 }
 
-export const datVeAction = (thongTinDatVe) => {
-    console.log('thong Tin Dat Ve',thongTinDatVe);
-    
+export const datVeAction = (thongTinDatVe) => {    
     return dispatch => {
         axios({
             method: 'POST',
@@ -42,12 +37,9 @@ export const datVeAction = (thongTinDatVe) => {
             icon: 'success',
             title: "Đặt vé thành công",
             showConfirmButton: true,
-            // timer: 1500,
+            timer: 1500,
             })
-            
-        }).catch(err => {
-            console.log('dat ve loi');
-            
+        }).catch(err => {            
         })
     }
 }
@@ -62,7 +54,6 @@ export const taoLichChieuAction = (thongTinLichChieu) => {
                 Authorization: "Bearer  " + localStorage.getItem(settings.token)
               }
         }).then(res => {
-            console.log('tao lich chieu thanh cong');
             swal.fire({
                 position: "center",
                 type: "success",
@@ -71,7 +62,6 @@ export const taoLichChieuAction = (thongTinLichChieu) => {
                 timer: 1500
               });
         }).catch(err => {
-            console.log('tao lich chieu loi');  
         })
     }
 }

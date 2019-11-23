@@ -2,9 +2,7 @@ import React, { Component,Fragment } from 'react';
 import {connect} from 'react-redux';
 import styles from './AddUserAdmin.module.css';
 import { addUserAdminAction } from '../../redux/actions/QuanLyNguoiDungAction';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-
-// import { Modal } from 'antd';
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 class AddUserAdmin extends Component {
     constructor(props){
@@ -60,7 +58,6 @@ class AddUserAdmin extends Component {
             // }
         }
 
-        // this.state.valid = loi === '' ? true : false;
         this.setState({
             errors: {...this.state.errors,[name]:loi}
         })

@@ -1,15 +1,13 @@
 import React, { Component,Fragment } from 'react'
 import { Tabs } from 'antd';
 import 'hover.css';
-import Header from '../../Header/Header';
 import styles from './ThongTinCaNhanPage.module.css';
 import {connect} from 'react-redux';
-import { Modal, Button } from 'antd';
+import { Modal } from 'antd';
 import ModalTTCaNhan from './ModalTTCaNhan/ModalTTCaNhan';
 import { nguoiDangNhap } from '../../../redux/actions/QuanLyNguoiDungAction';
 import HeaderAdmin from '../../HeaderAdmin/HeaderAdmin';
 import NotiAdmin from '../../NotiAdmin/NotiAdmin';
-// import './sb-admin-2.min.css'
  class ThongTinCaNhanPage extends Component {
      callback=(key)=> {
         console.log(key);
@@ -32,9 +30,6 @@ import NotiAdmin from '../../NotiAdmin/NotiAdmin';
 
         return (
             <Fragment>
-                {/* <div style={{zIndex:'11',position:'fixed'}}>
-                <HeaderAdmin/>
-                </div> */}
                 <HeaderAdmin/>
                 <div style={{zIndex:'10',width:'100%',margin:'auto 0 auto auto',position:'fixed'}}>
                 <NotiAdmin/>
@@ -102,19 +97,15 @@ import NotiAdmin from '../../NotiAdmin/NotiAdmin';
                 </div>
                     </div>
                     <Modal
-                    // width='500px'
           title="Cập nhật thông tin cá nhân"
           centered
           visible={this.state.modal1Visible}
           footer={null}
-        //   onOk={() => this.setModal1Visible(false)}
-        //   onCancel={() => this.setModal1Visible(false)}
         onCancel={() => this.setModal1Visible(false)}
         >
          <ModalTTCaNhan/>
         </Modal>
                 <div className="col-md-1"></div>
-                {/* <div className="col-md-1"></div> */}
                 <div className={`${styles.bgAround} col-md-8`}>
                 <div className={`${styles.table} `}>
                 <Tabs className={styles.tableAnt} defaultActiveKey="1" onChange={this.callback}>

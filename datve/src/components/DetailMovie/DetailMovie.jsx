@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/accessible-emoji */
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import Header from '../Header/Header';
@@ -5,7 +6,6 @@ import circle from './circle.module.css'
 import styles from './DetailMovie.module.css';
 import './Bs.css'
 import LichChieuChiTiet from '../LichChieuChiTiet/LichChieuChiTiet';
-import Footer from '../Footer/Footer';
 import { layThongTinLichChieuPhimAction } from '../../redux/actions/QuanLyRapAction';
 import FooterChiTiet from './FooterChiTiet';
 
@@ -15,8 +15,6 @@ class DetailMovie extends Component {
   }
   rating(diem){
     let rate = (Number(diem)*100)/5;
-    // console.log(rate);
-    
     return(
       `${rate},100`
     )
@@ -24,14 +22,14 @@ class DetailMovie extends Component {
   countStar(array){
     const items = [];
     for (let index = 0; index < array; index++) {
-      items.push(<img src="../assets/images/star.svg" width='20px' height='20px' alt=""/>)
+      items.push(<img key={index} src="../assets/images/star.svg" width='20px' height='20px' alt=""/>)
     }
     return items;
   }
   countStar1(array){
     const items = [];
     for (let index = 0; index < 5-array; index++) {
-      items.push(<img src="../assets/images/star1.svg" width='20px' height='20px' alt=""/>)
+      items.push(<img key={index} src="../assets/images/star1.svg" width='20px' height='20px' alt=""/>)
     }
     return items;
   }
@@ -113,49 +111,49 @@ class DetailMovie extends Component {
   <div className={`${styles.tabContent} tab-content`} id="pills-tabContent">
     <div className="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"><LichChieuChiTiet/></div>
     <div className="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-    <div class="row detailMainStyle">
-              <div class="col-sm-6 col-xs-12 film left">
-                <div class="row rowLeftInfo">
-                  <p class="contentTitle">Ngày phát hành</p>
-                  <p class="contentInfo ng-binding">01.11.2019</p>
+    <div className="row detailMainStyle">
+              <div className="col-sm-6 col-xs-12 film left">
+                <div className="row rowLeftInfo">
+                  <p className="contentTitle">Ngày phát hành</p>
+                  <p className="contentInfo ng-binding">01.11.2019</p>
                 </div>
 
-                <div class="row rowLeftInfo">
-                  <p class="contentTitle">Đạo diễn</p>
-                  <p class="contentInfo ng-binding"> Kim Do-Young </p>
+                <div className="row rowLeftInfo">
+                  <p className="contentTitle">Đạo diễn</p>
+                  <p className="contentInfo ng-binding"> Kim Do-Young </p>
                 </div>
 
-                <div class="row rowLeftInfo">
-                  <p class="contentTitle">Diễn viên</p>
-                  <p class="contentInfo ng-binding">Lee Seung Gi, Suzy</p>
+                <div className="row rowLeftInfo">
+                  <p className="contentTitle">Diễn viên</p>
+                  <p className="contentInfo ng-binding">Lee Seung Gi, Suzy</p>
                 </div>
 
-                <div class="row rowLeftInfo">
-                  <p class="contentTitle">Thể Loại</p>
-                  <p class="contentInfo ng-binding">tâm lý, tình cảm</p>
+                <div className="row rowLeftInfo">
+                  <p className="contentTitle">Thể Loại</p>
+                  <p className="contentInfo ng-binding">tâm lý, tình cảm</p>
                 </div>
 
-                <div class="row rowLeftInfo">
-                  <p class="contentTitle">Định dạng</p>
-                  <p class="contentInfo ng-binding">2D/Digital</p>
+                <div className="row rowLeftInfo">
+                  <p className="contentTitle">Định dạng</p>
+                  <p className="contentInfo ng-binding">2D/Digital</p>
                 </div>
 
-                <div class="row rowLeftInfo">
-                  <p class="contentTitle">Quốc Gia SX</p>
-                  <p class="contentInfo ng-binding">Hàn Quốc</p>
+                <div className="row rowLeftInfo">
+                  <p className="contentTitle">Quốc Gia SX</p>
+                  <p className="contentInfo ng-binding">Hàn Quốc</p>
                 </div>
               </div>
-              <div class="col-sm-6 col-xs-12 film right">
-                <div class="row rowLeftInfo">
-                  <p class="contentTitle">Nội dung</p>
+              <div className="col-sm-6 col-xs-12 film right">
+                <div className="row rowLeftInfo">
+                  <p className="contentTitle">Nội dung</p>
                 </div>
 
-                <div class="row rowLeftInfo">
-                  <p class="contentInfoFull description ng-binding">{this.props.LichChieuPhim.moTa}</p>
+                <div className="row rowLeftInfo">
+                  <p className="contentInfoFull description ng-binding">{this.props.LichChieuPhim.moTa}</p>
                 </div>
 
-                <div class="row rowLeftInfo">
-                  <p class="contentInfoFull"></p>
+                <div className="row rowLeftInfo">
+                  <p className="contentInfoFull"></p>
                 </div>
 
               </div>

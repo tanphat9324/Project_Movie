@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component,Fragment } from 'react'
 import './FooterChiTiet.css';
 export default class FooterChiTiet extends Component {

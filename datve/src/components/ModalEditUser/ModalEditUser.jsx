@@ -2,9 +2,7 @@ import React, { Component,Fragment } from 'react';
 import {connect} from 'react-redux';
 import styles from './ModalEditUser.module.css';
 import { CapNhatNguoiDungAction } from '../../redux/actions/QuanLyNguoiDungAction';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-
-// import { Modal } from 'antd';
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 class ModalEditUser extends Component {
     constructor(props){
@@ -95,7 +93,7 @@ class ModalEditUser extends Component {
 
                 <FormGroup>
                     <Label for="exampleEmail">Họ tên:</Label>
-                    <Input required pattern="[A-Za-z]{3}" title="Three letter country code" type="text" name="hoTen" value={this.state.user.hoTen} onChange={this.handleChange} onKeyUp={this.handleErrors} onBlur={this.handleErrors} placeholder="Họ Tên" />
+                    <Input type="text" name="hoTen" value={this.state.user.hoTen} onChange={this.handleChange} onKeyUp={this.handleErrors} onBlur={this.handleErrors} placeholder="Họ Tên" />
                     {/* {this.state.errors.hoTen !== '' ? <div className="alert alert-danger">{this.state.errors.hoTen}</div> : ''} */}
                 </FormGroup>
 

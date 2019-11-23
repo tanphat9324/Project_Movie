@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/alt-text */
 import React, { Component,Fragment } from 'react'
 import {connect} from 'react-redux';
@@ -6,7 +7,7 @@ import './customMDB.css';
 import { layDanhMucRap, layTTLichChieuHTRapAction } from '../../redux/actions/QuanLyRapAction';
 import dayjs from 'dayjs'
 import {NavLink} from 'react-router-dom'
-// import 'bootstrap/dist/css/bootstrap.css';
+
 class LichChieuChiTiet extends Component {
   componentDidMount(){
     this.props.layDanhMucRap();
@@ -38,13 +39,10 @@ class LichChieuChiTiet extends Component {
   {this.checkListIsEmpty() ? <div className="tab-pane fade show active" id={this.props.listCumRap.maHeThongRap} role="tabpanel" aria-labelledby="v-pills-home-tab">
         <div className={styles.select_movie}>
     {this.props.listCumRap.map((ttRap,index) => {
-      console.log('ttRap',ttRap);
-      
-      let danhSachPhim=ttRap.danhSachPhim;
-      let list = danhSachPhim.lstLichChieuTheoPhim;
-      
+      // console.log('ttRap',ttRap);
+      let danhSachPhim=ttRap.danhSachPhim;      
         return(
-          <div>
+          <div key={index}> 
             <div key={index} className={styles.movieInfo}>
               <button>
                 <div className="d-flex">
@@ -59,7 +57,7 @@ class LichChieuChiTiet extends Component {
             </div>
         
         {danhSachPhim.map((phim,index) => {
-        return  <Fragment>
+        return  <Fragment key={index}>
             <div className={styles.tenPhim}>Phim: {phim.tenPhim}</div>
             <div style={{padding:'0 20px 20px 35px'}} className={styles.bookingTicket} >
               <div style={{paddingTop:'8px',paddingRight:'15px'}}>
@@ -78,23 +76,6 @@ class LichChieuChiTiet extends Component {
             <hr className={styles.hr}/>
           </Fragment>
         })}
-
-        {/* <div className={styles.tenPhim}>Phim: {danhSachPhim.tenPhim}</div>
-            <div style={{padding:'0 20px 20px 35px'}} className={styles.bookingTicket} >
-              <div style={{paddingTop:'8px',paddingRight:'15px'}}>
-
-              <img  src="../assets/images/2_0.png" width='30px' height='30px' alt=""/>
-              </div>
-
-              <div className={styles.timeBooking}>
-                {list.slice(0,16).map((tt,index) => {
-                  return(
-                  <NavLink to={`/chitietdatve/${tt.maLichChieu}`} key={index} className={styles.timeItem} >{dayjs(tt.ngayKhoiChieu).format('HH:mm')}</NavLink>
-                  )
-                })}
-              </div>
-            </div>
-            <hr className={styles.hr}/> */}
             </div>  
         )
       })}

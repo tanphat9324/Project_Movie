@@ -1,3 +1,4 @@
+/* eslint-disable react/no-direct-mutation-state */
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component,Fragment } from 'react'
@@ -31,14 +32,7 @@ import styles from './LoginPage.module.css';
             }
         }
         if(name === 'matKhau'){
-            // let regex = /(?=(.*[0-9]))(?=.*[\!@#$%^&*()\\[\]{}\-_+=~`|:;"'<>,./?])(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}/;
-            //1 lowercase letter, 1 uppercase letter, 1 number, 1 special character and be at least 8 characters long
-
-            ///(?=(.*[0-9]))((?=.*[A-Za-z0-9])(?=.*[A-Z])(?=.*[a-z]))^.{8,}$/
-            //1 lowercase letter, 1 uppercase letter, 1 number, and be at least 8 characters long
-            // if(!regex.test(value)){
-            //     loi = "8 kí tự, thường, hoa & kí tự đặc biệt"
-            // }
+            
         }
         this.state.valid = loi === '' ? true : false;
         this.setState({
@@ -51,7 +45,6 @@ import styles from './LoginPage.module.css';
         this.setState({
             user: {...this.state.user,[name]:value}
           }, () => {
-            // console.log(this.state);
           })
     }
 

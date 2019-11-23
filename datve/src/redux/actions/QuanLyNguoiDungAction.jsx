@@ -20,9 +20,6 @@ export const dangNhapAction = (thongTinNguoiDung, callback) => {
         localStorage.setItem(settings.userLogin, JSON.stringify(result.data));
         localStorage.setItem(settings.token, result.data.accessToken);
         localStorage.setItem(settings.taiKhoan, result.data.taiKhoan);
-
-        // console.log("dang Nhap thanh cong action");      
-        // console.log("dang Nhap action ", result.data);
         swal.fire({
           position: "top-end",
           type: "success",
@@ -35,12 +32,7 @@ export const dangNhapAction = (thongTinNguoiDung, callback) => {
 
       })
       .catch(err => {  
-        console.log(err);
-              
         swal.fire("Thông báo đăng nhập", err.response.data, "error");
-        // console.log(err.response.status);
-
-        
       });
   };
 };
@@ -55,9 +47,6 @@ export const dangKyAction = thongTinDangKy => {
         maNhom: settings.groupID,
         maLoaiNguoiDung: "KhachHang"
       }
-      // header:{
-      //     "Authorization": "Bearer  " + localStorage.getItem(settings.token)
-      // }
     })
       .then(result => {
         console.log(result.data);
@@ -70,7 +59,6 @@ export const dangKyAction = thongTinDangKy => {
         });
       })
       .catch(err => {
-        //    console.log(err.response.data);
         swal.fire("Thông báo đăng nhập", err.response.data, "error");
       });
   };
@@ -92,11 +80,9 @@ export const layDanhSachNguoiDungAction = () => {
         `/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=${settings.groupID}`
     })
       .then(res => {
-        // console.log(res.data);
         dispatch(nhanDanhSachNguoiDung(res.data));
       })
       .catch(err => {
-        // console.log(err.response.data);
       });
   };
 };
@@ -116,18 +102,17 @@ export const CapNhatNguoiDungAction = thongTinNguoiDung => {
       data: {
         ...thongTinNguoiDung,
         maNhom: settings.groupID,
-        // maLoaiNguoiDung: "KhachHang"
       },
       headers: {
         Authorization: "Bearer  " + localStorage.getItem(settings.token)
       }
     })
       .then(res => {
-        console.log('thanh cong cap nhat');
+        // localStorage.setItem(settings.userLogin, JSON.stringify(res.data));
+        // swal.fire('Mời bạn đăng nhập lại.')
         dispatch(layDanhSachNguoiDungAction())
       })
       .catch(err => {
-        // console.log(err.response.data);
       });
   };
 };
@@ -154,7 +139,6 @@ export const addUserAdminAction = thongTinDangKy => {
         );
       })
       .catch(err => {
-        //    console.log(err.response.data);
         swal.fire("Thông báo đăng ký", err.response.data, "error");
       });
   };
@@ -173,11 +157,9 @@ export const xoaNguoiDungAction = taiKhoan => {
     })
       .then(res => {
         console.log(res);
-        // dispatch(xoaNguoiDung(taiKhoan));
         dispatch(layDanhSachNguoiDungAction());
       })
       .catch(err => {
-        // console.log(taiKhoan);
       });
   };
 };
@@ -199,7 +181,6 @@ export const timKiemNguoiDungAction = thongTinNguoiDung => {
         dispatch(nhanDanhSachNguoiDung(res.data));
       })
       .catch(err => {
-        // console.log(thongTinNguoiDung);
       });
   };
 };

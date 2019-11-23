@@ -18,12 +18,12 @@ class HeaderAdmin extends Component {
             <div className={`${styles.content_left} ${styles.bg_gradient_primary}`}>
               <div className={styles.az_sidebar_header}>
                 <NavLink to="/" title="Load all" className={styles.az_logo}>
-                  <img src="../assets/images/web-logo.png" alt />
+                  <img src="../assets/images/web-logo.png" />
                   <span>123Phim</span>
                 </NavLink>
               </div>
               <div className={styles.az_sidebar_loggedin}>
-                <div className={`${styles.az_img_user} online`}><img src="../assets/images/admin.png" alt /></div>
+                <div className={`${styles.az_img_user} online`}><img src="../assets/images/admin.png" /></div>
                 <div className={styles.media_body}>
                   <h5>{this.props.userLogin.hoTen}</h5>
                   <span style={{ fontStyle: 'italic' }}>Admin Member</span>
@@ -88,119 +88,3 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(HeaderAdmin);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import React from 'react';
-// import { MDBContainer, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavbarToggler, MDBCollapse, MDBNavItem, MDBNavLink, MDBIcon } from 'mdbreact';
-// import { BrowserRouter as Router } from 'react-router-dom';
-// import { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem } from "mdbreact";
-
-// import styles from './HeaderAdmin.module.css';
-
-// class HeaderAdmin extends React.Component {
-//   constructor(props) {
-//       super(props);
-//       this.state = {
-//           collapse: false,
-//       };
-//       this.onClick = this.onClick.bind(this);
-//   }
-
-//   onClick() {
-//     this.setState({
-//         collapse: !this.state.collapse,
-//       });
-//   }
-
-//   render() {
-//     const bgPink = {backgroundColor: '#e91e63'}
-//     const container = {height: 1300}
-//     return(
-//       <div>
-//         <Router>
-//           <header>
-//             <MDBNavbar style={bgPink} dark expand="md" scrolling fixed="top">
-//               <MDBNavbarBrand href="/">
-//               <img className={styles.brand} src="./assets/images/web-logo.png" alt="logo" />
-//               </MDBNavbarBrand>
-//               <MDBNavbarToggler onClick={ this.onClick } />
-//               <MDBCollapse isOpen = { this.state.collapse } navbar>
-//               <MDBNavbarNav center></MDBNavbarNav>
-//               <MDBNavbarNav center></MDBNavbarNav>
-
-//                 <MDBNavbarNav center>
-//                   <MDBNavItem active>
-//                       <MDBNavLink to="#">Home</MDBNavLink>
-//                   </MDBNavItem>
-//                   <MDBNavItem>
-//                       <MDBNavLink to="#">Features</MDBNavLink>
-//                   </MDBNavItem>
-//                   <MDBNavItem>
-//                       <MDBNavLink to="#">Pricing</MDBNavLink>
-//                   </MDBNavItem>
-//                   <MDBNavItem>
-//                     <MDBNavLink to="#">Options</MDBNavLink>
-//                   </MDBNavItem>
-//                 </MDBNavbarNav>
-
-//                 <MDBNavbarNav center></MDBNavbarNav>
-//                 <MDBNavbarNav center></MDBNavbarNav>
-
-//                 <MDBNavbarNav right>
-//                   <MDBNavItem>
-//                   <MDBDropdown>
-//       <MDBDropdownToggle color="primary">
-//         {/* <img src="./assets/images/avatar.png" alt=""/> */}
-//       </MDBDropdownToggle>
-//       <MDBDropdownMenu basic>
-//         <MDBDropdownItem>Profile</MDBDropdownItem>
-//         <MDBDropdownItem divider />
-//         <MDBDropdownItem>Logout</MDBDropdownItem>
-//       </MDBDropdownMenu>
-//     </MDBDropdown>
-//                   </MDBNavItem>
-//                   {/* <MDBNavItem>
-//                     <MDBNavLink to="#"><MDBIcon fab icon="twitter" /></MDBNavLink>
-//                   </MDBNavItem>
-//                   <MDBNavItem>
-//                     <MDBNavLink to="#"><MDBIcon fab icon="instagram" /></MDBNavLink>
-//                   </MDBNavItem> */}
-//                 </MDBNavbarNav>
-//               </MDBCollapse>
-//             </MDBNavbar>
-//           </header>
-//         </Router>
-//         <MDBContainer style={container} className="text-center mt-5 pt-5">
-//           <h2>This Navbar is fixed</h2>
-//           <h5>It will always stay visible on the top, even when you scroll down</h5>
-//           <br/>
-//           <p>Full page intro with background image will be always displayed in full screen mode, regardless of device</p>
-//         </MDBContainer>
-//       </div>
-//     );
-//   }
-// }
-
-// export default HeaderAdmin;

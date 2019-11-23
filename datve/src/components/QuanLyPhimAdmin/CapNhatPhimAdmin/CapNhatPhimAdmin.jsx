@@ -1,10 +1,10 @@
+/* eslint-disable no-useless-escape */
 import React, { Component,Fragment } from 'react'
-import {Form,Button,Input,DatePicker,Rate,Upload,Icon,message } from "antd";
+import {Form,Button,Input,DatePicker,Rate} from "antd";
 import {connect} from 'react-redux';
 import { capNhatPhimAction } from '../../../redux/actions/QuanLyPhimAction';
 import moment from 'moment';
-import 'dayjs/locale/es' // load on demand
-import styles from './CapNhatPhimAdmin.module.css'
+import 'dayjs/locale/es'
 class CapNhatPhimAdmin extends Component {
     constructor(props){
         super(props);
@@ -49,12 +49,10 @@ class CapNhatPhimAdmin extends Component {
                 console.log('handleChange',this.state.phim)
             })
         }else {
-            //Xử lý khi post file
             console.log(e.target.files);
             this.setState({
               phim: { ...this.state.phim, [name]: e.target.files[0] }
             }, () => {
-                // console.log(this.state.phim)
             })
         }
     }
@@ -127,17 +125,12 @@ class CapNhatPhimAdmin extends Component {
       }
     }
     
-        // this.state.valid = status === '' ? true : false;
         this.setState({
             errors: {...this.state.errors,[name]:status,[name+"1"]:help}
     
         })
     }
       render() {
-        const { getFieldDecorator } = this.props.form;
-        const config = {
-          rules: [{ type: 'object', required: true, message: 'Please select time!' }],
-        };
         const formItemLayout = {
           labelCol: {
             xs: { span: 24 },
@@ -152,7 +145,6 @@ class CapNhatPhimAdmin extends Component {
         const desc = ['Quá tệ', 'Tệ', 'Bình thường', 'Hay', 'Tuyệt vời'];
         const { danhGia } = this.state.phim;
         const dateFormat = 'DD/MM/YYYY';
-        const day = this.state.phim.ngayKhoiChieu;
         const a = '20/11/2019';
         console.log('a',a,'day:',this.state.phim.ngayKhoiChieu);
         return (

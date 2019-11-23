@@ -4,10 +4,8 @@ import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux';
 import styles from './NotiAdmin.module.css';
 import './sb-admin-2.min.css';
-import { logout } from '../../utils/index';
 import { NavLink, withRouter } from 'react-router-dom';
 import { nguoiDangNhap } from '../../redux/actions/QuanLyNguoiDungAction';
-import { Button } from 'react-bootstrap';
 import ModalLogout from './ModalLogout/ModalLogout';
 
 class NotiAdmin extends Component {
@@ -28,7 +26,7 @@ class NotiAdmin extends Component {
          
           <li className="nav-item dropdown no-arrow mx-1">
             <a className="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <img src="../assets/images/bell2.svg" style={{ width: '22px', height: '25px' }} alt />
+              <img src="../assets/images/bell2.svg" style={{ width: '22px', height: '25px' }} />
               <span style={{ padding: '6px 8px', fontSize: '17px',borderRadius:'50%' }} className="badge badge-primary badge-counter">3</span>
             </a>
             <div style={{left:'auto'}} className="dropdown-list dropdown-menu dropdown-menu-left shadow animated--grow-in" aria-labelledby="alertsDropdown">
@@ -73,7 +71,7 @@ class NotiAdmin extends Component {
           </li>
           <li className="nav-item dropdown no-arrow mx-1">
             <a className="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <img src="../assets/images/email2.svg" style={{ width: '22px', height: '25px' }} alt />
+              <img src="../assets/images/email2.svg" style={{ width: '22px', height: '25px' }} />
               <span style={{ padding: '6px 8px', fontSize: '17px',borderRadius:'50%' }} className="badge badge-primary badge-counter">7</span>
             </a>
             <div style={{left:'auto'}} className="dropdown-list dropdown-menu dropdown-menu-left shadow animated--grow-in" aria-labelledby="messagesDropdown">
@@ -82,7 +80,7 @@ class NotiAdmin extends Component {
               </h6>
               <a className="dropdown-item d-flex align-items-center" href="#">
                 <div className="dropdown-list-image mr-3">
-                  <img className="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt />
+                  <img className="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" />
 
                   <div className="status-indicator bg-success" />
                 </div>
@@ -93,7 +91,7 @@ class NotiAdmin extends Component {
               </a>
               <a className="dropdown-item d-flex align-items-center" href="#">
                 <div className="dropdown-list-image mr-3">
-                  <img className="rounded-circle" src="https://source.unsplash.com/AU4VPcFN4LE/60x60" alt />
+                  <img className="rounded-circle" src="https://source.unsplash.com/AU4VPcFN4LE/60x60" />
                   <div className="status-indicator" />
                 </div>
                 <div>
@@ -103,7 +101,7 @@ class NotiAdmin extends Component {
               </a>
               <a className="dropdown-item d-flex align-items-center" href="#">
                 <div className="dropdown-list-image mr-3">
-                  <img className="rounded-circle" src="https://source.unsplash.com/CS2uCrpNzJY/60x60" alt />
+                  <img className="rounded-circle" src="https://source.unsplash.com/CS2uCrpNzJY/60x60" />
                   <div className="status-indicator bg-warning" />
                 </div>
                 <div>
@@ -113,7 +111,7 @@ class NotiAdmin extends Component {
               </a>
               <a className="dropdown-item d-flex align-items-center" href="#">
                 <div className="dropdown-list-image mr-3">
-                  <img className="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt />
+                  <img className="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" />
                   <div className="status-indicator bg-success" />
                 </div>
                 <div>
@@ -128,7 +126,7 @@ class NotiAdmin extends Component {
           <li className="nav-item dropdown no-arrow">
             <a  className="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span style={{ color: 'white',fontWeight:'500',fontSize:'16px' }} className="mr-2 d-none d-lg-inline small">Chào!, {this.props.userLogin.taiKhoan}</span>
-              <div className={`${styles.az_img_user} online`}><img src="../assets/images/admin.png" alt /></div>
+              <div className={`${styles.az_img_user} online`}><img src="../assets/images/admin.png" /></div>
             </a>
             <div className="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
               <NavLink to='/thongtinnguoidung' className="dropdown-item">

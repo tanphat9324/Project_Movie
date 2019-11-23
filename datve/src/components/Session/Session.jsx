@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/alt-text */
 import React, { Component,Fragment } from 'react'
 import {connect} from 'react-redux';
@@ -62,7 +63,7 @@ import { layThongTinPhimAction } from '../../redux/actions/QuanLyPhimAction';
   <div className="nav flex-column nav-pills customHomePage" id="v-pills-tab" role="tablist" aria-orientation="vertical">
       {this.props.danhMucRap.map((dMuc,index)=>{
         return(
-          <Fragment>
+          <Fragment key={index}>
           <a onClick={()=>this.props.layTTLichChieuHTRap(dMuc.maHeThongRap)} key={index} className={index===0 ? 'branchItemSession nav-link active':'branchItemSession nav-link'} id="v-pills-home-tab" data-toggle="pill" href={`#${dMuc.maHeThongRap}`} role="tab" aria-controls="v-pills-home" aria-selected="true">
           <img src={dMuc.logo} width='50px' height='50px' alt=""/>
                 </a>
@@ -76,11 +77,9 @@ import { layThongTinPhimAction } from '../../redux/actions/QuanLyPhimAction';
   {this.checkListIsEmpty() ? <div className="tab-pane fade show active" id={this.props.listCumRap.maHeThongRap} role="tabpanel" aria-labelledby="v-pills-home-tab">
       {/* DIV 2 */}
         <div className='sessionSelect_movie'>
-    {this.props.listCumRap.map((ttRap,index) => {
-      // console.log('ttrap',ttRap);
-      
+    {this.props.listCumRap.map((ttRap,index) => {      
         return(
-          <div>
+          <Fragment key={index}>
             <div key={index} className='movieInfo1'>
               <button onClick={()=>this.danhSachPhim(ttRap.danhSachPhim)} className='session_de'>
                 <div className="session_de d-flex">
@@ -94,33 +93,26 @@ import { layThongTinPhimAction } from '../../redux/actions/QuanLyPhimAction';
               </button>
               <div />
             </div>
-        {/* <div style={{padding:'0 0 0 20px',color:'black'}}>tên Phim: {danhSachPhim.tenPhim}</div> */}
         <div className='hr1'></div>
-            </div>  
+            </Fragment>  
         )
       })}
  </div>
 
 {/* Div3 */}
  <div className='session_Phim'>
- {/* <div className='session_movie'> */}
     {this.state.danhSachPhim.map((dsPhim,index) => {
-      // console.log('ttRap',ttRap.danhSachPhim);
-      
-      // let danhSachPhim=ttRap.danhSachPhim[0];
-      let list = dsPhim.lstLichChieuTheoPhim;
-     this.props.thongTinPhim(dsPhim.maPhim);
-     
+      // let list = dsPhim.lstLichChieuTheoPhim;     
         return(
-          <div>
+          <div key={index}>
          <NavLink to={`/chitietphim/${dsPhim.maPhim}`}>
          <div key={index} className='movieInfo2'>
               <button className='session_de'>
                 <div className="d-flex">
-                  <img src={this.props.ttPhim.hinhAnh} />
+                  <img src='http://movie0706.cybersoft.edu.vn/hinhanh/ted2.jpg' />
                   <div className='movie_Info2'>
                     <div style={{fontWeight:'500',color:'#000'}} className="text-left">{dsPhim.tenPhim}</div>
-                    <div style={{fontSize:'14px',color:'#FB4226'}} className="text-left">Đánh giá: {this.props.ttPhim.danhGia}</div>
+                    <div style={{fontSize:'14px',color:'#FB4226'}} className="text-left">Mã phim: {dsPhim.maPhim}</div>
                   </div>
                 </div>
               </button>
@@ -128,7 +120,6 @@ import { layThongTinPhimAction } from '../../redux/actions/QuanLyPhimAction';
             </div>
          </NavLink>
             
-        {/* <div style={{padding:'0 0 0 20px',color:'black'}}>tên Phim: {danhSachPhim.tenPhim}</div> */}
             <div style={{padding:'0 20px 20px 35px'}} className='bookingTicket1' >
               <div style={{paddingTop:'8px',paddingRight:'15px'}}>
 
@@ -136,9 +127,9 @@ import { layThongTinPhimAction } from '../../redux/actions/QuanLyPhimAction';
               </div>
 
               <div className='timeBooking1'>
-                {list.slice(0,5).map((tt,index) => {
+                {dsPhim.lstLichChieuTheoPhim.slice(0,5).map((tt,index) => {
                   return(
-                  <NavLink to={`/chitietdatve/${tt.maLichChieu}`} key={index} className='timeItem1' >{dayjs(tt.ngayKhoiChieu).format('HH:mm')}</NavLink>
+                  <NavLink to={`/chitietdatve/${tt.maLichChieu}`} key={index} className='timeItem1' >{tt.ngayChieuGioChieu.substring(11,16)}</NavLink>
                   )
                 })}
               </div>
@@ -147,7 +138,6 @@ import { layThongTinPhimAction } from '../../redux/actions/QuanLyPhimAction';
             </div>  
         )
       })}
- {/* </div> */}
  </div>
 
         </div> : <div></div> }

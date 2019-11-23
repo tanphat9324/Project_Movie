@@ -1,14 +1,15 @@
+/* eslint-disable no-useless-escape */
+/* eslint-disable react/no-direct-mutation-state */
 import React, { Component,Fragment } from 'react'
-import {Form,Button,Input,DatePicker,Rate,Upload,Icon,message } from "antd";
+import {Form,Button,Input } from "antd";
 import {connect} from 'react-redux';
-import { nguoiDangNhap, CapNhatNguoiDungAction } from '../../../../redux/actions/QuanLyNguoiDungAction';
-import { async, resolve, reject } from 'q';
+import {CapNhatNguoiDungAction } from '../../../../redux/actions/QuanLyNguoiDungAction';
+import styles from './ModalTTCaNhan.module.css';
 
 class ModalTTCaNhan extends Component {
     constructor(props){
         super(props);
         this.state={
-        // phim:this.props.phimSua,
         user:this.props.nguoiDungSua,
         errors: {
             taiKhoan:'',
@@ -26,9 +27,7 @@ class ModalTTCaNhan extends Component {
           loading: false,
         }
     } 
-    // componentDidMount(){
-    //   this.props.nguoiDungDangNhap();
-    // }
+
     handleChange=(e) =>{
         let { value, name } = e.target;
             this.setState({
@@ -41,16 +40,9 @@ class ModalTTCaNhan extends Component {
           this.state.user.soDt = this.state.user.soDT;
           delete this.state.user.soDT;      
           this.state.user.maLoaiNguoiDung = 'KhachHang';
-          this.props.capNhatTTCaNhan(this.state.user)
-
-          
+          this.props.capNhatTTCaNhan(this.state.user);    
       };
 
-    //   componentWillReceiveProps(nextProps){
-    //     this.setState({
-    //         user:nextProps.nguoiDungSua
-    //     })
-    // }
     handleErrors = e => {
         let {name, value} = e.target;
         let status = '';
@@ -86,7 +78,7 @@ class ModalTTCaNhan extends Component {
         }
     }
     if(name === 'hoTen'){
-        let regex = /^[a-zA-Z ]{3,50}$/;
+        let regex = /[^0-9]{3,50}$/;
         if(!regex.test(value)){
             help = "Sai định dạng họ tên";
            status="error";
@@ -103,8 +95,7 @@ class ModalTTCaNhan extends Component {
         status="success";
       }
     }
-    
-        // this.state.valid = status === '' ? true : false;
+    this.state.valid = status === 'success' ? true : false;
         this.setState({
             errors: {...this.state.errors,[name]:status,[name+"1"]:help}
     
@@ -136,7 +127,7 @@ class ModalTTCaNhan extends Component {
       </Form.Item>
 
       <Form.Item help={this.state.errors.matKhau1} label="Mật khẩu:" hasFeedback validateStatus={this.state.errors.matKhau}>
-        <Input type="text" value={this.state.user.matKhau} name="matKhau" placeholder="Nhập mật khẩu" onChange={this.handleChange} onKeyUp={this.handleErrors} onBlur={this.handleErrors} id="success" />
+        <Input type="password" value={this.state.user.matKhau} name="matKhau" placeholder="Nhập mật khẩu" onChange={this.handleChange} onKeyUp={this.handleErrors} onBlur={this.handleErrors} id="success" />
       </Form.Item>
 
       <Form.Item help={this.state.errors.email1} label="Email:" hasFeedback validateStatus={this.state.errors.email}>
@@ -153,7 +144,7 @@ class ModalTTCaNhan extends Component {
         sm: { span: 16, offset: 10 },
       }}
     >
-      <Button style={{backgroundColor:'green',border:'1px solid green'}} type="primary" htmlType="submit">
+      <Button disabled={!this.state.valid} className={styles.submit} type="primary" htmlType="submit">
         Cập nhật
       </Button>
     </Form.Item>
@@ -171,7 +162,6 @@ const mapDispatchToProps = dispatch => {
     capNhatTTCaNhan: (thongTinNguoiDung) => {
       dispatch(CapNhatNguoiDungAction(thongTinNguoiDung))
     },
-    // nguoiDungDangNhap: () => dispatch(nguoiDangNhap()),
   }
 }
 

@@ -1,13 +1,11 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component,Fragment } from 'react'
-import {NavLink} from 'react-router-dom';
 import {connect} from 'react-redux';
 import { Table, Divider,Tag  } from 'antd';
 import { layDanhSachNguoiDungAction, chinhSuaNguoiDungAction, xoaNguoiDungAction, timKiemNguoiDungAction, nguoiDangNhap } from '../../redux/actions/QuanLyNguoiDungAction';
-import { Modal,Menu,Dropdown } from 'antd';
+import { Modal} from 'antd';
 import ModalEditUser from '../ModalEditUser/ModalEditUser';
 import styles from './QuanLyNguoiDungAdmin.module.css';
-import {logout} from '../../utils/index';
 import NotiAdmin from '../NotiAdmin/NotiAdmin';
 import FooterAdmin from '../FooterAdmin/FooterAdmin';
 import AddUserAdmin from '../AddUserAdmin/AddUserAdmin';
@@ -21,7 +19,6 @@ class QuanLyNguoiDungAdmin extends Component {
       modal1Visible: false,
       modal2Visible: false,
       tenDangNhap:this.props.nguoiDangNhap
-      // nguoiDungDangNhap:this.props.nguoiDangNhap
     }
   }
   setModal1Visible(modal1Visible) {
@@ -40,7 +37,6 @@ class QuanLyNguoiDungAdmin extends Component {
   }
   handleSubmit = (e) =>{
     e.preventDefault();
-    // console.log('handle submit DashboardAdmin',this.state.inputSearch);
     this.props.timKiemNguoiDung(this.state.inputSearch);
 }
 handleChange=(e) =>{
@@ -49,7 +45,6 @@ handleChange=(e) =>{
           this.setState({
             [name]:value
     }, () => {
-      // console.log(this.state.inputSearch);
       if(this.state.inputSearch !== ''){
         this.props.timKiemNguoiDung(this.state.inputSearch);
       }else {
@@ -64,22 +59,6 @@ componentWillReceiveProps(nextProps){
   })
 }
     render() {
-      console.log('nguoi dang nhap',this.props.nguoiDangNhap);
-      
-      // const menu = (
-      //   <Menu>
-      //     <Menu.Item>
-      //       <a target="_blank" rel="noopener noreferrer" href="#">
-      //         Cập nhật thông tin
-      //       </a>
-      //     </Menu.Item>
-      //     <Menu.Item>
-      //       <a onClick={()=>logout()} target="_blank" rel="noopener noreferrer" href="#">
-      //       Đăng xuất
-      //       </a>
-      //     </Menu.Item>
-      //   </Menu>
-      // );
         const columns =[
             {
               title: 'STT',
@@ -199,8 +178,6 @@ componentWillReceiveProps(nextProps){
           width='350px'
           centered
           visible={this.state.modal1Visible}
-          // okText="Cap Nhat"
-          // onOk={() => this.setModal2Visible(false)}
           onCancel={() => this.setModal1Visible(false)}
           footer={null}
         >
@@ -211,8 +188,6 @@ componentWillReceiveProps(nextProps){
           width='350px'
           centered
           visible={this.state.modal2Visible}
-          // okText="Cap Nhat"
-          // onOk={() => this.setModal2Visible(false)}
           onCancel={() => this.setModal2Visible(false)}
           footer={null}
         >

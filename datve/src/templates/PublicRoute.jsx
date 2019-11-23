@@ -5,7 +5,6 @@ import { isLogin } from '../utils/index';
 export const PublicRoute = ({component: Component, restricted, ...rest}) => {
     return (
         <Route {...rest} render={props => (
-            // isLogin() ?
             isLogin() && restricted ?
             <Component {...props} />
             : <Redirect to="/" />

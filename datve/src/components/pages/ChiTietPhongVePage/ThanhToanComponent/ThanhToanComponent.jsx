@@ -21,7 +21,7 @@ let tongTien = danhSachVe.reduce((tt,ghe,index) =>{
     let danhSachVe = datVeThanhToan.danhSachVe;
       return danhSachVe.map((ghe,index) => {
           return(
-            <span style={{marginRight:'20px', marginBottom:'5px',minWidth:'52px'}}>{ghe.stt}</span>
+            <span key={index} style={{marginRight:'20px', marginBottom:'5px',minWidth:'52px'}}>{ghe.stt}</span>
           )
       })
   }

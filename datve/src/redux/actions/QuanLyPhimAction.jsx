@@ -16,7 +16,6 @@ export const layDanhSachPhim = () => {
             method: 'GET',
             url: settings.domain + `/QuanLyPhim/LayDanhSachPhim?maNhom=${settings.groupID}`
         }).then(res => {
-            // console.log(res.data);
             dispatch(nhanDanhSachPhim(res.data));
         }).catch(err => {
             console.log(err.response);
@@ -36,12 +35,6 @@ export const themPhimAction = (thongTinPhim) => {
                 "Authorization": "Bearer  " + localStorage.getItem(settings.token)
               }
         }).then(res => {
-            console.log("Thêm phim thành công");
-
-            // console.log("file",file);
-            // console.log("thongTinPhim.hinhAnh",thongTinPhim.hinhAnh);
-            // console.log("thongTinPhim.tenPhim",thongTinPhim.tenPhim);
-            
             let frm = new FormData();
             frm.append('file',file,thongTinPhim.hinhAnh);
             frm.append('maNhom',settings.groupID)
@@ -99,7 +92,6 @@ export const capNhatPhimAction = (thongTinPhim) => {
             "Authorization": "Bearer  " + localStorage.getItem(settings.token)
           }
       }).then(res => {
-          console.log('Cap Nhat phim thanh cong');
           let frm = new FormData();
           frm.append('file',file,thongTinPhim.hinhAnh);
           frm.append('maNhom',settings.groupID)
@@ -109,7 +101,6 @@ export const capNhatPhimAction = (thongTinPhim) => {
               url:settings.domain + `/QuanLyPhim/UploadHinhAnhPhim`,
               data:frm
           }).then(res => {
-              console.log("upload thanh cong");
               swal.fire({
                 position: "center",
                 type: "success",
@@ -137,10 +128,8 @@ export const layThongTinPhimAction = (maPhim) => {
             method:'GET',
             url: settings.domain + `/QuanLyPhim/LayThongTinPhim?MaPhim=${maPhim}`,
         }).then(res => {
-            console.log('lay thong tin phim thanh cong',res.data);
             dispatch(chinhSuaPhimAction(res.data));
         }).catch(err => {
-            console.log('lay thong tin phim loi');
         })
     }
 }
@@ -152,9 +141,7 @@ export const timKiemPhimAction = (tenPhim) => {
             url: settings.domain + `/QuanLyPhim/LayDanhSachPhim?maNhom=${settings.groupID}&tenPhim=${tenPhim}`,
         }).then(res => {
             dispatch(nhanDanhSachPhim(res.data))
-        }).catch(err => {
-            console.log(err);
-            
+        }).catch(err => {            
         })
     }
 }

@@ -1,7 +1,9 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component,Fragment } from 'react'
 import { Select } from 'antd';
-import { Table, Divider } from 'antd';
-import { Form,Input,InputNumber,Button   } from 'antd';
+import { Table } from 'antd';
+import { Form,InputNumber,Button } from 'antd';
 import { DatePicker } from "antd";
 import {connect} from 'react-redux';
 import { taoLichChieuAction } from '../../../redux/actions/QuanLyDatVeAction';
@@ -37,9 +39,7 @@ handleChangeGiaVe=(e) =>{
 
 handleSubmit = e => {
   e.preventDefault();
-  this.props.taoLichChieu(this.state.lichChieu);  
-  console.log('lich chieu',this.state.lichChieu);
-  
+  this.props.taoLichChieu(this.state.lichChieu);    
 };
  onChange=(value, dateString) => {
   this.setState({
@@ -48,7 +48,6 @@ handleSubmit = e => {
 }
 
  onOk=(value)=> {
-  // console.log("onOk: ", value);
 }
 
 renderRap= (dsRap) => {
@@ -108,9 +107,7 @@ renderRap= (dsRap) => {
               ),
             },
           ]; 
-          const data = this.props.danhSachPhim;
-          const { RangePicker } = DatePicker;
-          
+          const data = this.props.danhSachPhim;          
         return (
             <Fragment>
                 <h3 className="text-center">Phim: {this.props.tenPhim}</h3>
@@ -173,8 +170,6 @@ renderRap= (dsRap) => {
                     </div>
                   </div>
                   </div>
-
-            
 
                 <div>
                 <Table style={{width: '1000px'}} columns={columns} bordered='true'  dataSource={data} pagination={{defaultCurrent:1, pageSize: 5}} /> 

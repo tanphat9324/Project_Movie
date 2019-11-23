@@ -1,10 +1,10 @@
+/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component,Fragment } from 'react'
-import {NavLink} from 'react-router-dom';
 import {connect} from 'react-redux';
 import { Table, Divider } from 'antd';
 import { nguoiDangNhap } from '../../redux/actions/QuanLyNguoiDungAction';
-import { Modal,Menu } from 'antd';
+import { Modal} from 'antd';
 import {logout} from '../../utils/index';
 import ThemPhimAdmin from './ThemPhimAdmin/ThemPhimAdmin';
 import { layDanhSachPhim, xoaPhimAction, layThongTinPhimAction, timKiemPhimAction } from '../../redux/actions/QuanLyPhimAction';
@@ -163,7 +163,7 @@ class QuanLyPhimAdmin extends Component {
         </form>
     
        </div>
-      <Table	 className={styles.table} columns={columns} bordered='true'  dataSource={data} pagination={{defaultCurrent:1, pageSize: 4}} /> 
+      <Table	 className={styles.table} columns={columns} bordered  dataSource={data} pagination={{defaultCurrent:1, pageSize: 4}} /> 
     </div>
 
         </div>
@@ -180,8 +180,6 @@ class QuanLyPhimAdmin extends Component {
               centered
               width='1050px'
               visible={this.state.modal3Visible}
-              // okText="Cap Nhat"
-              // onOk={() => this.setModal2Visible(false)}
               onCancel={() => this.setModal3Visible(false)}
               footer={null}
             >
@@ -193,8 +191,6 @@ class QuanLyPhimAdmin extends Component {
               width='550px'
               className={styles.modalCapNhat}	              
               visible={this.state.modal2Visible}
-              // okText="Cap Nhat"
-              // onOk={() => this.setModal2Visible(false)}
               onCancel={() => this.setModal2Visible(false)}
               footer={null}
             >
@@ -210,7 +206,6 @@ class QuanLyPhimAdmin extends Component {
               centered
               width='550px'
               visible={this.state.modal1Visible}
-              // onOk={() => this.setModal2Visible(false)}
               onCancel={() => this.setModal1Visible(false)}
               footer={null}
             >
@@ -224,7 +219,6 @@ class QuanLyPhimAdmin extends Component {
         }
     }
     const mapStateToProps = state => ({
-      // danhSachNguoiDung : state.QuanLyNguoiDungReducer.danhSachNguoiDung,
       danhSachPhim: state.QuanLyPhimReducer.dsPhim,
       nguoiDangNhap: state.QuanLyNguoiDungReducer.nguoiDangNhap
     })
@@ -232,13 +226,9 @@ class QuanLyPhimAdmin extends Component {
     const mapDispatchToProps = dispatch => {
       return {
         nguoiDungDangNhap: () => dispatch(nguoiDangNhap()),
-        // layDanhSachNguoiDung: () => dispatch(layDanhSachNguoiDungAction()),
         layDanhSachPhim: () => dispatch(layDanhSachPhim()),
-        // chinhSuaNguoiDung: (thongTinNguoiDung) => dispatch(chinhSuaNguoiDungAction(thongTinNguoiDung)),
         layThongTinPhim:(maPhim) => dispatch(layThongTinPhimAction(maPhim)),
-        // xoaNguoiDung:(taiKhoan) => dispatch(xoaNguoiDungAction(taiKhoan)),
         xoaPhim: (maPhim) => dispatch(xoaPhimAction(maPhim)),
-        // timKiemNguoiDung:(thongTinNguoiDung) => dispatch(timKiemNguoiDungAction(thongTinNguoiDung))
         timKiemPhim:(thongTinPhim) => dispatch(timKiemPhimAction(thongTinPhim))
       }
     }

@@ -40,14 +40,7 @@ class RegisterPage extends Component {
             }
         }
         if(name === 'matKhau'){
-            // let regex = /(?=(.*[0-9]))(?=.*[\!@#$%^&*()\\[\]{}\-_+=~`|:;"'<>,./?])(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}/;
-            //1 lowercase letter, 1 uppercase letter, 1 number, 1 special character and be at least 8 characters long
-
-            ///(?=(.*[0-9]))((?=.*[A-Za-z0-9])(?=.*[A-Z])(?=.*[a-z]))^.{8,}$/
-            //1 lowercase letter, 1 uppercase letter, 1 number, and be at least 8 characters long
-            // if(!regex.test(value)){
-            //     loi = "8 kí tự, thường, hoa & kí tự đặc biệt"
-            // }
+         
         }
         if(name === 'hoTen'){
             let regex=/^[a-zA-Z ]{3,30}$/;
@@ -74,7 +67,6 @@ class RegisterPage extends Component {
                 this.setState({
             user: {...this.state.user,[name]:value}
           }, () => {
-            // console.log(this.state);
           })
     }
     handleSubmit = (e) =>{
@@ -94,7 +86,6 @@ class RegisterPage extends Component {
                     <input className={styles.input_MatKhau} type="password" name="matKhau" onChange={this.handleChange} onKeyUp={this.handleErrors} onBlur={this.handleErrors} placeholder="Password" />
                     {this.state.errors.matKhau !== '' ? <div className="alert alert-danger">{this.state.errors.matKhau}</div> : ''}
 
-                    {/* <input type="password" name="matKhau2" onChange={this.handleChange} placeholder="ReType Password" /> */}
                     <input type="text" className={styles.input_TaiKhoan} name="hoTen" onChange={this.handleChange} onKeyUp={this.handleErrors} onBlur={this.handleErrors} placeholder="Họ Tên" />
                     {this.state.errors.hoTen !== '' ? <div className="alert alert-danger">{this.state.errors.hoTen}</div> : ''}
 
@@ -116,7 +107,6 @@ class RegisterPage extends Component {
                     </div>
                 </div>
                 </section>
-
             </Fragment>
         )
     }

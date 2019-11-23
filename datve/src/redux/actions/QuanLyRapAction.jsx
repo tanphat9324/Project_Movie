@@ -37,7 +37,6 @@ export const layThongTinCumRap = (maHeThongRap) => {
         }).then(res =>{
             dispatch(nhanThongTinCumRap(res.data))
         }).catch(err => {
-            console.log(err.response.data);
         })
     }
 }
@@ -55,7 +54,6 @@ export const layTTLichChieuHTRapAction = (maHeThongRap) => {
         }).then(res =>{
             dispatch(nhanTTLichChieuHTRap(res.data))            
         }).catch(err => {
-            console.log(err.response.data);
         })
     }
 }
@@ -71,11 +69,15 @@ export const layThongTinLichChieuPhimAction = (maPhim) => {
             method: 'GET',
             url: settings.domain + `/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${maPhim}`
         }).then(res =>{
-            // console.log('phmi acton',res.data);
-            
             dispatch(nhanTTLichChieuPhim(res.data))
         }).catch(err => {
-            // console.log(err.response.data);
         })
+    }
+}
+
+export const danhSachPhimTheoRap = dsPhim => {
+    return{
+        type:actionType.NHAN_DANH_SACH_PHIM_THEO_CUM_RAP,
+        dsPhim
     }
 }

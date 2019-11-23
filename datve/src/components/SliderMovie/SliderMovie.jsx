@@ -6,6 +6,8 @@ import { withRouter } from 'react-router-dom';
 import Slider from "react-slick";
 import './SliderMovie.css';
 
+// import "slick-carousel/slick/slick.css";
+// import "slick-carousel/slick/slick-theme.css";
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
   return (
@@ -35,18 +37,14 @@ class CustomArrows extends Component {
   }
 
   render() {
-    // console.log(this.props.dsPhim);
     let { dsPhim } = this.props;
     const settings = {
-      // autoplay: true,
       arrows: true,
       slidesPerRow: 4,
       rows: 2,
       nextArrow: <SampleNextArrow />,
       prevArrow: <SamplePrevArrow />
     };
-
-
 
     return (
       <Fragment>
@@ -66,7 +64,6 @@ class CustomArrows extends Component {
                   <div className="movie_session">{phim.ngayKhoiChieu}</div>
                 </div>
               </div>
-
             )
           })}
         </Slider>

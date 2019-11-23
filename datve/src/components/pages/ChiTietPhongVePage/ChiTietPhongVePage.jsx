@@ -23,17 +23,6 @@ import ThanhToanComponent from './ThanhToanComponent/ThanhToanComponent';
      }
      mangGheChon = [];
 
-    //  mangGheDaChon =() =>{
-    //   return this.props.dsGhe.map((ghe,index)=>{
-    //       if(ghe.daDat){
-    //           this.mangGheChon.push(ghe.stt);
-    //         this.setState({
-    //             mangGheDaChon: this.mangGheChon
-    //         })
-    //       }
-    //   })
-        
-    //  }
      datGhe = (ghe) =>{         
         let indexGhe = this.state.datVe.danhSachVe.findIndex(x => {return x === ghe});
         console.log('indexGhe',indexGhe);
@@ -50,7 +39,6 @@ import ThanhToanComponent from './ThanhToanComponent/ThanhToanComponent';
             datVe: {...this.state.datVe,danhSachVe:this.mangGheChon}
             })
         }
-        // console.log('danh Sach Ve',this.state.datVe);
         
      }
     
@@ -60,7 +48,6 @@ import ThanhToanComponent from './ThanhToanComponent/ThanhToanComponent';
 
      trangThaiGhe = (ghe)=>{
         let gheIndex = this.state.datVe.danhSachVe.findIndex(x => {return x === ghe})
-        // console.log(gheIndex);
        
         if(ghe.daDat){
             return 'btn btn-danger'
@@ -73,9 +60,7 @@ import ThanhToanComponent from './ThanhToanComponent/ThanhToanComponent';
         }
      }
 
-    render() {        
-        // console.log('dat Ghe',this.state.mangGheDaChon);
-        
+    render() {                
         return (
             <Fragment>
                 <Header/>
@@ -101,7 +86,7 @@ import ThanhToanComponent from './ThanhToanComponent/ThanhToanComponent';
                             <div className="col-md-2 text-center">
                                 {this.props.dsGhe.slice(0,16).map((ghe,index)=>{
                                     return(
-                                        <button disabled={ghe.daDat ?'disabled': ''} onClick={()=>this.datGhe(ghe)} style={{marginRight:'5px', marginBottom:'5px',minWidth:'52px'}} className={this.trangThaiGhe(ghe)}>{ghe.stt}</button>
+                                        <button key={index} disabled={ghe.daDat ?'disabled': ''} onClick={()=>this.datGhe(ghe)} style={{marginRight:'5px', marginBottom:'5px',minWidth:'52px'}} className={this.trangThaiGhe(ghe)}>{ghe.stt}</button>
                                     )
                                 })}
                             </div>
@@ -109,21 +94,18 @@ import ThanhToanComponent from './ThanhToanComponent/ThanhToanComponent';
                             <div className="col-md-6 text-center">
                             {this.props.dsGhe.slice(17,84).map((ghe,index)=>{
                                     return(
-                                        <button disabled={ghe.daDat ?'disabled': ''} onClick={()=>this.datGhe(ghe)} style={{marginRight:'5px', marginBottom:'5px',minWidth:'52px'}} className={this.trangThaiGhe(ghe)}>{ghe.stt}</button>
+                                        <button key={index} disabled={ghe.daDat ?'disabled': ''} onClick={()=>this.datGhe(ghe)} style={{marginRight:'5px', marginBottom:'5px',minWidth:'52px'}} className={this.trangThaiGhe(ghe)}>{ghe.stt}</button>
                                     )
                                 })}
-                            {/* <button style={{marginRight:'5px', marginBottom:'5px'}} className='btn btn-success'>12</button> 
-                                <button style={{marginRight:'5px', marginBottom:'5px'}} className='btn btn-success'>12</button> */}
+                      
                             </div>
                             <div className="col-md-1"></div>
                             <div className="col-md-2 text-center">
                             {this.props.dsGhe.slice(84,100).map((ghe,index)=>{
                                     return(
-                                        <button disabled={ghe.daDat ?'disabled': ''} onClick={()=>this.datGhe(ghe)} style={{marginRight:'5px', marginBottom:'5px',minWidth:'52px'}} className={this.trangThaiGhe(ghe)}>{ghe.stt}</button>
+                                        <button key={index} disabled={ghe.daDat ?'disabled': ''} onClick={()=>this.datGhe(ghe)} style={{marginRight:'5px', marginBottom:'5px',minWidth:'52px'}} className={this.trangThaiGhe(ghe)}>{ghe.stt}</button>
                                     )
                                 })}
-                            {/* <button style={{marginRight:'5px', marginBottom:'5px'}} className='btn btn-success'>12</button>
-                                <button style={{marginRight:'5px', marginBottom:'5px'}} className='btn btn-success'>12</button> */}
                             </div>
                         </div>
                     </div>
