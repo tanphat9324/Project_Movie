@@ -1,14 +1,12 @@
 import React, { Component,Fragment } from 'react'
-import {Form,Button,Input,DatePicker,Rate,Upload,Icon,message } from "antd";
+import {Form,Button,Input } from "antd";
 import {connect} from 'react-redux';
-import { nguoiDangNhap, CapNhatNguoiDungAction } from '../../../../redux/actions/QuanLyNguoiDungAction';
-import { async, resolve, reject } from 'q';
+import {CapNhatNguoiDungAction } from '../../../../redux/actions/QuanLyNguoiDungAction';
 
 class ModalTTCaNhan extends Component {
     constructor(props){
         super(props);
         this.state={
-        // phim:this.props.phimSua,
         user:this.props.nguoiDungSua,
         errors: {
             taiKhoan:'',
@@ -26,9 +24,7 @@ class ModalTTCaNhan extends Component {
           loading: false,
         }
     } 
-    // componentDidMount(){
-    //   this.props.nguoiDungDangNhap();
-    // }
+
     handleChange=(e) =>{
         let { value, name } = e.target;
             this.setState({
@@ -42,15 +38,8 @@ class ModalTTCaNhan extends Component {
           delete this.state.user.soDT;      
           this.state.user.maLoaiNguoiDung = 'KhachHang';
           this.props.capNhatTTCaNhan(this.state.user)
-
-          
       };
 
-    //   componentWillReceiveProps(nextProps){
-    //     this.setState({
-    //         user:nextProps.nguoiDungSua
-    //     })
-    // }
     handleErrors = e => {
         let {name, value} = e.target;
         let status = '';
@@ -171,7 +160,6 @@ const mapDispatchToProps = dispatch => {
     capNhatTTCaNhan: (thongTinNguoiDung) => {
       dispatch(CapNhatNguoiDungAction(thongTinNguoiDung))
     },
-    // nguoiDungDangNhap: () => dispatch(nguoiDangNhap()),
   }
 }
 

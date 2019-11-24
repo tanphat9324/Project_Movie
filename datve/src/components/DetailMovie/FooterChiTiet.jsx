@@ -14,21 +14,21 @@ export default class FooterChiTiet extends Component {
         <div className="row">
           <div className="col-6">
             <ul style={{paddingInlineStart:'unset'}}>
-              <li className='footer_li'> <a className="footerItem_phim" href="#">FAQ</a>
+              <li className='footer_li'> <a className="footerItem_phim" href="#a">FAQ</a>
               </li>
-              <li className='footer_li'> <a className="footerItem_phim" href="#">Brand Guidelines</a>
+              <li className='footer_li'> <a className="footerItem_phim" href="#a">Brand Guidelines</a>
               </li>
             </ul>
           </div>
           <div className="col-6">
             <ul style={{paddingInlineStart:'unset'}}>
-              <li className='footer_li'> <a className="footerItem_phim" href="#">Thoả thuận sử dụng</a>
+              <li className='footer_li'> <a className="footerItem_phim" href="#a">Thoả thuận sử dụng</a>
               </li>
-              <li className='footer_li'> <a className="footerItem_phim" href="#">Quy chế hoạt động</a>
+              <li className='footer_li'> <a className="footerItem_phim" href="#a">Quy chế hoạt động</a>
               </li>
-              <li className='footer_li'> <a className="footerItem_phim" href="#">Chính sách bảo mật</a>
+              <li className='footer_li'> <a className="footerItem_phim" href="#a">Chính sách bảo mật</a>
               </li>
-              <li className='footer_li'> <a className="footerItem_phim" href="#">Quyền lợi thành viên</a>
+              <li className='footer_li'> <a className="footerItem_phim" href="#a">Quyền lợi thành viên</a>
               </li>
             </ul>
           </div>

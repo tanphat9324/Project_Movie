@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 import {layDanhMucRap, layThongTinCumRap, layTTLichChieuHTRapAction} from '../../redux/actions/QuanLyRapAction';
 import './Session.css';
 import {NavLink} from 'react-router-dom'
-import dayjs from 'dayjs'
 import { layThongTinPhimAction } from '../../redux/actions/QuanLyPhimAction';
 
  class Session extends Component {
@@ -109,7 +108,8 @@ import { layThongTinPhimAction } from '../../redux/actions/QuanLyPhimAction';
       
       // let danhSachPhim=ttRap.danhSachPhim[0];
       let list = dsPhim.lstLichChieuTheoPhim;
-     this.props.thongTinPhim(dsPhim.maPhim);
+    //  this.props.thongTinPhim(dsPhim.maPhim);
+     console.log(dsPhim);
      
         return(
           <div>
@@ -117,18 +117,16 @@ import { layThongTinPhimAction } from '../../redux/actions/QuanLyPhimAction';
          <div key={index} className='movieInfo2'>
               <button className='session_de'>
                 <div className="d-flex">
-                  <img src={this.props.ttPhim.hinhAnh} />
+                  <img src='http://movie0706.cybersoft.edu.vn/hinhanh/ted2.jpg' />
                   <div className='movie_Info2'>
                     <div style={{fontWeight:'500',color:'#000'}} className="text-left">{dsPhim.tenPhim}</div>
-                    <div style={{fontSize:'14px',color:'#FB4226'}} className="text-left">Đánh giá: {this.props.ttPhim.danhGia}</div>
+                    <div style={{fontSize:'14px',color:'#FB4226'}} className="text-left">Mã phim: {dsPhim.maPhim}</div>
                   </div>
                 </div>
               </button>
               <div />
             </div>
-         </NavLink>
-            
-        {/* <div style={{padding:'0 0 0 20px',color:'black'}}>tên Phim: {danhSachPhim.tenPhim}</div> */}
+         </NavLink>         
             <div style={{padding:'0 20px 20px 35px'}} className='bookingTicket1' >
               <div style={{paddingTop:'8px',paddingRight:'15px'}}>
 
@@ -136,9 +134,9 @@ import { layThongTinPhimAction } from '../../redux/actions/QuanLyPhimAction';
               </div>
 
               <div className='timeBooking1'>
-                {list.slice(0,5).map((tt,index) => {
+                {list.slice(0,5).map((tt,index) => {                  
                   return(
-                  <NavLink to={`/chitietdatve/${tt.maLichChieu}`} key={index} className='timeItem1' >{dayjs(tt.ngayKhoiChieu).format('HH:mm')}</NavLink>
+                  <NavLink to={`/chitietdatve/${tt.maLichChieu}`} key={index} className='timeItem1' >{tt.ngayChieuGioChieu.substring(11,16)}</NavLink>
                   )
                 })}
               </div>
@@ -147,7 +145,6 @@ import { layThongTinPhimAction } from '../../redux/actions/QuanLyPhimAction';
             </div>  
         )
       })}
- {/* </div> */}
  </div>
 
         </div> : <div></div> }

@@ -12,7 +12,6 @@ import DashboardAdmin from './components/DashboardAdmin/DashboardAdmin';
 import AddUserAdmin from './components/AddUserAdmin/AddUserAdmin';
 import { PrivateRoute } from './templates/PrivateRoute';
 import { PublicRoute } from './templates/PublicRoute';
-import QuanLyNguoiDungPage from './components/pages/QuanLyNguoiDungPage/QuanLyNguoiDungPage';
 import QuanLyNguoiDungAdmin from './components/QuanLyNguoiDungAdmin/QuanLyNguoiDungAdmin';
 // import HeaderAdmin from './components/HeaderAdmin/HeaderAdmin';
 import QuanLyPhimAdmin from './components/QuanLyPhimAdmin/QuanLyPhimAdmin';
@@ -23,7 +22,7 @@ import LichChieuChiTiet from './components/LichChieuChiTiet/LichChieuChiTiet';
 import ChiTietPhongVePage from './components/pages/ChiTietPhongVePage/ChiTietPhongVePage';
 import ThanhToanComponent from './components/pages/ChiTietPhongVePage/ThanhToanComponent/ThanhToanComponent';
 import NotFound404Page from './components/pages/NotFound404Page/NotFound404Page';
-import createHistory from 'history/createBrowserHistory'
+import { createBrowserHistory as createHistory } from 'history'
 
 const history = createHistory()
 

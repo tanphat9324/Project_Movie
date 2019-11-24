@@ -1,7 +1,7 @@
-import React, { Component, Fragment } from "react";
+import React, {Fragment } from "react";
 import { connect } from 'react-redux';
-import { MDBContainer, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavbarToggler, MDBCollapse, MDBNavItem, MDBNavLink, MDBIcon } from 'mdbreact';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { MDBNavbar, MDBNavbarNav, MDBNavbarToggler, MDBCollapse, MDBNavItem} from 'mdbreact';
+// import { BrowserRouter as Router } from 'react-router-dom';
 import { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem } from "mdbreact";
 import { NavLink, withRouter } from "react-router-dom";
 import { isLogin,isLoginAdmin } from '../../utils/index';
@@ -82,9 +82,7 @@ class Header extends React.Component {
     )
   }
   render() {
-    const bgPink = { backgroundColor: '#e91e63' }
-    // console.log(this.props.location);
-    
+    const bgPink = { backgroundColor: '#e91e63' }    
     return (
       <div>
      
@@ -100,7 +98,6 @@ class Header extends React.Component {
                 <MDBNavbarNav center>
                  {this.renderNav()}
                 </MDBNavbarNav>
-
                 <MDBNavbarNav center></MDBNavbarNav>
                 {this.kiemTraDangNhap()}
               </MDBCollapse>

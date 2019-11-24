@@ -1,5 +1,5 @@
 import React, { Component,Fragment } from 'react'
-import {Form,Button,Input,DatePicker,Rate,Upload,Icon,message } from "antd";
+import {Form,Button,Input,DatePicker,Rate} from "antd";
 import {connect} from 'react-redux';
 import { capNhatPhimAction } from '../../../redux/actions/QuanLyPhimAction';
 import moment from 'moment';

@@ -6,7 +6,7 @@ import './customMDB.css';
 import { layDanhMucRap, layTTLichChieuHTRapAction } from '../../redux/actions/QuanLyRapAction';
 import dayjs from 'dayjs'
 import {NavLink} from 'react-router-dom'
-// import 'bootstrap/dist/css/bootstrap.css';
+
 class LichChieuChiTiet extends Component {
   componentDidMount(){
     this.props.layDanhMucRap();
@@ -38,7 +38,7 @@ class LichChieuChiTiet extends Component {
   {this.checkListIsEmpty() ? <div className="tab-pane fade show active" id={this.props.listCumRap.maHeThongRap} role="tabpanel" aria-labelledby="v-pills-home-tab">
         <div className={styles.select_movie}>
     {this.props.listCumRap.map((ttRap,index) => {
-      console.log('ttRap',ttRap);
+      // console.log('ttRap',ttRap);
       
       let danhSachPhim=ttRap.danhSachPhim;
       let list = danhSachPhim.lstLichChieuTheoPhim;
@@ -68,9 +68,9 @@ class LichChieuChiTiet extends Component {
               </div>
 
               <div className={styles.timeBooking}>
-                {phim.lstLichChieuTheoPhim.slice(0,16).map((tt,index) => {
+                {phim.lstLichChieuTheoPhim.slice(0,16).map((tt,index) => {                  
                   return(
-                  <NavLink to={`/chitietdatve/${tt.maLichChieu}`} key={index} className={styles.timeItem} >{dayjs(tt.ngayKhoiChieu).format('HH:mm')}</NavLink>
+                  <NavLink to={`/chitietdatve/${tt.maLichChieu}`} key={index} className={styles.timeItem} >{tt.ngayChieuGioChieu.substring(11,16)}</NavLink>
                   )
                 })}
               </div>
@@ -78,23 +78,6 @@ class LichChieuChiTiet extends Component {
             <hr className={styles.hr}/>
           </Fragment>
         })}
-
-        {/* <div className={styles.tenPhim}>Phim: {danhSachPhim.tenPhim}</div>
-            <div style={{padding:'0 20px 20px 35px'}} className={styles.bookingTicket} >
-              <div style={{paddingTop:'8px',paddingRight:'15px'}}>
-
-              <img  src="../assets/images/2_0.png" width='30px' height='30px' alt=""/>
-              </div>
-
-              <div className={styles.timeBooking}>
-                {list.slice(0,16).map((tt,index) => {
-                  return(
-                  <NavLink to={`/chitietdatve/${tt.maLichChieu}`} key={index} className={styles.timeItem} >{dayjs(tt.ngayKhoiChieu).format('HH:mm')}</NavLink>
-                  )
-                })}
-              </div>
-            </div>
-            <hr className={styles.hr}/> */}
             </div>  
         )
       })}

@@ -7,9 +7,9 @@
 }
 .movie_item_thumbNail {
   position: relative;
-  height: 339px;
+  height: 318px;
 }
-.movie_item img {
+.movie_item_thumbNail img {
   width: 100%;
   border-radius: 4px;
 }
@@ -114,5 +114,5 @@
   cursor: pointer;
 }
 .movie_item_thumbNail .slider_image{
-  min-height: 339px;
+  max-height: 318px;
 }
