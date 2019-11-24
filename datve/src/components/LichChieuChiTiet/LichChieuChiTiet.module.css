@@ -1,0 +1,69 @@
+.branchMovie{
+    display: flex;
+    align-items: flex-start;
+    min-width: 240px;
+    border-radius: 10px!important;
+    min-height: 713px;
+    justify-content: normal!important;
+}
+.content{
+    border-top:1px solid #ebebec;
+    border-right:1px solid #ebebec;
+    border-bottom:1px solid #ebebec;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 40px;
+}
+.select_movie{
+    overflow-y: scroll;
+    max-height: 705px!important;
+}
+.movieInfo{
+    padding:20px;
+    min-width: 711px;
+
+  }
+  .movieInfo button{
+  width: 100%;
+    background-color: transparent;
+    border:none;
+    outline-color: transparent;
+  }
+  .movieInfo button img{
+    width: 50px;
+    height: 50px;
+  }
+  
+  .movie_Info{
+    padding-left: 10px;
+    color:black;
+  }
+  .hr{
+      margin-top: unset;
+      margin-bottom: unset;
+  }
+  .bookingTicket{
+    display: flex;
+  }
+  .timeBooking{
+    display: flex;
+    max-width: 700px;
+    flex-wrap: wrap;
+  }
+  .timeItem{
+    font-weight: 500!important;
+    color: #417500!important;
+    margin: 0 15px 15px 0;
+    transition: all .2s;
+    font-size: 24px;
+    text-decoration: none!important;
+  }
+  .timeBooking>.timeItem:hover{
+    color:red!important;
+  }
+  .tenPhim{
+    padding: 0 0 20px 20px;
+    color:rgb(251, 57, 31);
+    font-weight: 500;
+    transition: all 0.3s;
+  }

@@ -1,0 +1,31 @@
+.content{
+    padding-top: 85px;
+    /* width: 80%; */
+}
+.Rap{
+    width: 50%;
+    margin:0 auto auto 12%;
+    display: flex;
+    justify-content: space-between;
+}
+.tenRap{
+    display: flex;
+}
+.tieuDeRap{
+    padding-left: 10px;
+    color:black;
+    font-size: 14px;
+}
+.content_DatVe{
+    width: 50%;
+    margin:0 auto auto 12%;
+    padding-top: 20px;
+}
+.content_DatVe>img{
+    width: 100%;
+}
+.ghiChu{
+    width: 40%;
+    margin:0 auto auto 15%;
+    padding-top: 45px;
+}
