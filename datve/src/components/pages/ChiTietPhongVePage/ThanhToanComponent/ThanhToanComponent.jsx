@@ -28,7 +28,8 @@ let tongTien = danhSachVe.reduce((tt,ghe,index) =>{
     render() {
         console.log('thanh Toan Com',this.props.datVeThanhToan);
         let {ttPhim} =this.props;
-       
+       const {email} = JSON.parse(localStorage.getItem(settings.userLogin));
+       console.log('localstorage',typeof JSON.parse(localStorage.getItem(settings.userLogin)))
         return (
             <Fragment>
                  <div className={styles.thanhToan}>
@@ -51,7 +52,7 @@ let tongTien = danhSachVe.reduce((tt,ghe,index) =>{
                 </div>
                 <div className={styles.lienLac}>
                     <span className={styles.email}>Email: </span>
-                    <span className={styles.email_item}>{localStorage.getItem(settings.userLogin)}</span>
+                    <span className={styles.email_item}>{email}</span>
                 </div>
                 <div className={styles.hinhThuc}>
                     <div style={{}} className={styles.hinhThuc_item}>Hình thức thanh toán</div>
